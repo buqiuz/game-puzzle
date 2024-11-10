@@ -1,6 +1,7 @@
 # 拼图
 
 ### 介绍
+本项目以官方示例进行修改而来，以下为源仓库
 
 该示例通过@ohos.multimedia.image和@ohos.file.photoAccessHelper接口实现获取图片，以及图片裁剪分割的功能。
 
