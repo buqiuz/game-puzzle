@@ -1,0 +1,52 @@
+{
+  "float": [
+    {
+      "name": "image_width",
+      "value": "180vp"
+    },
+    {
+      "name": "image_height",
+      "value": "150vp"
+    },
+    {
+      "name": "list_height",
+      "value": "160"
+    },
+    {
+      "name": "margin_side",
+      "value": "2vp"
+    },
+    {
+      "name": "margin_up",
+      "value": "5vp"
+    },
+    {
+      "name": "margin_bottom",
+      "value": "10vp"
+    },
+    {
+      "name": "imageShow_height",
+      "value": "275vp"
+    },
+    {
+      "name": "grid_image_height",
+      "value": "90"
+    },
+    {
+      "name": "gap",
+      "value": "2"
+    },
+    {
+      "name": "grid_height",
+      "value": "275"
+    },
+    {
+      "name": "button_height",
+      "value": "50"
+    },
+    {
+      "name": "button_font_size",
+      "value": "18"
+    }
+  ]
+}

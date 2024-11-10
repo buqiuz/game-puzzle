@@ -1,0 +1,52 @@
+{
+  "modulePathMap": {
+    "entry": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry"
+  },
+  "compileMode": "esmodule",
+  "projectRootPath": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master",
+  "nodeModulesPath": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
+  "byteCodeHarInfo": {},
+  "declarationEntry": [],
+  "moduleName": "entry",
+  "hspNameOhmMap": {},
+  "harNameOhmMap": {},
+  "packageManagerType": "ohpm",
+  "compileEntry": [
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets",
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets"
+  ],
+  "otherCompileFiles": [],
+  "dynamicImportLibInfo": {},
+  "routerMap": [
+    {
+      "ohmurl": "@bundle:ohos.samples.gamepuzzle/entry/ets/pages/Game1",
+      "name": "Game1",
+      "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
+      "buildFunction": "PageGameBuilder"
+    },
+    {
+      "ohmurl": "@bundle:ohos.samples.gamepuzzle/entry/ets/pages/Game2",
+      "name": "Game2",
+      "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
+      "buildFunction": "PageGameBuilder"
+    },
+    {
+      "ohmurl": "@bundle:ohos.samples.gamepuzzle/entry/ets/pages/Level",
+      "name": "Level",
+      "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets",
+      "buildFunction": "PageLevelBuilder"
+    },
+    {
+      "ohmurl": "@bundle:ohos.samples.gamepuzzle/entry/ets/pages/Login",
+      "name": "Login",
+      "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets",
+      "buildFunction": "PageLoginBuilder"
+    }
+  ],
+  "hspResourcesMap": {},
+  "anBuildOutPut": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\.preview\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
+  "anBuildMode": "type",
+  "buildConfigPath": ".preview\\config\\buildConfig.json"
+}

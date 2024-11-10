@@ -1,0 +1,1594 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ²if (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { util } from '@kit.ArkTS';
+import { authentication, loginComponentManager, LoginWithHuaweiIDButton } from '@kit.AccountKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { promptAction, router } from '@kit.ArkUI';
+export function PageLoginBuilder(parent = null) {
+    {
+        (parent ? parent : this).observeComponentCreation2((elmtId, isInitialRender) => {
+            if (isInitialRender) {
+                let componentCall = new Login(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Login.ets", line: 9, col: 3 });
+                ViewPU.create(componentCall);
+                let paramsLambda = () => {
+                    return {};
+                };
+                componentCall.paramsGenerator_ = paramsLambda;
+            }
+            else {
+                (parent ? parent : this).updateStateVarsOfChildByElmtId(elmtId, {});
+            }
+        }, { name: "Login" });
+    }
+}
+class Login extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.pageInfos = new NavPathStack();
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.pageInfos !== undefined) {
+            this.pageInfos = params.pageInfos;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+    }
+    aboutToBeDeleted() {
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            NavDestination.create(() => {
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                }, Column);
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new QuickLoginButtonComponent(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Login.ets", line: 18, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {};
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "QuickLoginButtonComponent" });
+                }
+                Column.pop();
+            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Login" });
+            NavDestination.onReady((ctx) => {
+                this.pageInfos = ctx.pathStack;
+            });
+        }, NavDestination);
+        NavDestination.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+class QuickLoginButtonComponent extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.logTag = 'QuickLoginButtonComponent';
+        this.domainId = 0x0000;
+        this.__quickLoginAnonymousPhone = new ObservedPropertySimplePU('', this, "quickLoginAnonymousPhone");
+        this.__isSelected = new ObservedPropertySimplePU(false, this, "isSelected");
+        this.privacyText = [{
+                text: 'å·²é˜…è¯»å¹¶åŒæ„',
+                type: loginComponentManager.TextType.PLAIN_TEXT
+            }, {
+                text: 'ã€Šç”¨æˆ·æœåŠ¡åè®®ã€‹',
+                tag: QuickLoginButtonComponent.USER_SERVICE_TAG,
+                type: loginComponentManager.TextType.RICH_TEXT
+            }, {
+                text: 'ã€Šéšç§åè®®ã€‹',
+                tag: QuickLoginButtonComponent.PRIVACY_TAG,
+                type: loginComponentManager.TextType.RICH_TEXT
+            }, {
+                text: 'å’Œ',
+                type: loginComponentManager.TextType.PLAIN_TEXT
+            }, {
+                text: 'ã€Šåä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®ã€‹',
+                tag: QuickLoginButtonComponent.USER_AUTHENTICATION_TAG,
+                type: loginComponentManager.TextType.RICH_TEXT
+            }, {
+                text: 'ã€‚',
+                type: loginComponentManager.TextType.PLAIN_TEXT
+            }];
+        this.controller = new loginComponentManager.LoginWithHuaweiIDButtonController()
+            /**
+             * å½“åº”ç”¨ä½¿ç”¨è‡ªå®šä¹‰çš„ç™»å½•é¡µæ—¶ï¼Œå¦‚æœç”¨æˆ·æœªåŒæ„åè®®ï¼Œéœ€è¦è®¾ç½®åè®®çŠ¶æ€ä¸ºNOT_ACCEPTEDï¼Œå½“ç”¨æˆ·åŒæ„åè®®åå†è®¾ç½®
+             * åè®®çŠ¶æ€ä¸ºACCEPTEDï¼Œæ‰å¯ä»¥ä½¿ç”¨åä¸ºè´¦å·ä¸€é”®ç™»å½•åŠŸèƒ½
+             */
+            .setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED)
+            .onClickLoginWithHuaweiIDButton((error, response) => {
+            this.handleLoginWithHuaweiIDButton(error, response);
+        })
+            .onClickEvent((error, clickEvent) => {
+            if (error) {
+                this.dealAllError(error);
+                return;
+            }
+            hilog.info(this.domainId, this.logTag, `onClickEvent clickEvent: ${clickEvent}`);
+        });
+        this.agreementDialog = new CustomDialogController({
+            builder: () => {
+                let jsDialog = new AgreementDialog(this, {
+                    privacyText: this.privacyText,
+                    cancel: () => {
+                        this.agreementDialog.close();
+                        this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED);
+                    },
+                    confirm: () => {
+                        this.agreementDialog.close();
+                        this.isSelected = true;
+                        this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.ACCEPTED);
+                        // è°ƒç”¨æ­¤æ–¹æ³•ï¼ŒåŒæ„åè®®ä¸ç™»å½•ä¸€å¹¶å®Œæˆï¼Œæ— éœ€å†æ¬¡ç‚¹å‡»ç™»å½•æŒ‰é’®
+                        this.controller.continueLogin((error) => {
+                            if (error) {
+                                hilog.error(this.domainId, this.logTag, `Failed to click agreementDialog continueLogin. errCode is ${error.code}, errMessage is ${error.message}`);
+                            }
+                            else {
+                                hilog.info(this.domainId, this.logTag, 'Succeed in clicking agreementDialog continueLogin.');
+                            }
+                        });
+                    },
+                    clickHyperlinkText: () => {
+                        this.agreementDialog.close();
+                        this.jumpToPrivacyWebView();
+                    }
+                }, undefined, -1, () => { }, { page: "entry/src/main/ets/pages/Login.ets", line: 84, col: 14 });
+                jsDialog.setController(this.agreementDialog);
+                ViewPU.create(jsDialog);
+                let paramsLambda = () => {
+                    return {
+                        privacyText: this.privacyText,
+                        cancel: () => {
+                            this.agreementDialog.close();
+                            this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED);
+                        },
+                        confirm: () => {
+                            this.agreementDialog.close();
+                            this.isSelected = true;
+                            this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.ACCEPTED);
+                            // è°ƒç”¨æ­¤æ–¹æ³•ï¼ŒåŒæ„åè®®ä¸ç™»å½•ä¸€å¹¶å®Œæˆï¼Œæ— éœ€å†æ¬¡ç‚¹å‡»ç™»å½•æŒ‰é’®
+                            this.controller.continueLogin((error) => {
+                                if (error) {
+                                    hilog.error(this.domainId, this.logTag, `Failed to click agreementDialog continueLogin. errCode is ${error.code}, errMessage is ${error.message}`);
+                                }
+                                else {
+                                    hilog.info(this.domainId, this.logTag, 'Succeed in clicking agreementDialog continueLogin.');
+                                }
+                            });
+                        },
+                        clickHyperlinkText: () => {
+                            this.agreementDialog.close();
+                            this.jumpToPrivacyWebView();
+                        }
+                    };
+                };
+                jsDialog.paramsGenerator_ = paramsLambda;
+            },
+            autoCancel: false,
+            alignment: DialogAlignment.Center
+        }, this);
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.logTag !== undefined) {
+            this.logTag = params.logTag;
+        }
+        if (params.domainId !== undefined) {
+            this.domainId = params.domainId;
+        }
+        if (params.quickLoginAnonymousPhone !== undefined) {
+            this.quickLoginAnonymousPhone = params.quickLoginAnonymousPhone;
+        }
+        if (params.isSelected !== undefined) {
+            this.isSelected = params.isSelected;
+        }
+        if (params.privacyText !== undefined) {
+            this.privacyText = params.privacyText;
+        }
+        if (params.controller !== undefined) {
+            this.controller = params.controller;
+        }
+        if (params.agreementDialog !== undefined) {
+            this.agreementDialog = params.agreementDialog;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__quickLoginAnonymousPhone.purgeDependencyOnElmtId(rmElmtId);
+        this.__isSelected.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__quickLoginAnonymousPhone.aboutToBeDeleted();
+        this.__isSelected.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get quickLoginAnonymousPhone() {
+        return this.__quickLoginAnonymousPhone.get();
+    }
+    set quickLoginAnonymousPhone(newValue) {
+        this.__quickLoginAnonymousPhone.set(newValue);
+    }
+    get isSelected() {
+        return this.__isSelected.get();
+    }
+    set isSelected(newValue) {
+        this.__isSelected.set(newValue);
+    }
+    aboutToAppear() {
+        this.getQuickLoginAnonymousPhone();
+    }
+    // Toastæç¤º
+    showToast(resource) {
+        try {
+            promptAction.showToast({
+                message: resource,
+                duration: 2000
+            });
+        }
+        catch (error) {
+            const message = error.message;
+            const code = error.code;
+            hilog.error(this.domainId, this.logTag, `showToast args  errCode is ${code}, errMessage is ${message}`);
+        }
+    }
+    // è·³è½¬åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®é¡µ,è¯¥é¡µé¢éœ€åœ¨å·¥ç¨‹main_pages.jsonæ–‡ä»¶é…ç½®
+    jumpToPrivacyWebView() {
+        router.pushUrl({
+            // åœ¨å·¥ç¨‹main_pages.jsonæ–‡ä»¶é…ç½®è·³è½¬é¡µï¼Œå…·ä½“å¯å‚è€ƒAccountKitå¼€å‘æŒ‡å—ä½¿ç”¨åä¸ºè´¦å·ä¸€é”®ç™»å½•WebPageç¤ºä¾‹ä»£ç 
+            url: 'pages/WebPage',
+            params: {
+                isFromDialog: true,
+                url: QuickLoginButtonComponent.USER_AUTHENTICATION_PROTOCOL,
+            }
+        }, (err) => {
+            if (err) {
+                hilog.error(this.domainId, this.logTag, `Failed to jumpToPrivacyWebView, errCode is ${err.code}, errMessage is ${err.message}`);
+            }
+        });
+    }
+    handleLoginWithHuaweiIDButton(error, response) {
+        if (error) {
+            hilog.error(this.domainId, this.logTag, `Failed to click LoginWithHuaweiIDButton. errCode is ${error.code}, errMessage is ${error.message}`);
+            if (error.code === ErrorCode.ERROR_CODE_NETWORK_ERROR) {
+                AlertDialog.show({
+                    message: "ç½‘ç»œæœªè¿æ¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œè®¾ç½®ã€‚",
+                    offset: { dx: 0, dy: -12 },
+                    alignment: DialogAlignment.Bottom,
+                    autoCancel: false,
+                    confirm: {
+                        value: "çŸ¥é“äº†",
+                        action: () => {
+                        }
+                    }
+                });
+            }
+            else if (error.code === ErrorCode.ERROR_CODE_AGREEMENT_STATUS_NOT_ACCEPTED) {
+                // æœªåŒæ„åè®®ï¼Œå¼¹å‡ºåè®®å¼¹æ¡†ï¼Œæ¨èä½¿ç”¨è¯¥å›è°ƒæ–¹å¼
+                this.agreementDialog.open();
+            }
+            else if (error.code === ErrorCode.ERROR_CODE_LOGIN_OUT) {
+                // åä¸ºè´¦å·æœªç™»å½•æç¤º
+                this.showToast("åä¸ºè´¦å·æœªç™»å½•ï¼Œè¯·é‡è¯•");
+            }
+            else if (error.code === ErrorCode.ERROR_CODE_NOT_SUPPORTED) {
+                // ä¸æ”¯æŒè¯¥scopesæˆ–permissionsæç¤º
+                this.showToast("è¯¥scopesæˆ–permissionsä¸æ”¯æŒ");
+            }
+            else {
+                // å…¶ä»–æç¤ºç³»ç»Ÿæˆ–æœåŠ¡å¼‚å¸¸
+                this.showToast('æœåŠ¡æˆ–ç½‘ç»œå¼‚å¸¸ï¼Œè¯·ç¨åé‡è¯•');
+                // TODO: å…¶ä»–é”™è¯¯ç å¤„ç†ï¼Œè¯·å‚è€ƒAPIä¸­çš„é”™è¯¯ç æŸ¥çœ‹è¯¦ç»†é”™è¯¯åŸå› 
+            }
+            return;
+        }
+        try {
+            if (this.isSelected) {
+                if (response) {
+                    hilog.info(this.domainId, this.logTag, 'Succeed in clicking LoginWithHuaweiIDButton.');
+                    // å¼€å‘è€…æ ¹æ®å®é™…ä¸šåŠ¡æƒ…å†µä½¿ç”¨ä»¥ä¸‹ä¿¡æ¯
+                    const authCode = response.authorizationCode;
+                    const openID = response.openID;
+                    const unionID = response.unionID;
+                    const idToken = response.idToken;
+                }
+            }
+            else {
+                this.agreementDialog.open();
+            }
+        }
+        catch (err) {
+            hilog.error(this.domainId, this.logTag, `Failed to LoginWithHuaweiIDButton, errCode: ${err.code}, errMessage: ${err.message}`);
+            AlertDialog.show({
+                message: 'æœåŠ¡æˆ–ç½‘ç»œå¼‚å¸¸ï¼Œè¯·ç¨åé‡è¯•',
+                offset: { dx: 0, dy: -12 },
+                alignment: DialogAlignment.Bottom,
+                autoCancel: false,
+                confirm: {
+                    value: 'çŸ¥é“äº†',
+                    action: () => {
+                    }
+                }
+            });
+        }
+    }
+    // é”™è¯¯å¤„ç†
+    dealAllError(error) {
+        hilog.error(this.domainId, this.logTag, `Failed to login, errorCode is ${error.code}, errorMessage is ${error.message}`);
+        // TODO: é”™è¯¯ç å¤„ç†ï¼Œè¯·å‚è€ƒAPIä¸­çš„é”™è¯¯ç æ ¹æ®å®é™…æƒ…å†µå¤„ç†
+    }
+    getQuickLoginAnonymousPhone() {
+        // åˆ›å»ºæˆæƒè¯·æ±‚ï¼Œå¹¶è®¾ç½®å‚æ•°
+        const authRequest = new authentication.HuaweiIDProvider().createAuthorizationWithHuaweiIDRequest();
+        // è·å–åŒ¿åæ‰‹æœºå·éœ€ä¼ quickLoginAnonymousPhoneè¿™ä¸ªscopeï¼Œä¼ å‚ä¹‹å‰éœ€è¦å…ˆç”³è¯·â€œåä¸ºè´¦å·ä¸€é”®ç™»å½•â€æƒé™
+        //(æƒé™åç§°ä¸ºï¼šquickLoginMobilePhone),åç»­æ‰èƒ½è·å–åŒ¿åæ‰‹æœºå·æ•°æ®
+        authRequest.scopes = ['quickLoginAnonymousPhone'];
+        // ç”¨äºé˜²è·¨ç«™ç‚¹è¯·æ±‚ä¼ªé€ 
+        authRequest.state = util.generateRandomUUID();
+        // ä¸€é”®ç™»å½•åœºæ™¯è¯¥å‚æ•°åªèƒ½è®¾ç½®ä¸ºfalse
+        authRequest.forceAuthorization = false;
+        const controller = new authentication.AuthenticationController();
+        try {
+            controller.executeRequest(authRequest).then((response) => {
+                // è·å–åˆ°UnionIDã€OpenIDã€åŒ¿åæ‰‹æœºå·
+                const unionID = response.data?.unionID;
+                const openID = response.data?.openID;
+                const anonymousPhone = response.data?.extraInfo?.quickLoginAnonymousPhone;
+                if (anonymousPhone) {
+                    hilog.info(this.domainId, this.logTag, 'Succeeded in authentication.');
+                    this.quickLoginAnonymousPhone = anonymousPhone;
+                    return;
+                }
+                hilog.info(this.domainId, this.logTag, 'Succeeded in authentication. AnonymousPhone is empty.');
+                // æœªè·å–åˆ°åŒ¿åæ‰‹æœºå·éœ€è¦è·³è½¬åˆ°åº”ç”¨è‡ªå®šä¹‰çš„ç™»å½•é¡µé¢
+            }).catch((error) => {
+                this.dealAllError(error);
+            });
+        }
+        catch (error) {
+            this.dealAllError(error);
+        }
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Scroll.create();
+            Scroll.width('100%');
+            Scroll.height('100%');
+        }, Scroll);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.justifyContent(FlexAlign.SpaceBetween);
+            Column.constraintSize({ minHeight: '100%' });
+            Column.margin({
+                left: 16,
+                right: 16
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.margin({
+                top: 100
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Image.create({ "id": 16777246, "type": 20000, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Image.width(48);
+            Image.height(48);
+            Image.draggable(false);
+            Image.copyOption(CopyOptions.None);
+            Image.onComplete(() => {
+                hilog.info(this.domainId, this.logTag, 'appIcon loading success.');
+            });
+            Image.onError(() => {
+                hilog.error(this.domainId, this.logTag, 'appIcon loading fail.');
+            });
+        }, Image);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create({ "id": 16777216, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Medium);
+            Text.fontWeight(FontWeight.Bold);
+            Text.maxFontSize({ "id": 125829676, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.minFontSize({ "id": 125829684, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.maxLines(1);
+            Text.fontColor({ "id": 125829210, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.constraintSize({ maxWidth: '100%' });
+            Text.margin({
+                top: 12,
+            });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('by ä¸ç§‹');
+            Text.fontSize({ "id": 125829685, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontColor({ "id": 125829216, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829694, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Regular);
+            Text.constraintSize({ maxWidth: '100%' });
+            Text.margin({
+                top: 8,
+            });
+        }, Text);
+        Text.pop();
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.margin({
+                top: 64
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create(this.quickLoginAnonymousPhone);
+            Text.fontSize(36);
+            Text.fontColor({ "id": 125829210, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Bold);
+            Text.lineHeight(48);
+            Text.textAlign(TextAlign.Center);
+            Text.maxLines(1);
+            Text.constraintSize({ maxWidth: '100%', minHeight: 48 });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('åä¸ºè´¦å·ç»‘å®šå·ç ');
+            Text.fontSize({ "id": 125829685, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontColor({ "id": 125829216, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829694, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Regular);
+            Text.lineHeight(19);
+            Text.textAlign(TextAlign.Center);
+            Text.maxLines(1);
+            Text.constraintSize({ maxWidth: '100%' });
+            Text.margin({
+                top: 8
+            });
+        }, Text);
+        Text.pop();
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.height(40);
+            Column.margin({
+                top: 56
+            });
+        }, Column);
+        {
+            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                if (isInitialRender) {
+                    let componentCall = new LoginWithHuaweiIDButton(this, {
+                        params: {
+                            // LoginWithHuaweiIDButtonæ”¯æŒçš„æ ·å¼
+                            style: loginComponentManager.Style.BUTTON_RED,
+                            // è´¦å·ç™»å½•æŒ‰é’®åœ¨ç™»å½•è¿‡ç¨‹ä¸­å±•ç¤ºåŠ è½½æ€
+                            extraStyle: {
+                                buttonStyle: new loginComponentManager.ButtonStyle().loadingStyle({
+                                    show: true
+                                })
+                            },
+                            // LoginWithHuaweiIDButtonçš„è¾¹æ¡†åœ†è§’åŠå¾„
+                            borderRadius: 24,
+                            // LoginWithHuaweiIDButtonæ”¯æŒçš„ç™»å½•ç±»å‹
+                            loginType: loginComponentManager.LoginType.QUICK_LOGIN,
+                            // LoginWithHuaweiIDButtonæ”¯æŒæŒ‰é’®çš„æ ·å¼è·Ÿéšç³»ç»Ÿæ·±æµ…è‰²æ¨¡å¼åˆ‡æ¢
+                            supportDarkMode: true,
+                            // verifyPhoneNumberï¼šå¦‚æœåä¸ºè´¦å·ç”¨æˆ·åœ¨è¿‡å»90å¤©å†…æœªè¿›è¡ŒçŸ­ä¿¡éªŒè¯ï¼Œæ˜¯å¦æ‹‰èµ·Account Kitæä¾›çš„çŸ­ä¿¡éªŒè¯ç é¡µé¢
+                            verifyPhoneNumber: true
+                        },
+                        controller: this.controller
+                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Login.ets", line: 326, col: 13 });
+                    ViewPU.create(componentCall);
+                    let paramsLambda = () => {
+                        return {
+                            params: {
+                                // LoginWithHuaweiIDButtonæ”¯æŒçš„æ ·å¼
+                                style: loginComponentManager.Style.BUTTON_RED,
+                                // è´¦å·ç™»å½•æŒ‰é’®åœ¨ç™»å½•è¿‡ç¨‹ä¸­å±•ç¤ºåŠ è½½æ€
+                                extraStyle: {
+                                    buttonStyle: new loginComponentManager.ButtonStyle().loadingStyle({
+                                        show: true
+                                    })
+                                },
+                                // LoginWithHuaweiIDButtonçš„è¾¹æ¡†åœ†è§’åŠå¾„
+                                borderRadius: 24,
+                                // LoginWithHuaweiIDButtonæ”¯æŒçš„ç™»å½•ç±»å‹
+                                loginType: loginComponentManager.LoginType.QUICK_LOGIN,
+                                // LoginWithHuaweiIDButtonæ”¯æŒæŒ‰é’®çš„æ ·å¼è·Ÿéšç³»ç»Ÿæ·±æµ…è‰²æ¨¡å¼åˆ‡æ¢
+                                supportDarkMode: true,
+                                // verifyPhoneNumberï¼šå¦‚æœåä¸ºè´¦å·ç”¨æˆ·åœ¨è¿‡å»90å¤©å†…æœªè¿›è¡ŒçŸ­ä¿¡éªŒè¯ï¼Œæ˜¯å¦æ‹‰èµ·Account Kitæä¾›çš„çŸ­ä¿¡éªŒè¯ç é¡µé¢
+                                verifyPhoneNumber: true
+                            },
+                            controller: this.controller
+                        };
+                    };
+                    componentCall.paramsGenerator_ = paramsLambda;
+                }
+                else {
+                    this.updateStateVarsOfChildByElmtId(elmtId, {});
+                }
+            }, { name: "LoginWithHuaweiIDButton" });
+        }
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.margin({ top: 16 });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithChild({
+                type: ButtonType.Capsule,
+                stateEffect: true
+            });
+            Button.fontColor({ "id": 125829231, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontWeight(FontWeight.Medium);
+            Button.backgroundColor({ "id": 125829510, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.focusable(true);
+            Button.focusOnTouch(true);
+            Button.constraintSize({ minHeight: 40 });
+            Button.width('100%');
+            Button.onClick(() => {
+                hilog.info(this.domainId, this.logTag, 'click optionalLoginButton.');
+            });
+        }, Button);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('å…¶ä»–æ–¹å¼ç™»å½•');
+            Text.fontColor({ "id": 125829231, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Medium);
+            Text.fontSize({ "id": 125829681, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.focusable(true);
+            Text.focusOnTouch(true);
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+            Text.maxLines(1);
+            Text.padding({ left: 8, right: 8 });
+        }, Text);
+        Text.pop();
+        Button.pop();
+        Column.pop();
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.alignItems(VerticalAlign.Top);
+            Row.margin({
+                bottom: 16
+            });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Checkbox.create({ name: 'privacyCheckbox', group: 'privacyCheckboxGroup' });
+            Checkbox.width(24);
+            Checkbox.height(24);
+            Checkbox.focusable(true);
+            Checkbox.focusOnTouch(true);
+            Checkbox.margin({ top: 0 });
+            Checkbox.select(this.isSelected);
+            Checkbox.onChange((value) => {
+                if (value) {
+                    this.isSelected = true;
+                    this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.ACCEPTED);
+                }
+                else {
+                    this.isSelected = false;
+                    this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED);
+                }
+                hilog.info(this.domainId, this.logTag, `agreementChecked: ${value}`);
+            });
+        }, Checkbox);
+        Checkbox.pop();
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.margin({ left: 12 });
+            Row.layoutWeight(1);
+            Row.constraintSize({ minHeight: 24 });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create();
+            Text.width('100%');
+        }, Text);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = _item => {
+                const item = _item;
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    If.create();
+                    if (item?.type == loginComponentManager.TextType.PLAIN_TEXT && item?.text) {
+                        this.ifElseBranchUpdateFunction(0, () => {
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Span.create(item?.text);
+                                Span.fontColor({ "id": 125829216, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontFamily({ "id": 125829694, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontWeight(FontWeight.Regular);
+                                Span.fontSize({ "id": 125829686, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                            }, Span);
+                        });
+                    }
+                    else if (item?.type == loginComponentManager.TextType.RICH_TEXT && item?.text) {
+                        this.ifElseBranchUpdateFunction(1, () => {
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Span.create(item?.text);
+                                Span.fontColor({ "id": 125829231, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontWeight(FontWeight.Medium);
+                                Span.fontSize({ "id": 125829686, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.focusable(true);
+                                Span.focusOnTouch(true);
+                                Span.onClick(() => {
+                                    // åº”ç”¨éœ€è¦æ ¹æ®item.tagå®ç°åè®®é¡µé¢çš„è·³è½¬é€»è¾‘
+                                    hilog.info(this.domainId, this.logTag, `click privacy text tag: ${item.tag}`);
+                                    // åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®
+                                    if (item.tag === QuickLoginButtonComponent.USER_AUTHENTICATION_TAG) {
+                                        this.jumpToPrivacyWebView();
+                                    }
+                                });
+                            }, Span);
+                        });
+                    }
+                    else {
+                        this.ifElseBranchUpdateFunction(2, () => {
+                        });
+                    }
+                }, If);
+                If.pop();
+            };
+            this.forEachUpdateFunction(elmtId, this.privacyText, forEachItemGenFunction);
+        }, ForEach);
+        ForEach.pop();
+        Text.pop();
+        Row.pop();
+        Row.pop();
+        Column.pop();
+        Scroll.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+// åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®é“¾æ¥ï¼Œæ­¤å¤„ä»…ä¸ºç¤ºä¾‹ï¼Œå®é™…å¼€å‘è¿‡ç¨‹ä¸­ï¼ŒåŸŸåä¸å»ºè®®ç¡¬ç¼–ç åœ¨æœ¬åœ°
+QuickLoginButtonComponent.USER_AUTHENTICATION_PROTOCOL = 'https://privacy.consumer.huawei.com/legal/id/authentication-terms.htm?code=CN&language=zh-CN';
+QuickLoginButtonComponent.USER_SERVICE_TAG = 'ç”¨æˆ·æœåŠ¡åè®®';
+QuickLoginButtonComponent.PRIVACY_TAG = 'éšç§åè®®';
+QuickLoginButtonComponent.USER_AUTHENTICATION_TAG = 'åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®';
+export class AgreementDialog extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.logTag = 'AgreementDialog';
+        this.domainId = 0x0000;
+        this.dialogController = undefined;
+        this.cancel = () => {
+        };
+        this.confirm = () => {
+        };
+        this.clickHyperlinkText = () => {
+        };
+        this.privacyText = [];
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.logTag !== undefined) {
+            this.logTag = params.logTag;
+        }
+        if (params.domainId !== undefined) {
+            this.domainId = params.domainId;
+        }
+        if (params.dialogController !== undefined) {
+            this.dialogController = params.dialogController;
+        }
+        if (params.cancel !== undefined) {
+            this.cancel = params.cancel;
+        }
+        if (params.confirm !== undefined) {
+            this.confirm = params.confirm;
+        }
+        if (params.clickHyperlinkText !== undefined) {
+            this.clickHyperlinkText = params.clickHyperlinkText;
+        }
+        if (params.privacyText !== undefined) {
+            this.privacyText = params.privacyText;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+    }
+    aboutToBeDeleted() {
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    setController(ctr) {
+        this.dialogController = ctr;
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.backgroundColor({ "id": 125830234, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Column.padding({
+                left: 16,
+                right: 16
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.alignItems(VerticalAlign.Center);
+            Row.constraintSize({ minHeight: 56, maxWidth: 400 });
+            Row.margin({
+                left: { "id": 125829724, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                right: { "id": 125829724, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" }
+            });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('ç”¨æˆ·åè®®ä¸éšç§æ¡æ¬¾');
+            Text.id('loginPanel_agreement_dialog_privacy_title');
+            Text.maxFontSize({ "id": 125829676, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.minFontSize({ "id": 125829684, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontColor({ "id": 125829210, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Text.fontWeight(FontWeight.Bold);
+            Text.textAlign(TextAlign.Center);
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+            Text.maxLines(2);
+        }, Text);
+        Text.pop();
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.width('100%');
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create();
+            Text.width('100%');
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+            Text.maxLines(10);
+            Text.textAlign(TextAlign.Start);
+            Text.focusable(true);
+            Text.focusOnTouch(true);
+            Text.padding({ left: 24, right: 24 });
+        }, Text);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = _item => {
+                const item = _item;
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    If.create();
+                    if (item?.type == loginComponentManager.TextType.PLAIN_TEXT && item?.text) {
+                        this.ifElseBranchUpdateFunction(0, () => {
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Span.create(item?.text);
+                                Span.fontSize({ "id": 125829684, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontColor({ "id": 125829210, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontFamily({ "id": 125829694, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontWeight(FontWeight.Regular);
+                            }, Span);
+                        });
+                    }
+                    else if (item?.type == loginComponentManager.TextType.RICH_TEXT && item?.text) {
+                        this.ifElseBranchUpdateFunction(1, () => {
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Span.create(item?.text);
+                                Span.fontSize({ "id": 125829684, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontColor('#CE0E2D');
+                                Span.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                                Span.fontWeight(FontWeight.Medium);
+                                Span.focusable(true);
+                                Span.focusOnTouch(true);
+                                Span.onClick(() => {
+                                    // åº”ç”¨éœ€è¦æ ¹æ®item.tagå®ç°åè®®é¡µé¢çš„è·³è½¬é€»è¾‘
+                                    hilog.info(this.domainId, this.logTag, `click privacy text tag: ${item.tag}`);
+                                    // åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®
+                                    if (item.tag === AgreementDialog.USER_AUTHENTICATION_TAG) {
+                                        hilog.info(this.domainId, this.logTag, 'AgreementDialog click.');
+                                        this.clickHyperlinkText();
+                                    }
+                                });
+                            }, Span);
+                        });
+                    }
+                    else {
+                        this.ifElseBranchUpdateFunction(2, () => {
+                        });
+                    }
+                }, If);
+                If.pop();
+            };
+            this.forEachUpdateFunction(elmtId, this.privacyText, forEachItemGenFunction);
+        }, ForEach);
+        ForEach.pop();
+        Text.pop();
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Flex.create({
+                direction: FlexDirection.Row
+            });
+            Flex.margin({
+                top: 8,
+                left: { "id": 125829747, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                right: { "id": 125829747, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                bottom: 16
+            });
+        }, Flex);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('å–æ¶ˆ', { type: ButtonType.Capsule, stateEffect: true });
+            Button.id('loginPanel_agreement_cancel_btn');
+            Button.fontColor({ "id": 125829210, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontSize({ "id": 125829681, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.backgroundColor(Color.Transparent);
+            Button.fontWeight(FontWeight.Medium);
+            Button.focusable(true);
+            Button.focusOnTouch(true);
+            Button.constraintSize({ minHeight: 40, maxWidth: 400 });
+            Button.width('50%');
+            Button.onClick(() => {
+                hilog.info(this.domainId, this.logTag, 'AgreementDialog cancel.');
+                this.cancel();
+            });
+        }, Button);
+        Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('åŒæ„å¹¶ç™»å½•', { type: ButtonType.Capsule, stateEffect: true });
+            Button.id('loginPanel_agreement_dialog_huawei_id_login_btn');
+            Button.fontColor(Color.White);
+            Button.backgroundColor('#CE0E2D');
+            Button.fontSize({ "id": 125829681, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontFamily({ "id": 125829695, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.fontWeight(FontWeight.Medium);
+            Button.focusable(true);
+            Button.focusOnTouch(true);
+            Button.constraintSize({ minHeight: 40, maxWidth: 400 });
+            Button.width('50%');
+            Button.onClick(() => {
+                hilog.info(this.domainId, this.logTag, 'AgreementDialog confirm.');
+                this.confirm();
+            });
+        }, Button);
+        Button.pop();
+        Flex.pop();
+        Column.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+AgreementDialog.USER_AUTHENTICATION_TAG = 'åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®';
+export var ErrorCode;
+(function (ErrorCode) {
+    // è´¦å·æœªç™»å½•
+    ErrorCode[ErrorCode["ERROR_CODE_LOGIN_OUT"] = 1001502001] = "ERROR_CODE_LOGIN_OUT";
+    // è¯¥è´¦å·ä¸æ”¯æŒä¸€é”®ç™»å½•ï¼Œå¦‚å„¿ç«¥è´¦å·ã€æµ·å¤–è´¦å·
+    ErrorCode[ErrorCode["ERROR_CODE_NOT_SUPPORTED"] = 1001500003] = "ERROR_CODE_NOT_SUPPORTED";
+    // ç½‘ç»œé”™è¯¯
+    ErrorCode[ErrorCode["ERROR_CODE_NETWORK_ERROR"] = 1001502005] = "ERROR_CODE_NETWORK_ERROR";
+    // ç”¨æˆ·æœªåŒæ„ç”¨æˆ·åè®®
+    ErrorCode[ErrorCode["ERROR_CODE_AGREEMENT_STATUS_NOT_ACCEPTED"] = 1005300001] = "ERROR_CODE_AGREEMENT_STATUS_NOT_ACCEPTED";
+})(ErrorCode || (ErrorCode = {}));
+(function () {
+    if (typeof NavigationBuilderRegister === "function") {
+        NavigationBuilderRegister("Login", wrapBuilder(PageLoginBuilder));
+    }
+})();
+//# sourceMappingURL=Login.js.mapÂ”Ùe hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.ArkTS.d.tsÙb hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_hms_ets_kits_@kit.AccountKit.d.tsÙv hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.PerformanceAnalysisKit.d.tsÙe hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.ArkUI.d.tsÙRF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\pages\Login.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ÃÚ[ôimport { util } from '@kit.ArkTS';
+import { authentication, loginComponentManager, LoginWithHuaweiIDButton } from '@kit.AccountKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { promptAction, router } from '@kit.ArkUI';
+
+@Builder
+export function PageLoginBuilder() {
+  Login()
+}
+
+@Component
+struct Login {
+  pageInfos: NavPathStack = new NavPathStack();
+  build() {
+    NavDestination(){
+      Column(){
+        QuickLoginButtonComponent()
+      }
+    }
+    .onReady((ctx: NavDestinationContext) =>{
+      this.pageInfos=ctx.pathStack;
+    })
+  }
+}
+
+@Component
+struct QuickLoginButtonComponent {
+  logTag: string = 'QuickLoginButtonComponent';
+  domainId: number = 0x0000;
+  // åŒ¿ååŒ–æ‰‹æœºå·
+  @State quickLoginAnonymousPhone: string = '';
+  // æ˜¯å¦å‹¾é€‰åè®®
+  @State isSelected: boolean = false;
+  // åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®é“¾æ¥ï¼Œæ­¤å¤„ä»…ä¸ºç¤ºä¾‹ï¼Œå®é™…å¼€å‘è¿‡ç¨‹ä¸­ï¼ŒåŸŸåä¸å»ºè®®ç¡¬ç¼–ç åœ¨æœ¬åœ°
+  private static USER_AUTHENTICATION_PROTOCOL: string =
+    'https://privacy.consumer.huawei.com/legal/id/authentication-terms.htm?code=CN&language=zh-CN';
+  private static USER_SERVICE_TAG = 'ç”¨æˆ·æœåŠ¡åè®®';
+  private static PRIVACY_TAG = 'éšç§åè®®';
+  private static USER_AUTHENTICATION_TAG = 'åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®';
+  // å®šä¹‰LoginWithHuaweiIDButtonå±•ç¤ºçš„éšç§æ–‡æœ¬ï¼Œå±•ç¤ºåº”ç”¨çš„ç”¨æˆ·æœåŠ¡åè®®ã€éšç§åè®®å’Œåä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®
+  privacyText: loginComponentManager.PrivacyText[] = [{
+    text: 'å·²é˜…è¯»å¹¶åŒæ„',
+    type: loginComponentManager.TextType.PLAIN_TEXT
+  }, {
+    text: 'ã€Šç”¨æˆ·æœåŠ¡åè®®ã€‹',
+    tag: QuickLoginButtonComponent.USER_SERVICE_TAG,
+    type: loginComponentManager.TextType.RICH_TEXT
+  }, {
+    text: 'ã€Šéšç§åè®®ã€‹',
+    tag: QuickLoginButtonComponent.PRIVACY_TAG,
+    type: loginComponentManager.TextType.RICH_TEXT
+  }, {
+    text: 'å’Œ',
+    type: loginComponentManager.TextType.PLAIN_TEXT
+  }, {
+    text: 'ã€Šåä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®ã€‹',
+    tag: QuickLoginButtonComponent.USER_AUTHENTICATION_TAG,
+    type: loginComponentManager.TextType.RICH_TEXT
+  }, {
+    text: 'ã€‚',
+    type: loginComponentManager.TextType.PLAIN_TEXT
+  }];
+  // æ„é€ LoginWithHuaweiIDButtonç»„ä»¶çš„æ§åˆ¶å™¨
+  controller: loginComponentManager.LoginWithHuaweiIDButtonController =
+    new loginComponentManager.LoginWithHuaweiIDButtonController()
+      /**
+       * å½“åº”ç”¨ä½¿ç”¨è‡ªå®šä¹‰çš„ç™»å½•é¡µæ—¶ï¼Œå¦‚æœç”¨æˆ·æœªåŒæ„åè®®ï¼Œéœ€è¦è®¾ç½®åè®®çŠ¶æ€ä¸ºNOT_ACCEPTEDï¼Œå½“ç”¨æˆ·åŒæ„åè®®åå†è®¾ç½®
+       * åè®®çŠ¶æ€ä¸ºACCEPTEDï¼Œæ‰å¯ä»¥ä½¿ç”¨åä¸ºè´¦å·ä¸€é”®ç™»å½•åŠŸèƒ½
+       */
+      .setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED)
+      .onClickLoginWithHuaweiIDButton((error: BusinessError | undefined,
+        response: loginComponentManager.HuaweiIDCredential) => {
+        this.handleLoginWithHuaweiIDButton(error, response);
+      })
+      .onClickEvent((error: BusinessError, clickEvent: loginComponentManager.ClickEvent) => {
+        if (error) {
+          this.dealAllError(error);
+          return;
+        }
+        hilog.info(this.domainId, this.logTag, `onClickEvent clickEvent: ${clickEvent}`);
+      });
+  agreementDialog: CustomDialogController = new CustomDialogController({
+    builder: AgreementDialog({
+      privacyText: this.privacyText,
+      cancel: () => {
+        this.agreementDialog.close();
+        this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED);
+      },
+      confirm: () => {
+        this.agreementDialog.close();
+        this.isSelected = true;
+        this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.ACCEPTED);
+        // è°ƒç”¨æ­¤æ–¹æ³•ï¼ŒåŒæ„åè®®ä¸ç™»å½•ä¸€å¹¶å®Œæˆï¼Œæ— éœ€å†æ¬¡ç‚¹å‡»ç™»å½•æŒ‰é’®
+        this.controller.continueLogin((error: BusinessError) => {
+          if (error) {
+            hilog.error(this.domainId, this.logTag,
+              `Failed to click agreementDialog continueLogin. errCode is ${error.code}, errMessage is ${error.message}`);
+          } else {
+            hilog.info(this.domainId, this.logTag,
+              'Succeed in clicking agreementDialog continueLogin.');
+          }
+        });
+      },
+      clickHyperlinkText: () => {
+        this.agreementDialog.close();
+        this.jumpToPrivacyWebView();
+      }
+    }),
+    autoCancel: false,
+    alignment: DialogAlignment.Center,
+  });
+
+  aboutToAppear(): void {
+    this.getQuickLoginAnonymousPhone();
+  }
+
+  // Toastæç¤º
+  showToast(resource: string) {
+    try {
+      promptAction.showToast({
+        message: resource,
+        duration: 2000
+      });
+    } catch (error) {
+      const message = (error as BusinessError).message
+      const code = (error as BusinessError).code
+      hilog.error(this.domainId, this.logTag, `showToast args  errCode is ${code}, errMessage is ${message}`);
+    }
+  }
+
+  // è·³è½¬åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®é¡µ,è¯¥é¡µé¢éœ€åœ¨å·¥ç¨‹main_pages.jsonæ–‡ä»¶é…ç½®
+  jumpToPrivacyWebView() {
+    router.pushUrl({
+      // åœ¨å·¥ç¨‹main_pages.jsonæ–‡ä»¶é…ç½®è·³è½¬é¡µï¼Œå…·ä½“å¯å‚è€ƒAccountKitå¼€å‘æŒ‡å—ä½¿ç”¨åä¸ºè´¦å·ä¸€é”®ç™»å½•WebPageç¤ºä¾‹ä»£ç 
+      url: 'pages/WebPage',
+      params: {
+        isFromDialog: true,
+        url: QuickLoginButtonComponent.USER_AUTHENTICATION_PROTOCOL,
+      }
+    }, (err) => {
+      if (err) {
+        hilog.error(this.domainId, this.logTag,
+          `Failed to jumpToPrivacyWebView, errCode is ${err.code}, errMessage is ${err.message}`);
+      }
+    });
+  }
+
+  handleLoginWithHuaweiIDButton(error: BusinessError | undefined,
+    response: loginComponentManager.HuaweiIDCredential) {
+    if (error) {
+      hilog.error(this.domainId, this.logTag,
+        `Failed to click LoginWithHuaweiIDButton. errCode is ${error.code}, errMessage is ${error.message}`);
+      if (error.code === ErrorCode.ERROR_CODE_NETWORK_ERROR) {
+        AlertDialog.show(
+          {
+            message: "ç½‘ç»œæœªè¿æ¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œè®¾ç½®ã€‚",
+            offset: { dx: 0, dy: -12 },
+            alignment: DialogAlignment.Bottom,
+            autoCancel: false,
+            confirm: {
+              value: "çŸ¥é“äº†",
+              action: () => {
+              }
+            }
+          }
+        );
+      } else if (error.code === ErrorCode.ERROR_CODE_AGREEMENT_STATUS_NOT_ACCEPTED) {
+        // æœªåŒæ„åè®®ï¼Œå¼¹å‡ºåè®®å¼¹æ¡†ï¼Œæ¨èä½¿ç”¨è¯¥å›è°ƒæ–¹å¼
+        this.agreementDialog.open();
+      } else if (error.code === ErrorCode.ERROR_CODE_LOGIN_OUT) {
+        // åä¸ºè´¦å·æœªç™»å½•æç¤º
+        this.showToast("åä¸ºè´¦å·æœªç™»å½•ï¼Œè¯·é‡è¯•");
+      } else if (error.code === ErrorCode.ERROR_CODE_NOT_SUPPORTED) {
+        // ä¸æ”¯æŒè¯¥scopesæˆ–permissionsæç¤º
+        this.showToast("è¯¥scopesæˆ–permissionsä¸æ”¯æŒ");
+      } else {
+        // å…¶ä»–æç¤ºç³»ç»Ÿæˆ–æœåŠ¡å¼‚å¸¸
+        this.showToast('æœåŠ¡æˆ–ç½‘ç»œå¼‚å¸¸ï¼Œè¯·ç¨åé‡è¯•');
+        // TODO: å…¶ä»–é”™è¯¯ç å¤„ç†ï¼Œè¯·å‚è€ƒAPIä¸­çš„é”™è¯¯ç æŸ¥çœ‹è¯¦ç»†é”™è¯¯åŸå› 
+      }
+      return;
+    }
+    try {
+      if (this.isSelected) {
+        if (response) {
+          hilog.info(this.domainId, this.logTag, 'Succeed in clicking LoginWithHuaweiIDButton.');
+          // å¼€å‘è€…æ ¹æ®å®é™…ä¸šåŠ¡æƒ…å†µä½¿ç”¨ä»¥ä¸‹ä¿¡æ¯
+          const authCode = response.authorizationCode;
+          const openID = response.openID;
+          const unionID = response.unionID;
+          const idToken = response.idToken;
+        }
+      } else {
+        this.agreementDialog.open();
+      }
+    } catch (err) {
+      hilog.error(this.domainId, this.logTag,
+        `Failed to LoginWithHuaweiIDButton, errCode: ${err.code}, errMessage: ${err.message}`);
+      AlertDialog.show(
+        {
+          message: 'æœåŠ¡æˆ–ç½‘ç»œå¼‚å¸¸ï¼Œè¯·ç¨åé‡è¯•',
+          offset: { dx: 0, dy: -12 },
+          alignment: DialogAlignment.Bottom,
+          autoCancel: false,
+          confirm: {
+            value: 'çŸ¥é“äº†',
+            action: () => {
+            }
+          }
+        }
+      );
+    }
+  }
+
+  // é”™è¯¯å¤„ç†
+  dealAllError(error: BusinessError): void {
+    hilog.error(this.domainId, this.logTag,
+      `Failed to login, errorCode is ${error.code}, errorMessage is ${error.message}`);
+    // TODO: é”™è¯¯ç å¤„ç†ï¼Œè¯·å‚è€ƒAPIä¸­çš„é”™è¯¯ç æ ¹æ®å®é™…æƒ…å†µå¤„ç†
+  }
+
+  getQuickLoginAnonymousPhone() {
+    // åˆ›å»ºæˆæƒè¯·æ±‚ï¼Œå¹¶è®¾ç½®å‚æ•°
+    const authRequest = new authentication.HuaweiIDProvider().createAuthorizationWithHuaweiIDRequest();
+    // è·å–åŒ¿åæ‰‹æœºå·éœ€ä¼ quickLoginAnonymousPhoneè¿™ä¸ªscopeï¼Œä¼ å‚ä¹‹å‰éœ€è¦å…ˆç”³è¯·â€œåä¸ºè´¦å·ä¸€é”®ç™»å½•â€æƒé™
+    //(æƒé™åç§°ä¸ºï¼šquickLoginMobilePhone),åç»­æ‰èƒ½è·å–åŒ¿åæ‰‹æœºå·æ•°æ®
+    authRequest.scopes = ['quickLoginAnonymousPhone'];
+    // ç”¨äºé˜²è·¨ç«™ç‚¹è¯·æ±‚ä¼ªé€ 
+    authRequest.state = util.generateRandomUUID();
+    // ä¸€é”®ç™»å½•åœºæ™¯è¯¥å‚æ•°åªèƒ½è®¾ç½®ä¸ºfalse
+    authRequest.forceAuthorization = false;
+    const controller = new authentication.AuthenticationController();
+    try {
+      controller.executeRequest(authRequest).then((response: authentication.AuthorizationWithHuaweiIDResponse) => {
+        // è·å–åˆ°UnionIDã€OpenIDã€åŒ¿åæ‰‹æœºå·
+        const unionID = response.data?.unionID;
+        const openID = response.data?.openID;
+        const anonymousPhone = response.data?.extraInfo?.quickLoginAnonymousPhone as string;
+        if (anonymousPhone) {
+          hilog.info(this.domainId, this.logTag, 'Succeeded in authentication.');
+          this.quickLoginAnonymousPhone = anonymousPhone;
+          return;
+        }
+        hilog.info(this.domainId, this.logTag, 'Succeeded in authentication. AnonymousPhone is empty.');
+        // æœªè·å–åˆ°åŒ¿åæ‰‹æœºå·éœ€è¦è·³è½¬åˆ°åº”ç”¨è‡ªå®šä¹‰çš„ç™»å½•é¡µé¢
+      }).catch((error: BusinessError) => {
+        this.dealAllError(error);
+      })
+    } catch (error) {
+      this.dealAllError(error);
+    }
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Column() {
+          Column() {
+            Image($r('app.media.icon'))
+              .width(48)
+              .height(48)
+              .draggable(false)
+              .copyOption(CopyOptions.None)
+              .onComplete(() => {
+                hilog.info(this.domainId, this.logTag, 'appIcon loading success.');
+              })
+              .onError(() => {
+                hilog.error(this.domainId, this.logTag, 'appIcon loading fail.');
+              })
+
+            Text($r('app.string.app_name'))
+              .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+              .fontWeight(FontWeight.Medium)
+              .fontWeight(FontWeight.Bold)
+              .maxFontSize($r('sys.float.ohos_id_text_size_headline8'))
+              .minFontSize($r('sys.float.ohos_id_text_size_body1'))
+              .maxLines(1)
+              .fontColor($r('sys.color.ohos_id_color_text_primary'))
+              .constraintSize({ maxWidth: '100%' })
+              .margin({
+                top: 12,
+              })
+
+            Text('by ä¸ç§‹')
+              .fontSize($r('sys.float.ohos_id_text_size_body2'))
+              .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+              .fontFamily($r('sys.string.ohos_id_text_font_family_regular'))
+              .fontWeight(FontWeight.Regular)
+              .constraintSize({ maxWidth: '100%' })
+              .margin({
+                top: 8,
+              })
+          }.margin({
+            top: 100
+          })
+
+          Column() {
+            Text(this.quickLoginAnonymousPhone)
+              .fontSize(36)
+              .fontColor($r('sys.color.ohos_id_color_text_primary'))
+              .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+              .fontWeight(FontWeight.Bold)
+              .lineHeight(48)
+              .textAlign(TextAlign.Center)
+              .maxLines(1)
+              .constraintSize({ maxWidth: '100%', minHeight: 48 })
+
+            Text('åä¸ºè´¦å·ç»‘å®šå·ç ')
+              .fontSize($r('sys.float.ohos_id_text_size_body2'))
+              .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+              .fontFamily($r('sys.string.ohos_id_text_font_family_regular'))
+              .fontWeight(FontWeight.Regular)
+              .lineHeight(19)
+              .textAlign(TextAlign.Center)
+              .maxLines(1)
+              .constraintSize({ maxWidth: '100%' })
+              .margin({
+                top: 8
+              })
+          }.margin({
+            top: 64
+          })
+
+          Column() {
+            LoginWithHuaweiIDButton({
+              params: {
+                // LoginWithHuaweiIDButtonæ”¯æŒçš„æ ·å¼
+                style: loginComponentManager.Style.BUTTON_RED,
+                // è´¦å·ç™»å½•æŒ‰é’®åœ¨ç™»å½•è¿‡ç¨‹ä¸­å±•ç¤ºåŠ è½½æ€
+                extraStyle: {
+                  buttonStyle: new loginComponentManager.ButtonStyle().loadingStyle({
+                    show: true
+                  })
+                },
+                // LoginWithHuaweiIDButtonçš„è¾¹æ¡†åœ†è§’åŠå¾„
+                borderRadius: 24,
+                // LoginWithHuaweiIDButtonæ”¯æŒçš„ç™»å½•ç±»å‹
+                loginType: loginComponentManager.LoginType.QUICK_LOGIN,
+                // LoginWithHuaweiIDButtonæ”¯æŒæŒ‰é’®çš„æ ·å¼è·Ÿéšç³»ç»Ÿæ·±æµ…è‰²æ¨¡å¼åˆ‡æ¢
+                supportDarkMode: true,
+                // verifyPhoneNumberï¼šå¦‚æœåä¸ºè´¦å·ç”¨æˆ·åœ¨è¿‡å»90å¤©å†…æœªè¿›è¡ŒçŸ­ä¿¡éªŒè¯ï¼Œæ˜¯å¦æ‹‰èµ·Account Kitæä¾›çš„çŸ­ä¿¡éªŒè¯ç é¡µé¢
+                verifyPhoneNumber: true
+              },
+              controller: this.controller
+            })
+          }
+          .height(40)
+          .margin({
+            top: 56
+          })
+
+          Column() {
+            Button({
+              type: ButtonType.Capsule,
+              stateEffect: true
+            }) {
+              Text('å…¶ä»–æ–¹å¼ç™»å½•')
+                .fontColor($r('sys.color.ohos_id_color_text_primary_activated'))
+                .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+                .fontWeight(FontWeight.Medium)
+                .fontSize($r('sys.float.ohos_id_text_size_button1'))
+                .focusable(true)
+                .focusOnTouch(true)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .maxLines(1)
+                .padding({ left: 8, right: 8 })
+            }
+            .fontColor($r('sys.color.ohos_id_color_text_primary_activated'))
+            .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+            .fontWeight(FontWeight.Medium)
+            .backgroundColor($r('sys.color.ohos_id_color_button_normal'))
+            .focusable(true)
+            .focusOnTouch(true)
+            .constraintSize({ minHeight: 40 })
+            .width('100%')
+            .onClick(() => {
+              hilog.info(this.domainId, this.logTag, 'click optionalLoginButton.');
+            })
+          }.margin({ top: 16 })
+        }.width('100%')
+
+        Row() {
+          Row() {
+            Checkbox({ name: 'privacyCheckbox', group: 'privacyCheckboxGroup' })
+              .width(24)
+              .height(24)
+              .focusable(true)
+              .focusOnTouch(true)
+              .margin({ top: 0 })
+              .select(this.isSelected)
+              .onChange((value: boolean) => {
+                if (value) {
+                  this.isSelected = true;
+                  this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.ACCEPTED);
+                } else {
+                  this.isSelected = false;
+                  this.controller.setAgreementStatus(loginComponentManager.AgreementStatus.NOT_ACCEPTED);
+                }
+                hilog.info(this.domainId, this.logTag, `agreementChecked: ${value}`);
+              })
+          }
+
+          Row() {
+            Text() {
+              ForEach(this.privacyText, (item: loginComponentManager.PrivacyText) => {
+                if (item?.type == loginComponentManager.TextType.PLAIN_TEXT && item?.text) {
+                  Span(item?.text)
+                    .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+                    .fontFamily($r('sys.string.ohos_id_text_font_family_regular'))
+                    .fontWeight(FontWeight.Regular)
+                    .fontSize($r('sys.float.ohos_id_text_size_body3'))
+                } else if (item?.type == loginComponentManager.TextType.RICH_TEXT && item?.text) {
+                  Span(item?.text)
+                    .fontColor($r('sys.color.ohos_id_color_text_primary_activated'))
+                    .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+                    .fontWeight(FontWeight.Medium)
+                    .fontSize($r('sys.float.ohos_id_text_size_body3'))
+                    .focusable(true)
+                    .focusOnTouch(true)
+                    .onClick(() => {
+                      // åº”ç”¨éœ€è¦æ ¹æ®item.tagå®ç°åè®®é¡µé¢çš„è·³è½¬é€»è¾‘
+                      hilog.info(this.domainId, this.logTag, `click privacy text tag: ${item.tag}`);
+                      // åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®
+                      if (item.tag === QuickLoginButtonComponent.USER_AUTHENTICATION_TAG) {
+                        this.jumpToPrivacyWebView();
+                      }
+                    })
+                }
+              })
+            }
+            .width('100%')
+          }
+          .margin({ left: 12 })
+          .layoutWeight(1)
+          .constraintSize({ minHeight: 24 })
+        }
+        .alignItems(VerticalAlign.Top)
+        .margin({
+          bottom: 16
+        })
+      }
+      .justifyContent(FlexAlign.SpaceBetween)
+      .constraintSize({ minHeight: '100%' })
+      .margin({
+        left: 16,
+        right: 16
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+@CustomDialog
+export struct AgreementDialog {
+  logTag: string = 'AgreementDialog';
+  domainId: number = 0x0000;
+  dialogController?: CustomDialogController;
+  cancel: () => void = () => {
+  };
+  confirm: () => void = () => {
+  };
+  clickHyperlinkText: () => void = () => {
+  };
+  privacyText: loginComponentManager.PrivacyText[] = [];
+  private static USER_AUTHENTICATION_TAG = 'åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®';
+
+  build() {
+    Column() {
+      Row() {
+        Text('ç”¨æˆ·åè®®ä¸éšç§æ¡æ¬¾')
+          .id('loginPanel_agreement_dialog_privacy_title')
+          .maxFontSize($r('sys.float.ohos_id_text_size_headline8'))
+          .minFontSize($r('sys.float.ohos_id_text_size_body1'))
+          .fontColor($r('sys.color.ohos_id_color_text_primary'))
+          .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .maxLines(2)
+      }
+      .alignItems(VerticalAlign.Center)
+      .constraintSize({ minHeight: 56, maxWidth: 400 })
+      .margin({
+        left: $r('sys.float.ohos_id_max_padding_start'),
+        right: $r('sys.float.ohos_id_max_padding_start')
+      })
+
+      Row() {
+        Text() {
+          ForEach(this.privacyText, (item: loginComponentManager.PrivacyText) => {
+            if (item?.type == loginComponentManager.TextType.PLAIN_TEXT && item?.text) {
+              Span(item?.text)
+                .fontSize($r('sys.float.ohos_id_text_size_body1'))
+                .fontColor($r('sys.color.ohos_id_color_text_primary'))
+                .fontFamily($r('sys.string.ohos_id_text_font_family_regular'))
+                .fontWeight(FontWeight.Regular)
+            } else if (item?.type == loginComponentManager.TextType.RICH_TEXT && item?.text) {
+              Span(item?.text)
+                .fontSize($r('sys.float.ohos_id_text_size_body1'))
+                .fontColor('#CE0E2D')
+                .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+                .fontWeight(FontWeight.Medium)
+                .focusable(true)
+                .focusOnTouch(true)
+                .onClick(() => {
+                  // åº”ç”¨éœ€è¦æ ¹æ®item.tagå®ç°åè®®é¡µé¢çš„è·³è½¬é€»è¾‘
+                  hilog.info(this.domainId, this.logTag, `click privacy text tag: ${item.tag}`);
+                  // åä¸ºè´¦å·ç”¨æˆ·è®¤è¯åè®®
+                  if (item.tag === AgreementDialog.USER_AUTHENTICATION_TAG) {
+                    hilog.info(this.domainId, this.logTag, 'AgreementDialog click.');
+                    this.clickHyperlinkText();
+                  }
+                })
+            }
+          })
+        }
+        .width('100%')
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .maxLines(10)
+        .textAlign(TextAlign.Start)
+        .focusable(true)
+        .focusOnTouch(true)
+        .padding({ left: 24, right: 24 })
+      }.width('100%')
+
+      Flex({
+        direction: FlexDirection.Row
+      }) {
+        Button('å–æ¶ˆ',
+          { type: ButtonType.Capsule, stateEffect: true })
+          .id('loginPanel_agreement_cancel_btn')
+          .fontColor($r('sys.color.ohos_id_color_text_primary'))
+          .fontSize($r('sys.float.ohos_id_text_size_button1'))
+          .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+          .backgroundColor(Color.Transparent)
+          .fontWeight(FontWeight.Medium)
+          .focusable(true)
+          .focusOnTouch(true)
+          .constraintSize({ minHeight: 40, maxWidth: 400 })
+          .width('50%')
+          .onClick(() => {
+            hilog.info(this.domainId, this.logTag, 'AgreementDialog cancel.');
+            this.cancel();
+          })
+
+        Button('åŒæ„å¹¶ç™»å½•',
+          { type: ButtonType.Capsule, stateEffect: true })
+          .id('loginPanel_agreement_dialog_huawei_id_login_btn')
+          .fontColor(Color.White)
+          .backgroundColor('#CE0E2D')
+          .fontSize($r('sys.float.ohos_id_text_size_button1'))
+          .fontFamily($r('sys.string.ohos_id_text_font_family_medium'))
+          .fontWeight(FontWeight.Medium)
+          .focusable(true)
+          .focusOnTouch(true)
+          .constraintSize({ minHeight: 40, maxWidth: 400 })
+          .width('50%')
+          .onClick(() => {
+            hilog.info(this.domainId, this.logTag, 'AgreementDialog confirm.');
+            this.confirm();
+          })
+      }
+      .margin({
+        top: 8,
+        left: $r('sys.float.ohos_id_elements_margin_horizontal_l'),
+        right: $r('sys.float.ohos_id_elements_margin_horizontal_l'),
+        bottom: 16
+      })
+    }.backgroundColor($r('sys.color.ohos_id_color_dialog_default_bg'))
+    .padding({
+      left: 16,
+      right: 16
+    })
+  }
+}
+export enum ErrorCode {
+  // è´¦å·æœªç™»å½•
+  ERROR_CODE_LOGIN_OUT = 1001502001,
+  // è¯¥è´¦å·ä¸æ”¯æŒä¸€é”®ç™»å½•ï¼Œå¦‚å„¿ç«¥è´¦å·ã€æµ·å¤–è´¦å·
+  ERROR_CODE_NOT_SUPPORTED = 1001500003,
+  // ç½‘ç»œé”™è¯¯
+  ERROR_CODE_NETWORK_ERROR = 1001502005,
+  // ç”¨æˆ·æœªåŒæ„ç”¨æˆ·åè®®
+  ERROR_CODE_AGREEMENT_STATUS_NOT_ACCEPTED = 1005300001
+}ÀÔrC”ª@kit.ArkTS¯@kit.AccountKit»@kit.PerformanceAnalysisKitª@kit.ArkUIÔrD—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÃÙe hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.ArkTS.d.tsÔrE‘¯hostModulesInfoÜ ÔrF’²hostDependencyName®hostModuleNameª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryFª@kit.ArkTS¥entryÃªoh-resolveÂDAÃÙb hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_hms_ets_kits_@kit.AccountKit.d.tsEÜ F¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryF¯@kit.AccountKit¥entryÃªoh-resolveÂDAÃÙv hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.PerformanceAnalysisKit.d.tsEÜ 9F»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryF»@kit.PerformanceAnalysisKit¥entryÃªoh-resolveÂDAÃÙe hvigor_ignore_F:_Program Files_Huawei_DevEco Studio_sdk_default_openharmony_ets_kits_@kit.ArkUI.d.tsEÜ Fª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryFª@kit.ArkUI¥entryÃªoh-resolveÂ’ÔrG–§version¤fileªsourceRoot§sources¥names¨mappings¨Login.js ‘©Login.etsÜ~˜”    ”  ”	  	”  ”  ”  ”!  !”"  "œ”   ” ”	 	” ” ”. .”0 0”ÌG ÌG”ÌI ÌI”ÌO ÌO”Ì` Ì`”Ìa Ìa˜”   ” ”	 	” ” ” ”3 3”4 4š”   ” ”	 	” ” ” ” ”% %”1 1”2 2””   ” ” ”   ’”( ”- ‘” 	’” ” ‘”  ”” ”  ”) ,”+ .‘” 	‘” ’” ” ’”4 ”ÌM !’” ” —” ”" ”# ”$ ”' (”) *”+ ,™” ” 
+” ” ”! ”$ ”% ”. "”/ #’” ” ‘” ’” ”  ‘”  ’” ”1 .’” ” ’”ÌG ,”ÌI .’”9 !”> !$’” )5” )6”” *” *” *
+” *˜” +” +” +
+”+ +”, + ”4 +(”5 +)”? +3’” ,” ,”” -” -” -
+”  -–” .” .” .	”. ."”/ .#”? .3˜” /” /” /
+”+ /”, / ”4 /(”5 /)”> /2’” 0” 0”” 1” 1” 1
+” 1–” 2” 2” 2	”. 2"”/ 2#”: 2.˜” 3” 3” 3
+”+ 3”, 3 ”4 3(”5 3)”> 32’” 4” 4”” 5” 5” 5
+” 5˜” 6” 6” 6
+”+ 6”, 6 ”4 6(”5 6)”? 63’” 7” 7”” 8” 8” 8
+”$ 8–” 9” 9” 9	”. 9"”/ 9#”ÌF 9:˜” :” :” :
+”+ :”, : ”4 :(”5 :)”> :2’” ;” ;”” <” <” <
+” <˜” =” =” =
+”+ =”, = ”4 =(”5 =)”? =3’” >” >–” ÌA” ÌA”3 ÌA”4 ÌA”ÌU ÌA?”ÌW ÌAÌA‘” ÌB‘” ÌE	™” ÌF” ÌF”  ÌF”5 ÌF/”6 ÌF0”ÌE ÌF?”ÌF ÌFÌ@”ÌR ÌFÌL”ÌS ÌFÌM™” ÌG”+ ÌG%”, ÌG&”- ÌG'”2 ÌGÌG”4 ÌH”< ÌH:”> ÌH<”Ì@ ÌH>š” ÌI” ÌI” ÌI”. ÌI*”/ ÌI+”4 ÌI0”6 ÌI2”> ÌI:”? ÌI;”Ì@ ÌI<“” ÌJ”	 ÌJ”
+ ÌJ™” ÌK” ÌK” ÌK” ÌK”  ÌK)”" ÌK+”, ÌKÌW”. ÌKÌY”0 ÌKÌ[”” ÌL” ÌL” ÌL” ÌL˜” ÌM
+” ÌM” ÌM”! ÌM”" ÌM”' ÌM!”( ÌM"”) ÌM#’” ÌN
+” ÌN‘” ÌO	Ü ” ÌP” ÌP” ÌP” ÌP” ÌP” ÌP” ÌP”$ ÌP ”& ÌP"”* ÌP&”+ ÌP'”1 ÌP-”3 ÌP/”ÌO ÌPÌK”ÌY ÌPÌU”Ì[ ÌPÌW”Ì\ ÌPÌX”Ì] ÌPÌY“” ÌQ”	 ÌQ”
+ ÌQ’”# ÌR0”9 ÌRÌF’” ÌS” ÌS“”# ÌS”2 ÌS”9 ÌS–” ÌT” ÌT”! ÌT”% ÌT”& ÌT”1 ÌT#•” ÌU” ÌU” ÌU” ÌU”! ÌU˜” ÌV” ÌV” ÌV”, ÌV”- ÌV”2 ÌV"”4 ÌV$”5 ÌV%” ÌW” ÌW” ÌW”' ÌW”( ÌW”: ÌW*”; ÌW+”ÌP ÌWÌ@”ÌQ ÌWÌA”Ì` ÌWÌP”Ìa ÌWÌQ”Ìm ÌWÌ]”Ìn ÌWÌ^”Ìo ÌWÌ_’” ÌX” ÌX•” ÌY” ÌY” ÌY”  ÌY”" ÌY˜” ÌZ” ÌZ” ÌZ”, ÌZ”- ÌZ”2 ÌZ"”4 ÌZ$”5 ÌZ%—” Ì[” Ì[” Ì[”' Ì[”* Ì[”. Ì[”/ Ì[” Ì\” Ì\” Ì\”' Ì\”( Ì\”: Ì\*”; Ì\+”ÌP Ì\Ì@”ÌQ Ì\ÌA”Ì` Ì\ÌP”Ìa Ì\ÌQ”Ìi Ì\ÌY”Ìj Ì\ÌZ”Ìk Ì\Ì[’” Ì]”7 Ì]'›” Ì^” Ì^” Ì^”' Ì^”( Ì^”5 Ì^%”6 Ì^&”7 Ì^'”< Ì^;”> Ì^=”Ì@ Ì^?”” Ì_
+”  Ì_”% Ì_”' Ì_Ü ”  Ì`”% Ì`”& Ì`”+ Ì`”, Ì`”0 Ì`”1 Ì`”9 Ì`%”; Ì`'”? Ì`+”Ì@ Ì`,”ÌF Ì`2”ÌH Ìa”Ì… ÌaÌK”ÌŠ ÌaÌP”Ì‹ ÌaÌQ”Ì ÌaÌU”Ì¢ ÌaÌh”Ì§ ÌaÌm”Ì¨ ÌaÌn”Ì¯ ÌaÌu”Ì± ÌaÌw”Ì² ÌaÌx”Ì³ ÌaÌy‘” Ìb‘”! ÌbÜ ”  Ìc”% Ìc”& Ìc”* Ìc”+ Ìc”/ Ìc”0 Ìc”8 Ìc$”: Ìc&”> Ìc*”? Ìc+”ÌE Ìc1”ÌG Ìd”Ì{ ÌdÌB”Ì| ÌdÌC”Ì} ÌdÌD‘” Ìe”” Ìf” Ìf	” Ìf
+” Ìf’” Ìg” Ìg•” Ìh”& Ìh”( Ìh”+ Ìh”- Ìh˜” Ìi” Ìi” Ìi”, Ìi”- Ìi”2 Ìi"”4 Ìi$”5 Ìi%–” Ìj” Ìj” Ìj”1 Ìj!”3 Ìj#”4 Ìj$’” Ìk” Ìk‘” Ìl’”, ÌR”; ÌR–” ÌT”# ÌT”% ÌT”) ÌT”* ÌT”5 ÌT#•” ÌU” ÌU”  ÌU”# ÌU”% ÌU˜” ÌV”  ÌV”! ÌV”0 ÌV”1 ÌV”6 ÌV"”8 ÌV$”9 ÌV%” ÌW”  ÌW”! ÌW”+ ÌW”, ÌW”> ÌW*”? ÌW+”ÌT ÌWÌ@”ÌU ÌWÌA”Ìd ÌWÌP”Ìe ÌWÌQ”Ìq ÌWÌ]”Ìr ÌWÌ^”Ìs ÌWÌ_’” ÌX” ÌX•” ÌY” ÌY”! ÌY”$ ÌY”& ÌY˜” ÌZ”  ÌZ”! ÌZ”0 ÌZ”1 ÌZ”6 ÌZ"”8 ÌZ$”9 ÌZ%—” Ì[”  Ì[”! Ì[”+ Ì[”. Ì[”2 Ì[”3 Ì[” Ì\”  Ì\”! Ì\”+ Ì\”, Ì\”> Ì\*”? Ì\+”ÌT Ì\Ì@”ÌU Ì\ÌA”Ìd Ì\ÌP”Ìe Ì\ÌQ”Ìm Ì\ÌY”Ìn Ì\ÌZ”Ìo Ì\Ì[’” Ì]”; Ì]'›” Ì^”  Ì^”! Ì^”+ Ì^”, Ì^”9 Ì^%”: Ì^&”; Ì^'”Ì@ Ì^;”ÌB Ì^=”ÌD Ì^?””  Ì_
+”$ Ì_”) Ì_”+ Ì_Ü ”$ Ì`”) Ì`”* Ì`”/ Ì`”0 Ì`”4 Ì`”5 Ì`”= Ì`%”? Ì`'”ÌC Ì`+”ÌD Ì`,”ÌJ Ì`2”ÌL Ìa”Ì‰ ÌaÌK”Ì ÌaÌP”Ì ÌaÌQ”Ì“ ÌaÌU”Ì¦ ÌaÌh”Ì« ÌaÌm”Ì¬ ÌaÌn”Ì³ ÌaÌu”Ìµ ÌaÌw”Ì¶ ÌaÌx”Ì· ÌaÌy‘”! Ìb‘”% ÌbÜ ”$ Ìc”) Ìc”* Ìc”. Ìc”/ Ìc”3 Ìc”4 Ìc”< Ìc$”> Ìc&”ÌB Ìc*”ÌC Ìc+”ÌI Ìc1”ÌK Ìd”Ì ÌdÌB”Ì€ ÌdÌC”Ì ÌdÌD‘”! Ìe”” Ìf” Ìf	” Ìf
+” Ìf’” Ìg” Ìg•” Ìh”* Ìh”, Ìh”/ Ìh”1 Ìh˜” Ìi”  Ìi”! Ìi”0 Ìi”1 Ìi”6 Ìi"”8 Ìi$”9 Ìi%–” Ìj”  Ìj”! Ìj”5 Ìj!”7 Ìj#”8 Ìj$’” Ìk” Ìk‘” Ìl”” Ìm” Ìm” Ìm” Ìm–” Ìn” Ìn” Ìn”& Ìn”' Ìn”- Ìn%‘” ’” 	”  !’” 	”  !’” !	” !’” !	” !’” Ìq” Ìq–” Ìr” Ìr” Ìr	”( Ìr$”* Ìr&”+ Ìr'’” Ìs” Ìs’” Ìu” Ìu”” Ìv” Ìv” Ìv” Ìv’” Ìw” Ìw•” Ìx” Ìx” Ìx”" Ìx”# Ìx”” Ìy” Ìy” Ìy”! Ìy”” Ìz” Ìz” Ìz” Ìz“” Ì{” Ì{” Ì{	‘”	 Ì|”” Ì|” Ì|” Ì|” Ì|˜” Ì}” Ì}” Ì}” Ì}”! Ì}.”" Ì}/”) Ì}6”* Ì}6˜” Ì~” Ì~” Ì~” Ì~” Ì~+” Ì~,”# Ì~0”$ Ì~0Ü ” Ì” Ì” Ì” Ì” Ì” Ì” Ì”% Ì”' Ì!”+ Ì%”, Ì&”2 Ì,”4 Ì.”ÌR ÌÌL”ÌV ÌÌP”Ìi ÌÌc”Ìp ÌÌj”Ìr ÌÌl”Ìs ÌÌm”Ìt ÌÌn‘”	 Ì€’” Ì” Ì’” Ìƒ”/ Ìƒ-’” Ì„” Ì„•” Ì…” Ì…
+” Ì…” Ì…” Ì…’” Ì†”ÌQ Ì†ÌK”” Ì‡” Ì‡	” Ì‡”  Ì‡“” Ìˆ” Ìˆ” Ìˆ”” Ì‰” Ì‰” Ì‰”" Ì‰–” ÌŠ” ÌŠ” ÌŠ”. ÌŠ&”/ ÌŠ'”ÌK ÌŠÌC‘” Ì‹–”	 ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ”” Ì” Ì
+” Ì” ÌÜ ” Ì” Ì” Ì” Ì” Ì”  Ì”! Ì”) Ì!”+ Ì#”/ Ì'”0 Ì(”6 Ì.”8 Ì
+”Ìf Ì8”Ìi Ì;”Ìj Ì<”Ìn ÌÌ@”Ì ÌÌS”Ì„ ÌÌV”Ì… ÌÌW”ÌŒ ÌÌ^”Ì ÌÌ`”Ì ÌÌa”Ì ÌÌb‘” Ì”” Ì‘”	 Ì‘”
+ Ì‘” Ì‘’” Ì’” Ì’–” Ì””! Ì””" Ì” ”' Ì”Ì@”) Ì•”1 Ì•6”” Ì–” Ì–” Ì–” Ì–Ü ” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—”% Ì—”' Ì—!”+ Ì—%”, Ì—&”2 Ì—,”4 Ì˜”Ìk Ì˜?”Ìp Ì˜ÌD”Ìq Ì˜ÌE”Ìu Ì˜ÌI”Ìˆ Ì˜Ì\”Ì Ì˜Ìa”Ì Ì˜Ìb”Ì• Ì˜Ìi”Ì— Ì˜Ìk”Ì˜ Ì˜Ìl”Ì™ Ì˜Ìmš” Ì™” Ì™
+” Ì™” Ì™” Ì™” Ì™”( Ì™"”) Ì™#”ÌA Ì™;”ÌC Ì™=•” Ìš” Ìš” Ìš”  Ìš”! Ì›
+”” Ìœ” Ìœ” Ìœ”- Ìœ%” Ì” Ì” Ì” Ì”  Ì”" Ì”# Ì”% Ì”' Ì”) Ì!”* Ì"”, Ì$”. Ì&–” Ì” Ì” Ì”. Ì&”/ Ì'”5 Ì-”” ÌŸ” ÌŸ”  ÌŸ”% ÌŸ“” Ì ” Ì ” Ì ”” Ì¡” Ì¡” Ì¡”$ Ì¡•” Ì¢” Ì¢”  Ì¢”# Ì¢”% Ì¢’” Ì£” Ì£‘” Ì¤“” Ì¥” Ì¦	” Ì¦
+‘” Ì§š” Ì§” Ì§” Ì§” Ì§” Ì§”$ Ì§ ”- Ì§)”. Ì§*”ÌV Ì§ÌR”ÌX Ì§ÌT’” Ì¨”) Ì¨!˜” Ì©” Ì©” Ì©”$ Ì©”% Ì©”) Ì©!”+ Ì©#”, Ì©$‘” Ìªš” Ìª” Ìª” Ìª” Ìª” Ìª”$ Ìª ”- Ìª)”. Ìª*”ÌB Ìª>”ÌD ÌªÌ@’” Ì«” Ì«˜” Ì¬” Ì¬” Ì¬” Ì¬” Ì¬”, Ì¬$”- Ì¬%”. Ì¬&‘” Ì­š” Ì­” Ì­” Ì­” Ì­” Ì­”$ Ì­ ”- Ì­)”. Ì­*”ÌF Ì­ÌB”ÌH Ì­ÌD’” Ì®”+ Ì®#˜” Ì¯” Ì¯” Ì¯” Ì¯” Ì¯”7 Ì¯/”8 Ì¯0”9 Ì¯1‘” Ì°‘” Ì°’” Ì±” Ì±˜” Ì²” Ì²” Ì²” Ì²” Ì²”. Ì²&”/ Ì²'”0 Ì²(’” Ì³”4 Ì³,‘” Ì´’” Ìµ” Ìµ‘”	 Ì¶’” Ì·” Ì·–” Ì¸” Ì¸
+” Ì¸” Ì¸” Ì¸”! Ì¸”” Ì¹” Ì¹” Ì¹” Ì¹Ü ” Ìº
+” Ìº” Ìº” Ìº” Ìº”# Ìº”$ Ìº”, Ìº"”. Ìº$”2 Ìº(”3 Ìº)”9 Ìº/”; Ìº1”Ìi ÌºÌ_”Ìj ÌºÌ`”Ìk ÌºÌa’” Ì»
+”( Ì»˜” Ì¼
+” Ì¼”" Ì¼”% Ì¼”- Ì¼#”. Ì¼$”? Ì¼5”Ì@ Ì¼6˜” Ì½
+” Ì½”  Ì½”# Ì½”+ Ì½!”, Ì½"”2 Ì½(”3 Ì½)˜” Ì¾
+” Ì¾”! Ì¾”$ Ì¾”, Ì¾"”- Ì¾#”4 Ì¾*”5 Ì¾+˜” Ì¿
+” Ì¿”! Ì¿”$ Ì¿”, Ì¿"”- Ì¿#”4 Ì¿*”5 Ì¿+‘” ÌÀ	‘” ÌÁ‘” ÌÁ˜” ÌÂ” ÌÂ” ÌÂ”$ ÌÂ”% ÌÂ”) ÌÂ!”+ ÌÂ#”, ÌÂ$‘” ÌÃ‘”	 ÌÄ”” ÌÄ” ÌÄ” ÌÄ” ÌÄÜ ” ÌÅ” ÌÅ” ÌÅ” ÌÅ” ÌÅ” ÌÅ” ÌÅ”% ÌÅ”' ÌÅ!”+ ÌÅ%”, ÌÅ&”2 ÌÅ,”4 ÌÆ”Ìc ÌÆ7”Ìf ÌÆ:”Ìg ÌÆ;”Ìk ÌÆ?”Ì| ÌÆÌP”Ì ÌÆÌS”Ì€ ÌÆÌT”Ì‡ ÌÆÌ[”Ì‰ ÌÆÌ]”ÌŠ ÌÆÌ^”Ì‹ ÌÆÌ_•” ÌÇ” ÌÇ” ÌÇ” ÌÇ” ÌÈ”” ÌÉ
+” ÌÉ” ÌÉ”( ÌÉ"” ÌÊ
+” ÌÊ” ÌÊ” ÌÊ” ÌÊ” ÌÊ” ÌÊ”! ÌÊ”# ÌÊ”% ÌÊ”& ÌÊ ”( ÌÊ"”* ÌÊ$–” ÌË
+” ÌË” ÌË”* ÌË$”+ ÌË%”1 ÌË+”” ÌÌ
+” ÌÌ” ÌÌ”! ÌÌ“” ÌÍ
+” ÌÍ” ÌÍ”” ÌÎ” ÌÎ” ÌÎ”  ÌÎ•” ÌÏ” ÌÏ” ÌÏ” ÌÏ”! ÌÏ’” ÌĞ” ÌĞ‘” ÌÑ“” ÌÒ	” ÌÓ” ÌÓ‘”	 ÌÔ’” ÌÕ” ÌÕ’” Ì×” Ì×	”” ÌØ” ÌØ” ÌØ” ÌØ#Ü ” ÌÙ” ÌÙ	” ÌÙ
+” ÌÙ” ÌÙ” ÌÙ” ÌÙ”! ÌÙ”# ÌÙ”' ÌÙ#”( ÌÙ$”. ÌÙ*”0 ÌÚ”ÌQ ÌÚ'”ÌV ÌÚ,”ÌW ÌÚ-”Ì[ ÌÚ1”Ìp ÌÚÌF”Ìu ÌÚÌK”Ìv ÌÚÌL”Ì} ÌÚÌS”Ì ÌÚÌU”Ì€ ÌÚÌV”Ì ÌÚÌW’” ÌÛ”* ÌÛ&’” ÌÜ” ÌÜ’” ÌŞ” ÌŞ’” Ìß” Ìß” Ìà” Ìà
+” Ìà” Ìà”  Ìà”. Ìà*”/ Ìà+”? Ìà;”ÌA Ìà=”ÌB Ìà>”Ìh ÌàÌd”Ìj ÌàÌf”Ìk ÌàÌg’” Ìá”ÌI ÌáÌE’” Ìâ”5 Ìâ1™” Ìã” Ìã” Ìã” Ìã” Ìã” Ìã”8 Ìã4”9 Ìã5”: Ìã6’” Ìä” Ìäš” Ìå” Ìå” Ìå” Ìå” Ìå”  Ìå”! Ìå”3 Ìå/”5 Ìå1”6 Ìå2’” Ìæ” Ìæ—” Ìç” Ìç” Ìç”& Ìç"”) Ìç%”. Ìç*”/ Ìç+š” Ìè” Ìè
+” Ìè” Ìè” Ìè”- Ìè)”. Ìè*”ÌF ÌèÌB”ÌH ÌèÌD”ÌI ÌèÌE’” Ìé” Ìé” Ìê” Ìê” Ìê”% Ìê”& Ìê ”1 Ìê+”2 Ìê,”3 Ìê-”7 Ìê1”8 Ìê2”9 Ìê3”ÌA ÌêÌm”ÌC ÌêÌo”ÌE ÌêÌq’” Ìë”* Ìë"š” Ìì” Ìì” Ìì”  Ìì”( Ìì ”) Ìì!”- Ìì%”/ Ìì'”6 Ìì.”7 Ìì/š” Ìí” Ìí” Ìí” Ìí”' Ìí”( Ìí ”, Ìí$”. Ìí&”4 Ìí,”5 Ìí-œ” Ìî” Ìî”$ Ìî”' Ìî”/ Ìî'”0 Ìî(”4 Ìî,”6 Ìî.”? Ìî7”ÌA Ìî9”ÌY ÌîÌ[”ÌZ ÌîÌ\”” Ìï” Ìï”" Ìï”$ ÌïÜ ” Ìğ
+” Ìğ” Ìğ” Ìğ” Ìğ”# Ìğ”$ Ìğ”, Ìğ"”. Ìğ$”2 Ìğ(”3 Ìğ)”9 Ìğ/”; Ìğ1”ÌY ÌğÌO”ÌZ ÌğÌP”Ì[ ÌğÌQ—” Ìñ
+” Ìñ” Ìñ”1 Ìñ'”4 Ìñ*”ÌB Ìñ8”ÌC Ìñ9’” Ìò
+” Ìò‘” Ìó	Ü ” Ìô” Ìô” Ìô” Ìô” Ìô” Ìô”  Ìô”( Ìô ”* Ìô"”. Ìô&”/ Ìô'”5 Ìô-”7 Ìô/”Ìn ÌôÌf”Ìo ÌôÌg”Ìp ÌôÌh’” Ìõ”+ Ìõ#š” Ìö” Ìö” Ìö” Ìö	” Ìö” Ìö” Ìö” Ìö$” Ìö&” Ìö(˜” Ì÷” Ì÷” Ì÷”! Ì÷”" Ì÷”' Ì÷”( Ì÷ ”) Ì÷!”” Ìø” Ìø” Ìø” Ìø‘”	 Ìù”” Ìù” Ìù” Ìù” Ìù˜” Ìú” Ìú
+” Ìú” Ìú” Ìú”# Ìú”$ Ìú”% Ìú‘”	 Ìû’” Ìü” Ìü‘” Ìş’” Ìÿ” Ìÿ
+–” Ìÿ” Ìÿ
+” ÍÁ” ÍÁ
+” ÍÁ” ÍÁ–” Ìÿ” Ìÿ
+” ÍÂ” ÍÂ” ÍÂ”  ÍÂ’” Í ” Í ˜” Í ” Í ” Íº”! Íº”" Íº”+ Íº”, Íº ”8 Íº,š” Í ” Í ” Í»”! Í»”" Í»”$ Í»”- Í»!”/ Í»#”5 Í»)”7 Í»+•” Í ” Í ” Í¼” Í¼” Í¼”” Í½” Í½” Í½” Í½”” Í¾” Í¾” Í¾” Í¾‘” Í¿’” Í” Í–” Í” Í” Í|
+” Í|” Í|” Í|’” Í
+” Í•” Í
+” Í” Í%” Í%” Í%”” Í&” Í&” Í&” Í&‘” Í'’” Í” Í–” Í” Í” Í” Í” Í” Í–” Í” Í” Í” Í” Í” Í–” Í” Í” Í” Í” Í”! Í˜” Í” Í” Í” Í” Í”( Í%”) Í&”- Í*—” Í” Í” Í” Í” Í”  Í”" ÍÜ ” Í	” Í	” Í	” Í	” Í	” Í	”  Í	 ”( Í	(”* Í	*”. Í	.”/ Í	/”5 Í	5”7 Í	7”ÌQ Í	ÌQ”ÌR Í	ÌR”ÌS Í	ÌS’” Í
+” Í
+—” Í” Í” Í” Í” Í” Í” ÍÜ ” Í” Í” Í” Í” Í”  Í ”! Í!”) Í)”+ Í+”/ Í/”0 Í0”6 Í6”8 Í8”ÌO ÍÌO”ÌP ÍÌP”ÌQ ÍÌQ’” Í” Í’” Í” Í”” Í” Í” Í” Í˜” Í” Í” Í” Í” Í”& Í$”' Í%”- Í+˜” Í” Í” Í” Í” Í”& Í$”' Í%”+ Í)”” Í” Í” Í” Í”” Í” Í” Í” Í–” Í” Í” Í” Í” Í” Í”” Í” Í” Í” Íš” Í” Í” Í” Í”  Í”" Í ”* Í(”, Í*”2 Í0”4 Í2•” Í” Í” Í” Í” Í”” Í” Í” Í” Í‘” Í’” Í” Í”” Í” Í” Í” Í”” Í” Í” Í” Í”” Í” Í” Í” Í”” Í” Í” Í” Í˜” Í” Í” Í ” Í ” Í ”& Í $”' Í %”. Í ,š” Í” Í” Í!” Í!”  Í!”" Í! ”* Í!(”, Í!*”2 Í!0”4 Í!2•” Í” Í” Í"” Í"” Í"”” Í#” Í#” Í#” Í#‘” Í$’” Í” Í’” Í
+” Í’” Í)
+” Í)•” Í)
+” Í)” Í@” Í@” Í@”” ÍA” ÍA” ÍA” ÍA‘” ÍB–” Í*” Í*” Í*” Í*” Í*”5 Í*.–” Í*” Í*” Í+” Í+” Í+” Í+”” Í*” Í*” Í,” Í,”” Í*” Í*” Í-” Í-˜” Í*” Í*” Í.” Í.” Í.”& Í.$”' Í.%”+ Í.)–” Í*” Í*” Í/” Í/” Í/” Í/˜” Í*” Í*” Í0” Í0” Í0”$ Í0"”% Í0#”+ Í0)–” Í*” Í*” Í1” Í1” Í1” Í1” Í*” Í*” Í2” Í2”  Í2”" Í2 ”* Í2(”, Í2*”2 Í20”4 Í22”= Í2;”? Í2=”ÌA Í2?”ÌC Í2ÌA’” Í*” Í*”” Í4” Í4” Í4”" Í4”” Í4” Í4” Í5” Í5”” Í4” Í4” Í6” Í6”” Í4” Í4” Í7” Í7˜” Í4” Í4” Í8” Í8” Í8”& Í8$”' Í8%”. Í8,–” Í4” Í4” Í9” Í9” Í9” Í9˜” Í4” Í4” Í:” Í:” Í:”$ Í:"”% Í:#”+ Í:)–” Í4” Í4” Í;” Í;” Í;” Í;š” Í4” Í4” Í<” Í<”  Í<”" Í< ”* Í<(”, Í<*”2 Í<0”4 Í<2•” Í4” Í4” Í=” Í=” Í=”” Í>” Í>” Í>” Í>‘” Í?’” Í4” Í4’” Í)
+” Í)’” ÍD
+” ÍD–” ÍD
+” ÍD” Í[” Í[” Í[” Í[•” ÍD
+” ÍD” Í\” Í\” Í\”” Í]” Í]” Í]” Í]‘” Í^“”, ÍE”ÌC ÍE#”ÌJ ÍE$“” ÍF” ÍF”  ÍF’” ÍG”; ÍG/˜” ÍH”! ÍH”# ÍH”8 ÍH,”9 ÍH-”> ÍH2”? ÍH3”ÌI ÍH=’” ÍI”0 ÍI$“” ÍJ”& ÍJ”( ÍJ›”  ÍK”+ ÍK”- ÍK”1 ÍK#”ÌF ÍK8”ÌG ÍK9”ÌR ÍKÌD”ÌT ÍKÌF”ÌU ÍKÌG”Ìa ÍKÌS”Ìb ÍKÌT””$ ÍL”( ÍL”* ÍL”. ÍL’”! ÍM”" ÍM‘” ÍN’” ÍO”= ÍO1”” ÍP”( ÍP”* ÍP”, ÍP ’” ÍQ”= ÍQ1˜” ÍR”% ÍR”' ÍR”< ÍR0”= ÍR1”ÌF ÍR:”ÌG ÍR;”ÌR ÍRÌF’” ÍS”ÌH ÍS<”” ÍT”+ ÍT”- ÍT!”1 ÍT%’” ÍU”Ìa ÍUÌU”” ÍV”- ÍV!”/ ÍV#”3 ÍV'‘” ÍW–” ÍX”" ÍX”$ ÍX”( ÍX”) ÍX”3 ÍX)‘” ÍY“” ÍF”" ÍF”$ ÍF’”  ÍG”? ÍG/˜”  ÍH”% ÍH”' ÍH”< ÍH,”= ÍH-”ÌB ÍH2”ÌC ÍH3”ÌM ÍH=’”  ÍI”4 ÍI$“”  ÍJ”* ÍJ”, ÍJ›”$ ÍK”/ ÍK”1 ÍK”5 ÍK#”ÌJ ÍK8”ÌK ÍK9”ÌV ÍKÌD”ÌX ÍKÌF”ÌY ÍKÌG”Ìe ÍKÌS”Ìf ÍKÌT””( ÍL”, ÍL”. ÍL”2 ÍL’”% ÍM”& ÍM‘”! ÍN’”  ÍO”ÌA ÍO1””  ÍP”, ÍP”. ÍP”0 ÍP ’”  ÍQ”ÌA ÍQ1˜”  ÍR”) ÍR”+ ÍR”Ì@ ÍR0”ÌA ÍR1”ÌJ ÍR:”ÌK ÍR;”ÌV ÍRÌF’”  ÍS”ÌL ÍS<””  ÍT”/ ÍT”1 ÍT!”5 ÍT%’”  ÍU”Ìe ÍUÌU””  ÍV”1 ÍV!”3 ÍV#”7 ÍV'‘” ÍW–” ÍX”& ÍX”( ÍX”, ÍX”- ÍX”7 ÍX)’” ÍD
+” ÍD’” Í`
+” Í`š” Í`
+” Í`” Í{” Í{” Í{” Í{” Í{”! Í{”# Í{”% Í{“” Ía” Ía”# Ía–” Íb” Íb” Íb”  Íb”! Íb”( Íb&”” Íc” Íc” Íc”! Íc‘” Íd”” Ía” Ía” Íp” Íp”” Ía” Ía” Íq” Íq˜” Ía” Ía” Ír” Ír” Ír”( Ír"”) Ír#”/ Ír)”” Ía” Ía” Ís”" Ís–” Ía” Ía” Ít” Ít” Ít”! Ít–” Ía” Ía” Íu” Íu”  Íu”$ Íuš” Ía” Ía” Ív”! Ív”" Ív”$ Ív”- Ív'”/ Ív)”1 Ív+”3 Ív-–” Ía” Ía” Íw” Íw” Íw” Íw—” Ía” Ía” Íx” Íx” Íx” Íx”  ÍxÜ ” Íy” Íy” Íy” Íy” Íy” Íy”  Íy”( Íy&”* Íy(”. Íy,”/ Íy-”5 Íy3”7 Íy5”ÌS ÍyÌQ”ÌT ÍyÌR”ÌU ÍyÌS’” Íz” Íz”” Íe” Íe” Íe”  Íe”” Íe” Íe” Íf” Íf”” Íe” Íe” Íg” Íg˜” Íe” Íe” Íh” Íh” Íh”& Íh&”' Íh'”- Íh-”” Íe” Íe” Íi” Íi–” Íe” Íe” Íj” Íj” Íj” Íj–” Íe” Íe” Ík” Ík” Ík”" Ík"œ” Íe” Íe” Íl” Íl” Íl”  Íl ”( Íl(”* Íl*”6 Íl6”7 Íl7”? Íl?”ÌA ÍlÌA–” Íe” Íe” Ím” Ím” Ím” Ím” Íe” Íe” Ín” Ín” Ín” Ín” Ín”! Ín!”" Ín"”$ Ín$”) Ín)”+ Ín+”, Ín,”. Ín.’” Íe” Íe’” Ía” Ía’” Í`
+” Í`’” Í” Í’” Í~” Í~˜” Í~” Í~” Íµ	” Íµ” Íµ”( Íµ!”) Íµ"”, Íµ%•” Í~” Í~” Í¶	” Í¶” Í¶”” Í·
+” Í·” Í·” Í·‘” Í¸	’” Í
+” Íœ” Í€” Í€” Í€” Í€”" Í€”$ Í€”5 Í€.”7 Í€0”< Í€5”> Í€7”ÌT Í€ÌM”ÌV Í€ÌO–” Í€” Í€” Í” Í” Í” Í–” Í€” Í€” Í‚” Í‚” Í‚” Í‚–” Í€” Í€” Íƒ” Íƒ” Íƒ”# Íƒ–” Í€” Í€” Í„”! Í„”" Í„”& Í„ š” Í€” Í€” Í…” Í…” Í…” Í…”! Í…”# Í…”$ Í…”& Í… ˜” Í€” Í€” Í†” Í†” Í†”  Í†”! Í†”+ Í†%™” Í€” Í€” Í‡” Í‡” Í‡” Í‡”$ Í‡'”& Í‡)”( Í‡+”” Íˆ” Íˆ” Íˆ” Íˆ—” Í‰” Í‰” Í‰”# Í‰!”& Í‰$”* Í‰(”+ Í‰)” ÍŠ” ÍŠ” ÍŠ”# ÍŠ!”$ ÍŠ"”6 ÍŠ4”7 ÍŠ5”ÌL ÍŠÌJ”ÌM ÍŠÌK”Ì\ ÍŠÌZ”Ì] ÍŠÌ[”Ìe ÍŠÌc”Ìf ÍŠÌd”Ìg ÍŠÌe‘” Í‹‘” Í‹—” ÍŒ” ÍŒ” ÍŒ”# ÍŒ!”& ÍŒ$”+ ÍŒ)”, ÍŒ*” Í” Í” Í”# Í!”$ Í"”6 Í4”7 Í5”ÌL ÍÌJ”ÌM ÍÌK”Ì\ ÍÌZ”Ì] ÍÌ[”Ìi ÍÌg”Ìj ÍÌh”Ìk ÍÌi‘” ÍÜ ” Í” Í” Í” Í” Í” Í”  Í ”( Í(”* Í*”. Í.”/ Í/”5 Í5”7 Í7”ÌL ÍÌL”ÌQ ÍÌQ”ÌS ÍÌS”ÌT ÍÌT”ÌU ÍÌU’” Í” Í’” Í€” Í€’” Í
+” Í’” Í“
+” Í“š” Í“
+” Í“” Í±” Í±” Í±” Í±” Í±” Í±”! Í±”# Í±–” Í“
+” Í“” Í²” Í²” Í²” Í²š” Í“
+” Í“” Í³” Í³” Í³”! Í³”* Í³%”, Í³'”. Í³)”0 Í³+’” Í”” Í”–” Í”” Í”” Í¯” Í¯” Í¯” Í¯’” Í•” Í•Ü ” Í–” Í–” Í–” Í–”" Í–”& Í–"”; Í–7”< Í–8”ÌD Í–Ì@”ÌE Í–ÌA”ÌO Í–ÌK”ÌS Í–ÌO”ÌW Í–ÌS”ÌY Í–ÌU”Ì] Í–ÌY”Ì_ Í–Ì[–”  Í—”$ Í—”, Í—”0 Í—”2 Í—”6 Í—!””  Í—”$ Í—”% Í˜”. Í˜””  Í—”$ Í—”% Í™”/ Í™˜”  Í—”$ Í—”% Íš”/ Íš”0 Íš ”: Íš*”; Íš+”ÌB Íš2””  Í—”$ Í—”% Í›”- Í›‘” ÍœÜ ” Íœ” Íœ”! Íœ”# Íœ!”' Íœ%”+ Íœ)”Ì@ Íœ>”ÌA Íœ?”ÌI ÍœÌG”ÌJ ÍœÌH”ÌS ÍœÌQ”ÌW ÍœÌU”Ì[ ÍœÌY”Ì] ÍœÌ[”Ìa ÍœÌ_”Ìc ÍœÌa–”  Í”$ Í”, Í”0 Í”2 Í”6 Í!””  Í”$ Í”% Í”. Í””  Í”$ Í”% ÍŸ”/ ÍŸ˜”  Í”$ Í”% Í ”/ Í ”0 Í  ”: Í *”; Í +”ÌA Í 1””  Í”$ Í”% Í¡”- Í¡–”  Í”$ Í”% Í¢”. Í¢”/ Í¢”3 Í¢#–”  Í”$ Í”% Í£”1 Í£!”2 Í£"”6 Í£&—”  Í”$ Í”% Í¤”, Í¤”- Í¤”0 Í¤ ”2 Í¤"’”$ Í¥”Ì@ Í¥2Ü ”$ Í¦”) Í¦”* Í¦”. Í¦ ”/ Í¦!”3 Í¦%”4 Í¦&”< Í¦.”> Í¦0”ÌB Í¦4”ÌC Í¦5”ÌI Í¦;”ÌK Í¦=”Ìf Í¦ÌX”Ìj Í¦Ì\”Ìk Í¦Ì]”Ìn Í¦Ì`”Ìp Í¦Ìb”Ìq Í¦Ìc”Ìr Í¦Ìd’”$ Í§”1 Í§#š”$ Í¨”( Í¨”, Í¨”- Í¨”0 Í¨"”5 Í¨'”ÌN Í¨Ì@”ÌO Í¨ÌA”Ìf Í¨ÌX”Ìh Í¨ÌZ–”( Í©”, Í©”- Í©”ÌA Í©1”ÌC Í©3”ÌD Í©4‘”% Íª’”  Í«”! Í«‘” Í¬‘” Í¬””/ Í•”3 Í•”4 Í•”? Í•&’” Í•” Í•’” Í”” Í”’” Í“
+” Í“’” Í~” Í~’” Í ” Í ’” Ìÿ” Ìÿ
+‘” ÍÃ’”  "”* ",•”  #”6 #-”9 $”Ì— $Ìb”Ì˜ $Ìc•”  %”* %!”- %$”5 %,”6 %-•”  &”% &”( &”. &%”/ &&•”  '”1 '(”4 '+”Ì@ '7”ÌA '8””  ÍÆ ” ÍÆ” ÍÆ” ÍÆ‘” ÍÅ ’” ÍÇ”' ÍÇ$’” ÍÈ” ÍÈ“” ÍÊ” ÍÊ” ÍÊ’” ÍË”	 ÍË“” ÍÌ” ÍÌ” ÍÌ’” ÍÍ”	 ÍÍ“”" ÍÎ#”% ÍÎ&”' ÍÎ(’” ÍÏ”	 ÍÏ’” ÍĞ5” ÍĞ7‘” ÍÄ’” ÍÉ” ÍÉ‘” ÍÓ’” ÍÔ” ÍÔ
+”” ÍÔ” ÍÔ
+” Í9”" Í9•” ÍÔ” ÍÔ
+” Í:” Í:” Í:”” Í;” Í;
+” Í;” Í;”” Í<” Í<” Í<” Í<‘” Í=’” ÍÕ” ÍÕ	˜” ÍÕ” ÍÕ	” Íá” Íá” Íá”( Íá”) Íá ”/ Íá&” ÍÕ” ÍÕ	” Íâ” Íâ” Íâ”! Íâ”* Íâ!”, Íâ#”. Íâ%”0 Íâ'”8 Íâ/”: Íâ1”= Íâ4”? Íâ6•” ÍÕ” ÍÕ	” Íã” Íã” Íã“” Íä” Íä”Ì„ Íä7“” Íå” Íå”Ì… Íå8‘” Íæ”” ÍÖ” ÍÖ” ÍÖ”# ÍÖ–” ÍÖ” ÍÖ” Í×” Í×” Í×”? Í×9”” ÍÖ” ÍÖ” ÍØ” ÍØ”” ÍÖ” ÍÖ” ÍÙ” ÍÙ”” ÍÖ” ÍÖ” ÍÚ” ÍÚ”” ÍÖ” ÍÖ” ÍÛ” ÍÛ˜” ÍÖ” ÍÖ” ÍÜ” ÍÜ” ÍÜ”& ÍÜ ”' ÍÜ!”+ ÍÜ%˜” ÍÖ” ÍÖ” Íİ” Íİ” Íİ”$ Íİ”% Íİ”+ Íİ%œ” ÍÖ” ÍÖ” ÍŞ” ÍŞ” ÍŞ”  ÍŞ”( ÍŞ"”* ÍŞ$”6 ÍŞ0”7 ÍŞ1”? ÍŞ9”ÌA ÍŞ;–” ÍÖ” ÍÖ” Íß” Íß” Íß” Íß’” ÍÖ” ÍÖ’” ÍÕ” ÍÕ	’” Íè” Íè	–” Íè” Íè	” Í” Í” Í” Í’” Íé” Íé–” Íé” Íé” Í	” Í” Í” Íœ” Íé” Íé” Í	” Í” Í”  Í”( Í ”* Í"”6 Í.”7 Í/”? Í7”ÌA Í9–” Íé” Íé” Í	” Í” Í” Í˜” Íé” Íé” Í	” Í” Í”$ Í”% Í”* Í"–” Íé” Íé” Í		” Í	” Í	” Í	–” Íé” Íé” Í
+	” Í
+” Í
+”" Í
+” Íé” Íé” Í	” Í” Í” Í” Í”! Í”# Í”% Í”* Í"”, Í$”. Í&”0 Í(’” Íê
+” ÍêÜ ” Íë” Íë” Íë” Íë”" Íë”& Íë”; Íë3”< Íë4”ÌD Íë<”ÌE Íë=”ÌO ÍëÌG”ÌS ÍëÌK”ÌW ÍëÌO”ÌY ÍëÌQ”Ì] ÍëÌU”Ì_ ÍëÌW–”  Íì”$ Íì”, Íì”0 Íì”2 Íì”6 Íì””  Íì”$ Íì”% Íí”- Íí””  Íì”$ Íì”% Íî”. Íî””  Íì”$ Íì”% Íï”/ Íï˜”  Íì”$ Íì”% Íğ”/ Íğ”0 Íğ”: Íğ&”; Íğ'”ÌB Íğ.‘” ÍñÜ ” Íñ” Íñ”! Íñ”# Íñ”' Íñ!”+ Íñ%”Ì@ Íñ:”ÌA Íñ;”ÌI ÍñÌC”ÌJ ÍñÌD”ÌS ÍñÌM”ÌW ÍñÌQ”Ì[ ÍñÌU”Ì] ÍñÌW”Ìa ÍñÌ[”Ìc ÍñÌ]–”  Íò”$ Íò”, Íò”0 Íò”2 Íò”6 Íò””  Íò”$ Íò”% Íó”- Íó–”  Íò”$ Íò”% Íô”. Íô”/ Íô”8 Íô$””  Íò”$ Íò”% Íõ”/ Íõ˜”  Íò”$ Íò”% Íö”/ Íö”0 Íö”: Íö&”; Íö'”ÌA Íö-–”  Íò”$ Íò”% Í÷”. Í÷”/ Í÷”3 Í÷–”  Íò”$ Íò”% Íø”1 Íø”2 Íø”6 Íø"—”  Íò”$ Íò”% Íù”, Íù”- Íù”0 Íù”2 Íù’”$ Íú”Ì@ Íú.Ü ”$ Íû”) Íû”* Íû”. Íû”/ Íû”3 Íû!”4 Íû"”< Íû*”> Íû,”ÌB Íû0”ÌC Íû1”ÌI Íû7”ÌK Íû9”Ìf ÍûÌT”Ìj ÍûÌX”Ìk ÍûÌY”Ìn ÍûÌ\”Ìp ÍûÌ^”Ìq ÍûÌ_”Ìr ÍûÌ`’”$ Íü”1 Íüš”$ Íı”( Íı”, Íı”- Íı”0 Íı”5 Íı#”ÌD Íı2”ÌE Íı3”Ì\ ÍıÌJ”Ì^ ÍıÌLÜ ”( Íş”- Íş”. Íş”2 Íş”3 Íş”7 Íş#”8 Íş$”Ì@ Íş,”ÌB Íş.”ÌF Íş2”ÌG Íş3”ÌM Íş9”ÌO Íş;”Ìg ÍşÌS”Ìh ÍşÌT”Ìi ÍşÌU–”( Íÿ”, Íÿ”- Íÿ”? Íÿ+”ÌA Íÿ-”ÌB Íÿ.‘”% Í ’”  Í”! Í‘” Í‘” Í””/ Íê”3 Íê”4 Íê”? Íê"’” Íê
+” Íê’” Íé” Íé’” Íè” Íè	“” Í” Í
+” Í–” Í” Í” Í”( Í ”) Í!”, Í$‘” Í•” Í” Í
+” Í3” Í3” Í3”” Í4” Í4” Í4” Í4“” Í5” Í5”Ì„ Í5ÌB“” Í6” Í6”Ì… Í6ÌC”” Í7” Í7” Í7” Í7‘” Í8Ü ” Í” Í”# Í”' Í”) Í
+”+ Í”/ Í”1 Í”; Í”< Í”ÌC Í$”ÌE Í&”ÌP Í1”ÌR Í3”ÌV Í7”ÌX Í9–” Í” Í” Í” Í” Í”7 Í/”” Í” Í” Í” Í”” Í” Í” Í” Í”” Í” Í” Í” Í˜” Í” Í” Í”" Í”# Í”( Í ”) Í!”4 Í,˜” Í” Í” Í” Í” Í”( Í ”) Í!”/ Í'–” Í” Í” Í” Í” Í”! Í–” Í” Í” Í” Í”  Í”$ Í” Í” Í” Í”! Í”" Í”$ Í”- Í%”/ Í'”1 Í)”3 Í+”; Í3”= Í5”Ì@ Í8”ÌB Í:–” Í” Í” Í” Í” Í” Í—” Í” Í” Í” Í” Í” Í”  ÍÜ ” Í” Í” Í” Í” Í” Í”  Í”( Í$”* Í&”. Í*”/ Í+”5 Í1”7 Í3”ÌP ÍÌL”ÌQ ÍÌM”ÌR ÍÌN–” Í” Í” Í” Í” Í” Í’” Í 
+” Í ’” Í” ÍÜ ” Í"” Í"”# Í"”* Í"”, Í#
+”. Í#”2 Í#”4 Í#”> Í#”? Í#”ÌF Í#$”ÌH Í#&”ÌS Í#1”ÌU Í#3”ÌY Í#7”Ì[ Í#9–” Í"” Í"” Í$” Í$” Í$”ÌG Í$?˜” Í"” Í"” Í%” Í%” Í%”" Í%”# Í%”( Í% –” Í"” Í"” Í&”" Í&”# Í&”, Í&$”” Í"” Í"” Í'” Í'”” Í"” Í"” Í(” Í(˜” Í"” Í"” Í)” Í)” Í)”( Í) ”) Í)!”/ Í)'–” Í"” Í"” Í*” Í*” Í*”! Í*–” Í"” Í"” Í+” Í+”  Í+”$ Í+” Í"” Í"” Í,”! Í,”" Í,”$ Í,”- Í,%”/ Í,'”1 Í,)”3 Í,+”; Í,3”= Í,5”Ì@ Í,8”ÌB Í,:–” Í"” Í"” Í-” Í-” Í-” Í-—” Í"” Í"” Í.” Í.” Í.” Í.”  Í.Ü ” Í/” Í/” Í/” Í/” Í/” Í/”  Í/”( Í/$”* Í/&”. Í/*”/ Í/+”5 Í/1”7 Í/3”ÌQ Í/ÌM”ÌR Í/ÌN”ÌS Í/ÌO–” Í0” Í0” Í0” Í0” Í0” Í0’” Í1
+” Í1’” Í"” Í"’” Í” Í
+’” ÍÔ” ÍÔ
+‘” Í>•”  ÍÑ”' ÍÑ(”* ÍÑ+”6 ÍÑ7”7 ÍÑ8•”  Í@ ” Í@” Í@ ” Í@” ÍI“”  Í@ ” Í@” Í@’” ÍA” ÍA
+“” ÍB”ÌV ÍB#”ÌW ÍB#’” ÍC” ÍC“” ÍD”Ì^ ÍD'”Ì_ ÍD'’” ÍE” ÍE	“” ÍF”Ì^ ÍF'”Ì_ ÍF'’” ÍG” ÍG“” ÍH”Ì~ ÍH7”Ì ÍH7—”  ÍI ” ÍI” Í@” Í@” Í@” Í@”" ÍIÔrH–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜ„‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ì ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌĞ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  Ìİ ‘”  ÌŞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìğ ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìı ‘”  Ìş ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ‘”  Íi ‘”  Íj ‘”  Ík ‘”  Íl ‘”  Ím ‘”  Ín ‘”  Ío ‘”  Íp ‘”  Íq ‘”  Ír ‘”  Ís ‘”  Ít ‘”  Íu ‘”  Ív ‘”  Íw ‘”  Íx ‘”  Íy ‘”  Íz ‘”  Í{ ‘”  Í| ‘”  Í} ‘”  Í~ ‘”  Í ‘”  Í€ ‘”  Í ‘”  Í‚ ‘”  Íƒ ‘”  Í„ ‘”  Í… ‘”  Í† ‘”  Í‡ ‘”  Íˆ ‘”  Í‰ ‘”  ÍŠ ‘”  Í‹ ‘”  ÍŒ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í‘ ‘”  Í’ ‘”  Í“ ‘”  Í” ‘”  Í• ‘”  Í– ‘”  Í— ‘”  Í˜ ‘”  Í™ ‘”  Íš ‘”  Í› ‘”  Íœ ‘”  Í ‘”  Í ‘”  ÍŸ ‘”  Í  ‘”  Í¡ ‘”  Í¢ ‘”  Í£ ‘”  Í¤ ‘”  Í¥ ‘”  Í¦ ‘”  Í§ ‘”  Í¨ ‘”  Í© ‘”  Íª ‘”  Í« ‘”  Í¬ ‘”  Í­ ‘”  Í® ‘”  Í¯ ‘”  Í° ‘”  Í± ‘”  Í² ‘”  Í³ ‘”  Í´ ‘”  Íµ ‘”  Í¶ ‘”  Í· ‘”  Í¸ ‘”  Í¹ ‘”  Íº ‘”  Í» ‘”  Í¼ ‘”  Í½ ‘”  Í¾ ‘”  Í¿ ‘”  ÍÀ ‘”  ÍÁ ‘”  ÍÂ ‘”  ÍÃ ‘”  ÍÄ ‘”  ÍÅ ‘”  ÍÆ ‘”  ÍÇ ‘”  ÍÈ ‘”  ÍÉ ‘”  ÍÊ ‘”  ÍË ‘”  ÍÌ ‘”  ÍÍ ‘”  ÍÎ ‘”  ÍÏ ‘”  ÍĞ ‘”  ÍÑ ‘”  ÍÒ ‘”  ÍÓ ‘”  ÍÔ ‘”  ÍÕ ‘”  ÍÖ ‘”  Í× ‘”  ÍØ ‘”  ÍÙ ‘”  ÍÚ ‘”  ÍÛ ‘”  ÍÜ ‘”  Íİ ‘”  ÍŞ ‘”  Íß ‘”  Íà ‘”  Íá ‘”  Íâ ‘”  Íã ‘”  Íä ‘”  Íå ‘”  Íæ ‘”  Íç ‘”  Íè ‘”  Íé ‘”  Íê ‘”  Íë ‘”  Íì ‘”  Íí ‘”  Íî ‘”  Íï ‘”  Íğ ‘”  Íñ ‘”  Íò ‘”  Íó ‘”  Íô ‘”  Íõ ‘”  Íö ‘”  Í÷ ‘”  Íø ‘”  Íù ‘”  Íú ‘”  Íû ‘”  Íü ‘”  Íı ‘”  Íş ‘”  Íÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ‘”  Íi ‘”  Íj ‘”  Ík ‘”  Íl ‘”  Ím ‘”  Ín ‘”  Ío ‘”  Íp ‘”  Íq ‘”  Ír ‘”  Ís ‘”  Ít ‘”  Íu ‘”  Ív ‘”  Íw ‘”  Íx ‘”  Íy ‘”  Íz ‘”  Í{ ‘”  Í| ‘”  Í} ‘”  Í~ ‘”  Í ‘”  Í€ ‘”  Í ‘”  Í‚ ‘”  Íƒ ‘”  Í„ ‘”  Í… ‘”  Í† ‘”  Í‡ ‘”  Íˆ ‘”  Í‰ ‘”  ÍŠ ‘”  Í‹ ‘”  ÍŒ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í‘ ‘”  Í’ ‘”  Í“ ‘”  Í” ‘”  Í• ‘”  Í– ‘”  Í— ‘”  Í˜ ‘”  Í™ ‘”  Íš ‘”  Í› ‘”  Íœ ‘”  Í ‘”  Í ‘”  ÍŸ ‘”  Í  ‘”  Í¡ ‘”  Í¢ ‘”  Í£ ‘”  Í¤ ‘”  Í¥ ‘”  Í¦ ‘”  Í§ ‘”  Í¨ ‘”  Í© ‘”  Íª ‘”  Í« ‘”  Í¬ ‘”  Í­ ‘”  Í® ‘”  Í¯ ‘”  Í° ‘”  Í± ‘”  Í² ‘”  Í³ ‘”  Í´ ‘”  Íµ ‘”  Í¶ ‘”  Í· ‘”  Í¸ ‘”  Í¹ ‘”  Íº ‘”  Í» ‘”  Í¼ ‘”  Í½ ‘”  Í¾ ‘”  Í¿ ‘”  ÍÀ ‘”  ÍÁ ‘”  ÍÂ ‘”  ÍÃ ‘”  ÍÄ ‘”  ÍÅ ‘”  ÍÆ ‘”  ÍÇ ‘”  ÍÈ ‘”  ÍÉ ‘”  ÍÊ ‘”  ÍË ‘”  ÍÌ ‘”  ÍÍ ‘”  ÍÎ ‘”  ÍÏ ‘”  ÍĞ ‘”  ÍÑ ‘”  ÍÒ ‘”  ÍÓ ‘”  ÍÔ ‘”  ÍÕ ‘”  ÍÖ ‘”  Í× ‘”  ÍØ ‘”  ÍÙ ‘”  ÍÚ ‘”  ÍÛ ‘”  ÍÜ ‘”  Íİ ‘”  ÍŞ ‘”  Íß ‘”  Íà ‘”  Íá ‘”  Íâ ‘”  Íã ‘”  Íä ‘”  Íå ‘”  Íæ ‘”  Íç ‘”  Íè ‘”  Íé ‘”  Íê ‘”  Íë ‘”  Íì ‘”  Íí ‘”  Íî ‘”  Íï ‘”  Íğ ‘”  Íñ ‘”  Íò ‘”  Íó ‘”  Íô ‘”  Íõ ‘”  Íö ‘”  Í÷ ‘”  Íø ‘”  Íù ‘”  Íú ‘”  Íû ‘”  Íü ‘”  Íı ‘”  Íş ‘”  Íÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ‘”  Íi ‘”  Íj ‘”  Ík ‘”  Íl ‘”  Ím ‘”  Ín ‘”  Ío ‘”  Íp ‘”  Íq ‘”  Ír ‘”  Ís ‘”  Ít ‘”  Íu ‘”  Ív ‘”  Íw ‘”  Íx ‘”  Íy ‘”  Íz ‘”  Í{ ‘”  Í| ‘”  Í} ‘”  Í~ ‘”  Í ‘”  Í€ ‘”  Í ‘”  Í‚ ‘”  Íƒ ÂÔ  ÔrI”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache“ÔrJ–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÍqÍTÔrK™¤type¥start£end¢idªexpression©generator¥async¦params¤body³FunctionDeclarationÍxÍTÔrL”¤type¥start£end¤nameªIdentifierÍÍ‘°PageLoginBuilderÂÂÂ‘ÔrM•¤type¥start£end¤left¥right±AssignmentPatternÍ’ÍŸLªIdentifierÍ’Í˜¦parentÔrN•¤type¥start£end¥value£raw§LiteralÍ›ÍŸÀ¤nullÔrO”¤type¥start£end¤body®BlockStatementÍ¡ÍT‘O®BlockStatementÍ¨ÍQ‘ÔrP”¤type¥start£endªexpression³ExpressionStatementÍ³ÍJÔrQ–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍ³ÍIÔrR—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍ³ÍåÔrS–¤type¥start£end¤testªconsequent©alternateµConditionalExpressionÍ´ÍÊLªIdentifierÍ´Íº¦parentLªIdentifierÍ½ÍÃ¦parentÔrT“¤type¥start£end®ThisExpressionÍÆÍÊLªIdentifierÍÌÍå¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍæÍ5ÀÂÂÂ’LªIdentifierÍçÍí¦elmtIdLªIdentifierÍïÍş¯isInitialRenderO®BlockStatementÍÍ5‘S«IfStatementÍÍ*LªIdentifierÍÍ%¯isInitialRenderO®BlockStatementÍ'Í±”ÔrU•¤type¥start£end¬declarations¤kind³VariableDeclarationÍ:ÍÓ‘ÔrV•¤type¥start£end¢id¤init²VariableDeclaratorÍ>ÍÒLªIdentifierÍ>ÍK­componentCallÔrW•¤type¥start£end¦callee©arguments­NewExpressionÍNÍÒLªIdentifierÍRÍW¥Login–SµConditionalExpressionÍXÍnLªIdentifierÍXÍ^¦parentLªIdentifierÍaÍg¦parentT®ThisExpressionÍjÍnÔrX”¤type¥start£endªproperties°ObjectExpressionÍpÍrLªIdentifierÍtÍ}©undefinedLªIdentifierÍÍ…¦elmtIdK·ArrowFunctionExpressionÍ‡ÍÀÂÂÂO®BlockStatementÍÍX°ObjectExpressionÍ’ÍÑ“ÔrY™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍ”Í¾ÂÂÂLªIdentifierÍ”Í˜¤pageN§LiteralÍšÍ¾Ù"entry/src/main/ets/pages/Login.etsÙ$"entry/src/main/ets/pages/Login.ets"¤initY¨PropertyÍÀÍÇÂÂÂLªIdentifierÍÀÍÄ¤lineN§LiteralÍÆÍÇ	¡9¤initY¨PropertyÍÉÍÏÂÂÂLªIdentifierÍÉÍÌ£colN§LiteralÍÎÍÏ¡3¤init£letP³ExpressionStatementÍåÍQ®CallExpressionÍåÍR°MemberExpressionÍåÍòLªIdentifierÍåÍë¦ViewPULªIdentifierÍìÍò¦createÂÂ‘LªIdentifierÍóÍ ­componentCallÂU³VariableDeclarationÍÍb‘V²VariableDeclaratorÍÍaLªIdentifierÍÍ$¬paramsLambdaK·ArrowFunctionExpressionÍ'ÍaÀÂÂÂO®BlockStatementÍ-Ía‘ÔrZ”¤type¥start£end¨argument¯ReturnStatementÍDÍNX°ObjectExpressionÍKÍM£letP³ExpressionStatementÍtÍ¢Ôr[–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍtÍ¡¡=R°MemberExpressionÍtÍ’LªIdentifierÍtÍ­componentCallLªIdentifierÍ‚Í’°paramsGenerator_ÂÂLªIdentifierÍ•Í¡¬paramsLambdaO®BlockStatementÍÄÍ*‘P³ExpressionStatementÍ×ÍQ®CallExpressionÍ×ÍR°MemberExpressionÍ×ÍSµConditionalExpressionÍØÍîLªIdentifierÍØÍŞ¦parentLªIdentifierÍáÍç¦parentT®ThisExpressionÍêÍîLªIdentifierÍğÍ¾updateStateVarsOfChildByElmtIdÂÂ’LªIdentifierÍÍ¦elmtIdX°ObjectExpressionÍÍÂX°ObjectExpressionÍ7ÍH‘Y¨PropertyÍ9ÍFÂÂÂLªIdentifierÍ9Í=¤nameN§LiteralÍ?ÍF¥Login§"Login"¤initÂÀJ¶ExportNamedDeclarationÍ~ùÍ§ëÔr\–¤type¥start£end¢idªsuperClass¤body°ClassDeclarationÍ Í§ëLªIdentifierÍÍ¯AgreementDialogLªIdentifierÍÍ$¦ViewPUO©ClassBodyÍ%Í§ë˜Ôr]˜¤type¥start£end¦static¨computed£key¤kind¥value°MethodDefinitionÍ,ÍºÂÂLªIdentifierÍ,Í7«constructor«constructorK²FunctionExpressionÍ7ÍºÀÂÂÂ–LªIdentifierÍ8Í>¦parentLªIdentifierÍ@ÍF¦paramsLªIdentifierÍHÍV®__localStorageM±AssignmentPatternÍXÍcLªIdentifierÍXÍ^¦elmtIdÔr^–¤type¥start£end¨operator¦prefix¨argument¯UnaryExpressionÍaÍc¡-ÃN§LiteralÍbÍc¡1M±AssignmentPatternÍeÍ}LªIdentifierÍeÍq¬paramsLambdaLªIdentifierÍtÍ}©undefinedLªIdentifierÍÍˆ©extraInfoO®BlockStatementÍŠÍº›P³ExpressionStatementÍ•ÍÆQ®CallExpressionÍ•ÍÅT¥SuperÍ•Íš”LªIdentifierÍ›Í¡¦parentLªIdentifierÍ£Í±®__localStorageLªIdentifierÍ³Í¹¦elmtIdLªIdentifierÍ»ÍÄ©extraInfoÂS«IfStatementÍĞÍ€7Ôr_–¤type¥start£end¤left¨operator¥right°BinaryExpressionÍÔÍö^¯UnaryExpressionÍÔÍç¦typeofÃLªIdentifierÍÛÍç¬paramsLambda£===N§LiteralÍìÍö¨functionª"function"O®BlockStatementÍøÍ€7‘P³ExpressionStatementÍ€Í€,[´AssignmentExpressionÍ€Í€+¡=R°MemberExpressionÍ€Í€T®ThisExpressionÍ€Í€LªIdentifierÍ€Í€°paramsGenerator_ÂÂLªIdentifierÍ€Í€+¬paramsLambdaÀP³ExpressionStatementÍ€AÍ€a[´AssignmentExpressionÍ€AÍ€`¡=R°MemberExpressionÍ€AÍ€LT®ThisExpressionÍ€AÍ€ELªIdentifierÍ€FÍ€L¦logTagÂÂN§LiteralÍ€OÍ€`¯AgreementDialog±'AgreementDialog'P³ExpressionStatementÍ€kÍ€‚[´AssignmentExpressionÍ€kÍ€¡=R°MemberExpressionÍ€kÍ€xT®ThisExpressionÍ€kÍ€oLªIdentifierÍ€pÍ€x¨domainIdÂÂN§LiteralÍ€{Í€ ¦0x0000P³ExpressionStatementÍ€ŒÍ€®[´AssignmentExpressionÍ€ŒÍ€­¡=R°MemberExpressionÍ€ŒÍ€¡T®ThisExpressionÍ€ŒÍ€LªIdentifierÍ€‘Í€¡°dialogControllerÂÂLªIdentifierÍ€¤Í€­©undefinedP³ExpressionStatementÍ€¸Í€Ù[´AssignmentExpressionÍ€¸Í€Ø¡=R°MemberExpressionÍ€¸Í€ÃT®ThisExpressionÍ€¸Í€¼LªIdentifierÍ€½Í€Ã¦cancelÂÂK·ArrowFunctionExpressionÍ€ÆÍ€ØÀÂÂÂO®BlockStatementÍ€ÌÍ€ØP³ExpressionStatementÍ€ãÍ[´AssignmentExpressionÍ€ãÍ¡=R°MemberExpressionÍ€ãÍ€ïT®ThisExpressionÍ€ãÍ€çLªIdentifierÍ€èÍ€ï§confirmÂÂK·ArrowFunctionExpressionÍ€òÍÀÂÂÂO®BlockStatementÍ€øÍP³ExpressionStatementÍÍ<[´AssignmentExpressionÍÍ;¡=R°MemberExpressionÍÍ&T®ThisExpressionÍÍLªIdentifierÍÍ&²clickHyperlinkTextÂÂK·ArrowFunctionExpressionÍ)Í;ÀÂÂÂO®BlockStatementÍ/Í;P³ExpressionStatementÍFÍ\[´AssignmentExpressionÍFÍ[¡=R°MemberExpressionÍFÍVT®ThisExpressionÍFÍJLªIdentifierÍKÍV«privacyTextÂÂÔr`”¤type¥start£end¨elements¯ArrayExpressionÍYÍ[P³ExpressionStatementÍfÍQ®CallExpressionÍfÍŒR°MemberExpressionÍfÍ„T®ThisExpressionÍfÍjLªIdentifierÍkÍ„¹setInitiallyProvidedValueÂÂ‘LªIdentifierÍ…Í‹¦paramsÂP³ExpressionStatementÍ—Í³Q®CallExpressionÍ—Í²R°MemberExpressionÍ—Í°T®ThisExpressionÍ—Í›LªIdentifierÍœÍ°´finalizeConstructionÂÂÂ]°MethodDefinitionÍÀÍ„ëÂÂLªIdentifierÍÀÍÙ¹setInitiallyProvidedValue¦methodK²FunctionExpressionÍÙÍ„ëÀÂÂÂ‘LªIdentifierÍÚÍà¦paramsO®BlockStatementÍâÍ„ë—S«IfStatementÍíÍ‚D_°BinaryExpressionÍñÍ‚R°MemberExpressionÍñÍşLªIdentifierÍñÍ÷¦paramsLªIdentifierÍøÍş¦logTagÂÂ£!==LªIdentifierÍ‚Í‚©undefinedO®BlockStatementÍ‚Í‚D‘P³ExpressionStatementÍ‚Í‚9[´AssignmentExpressionÍ‚Í‚8¡=R°MemberExpressionÍ‚Í‚(T®ThisExpressionÍ‚Í‚!LªIdentifierÍ‚"Í‚(¦logTagÂÂR°MemberExpressionÍ‚+Í‚8LªIdentifierÍ‚+Í‚1¦paramsLªIdentifierÍ‚2Í‚8¦logTagÂÂÀS«IfStatementÍ‚NÍ‚«_°BinaryExpressionÍ‚RÍ‚oR°MemberExpressionÍ‚RÍ‚aLªIdentifierÍ‚RÍ‚X¦paramsLªIdentifierÍ‚YÍ‚a¨domainIdÂÂ£!==LªIdentifierÍ‚fÍ‚o©undefinedO®BlockStatementÍ‚qÍ‚«‘P³ExpressionStatementÍ‚€Í‚ [´AssignmentExpressionÍ‚€Í‚Ÿ¡=R°MemberExpressionÍ‚€Í‚T®ThisExpressionÍ‚€Í‚„LªIdentifierÍ‚…Í‚¨domainIdÂÂR°MemberExpressionÍ‚Í‚ŸLªIdentifierÍ‚Í‚–¦paramsLªIdentifierÍ‚—Í‚Ÿ¨domainIdÂÂÀS«IfStatementÍ‚µÍƒ*_°BinaryExpressionÍ‚¹Í‚ŞR°MemberExpressionÍ‚¹Í‚ĞLªIdentifierÍ‚¹Í‚¿¦paramsLªIdentifierÍ‚ÀÍ‚Ğ°dialogControllerÂÂ£!==LªIdentifierÍ‚ÕÍ‚Ş©undefinedO®BlockStatementÍ‚àÍƒ*‘P³ExpressionStatementÍ‚ïÍƒ[´AssignmentExpressionÍ‚ïÍƒ¡=R°MemberExpressionÍ‚ïÍƒT®ThisExpressionÍ‚ïÍ‚óLªIdentifierÍ‚ôÍƒ°dialogControllerÂÂR°MemberExpressionÍƒÍƒLªIdentifierÍƒÍƒ¦paramsLªIdentifierÍƒÍƒ°dialogControllerÂÂÀS«IfStatementÍƒ4Íƒ‹_°BinaryExpressionÍƒ8ÍƒSR°MemberExpressionÍƒ8ÍƒELªIdentifierÍƒ8Íƒ>¦paramsLªIdentifierÍƒ?ÍƒE¦cancelÂÂ£!==LªIdentifierÍƒJÍƒS©undefinedO®BlockStatementÍƒUÍƒ‹‘P³ExpressionStatementÍƒdÍƒ€[´AssignmentExpressionÍƒdÍƒ¡=R°MemberExpressionÍƒdÍƒoT®ThisExpressionÍƒdÍƒhLªIdentifierÍƒiÍƒo¦cancelÂÂR°MemberExpressionÍƒrÍƒLªIdentifierÍƒrÍƒx¦paramsLªIdentifierÍƒyÍƒ¦cancelÂÂÀS«IfStatementÍƒ•Íƒï_°BinaryExpressionÍƒ™ÍƒµR°MemberExpressionÍƒ™Íƒ§LªIdentifierÍƒ™ÍƒŸ¦paramsLªIdentifierÍƒ Íƒ§§confirmÂÂ£!==LªIdentifierÍƒ¬Íƒµ©undefinedO®BlockStatementÍƒ·Íƒï‘P³ExpressionStatementÍƒÆÍƒä[´AssignmentExpressionÍƒÆÍƒã¡=R°MemberExpressionÍƒÆÍƒÒT®ThisExpressionÍƒÆÍƒÊLªIdentifierÍƒËÍƒÒ§confirmÂÂR°MemberExpressionÍƒÕÍƒãLªIdentifierÍƒÕÍƒÛ¦paramsLªIdentifierÍƒÜÍƒã§confirmÂÂÀS«IfStatementÍƒùÍ„t_°BinaryExpressionÍƒıÍ„$R°MemberExpressionÍƒıÍ„LªIdentifierÍƒıÍ„¦paramsLªIdentifierÍ„Í„²clickHyperlinkTextÂÂ£!==LªIdentifierÍ„Í„$©undefinedO®BlockStatementÍ„&Í„t‘P³ExpressionStatementÍ„5Í„i[´AssignmentExpressionÍ„5Í„h¡=R°MemberExpressionÍ„5Í„LT®ThisExpressionÍ„5Í„9LªIdentifierÍ„:Í„L²clickHyperlinkTextÂÂR°MemberExpressionÍ„OÍ„hLªIdentifierÍ„OÍ„U¦paramsLªIdentifierÍ„VÍ„h²clickHyperlinkTextÂÂÀS«IfStatementÍ„~Í„ä_°BinaryExpressionÍ„‚Í„¢R°MemberExpressionÍ„‚Í„”LªIdentifierÍ„‚Í„ˆ¦paramsLªIdentifierÍ„‰Í„”«privacyTextÂÂ£!==LªIdentifierÍ„™Í„¢©undefinedO®BlockStatementÍ„¤Í„ä‘P³ExpressionStatementÍ„³Í„Ù[´AssignmentExpressionÍ„³Í„Ø¡=R°MemberExpressionÍ„³Í„ÃT®ThisExpressionÍ„³Í„·LªIdentifierÍ„¸Í„Ã«privacyTextÂÂR°MemberExpressionÍ„ÆÍ„ØLªIdentifierÍ„ÆÍ„Ì¦paramsLªIdentifierÍ„ÍÍ„Ø«privacyTextÂÂÀ]°MethodDefinitionÍ„ñÍ…ÂÂLªIdentifierÍ„ñÍ… ¯updateStateVars¦methodK²FunctionExpressionÍ… Í…ÀÂÂÂ‘LªIdentifierÍ…Í…¦paramsO®BlockStatementÍ…	Í…]°MethodDefinitionÍ…Í…KÂÂLªIdentifierÍ…Í…8Ù!purgeVariableDependenciesOnElmtId¦methodK²FunctionExpressionÍ…8Í…KÀÂÂÂ‘LªIdentifierÍ…9Í…A¨rmElmtIdO®BlockStatementÍ…CÍ…K]°MethodDefinitionÍ…QÍ…ÌÂÂLªIdentifierÍ…QÍ…a°aboutToBeDeleted¦methodK²FunctionExpressionÍ…aÍ…ÌÀÂÂÂO®BlockStatementÍ…dÍ…Ì’P³ExpressionStatementÍ…oÍ…›Q®CallExpressionÍ…oÍ…šR°MemberExpressionÍ…oÍ…Q®CallExpressionÍ…oÍ…†R°MemberExpressionÍ…oÍ…„LªIdentifierÍ…oÍ…€±SubscriberManagerLªIdentifierÍ…Í…„£GetÂÂÂLªIdentifierÍ…‡Í…¦deleteÂÂ‘Q®CallExpressionÍ…Í…™R°MemberExpressionÍ…Í…—T®ThisExpressionÍ…Í…’LªIdentifierÍ…“Í…—¤id__ÂÂÂÂP³ExpressionStatementÍ…¥Í…ÅQ®CallExpressionÍ…¥Í…ÄR°MemberExpressionÍ…¥Í…ÂT®ThisExpressionÍ…¥Í…©LªIdentifierÍ…ªÍ…Â¸aboutToBeDeletedInternalÂÂÂ]°MethodDefinitionÍ…ÒÍ†ÂÂLªIdentifierÍ…ÒÍ…ß­setController¦methodK²FunctionExpressionÍ…ßÍ†ÀÂÂÂ‘LªIdentifierÍ…àÍ…ã£ctrO®BlockStatementÍ…åÍ†‘P³ExpressionStatementÍ…ğÍ†[´AssignmentExpressionÍ…ğÍ†¡=R°MemberExpressionÍ…ğÍ†T®ThisExpressionÍ…ğÍ…ôLªIdentifierÍ…õÍ†°dialogControllerÂÂLªIdentifierÍ†Í†£ctr]°MethodDefinitionÍ†Í§ªÂÂLªIdentifierÍ†Í†&­initialRender¦methodK²FunctionExpressionÍ†&Í§ªÀÂÂÂO®BlockStatementÍ†)Í§ªÜ P³ExpressionStatementÍ†4Í‡Q®CallExpressionÍ†4Í‡R°MemberExpressionÍ†4Í†RT®ThisExpressionÍ†4Í†8LªIdentifierÍ†9Í†R¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ†SÍ‡”ÀÂÂÂ’LªIdentifierÍ†TÍ†Z¦elmtIdLªIdentifierÍ†\Í†k¯isInitialRenderO®BlockStatementÍ†pÍ‡”“P³ExpressionStatementÍ†Í†Q®CallExpressionÍ†Í†R°MemberExpressionÍ†Í†ŒLªIdentifierÍ†Í†…¦ColumnLªIdentifierÍ††Í†Œ¦createÂÂÂP³ExpressionStatementÍ†Í‡$Q®CallExpressionÍ†Í‡#R°MemberExpressionÍ†Í†³LªIdentifierÍ†Í†£¦ColumnLªIdentifierÍ†¤Í†³¯backgroundColorÂÂ‘X°ObjectExpressionÍ†´Í‡"•Y¨PropertyÍ†¶Í†ÅÂÂÂN§LiteralÍ†¶Í†º¢id¤"id"N§LiteralÍ†¼Í†ÅÎ€Z©125830234¤initY¨PropertyÍ†ÇÍ†ÔÂÂÂN§LiteralÍ†ÇÍ†Í¤type¦"type"N§LiteralÍ†ÏÍ†ÔÍ'¥10001¤initY¨PropertyÍ†ÖÍ†àÂÂÂLªIdentifierÍ†ÖÍ†Ü¦params`¯ArrayExpressionÍ†ŞÍ†à¤initY¨PropertyÍ†âÍ‡	ÂÂÂN§LiteralÍ†âÍ†îªbundleName¬"bundleName"N§LiteralÍ†ğÍ‡	·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ‡Í‡ ÂÂÂN§LiteralÍ‡Í‡ªmoduleName¬"moduleName"N§LiteralÍ‡Í‡ ¥entry§"entry"¤initÂP³ExpressionStatementÍ‡2Í‡‰Q®CallExpressionÍ‡2Í‡ˆR°MemberExpressionÍ‡2Í‡@LªIdentifierÍ‡2Í‡8¦ColumnLªIdentifierÍ‡9Í‡@§paddingÂÂ‘X°ObjectExpressionÍ‡AÍ‡‡’Y¨PropertyÍ‡TÍ‡\ÂÂÂLªIdentifierÍ‡TÍ‡X¤leftN§LiteralÍ‡ZÍ‡\¢16¤initY¨PropertyÍ‡oÍ‡xÂÂÂLªIdentifierÍ‡oÍ‡t¥rightN§LiteralÍ‡vÍ‡x¢16¤initÂLªIdentifierÍ‡–Í‡œ¦ColumnÂP³ExpressionStatementÍ‡¨Í‰ÁQ®CallExpressionÍ‡¨Í‰ÀR°MemberExpressionÍ‡¨Í‡ÆT®ThisExpressionÍ‡¨Í‡¬LªIdentifierÍ‡­Í‡Æ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ‡ÇÍ‰ºÀÂÂÂ’LªIdentifierÍ‡ÈÍ‡Î¦elmtIdLªIdentifierÍ‡ĞÍ‡ß¯isInitialRenderO®BlockStatementÍ‡äÍ‰º”P³ExpressionStatementÍ‡óÍˆ Q®CallExpressionÍ‡óÍ‡ÿR°MemberExpressionÍ‡óÍ‡ıLªIdentifierÍ‡óÍ‡ö£RowLªIdentifierÍ‡÷Í‡ı¦createÂÂÂP³ExpressionStatementÍˆÍˆ3Q®CallExpressionÍˆÍˆ2R°MemberExpressionÍˆÍˆLªIdentifierÍˆÍˆ£RowLªIdentifierÍˆÍˆªalignItemsÂÂ‘R°MemberExpressionÍˆÍˆ1LªIdentifierÍˆÍˆ*­VerticalAlignLªIdentifierÍˆ+Íˆ1¦CenterÂÂÂP³ExpressionStatementÍˆAÍˆvQ®CallExpressionÍˆAÍˆuR°MemberExpressionÍˆAÍˆSLªIdentifierÍˆAÍˆD£RowLªIdentifierÍˆEÍˆS®constraintSizeÂÂ‘X°ObjectExpressionÍˆTÍˆt’Y¨PropertyÍˆVÍˆcÂÂÂLªIdentifierÍˆVÍˆ_©minHeightN§LiteralÍˆaÍˆc8¢56¤initY¨PropertyÍˆeÍˆrÂÂÂLªIdentifierÍˆeÍˆm¨maxWidthN§LiteralÍˆoÍˆrÍ£400¤initÂP³ExpressionStatementÍˆ„Í‰¯Q®CallExpressionÍˆ„Í‰®R°MemberExpressionÍˆ„ÍˆLªIdentifierÍˆ„Íˆ‡£RowLªIdentifierÍˆˆÍˆ¦marginÂÂ‘X°ObjectExpressionÍˆÍ‰­’Y¨PropertyÍˆ¢Í‰ÂÂÂLªIdentifierÍˆ¢Íˆ¦¤leftX°ObjectExpressionÍˆ¨Í‰•Y¨PropertyÍˆªÍˆ¹ÂÂÂN§LiteralÍˆªÍˆ®¢id¤"id"N§LiteralÍˆ°Íˆ¹Î€\©125829724¤initY¨PropertyÍˆ»ÍˆÈÂÂÂN§LiteralÍˆ»ÍˆÁ¤type¦"type"N§LiteralÍˆÃÍˆÈÍ'¥10002¤initY¨PropertyÍˆÊÍˆÔÂÂÂLªIdentifierÍˆÊÍˆĞ¦params`¯ArrayExpressionÍˆÒÍˆÔ¤initY¨PropertyÍˆÖÍˆıÂÂÂN§LiteralÍˆÖÍˆâªbundleName¬"bundleName"N§LiteralÍˆäÍˆı·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍˆÿÍ‰ÂÂÂN§LiteralÍˆÿÍ‰ªmoduleName¬"moduleName"N§LiteralÍ‰Í‰¥entry§"entry"¤init¤initY¨PropertyÍ‰)Í‰ÂÂÂLªIdentifierÍ‰)Í‰.¥rightX°ObjectExpressionÍ‰0Í‰•Y¨PropertyÍ‰2Í‰AÂÂÂN§LiteralÍ‰2Í‰6¢id¤"id"N§LiteralÍ‰8Í‰AÎ€\©125829724¤initY¨PropertyÍ‰CÍ‰PÂÂÂN§LiteralÍ‰CÍ‰I¤type¦"type"N§LiteralÍ‰KÍ‰PÍ'¥10002¤initY¨PropertyÍ‰RÍ‰\ÂÂÂLªIdentifierÍ‰RÍ‰X¦params`¯ArrayExpressionÍ‰ZÍ‰\¤initY¨PropertyÍ‰^Í‰…ÂÂÂN§LiteralÍ‰^Í‰jªbundleName¬"bundleName"N§LiteralÍ‰lÍ‰…·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ‰‡Í‰œÂÂÂN§LiteralÍ‰‡Í‰“ªmoduleName¬"moduleName"N§LiteralÍ‰•Í‰œ¥entry§"entry"¤init¤initÂLªIdentifierÍ‰¼Í‰¿£RowÂP³ExpressionStatementÍ‰ËÍ€Q®CallExpressionÍ‰ËÍR°MemberExpressionÍ‰ËÍ‰éT®ThisExpressionÍ‰ËÍ‰ÏLªIdentifierÍ‰ĞÍ‰é¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ‰êÍxÀÂÂÂ’LªIdentifierÍ‰ëÍ‰ñ¦elmtIdLªIdentifierÍ‰óÍŠ¯isInitialRenderO®BlockStatementÍŠÍxšP³ExpressionStatementÍŠÍŠ/Q®CallExpressionÍŠÍŠ.R°MemberExpressionÍŠÍŠ!LªIdentifierÍŠÍŠ¤TextLªIdentifierÍŠÍŠ!¦createÂÂ‘N§LiteralÍŠ"ÍŠ-»ç”¨æˆ·åè®®ä¸éšç§æ¡æ¬¾½'ç”¨æˆ·åè®®ä¸éšç§æ¡æ¬¾'ÂP³ExpressionStatementÍŠ=ÍŠrQ®CallExpressionÍŠ=ÍŠqR°MemberExpressionÍŠ=ÍŠDLªIdentifierÍŠ=ÍŠA¤TextLªIdentifierÍŠBÍŠD¢idÂÂ‘N§LiteralÍŠEÍŠpÙ)loginPanel_agreement_dialog_privacy_titleÙ+'loginPanel_agreement_dialog_privacy_title'ÂP³ExpressionStatementÍŠ€Í‹Q®CallExpressionÍŠ€Í‹ R°MemberExpressionÍŠ€ÍŠLªIdentifierÍŠ€ÍŠ„¤TextLªIdentifierÍŠ…ÍŠ«maxFontSizeÂÂ‘X°ObjectExpressionÍŠ‘ÍŠÿ•Y¨PropertyÍŠ“ÍŠ¢ÂÂÂN§LiteralÍŠ“ÍŠ—¢id¤"id"N§LiteralÍŠ™ÍŠ¢Î€,©125829676¤initY¨PropertyÍŠ¤ÍŠ±ÂÂÂN§LiteralÍŠ¤ÍŠª¤type¦"type"N§LiteralÍŠ¬ÍŠ±Í'¥10002¤initY¨PropertyÍŠ³ÍŠ½ÂÂÂLªIdentifierÍŠ³ÍŠ¹¦params`¯ArrayExpressionÍŠ»ÍŠ½¤initY¨PropertyÍŠ¿ÍŠæÂÂÂN§LiteralÍŠ¿ÍŠËªbundleName¬"bundleName"N§LiteralÍŠÍÍŠæ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍŠèÍŠıÂÂÂN§LiteralÍŠèÍŠôªmoduleName¬"moduleName"N§LiteralÍŠöÍŠı¥entry§"entry"¤initÂP³ExpressionStatementÍ‹Í‹Q®CallExpressionÍ‹Í‹R°MemberExpressionÍ‹Í‹LªIdentifierÍ‹Í‹¤TextLªIdentifierÍ‹Í‹«minFontSizeÂÂ‘X°ObjectExpressionÍ‹ Í‹•Y¨PropertyÍ‹"Í‹1ÂÂÂN§LiteralÍ‹"Í‹&¢id¤"id"N§LiteralÍ‹(Í‹1Î€4©125829684¤initY¨PropertyÍ‹3Í‹@ÂÂÂN§LiteralÍ‹3Í‹9¤type¦"type"N§LiteralÍ‹;Í‹@Í'¥10002¤initY¨PropertyÍ‹BÍ‹LÂÂÂLªIdentifierÍ‹BÍ‹H¦params`¯ArrayExpressionÍ‹JÍ‹L¤initY¨PropertyÍ‹NÍ‹uÂÂÂN§LiteralÍ‹NÍ‹ZªbundleName¬"bundleName"N§LiteralÍ‹\Í‹u·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ‹wÍ‹ŒÂÂÂN§LiteralÍ‹wÍ‹ƒªmoduleName¬"moduleName"N§LiteralÍ‹…Í‹Œ¥entry§"entry"¤initÂP³ExpressionStatementÍ‹ÍŒQ®CallExpressionÍ‹ÍŒR°MemberExpressionÍ‹Í‹¬LªIdentifierÍ‹Í‹¢¤TextLªIdentifierÍ‹£Í‹¬©fontColorÂÂ‘X°ObjectExpressionÍ‹­ÍŒ•Y¨PropertyÍ‹¯Í‹¾ÂÂÂN§LiteralÍ‹¯Í‹³¢id¤"id"N§LiteralÍ‹µÍ‹¾Î€ Z©125829210¤initY¨PropertyÍ‹ÀÍ‹ÍÂÂÂN§LiteralÍ‹ÀÍ‹Æ¤type¦"type"N§LiteralÍ‹ÈÍ‹ÍÍ'¥10001¤initY¨PropertyÍ‹ÏÍ‹ÙÂÂÂLªIdentifierÍ‹ÏÍ‹Õ¦params`¯ArrayExpressionÍ‹×Í‹Ù¤initY¨PropertyÍ‹ÛÍŒÂÂÂN§LiteralÍ‹ÛÍ‹çªbundleName¬"bundleName"N§LiteralÍ‹éÍŒ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍŒÍŒÂÂÂN§LiteralÍŒÍŒªmoduleName¬"moduleName"N§LiteralÍŒÍŒ¥entry§"entry"¤initÂP³ExpressionStatementÍŒ+ÍŒ«Q®CallExpressionÍŒ+ÍŒªR°MemberExpressionÍŒ+ÍŒ:LªIdentifierÍŒ+ÍŒ/¤TextLªIdentifierÍŒ0ÍŒ:ªfontFamilyÂÂ‘X°ObjectExpressionÍŒ;ÍŒ©•Y¨PropertyÍŒ=ÍŒLÂÂÂN§LiteralÍŒ=ÍŒA¢id¤"id"N§LiteralÍŒCÍŒLÎ€?©125829695¤initY¨PropertyÍŒNÍŒ[ÂÂÂN§LiteralÍŒNÍŒT¤type¦"type"N§LiteralÍŒVÍŒ[Í'¥10003¤initY¨PropertyÍŒ]ÍŒgÂÂÂLªIdentifierÍŒ]ÍŒc¦params`¯ArrayExpressionÍŒeÍŒg¤initY¨PropertyÍŒiÍŒÂÂÂN§LiteralÍŒiÍŒuªbundleName¬"bundleName"N§LiteralÍŒwÍŒ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍŒ’ÍŒ§ÂÂÂN§LiteralÍŒ’ÍŒªmoduleName¬"moduleName"N§LiteralÍŒ ÍŒ§¥entry§"entry"¤initÂP³ExpressionStatementÍŒ¹ÍŒÚQ®CallExpressionÍŒ¹ÍŒÙR°MemberExpressionÍŒ¹ÍŒÈLªIdentifierÍŒ¹ÍŒ½¤TextLªIdentifierÍŒ¾ÍŒÈªfontWeightÂÂ‘R°MemberExpressionÍŒÉÍŒØLªIdentifierÍŒÉÍŒÓªFontWeightLªIdentifierÍŒÔÍŒØ¤BoldÂÂÂP³ExpressionStatementÍŒèÍ	Q®CallExpressionÍŒèÍR°MemberExpressionÍŒèÍŒöLªIdentifierÍŒèÍŒì¤TextLªIdentifierÍŒíÍŒö©textAlignÂÂ‘R°MemberExpressionÍŒ÷ÍLªIdentifierÍŒ÷Í ©TextAlignLªIdentifierÍÍ¦CenterÂÂÂP³ExpressionStatementÍÍNQ®CallExpressionÍÍMR°MemberExpressionÍÍ(LªIdentifierÍÍ¤TextLªIdentifierÍÍ(¬textOverflowÂÂ‘X°ObjectExpressionÍ)ÍL‘Y¨PropertyÍ+ÍJÂÂÂLªIdentifierÍ+Í3¨overflowR°MemberExpressionÍ5ÍJLªIdentifierÍ5ÍA¬TextOverflowLªIdentifierÍBÍJ¨EllipsisÂÂ¤initÂP³ExpressionStatementÍ\ÍmQ®CallExpressionÍ\ÍlR°MemberExpressionÍ\ÍiLªIdentifierÍ\Í`¤TextLªIdentifierÍaÍi¨maxLinesÂÂ‘N§LiteralÍjÍk¡2ÂLªIdentifierÍzÍ~¤TextÂP³ExpressionStatementÍŠÍ•Q®CallExpressionÍŠÍ”R°MemberExpressionÍŠÍ’LªIdentifierÍŠÍ¤TextLªIdentifierÍÍ’£popÂÂÂP³ExpressionStatementÍŸÍ©Q®CallExpressionÍŸÍ¨R°MemberExpressionÍŸÍ¦LªIdentifierÍŸÍ¢£RowLªIdentifierÍ£Í¦£popÂÂÂP³ExpressionStatementÍ³Í=Q®CallExpressionÍ³Í<R°MemberExpressionÍ³ÍÑT®ThisExpressionÍ³Í·LªIdentifierÍ¸ÍÑ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍÒÍ6ÀÂÂÂ’LªIdentifierÍÓÍÙ¦elmtIdLªIdentifierÍÛÍê¯isInitialRenderO®BlockStatementÍïÍ6’P³ExpressionStatementÍşÍQ®CallExpressionÍşÍ
+R°MemberExpressionÍşÍLªIdentifierÍşÍ£RowLªIdentifierÍÍ¦createÂÂÂP³ExpressionStatementÍÍ+Q®CallExpressionÍÍ*R°MemberExpressionÍÍ"LªIdentifierÍÍ£RowLªIdentifierÍÍ"¥widthÂÂ‘N§LiteralÍ#Í)¤100%¦'100%'ÂLªIdentifierÍ8Í;£RowÂP³ExpressionStatementÍGÍäQ®CallExpressionÍGÍãR°MemberExpressionÍGÍeT®ThisExpressionÍGÍKLªIdentifierÍLÍe¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍfÍÜÀÂÂÂ’LªIdentifierÍgÍm¦elmtIdLªIdentifierÍoÍ~¯isInitialRenderO®BlockStatementÍƒÍÜ˜P³ExpressionStatementÍ’Í Q®CallExpressionÍ’ÍŸR°MemberExpressionÍ’ÍLªIdentifierÍ’Í–¤TextLªIdentifierÍ—Í¦createÂÂÂP³ExpressionStatementÍ®ÍÁQ®CallExpressionÍ®ÍÀR°MemberExpressionÍ®Í¸LªIdentifierÍ®Í²¤TextLªIdentifierÍ³Í¸¥widthÂÂ‘N§LiteralÍ¹Í¿¤100%¦'100%'ÂP³ExpressionStatementÍÏÍQ®CallExpressionÍÏÍR°MemberExpressionÍÏÍàLªIdentifierÍÏÍÓ¤TextLªIdentifierÍÔÍà¬textOverflowÂÂ‘X°ObjectExpressionÍáÍ‘Y¨PropertyÍãÍÂÂÂLªIdentifierÍãÍë¨overflowR°MemberExpressionÍíÍLªIdentifierÍíÍù¬TextOverflowLªIdentifierÍúÍ¨EllipsisÂÂ¤initÂP³ExpressionStatementÍÍ&Q®CallExpressionÍÍ%R°MemberExpressionÍÍ!LªIdentifierÍÍ¤TextLªIdentifierÍÍ!¨maxLinesÂÂ‘N§LiteralÍ"Í$
+¢10ÂP³ExpressionStatementÍ4ÍTQ®CallExpressionÍ4ÍSR°MemberExpressionÍ4ÍBLªIdentifierÍ4Í8¤TextLªIdentifierÍ9ÍB©textAlignÂÂ‘R°MemberExpressionÍCÍRLªIdentifierÍCÍL©TextAlignLªIdentifierÍMÍR¥StartÂÂÂP³ExpressionStatementÍbÍwQ®CallExpressionÍbÍvR°MemberExpressionÍbÍpLªIdentifierÍbÍf¤TextLªIdentifierÍgÍp©focusableÂÂ‘N§LiteralÍqÍuÃ¤trueÂP³ExpressionStatementÍ…ÍQ®CallExpressionÍ…ÍœR°MemberExpressionÍ…Í–LªIdentifierÍ…Í‰¤TextLªIdentifierÍŠÍ–¬focusOnTouchÂÂ‘N§LiteralÍ—Í›Ã¤trueÂP³ExpressionStatementÍ«ÍÑQ®CallExpressionÍ«ÍĞR°MemberExpressionÍ«Í·LªIdentifierÍ«Í¯¤TextLªIdentifierÍ°Í·§paddingÂÂ‘X°ObjectExpressionÍ¸ÍÏ’Y¨PropertyÍºÍÂÂÂÂLªIdentifierÍºÍ¾¤leftN§LiteralÍÀÍÂ¢24¤initY¨PropertyÍÄÍÍÂÂÂLªIdentifierÍÄÍÉ¥rightN§LiteralÍËÍÍ¢24¤initÂLªIdentifierÍŞÍâ¤TextÂP³ExpressionStatementÍîÍœhQ®CallExpressionÍîÍœgR°MemberExpressionÍîÍT®ThisExpressionÍîÍòLªIdentifierÍóÍ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍÍœ]ÀÂÂÂ’LªIdentifierÍÍ¦elmtIdLªIdentifierÍÍ%¯isInitialRenderO®BlockStatementÍ*Íœ]“P³ExpressionStatementÍ9ÍJQ®CallExpressionÍ9ÍIR°MemberExpressionÍ9ÍGLªIdentifierÍ9Í@§ForEachLªIdentifierÍAÍG¦createÂÂÂU³VariableDeclarationÍXÍ›÷‘V²VariableDeclaratorÍ^Í›öLªIdentifierÍ^Ít¶forEachItemGenFunctionK·ArrowFunctionExpressionÍwÍ›öÀÂÂÂ‘LªIdentifierÍwÍ|¥_itemO®BlockStatementÍ€Í›ö“U³VariableDeclarationÍ“Í¦‘V²VariableDeclaratorÍ™Í¥LªIdentifierÍ™Í¤itemLªIdentifierÍ Í¥¥_item¥constP³ExpressionStatementÍ¸Í›ÌQ®CallExpressionÍ¸Í›ËR°MemberExpressionÍ¸ÍÖT®ThisExpressionÍ¸Í¼LªIdentifierÍ½ÍÖ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ×Í›ÆÀÂÂÂ’LªIdentifierÍØÍŞ¦elmtIdLªIdentifierÍàÍï¯isInitialRenderO®BlockStatementÍôÍ›Æ’P³ExpressionStatementÍ‘Í‘Q®CallExpressionÍ‘Í‘R°MemberExpressionÍ‘Í‘LªIdentifierÍ‘Í‘¢IfLªIdentifierÍ‘Í‘¦createÂÂÂS«IfStatementÍ‘-Í›³_±LogicalExpressionÍ‘1Í‘v_°BinaryExpressionÍ‘1Í‘hP¯ChainExpressionÍ‘1Í‘;R°MemberExpressionÍ‘1Í‘;LªIdentifierÍ‘1Í‘5¤itemLªIdentifierÍ‘7Í‘;¤typeÂÃ¢==R°MemberExpressionÍ‘?Í‘hR°MemberExpressionÍ‘?Í‘]LªIdentifierÍ‘?Í‘TµloginComponentManagerLªIdentifierÍ‘UÍ‘]¨TextTypeÂÂLªIdentifierÍ‘^Í‘hªPLAIN_TEXTÂÂ¢&&P¯ChainExpressionÍ‘lÍ‘vR°MemberExpressionÍ‘lÍ‘vLªIdentifierÍ‘lÍ‘p¤itemLªIdentifierÍ‘rÍ‘v¤textÂÃO®BlockStatementÍ‘xÍ”Ö‘P³ExpressionStatementÍ‘“Í”¿Q®CallExpressionÍ‘“Í”¾R°MemberExpressionÍ‘“Í‘²T®ThisExpressionÍ‘“Í‘—LªIdentifierÍ‘˜Í‘²ºifElseBranchUpdateFunctionÂÂ’N§LiteralÍ‘³Í‘´ ¡0K·ArrowFunctionExpressionÍ‘¶Í”½ÀÂÂÂO®BlockStatementÍ‘¼Í”½‘P³ExpressionStatementÍ‘ÛÍ”¢Q®CallExpressionÍ‘ÛÍ”¡R°MemberExpressionÍ‘ÛÍ‘ùT®ThisExpressionÍ‘ÛÍ‘ßLªIdentifierÍ‘àÍ‘ù¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ‘úÍ”šÀÂÂÂ’LªIdentifierÍ‘ûÍ’¦elmtIdLªIdentifierÍ’Í’¯isInitialRenderO®BlockStatementÍ’Í”š•P³ExpressionStatementÍ’:Í’RQ®CallExpressionÍ’:Í’QR°MemberExpressionÍ’:Í’ELªIdentifierÍ’:Í’>¤SpanLªIdentifierÍ’?Í’E¦createÂÂ‘P¯ChainExpressionÍ’FÍ’PR°MemberExpressionÍ’FÍ’PLªIdentifierÍ’FÍ’J¤itemLªIdentifierÍ’LÍ’P¤textÂÃÂP³ExpressionStatementÍ’tÍ’òQ®CallExpressionÍ’tÍ’ñR°MemberExpressionÍ’tÍ’LªIdentifierÍ’tÍ’x¤SpanLªIdentifierÍ’yÍ’¨fontSizeÂÂ‘X°ObjectExpressionÍ’‚Í’ğ•Y¨PropertyÍ’„Í’“ÂÂÂN§LiteralÍ’„Í’ˆ¢id¤"id"N§LiteralÍ’ŠÍ’“Î€4©125829684¤initY¨PropertyÍ’•Í’¢ÂÂÂN§LiteralÍ’•Í’›¤type¦"type"N§LiteralÍ’Í’¢Í'¥10002¤initY¨PropertyÍ’¤Í’®ÂÂÂLªIdentifierÍ’¤Í’ª¦params`¯ArrayExpressionÍ’¬Í’®¤initY¨PropertyÍ’°Í’×ÂÂÂN§LiteralÍ’°Í’¼ªbundleName¬"bundleName"N§LiteralÍ’¾Í’×·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ’ÙÍ’îÂÂÂN§LiteralÍ’ÙÍ’åªmoduleName¬"moduleName"N§LiteralÍ’çÍ’î¥entry§"entry"¤initÂP³ExpressionStatementÍ“Í““Q®CallExpressionÍ“Í“’R°MemberExpressionÍ“Í“"LªIdentifierÍ“Í“¤SpanLªIdentifierÍ“Í“"©fontColorÂÂ‘X°ObjectExpressionÍ“#Í“‘•Y¨PropertyÍ“%Í“4ÂÂÂN§LiteralÍ“%Í“)¢id¤"id"N§LiteralÍ“+Í“4Î€ Z©125829210¤initY¨PropertyÍ“6Í“CÂÂÂN§LiteralÍ“6Í“<¤type¦"type"N§LiteralÍ“>Í“CÍ'¥10001¤initY¨PropertyÍ“EÍ“OÂÂÂLªIdentifierÍ“EÍ“K¦params`¯ArrayExpressionÍ“MÍ“O¤initY¨PropertyÍ“QÍ“xÂÂÂN§LiteralÍ“QÍ“]ªbundleName¬"bundleName"N§LiteralÍ“_Í“x·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ“zÍ“ÂÂÂN§LiteralÍ“zÍ“†ªmoduleName¬"moduleName"N§LiteralÍ“ˆÍ“¥entry§"entry"¤initÂP³ExpressionStatementÍ“µÍ”5Q®CallExpressionÍ“µÍ”4R°MemberExpressionÍ“µÍ“ÄLªIdentifierÍ“µÍ“¹¤SpanLªIdentifierÍ“ºÍ“ÄªfontFamilyÂÂ‘X°ObjectExpressionÍ“ÅÍ”3•Y¨PropertyÍ“ÇÍ“ÖÂÂÂN§LiteralÍ“ÇÍ“Ë¢id¤"id"N§LiteralÍ“ÍÍ“ÖÎ€>©125829694¤initY¨PropertyÍ“ØÍ“åÂÂÂN§LiteralÍ“ØÍ“Ş¤type¦"type"N§LiteralÍ“àÍ“åÍ'¥10003¤initY¨PropertyÍ“çÍ“ñÂÂÂLªIdentifierÍ“çÍ“í¦params`¯ArrayExpressionÍ“ïÍ“ñ¤initY¨PropertyÍ“óÍ”ÂÂÂN§LiteralÍ“óÍ“ÿªbundleName¬"bundleName"N§LiteralÍ”Í”·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ”Í”1ÂÂÂN§LiteralÍ”Í”(ªmoduleName¬"moduleName"N§LiteralÍ”*Í”1¥entry§"entry"¤initÂP³ExpressionStatementÍ”WÍ”{Q®CallExpressionÍ”WÍ”zR°MemberExpressionÍ”WÍ”fLªIdentifierÍ”WÍ”[¤SpanLªIdentifierÍ”\Í”fªfontWeightÂÂ‘R°MemberExpressionÍ”gÍ”yLªIdentifierÍ”gÍ”qªFontWeightLªIdentifierÍ”rÍ”y§RegularÂÂÂLªIdentifierÍ”œÍ” ¤SpanÂÂS«IfStatementÍ”ñÍ›³_±LogicalExpressionÍ”õÍ•9_°BinaryExpressionÍ”õÍ•+P¯ChainExpressionÍ”õÍ”ÿR°MemberExpressionÍ”õÍ”ÿLªIdentifierÍ”õÍ”ù¤itemLªIdentifierÍ”ûÍ”ÿ¤typeÂÃ¢==R°MemberExpressionÍ•Í•+R°MemberExpressionÍ•Í•!LªIdentifierÍ•Í•µloginComponentManagerLªIdentifierÍ•Í•!¨TextTypeÂÂLªIdentifierÍ•"Í•+©RICH_TEXTÂÂ¢&&P¯ChainExpressionÍ•/Í•9R°MemberExpressionÍ•/Í•9LªIdentifierÍ•/Í•3¤itemLªIdentifierÍ•5Í•9¤textÂÃO®BlockStatementÍ•;Í›‘P³ExpressionStatementÍ•VÍ›Q®CallExpressionÍ•VÍ›R°MemberExpressionÍ•VÍ•uT®ThisExpressionÍ•VÍ•ZLªIdentifierÍ•[Í•uºifElseBranchUpdateFunctionÂÂ’N§LiteralÍ•vÍ•w¡1K·ArrowFunctionExpressionÍ•yÍ›ÀÂÂÂO®BlockStatementÍ•Í›‘P³ExpressionStatementÍ•ÍšëQ®CallExpressionÍ•ÍšêR°MemberExpressionÍ•Í•¼T®ThisExpressionÍ•Í•¢LªIdentifierÍ•£Í•¼¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ•½ÍšãÀÂÂÂ’LªIdentifierÍ•¾Í•Ä¦elmtIdLªIdentifierÍ•ÆÍ•Õ¯isInitialRenderO®BlockStatementÍ•ÚÍšã˜P³ExpressionStatementÍ•ıÍ–Q®CallExpressionÍ•ıÍ–R°MemberExpressionÍ•ıÍ–LªIdentifierÍ•ıÍ–¤SpanLªIdentifierÍ–Í–¦createÂÂ‘P¯ChainExpressionÍ–	Í–R°MemberExpressionÍ–	Í–LªIdentifierÍ–	Í–¤itemLªIdentifierÍ–Í–¤textÂÃÂP³ExpressionStatementÍ–7Í–µQ®CallExpressionÍ–7Í–´R°MemberExpressionÍ–7Í–DLªIdentifierÍ–7Í–;¤SpanLªIdentifierÍ–<Í–D¨fontSizeÂÂ‘X°ObjectExpressionÍ–EÍ–³•Y¨PropertyÍ–GÍ–VÂÂÂN§LiteralÍ–GÍ–K¢id¤"id"N§LiteralÍ–MÍ–VÎ€4©125829684¤initY¨PropertyÍ–XÍ–eÂÂÂN§LiteralÍ–XÍ–^¤type¦"type"N§LiteralÍ–`Í–eÍ'¥10002¤initY¨PropertyÍ–gÍ–qÂÂÂLªIdentifierÍ–gÍ–m¦params`¯ArrayExpressionÍ–oÍ–q¤initY¨PropertyÍ–sÍ–šÂÂÂN§LiteralÍ–sÍ–ªbundleName¬"bundleName"N§LiteralÍ–Í–š·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ–œÍ–±ÂÂÂN§LiteralÍ–œÍ–¨ªmoduleName¬"moduleName"N§LiteralÍ–ªÍ–±¥entry§"entry"¤initÂP³ExpressionStatementÍ–×Í–ñQ®CallExpressionÍ–×Í–ğR°MemberExpressionÍ–×Í–åLªIdentifierÍ–×Í–Û¤SpanLªIdentifierÍ–ÜÍ–å©fontColorÂÂ‘N§LiteralÍ–æÍ–ï§#CE0E2D©'#CE0E2D'ÂP³ExpressionStatementÍ—Í—“Q®CallExpressionÍ—Í—’R°MemberExpressionÍ—Í—"LªIdentifierÍ—Í—¤SpanLªIdentifierÍ—Í—"ªfontFamilyÂÂ‘X°ObjectExpressionÍ—#Í—‘•Y¨PropertyÍ—%Í—4ÂÂÂN§LiteralÍ—%Í—)¢id¤"id"N§LiteralÍ—+Í—4Î€?©125829695¤initY¨PropertyÍ—6Í—CÂÂÂN§LiteralÍ—6Í—<¤type¦"type"N§LiteralÍ—>Í—CÍ'¥10003¤initY¨PropertyÍ—EÍ—OÂÂÂLªIdentifierÍ—EÍ—K¦params`¯ArrayExpressionÍ—MÍ—O¤initY¨PropertyÍ—QÍ—xÂÂÂN§LiteralÍ—QÍ—]ªbundleName¬"bundleName"N§LiteralÍ—_Í—x·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ—zÍ—ÂÂÂN§LiteralÍ—zÍ—†ªmoduleName¬"moduleName"N§LiteralÍ—ˆÍ—¥entry§"entry"¤initÂP³ExpressionStatementÍ—µÍ—ØQ®CallExpressionÍ—µÍ—×R°MemberExpressionÍ—µÍ—ÄLªIdentifierÍ—µÍ—¹¤SpanLªIdentifierÍ—ºÍ—ÄªfontWeightÂÂ‘R°MemberExpressionÍ—ÅÍ—ÖLªIdentifierÍ—ÅÍ—ÏªFontWeightLªIdentifierÍ—ĞÍ—Ö¦MediumÂÂÂP³ExpressionStatementÍ—úÍ˜Q®CallExpressionÍ—úÍ˜R°MemberExpressionÍ—úÍ˜LªIdentifierÍ—úÍ—ş¤SpanLªIdentifierÍ—ÿÍ˜©focusableÂÂ‘N§LiteralÍ˜	Í˜Ã¤trueÂP³ExpressionStatementÍ˜1Í˜IQ®CallExpressionÍ˜1Í˜HR°MemberExpressionÍ˜1Í˜BLªIdentifierÍ˜1Í˜5¤SpanLªIdentifierÍ˜6Í˜B¬focusOnTouchÂÂ‘N§LiteralÍ˜CÍ˜GÃ¤trueÂP³ExpressionStatementÍ˜kÍšÄQ®CallExpressionÍ˜kÍšÃR°MemberExpressionÍ˜kÍ˜wLªIdentifierÍ˜kÍ˜o¤SpanLªIdentifierÍ˜pÍ˜w§onClickÂÂ‘K·ArrowFunctionExpressionÍ˜xÍšÂÀÂÂÂO®BlockStatementÍ˜~ÍšÂ’P³ExpressionStatementÍ˜çÍ™5Q®CallExpressionÍ˜çÍ™4R°MemberExpressionÍ˜çÍ˜ñLªIdentifierÍ˜çÍ˜ì¥hilogLªIdentifierÍ˜íÍ˜ñ¤infoÂÂ“R°MemberExpressionÍ˜òÍ˜ÿT®ThisExpressionÍ˜òÍ˜öLªIdentifierÍ˜÷Í˜ÿ¨domainIdÂÂR°MemberExpressionÍ™Í™T®ThisExpressionÍ™Í™LªIdentifierÍ™Í™¦logTagÂÂÔra•¤type¥start£end«expressions¦quasis¯TemplateLiteralÍ™Í™3‘R°MemberExpressionÍ™)Í™1LªIdentifierÍ™)Í™-¤itemLªIdentifierÍ™.Í™1£tagÂÂ’Ôrb•¤type¥start£end¥value¤tail¯TemplateElementÍ™Í™'Ôrc’£raw¦cooked¸click privacy text tag: ¸click privacy text tag: Âb¯TemplateElementÍ™2Í™2c  ÃÂS«IfStatementÍ™ÍšŸ_°BinaryExpressionÍ™’Í™ÆR°MemberExpressionÍ™’Í™šLªIdentifierÍ™’Í™–¤itemLªIdentifierÍ™—Í™š£tagÂÂ£===R°MemberExpressionÍ™ŸÍ™ÆLªIdentifierÍ™ŸÍ™®¯AgreementDialogLªIdentifierÍ™¯Í™Æ·USER_AUTHENTICATION_TAGÂÂO®BlockStatementÍ™ÈÍšŸ’P³ExpressionStatementÍ™óÍš4Q®CallExpressionÍ™óÍš3R°MemberExpressionÍ™óÍ™ıLªIdentifierÍ™óÍ™ø¥hilogLªIdentifierÍ™ùÍ™ı¤infoÂÂ“R°MemberExpressionÍ™şÍšT®ThisExpressionÍ™şÍšLªIdentifierÍšÍš¨domainIdÂÂR°MemberExpressionÍšÍšT®ThisExpressionÍšÍšLªIdentifierÍšÍš¦logTagÂÂN§LiteralÍšÍš2¶AgreementDialog click.¸'AgreementDialog click.'ÂP³ExpressionStatementÍš^ÍšxQ®CallExpressionÍš^ÍšwR°MemberExpressionÍš^ÍšuT®ThisExpressionÍš^ÍšbLªIdentifierÍšcÍšu²clickHyperlinkTextÂÂÂÀÂLªIdentifierÍšåÍšé¤SpanÂÂO®BlockStatementÍ›:Í›³‘P³ExpressionStatementÍ›UÍ›œQ®CallExpressionÍ›UÍ››R°MemberExpressionÍ›UÍ›tT®ThisExpressionÍ›UÍ›YLªIdentifierÍ›ZÍ›tºifElseBranchUpdateFunctionÂÂ’N§LiteralÍ›uÍ›v¡2K·ArrowFunctionExpressionÍ›xÍ›šÀÂÂÂO®BlockStatementÍ›~Í›šÂLªIdentifierÍ›ÈÍ›Ê¢IfÂP³ExpressionStatementÍ›ŞÍ›çQ®CallExpressionÍ›ŞÍ›æR°MemberExpressionÍ›ŞÍ›äLªIdentifierÍ›ŞÍ›à¢IfLªIdentifierÍ›áÍ›ä£popÂÂÂ¥constP³ExpressionStatementÍœÍœRQ®CallExpressionÍœÍœQR°MemberExpressionÍœÍœT®ThisExpressionÍœÍœ	LªIdentifierÍœ
+ÍœµforEachUpdateFunctionÂÂ“LªIdentifierÍœ Íœ&¦elmtIdR°MemberExpressionÍœ(Íœ8T®ThisExpressionÍœ(Íœ,LªIdentifierÍœ-Íœ8«privacyTextÂÂLªIdentifierÍœ:ÍœP¶forEachItemGenFunctionÂLªIdentifierÍœ_Íœf§ForEachÂP³ExpressionStatementÍœrÍœ€Q®CallExpressionÍœrÍœR°MemberExpressionÍœrÍœ}LªIdentifierÍœrÍœy§ForEachLªIdentifierÍœzÍœ}£popÂÂÂP³ExpressionStatementÍœŠÍœ•Q®CallExpressionÍœŠÍœ”R°MemberExpressionÍœŠÍœ’LªIdentifierÍœŠÍœ¤TextLªIdentifierÍœÍœ’£popÂÂÂP³ExpressionStatementÍœŸÍœ©Q®CallExpressionÍœŸÍœ¨R°MemberExpressionÍœŸÍœ¦LªIdentifierÍœŸÍœ¢£RowLªIdentifierÍœ£Íœ¦£popÂÂÂP³ExpressionStatementÍœ³ÍÍQ®CallExpressionÍœ³ÍÌR°MemberExpressionÍœ³ÍœÑT®ThisExpressionÍœ³Íœ·LªIdentifierÍœ¸ÍœÑ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍœÒÍÅÀÂÂÂ’LªIdentifierÍœÓÍœÙ¦elmtIdLªIdentifierÍœÛÍœê¯isInitialRenderO®BlockStatementÍœïÍÅ’P³ExpressionStatementÍœşÍJQ®CallExpressionÍœşÍIR°MemberExpressionÍœşÍ	LªIdentifierÍœşÍ¤FlexLªIdentifierÍÍ	¦createÂÂ‘X°ObjectExpressionÍ
+ÍH‘Y¨PropertyÍÍ9ÂÂÂLªIdentifierÍÍ&©directionR°MemberExpressionÍ(Í9LªIdentifierÍ(Í5­FlexDirectionLªIdentifierÍ6Í9£RowÂÂ¤initÂP³ExpressionStatementÍXÍºQ®CallExpressionÍXÍ¹R°MemberExpressionÍXÍcLªIdentifierÍXÍ\¤FlexLªIdentifierÍ]Íc¦marginÂÂ‘X°ObjectExpressionÍdÍ¸”Y¨PropertyÍwÍ}ÂÂÂLªIdentifierÍwÍz£topN§LiteralÍ|Í}¡8¤initY¨PropertyÍÍÂÂÂLªIdentifierÍÍ”¤leftX°ObjectExpressionÍ–Í•Y¨PropertyÍ˜Í§ÂÂÂN§LiteralÍ˜Íœ¢id¤"id"N§LiteralÍÍ§Î€s©125829747¤initY¨PropertyÍ©Í¶ÂÂÂN§LiteralÍ©Í¯¤type¦"type"N§LiteralÍ±Í¶Í'¥10002¤initY¨PropertyÍ¸ÍÂÂÂÂLªIdentifierÍ¸Í¾¦params`¯ArrayExpressionÍÀÍÂ¤initY¨PropertyÍÄÍëÂÂÂN§LiteralÍÄÍĞªbundleName¬"bundleName"N§LiteralÍÒÍë·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍíÍÂÂÂN§LiteralÍíÍùªmoduleName¬"moduleName"N§LiteralÍûÍ¥entry§"entry"¤init¤initY¨PropertyÍÍŒÂÂÂLªIdentifierÍÍ¥rightX°ObjectExpressionÍÍŒ•Y¨PropertyÍ Í/ÂÂÂN§LiteralÍ Í$¢id¤"id"N§LiteralÍ&Í/Î€s©125829747¤initY¨PropertyÍ1Í>ÂÂÂN§LiteralÍ1Í7¤type¦"type"N§LiteralÍ9Í>Í'¥10002¤initY¨PropertyÍ@ÍJÂÂÂLªIdentifierÍ@ÍF¦params`¯ArrayExpressionÍHÍJ¤initY¨PropertyÍLÍsÂÂÂN§LiteralÍLÍXªbundleName¬"bundleName"N§LiteralÍZÍs·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍuÍŠÂÂÂN§LiteralÍuÍªmoduleName¬"moduleName"N§LiteralÍƒÍŠ¥entry§"entry"¤init¤initY¨PropertyÍŸÍ©ÂÂÂLªIdentifierÍŸÍ¥¦bottomN§LiteralÍ§Í©¢16¤initÂLªIdentifierÍÇÍË¤FlexÂP³ExpressionStatementÍ×Í£6Q®CallExpressionÍ×Í£5R°MemberExpressionÍ×ÍõT®ThisExpressionÍ×ÍÛLªIdentifierÍÜÍõ¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍöÍ£,ÀÂÂÂ’LªIdentifierÍ÷Íı¦elmtIdLªIdentifierÍÿÍŸ¯isInitialRenderO®BlockStatementÍŸÍ£,œP³ExpressionStatementÍŸ"ÍŸpQ®CallExpressionÍŸ"ÍŸoR°MemberExpressionÍŸ"ÍŸ8LªIdentifierÍŸ"ÍŸ(¦ButtonLªIdentifierÍŸ)ÍŸ8¯createWithLabelÂÂ’N§LiteralÍŸ9ÍŸ=¦å–æ¶ˆ¨'å–æ¶ˆ'X°ObjectExpressionÍŸ?ÍŸn’Y¨PropertyÍŸAÍŸYÂÂÂLªIdentifierÍŸAÍŸE¤typeR°MemberExpressionÍŸGÍŸYLªIdentifierÍŸGÍŸQªButtonTypeLªIdentifierÍŸRÍŸY§CapsuleÂÂ¤initY¨PropertyÍŸ[ÍŸlÂÂÂLªIdentifierÍŸ[ÍŸf«stateEffectN§LiteralÍŸhÍŸlÃ¤true¤initÂP³ExpressionStatementÍŸ~ÍŸ«Q®CallExpressionÍŸ~ÍŸªR°MemberExpressionÍŸ~ÍŸ‡LªIdentifierÍŸ~ÍŸ„¦ButtonLªIdentifierÍŸ…ÍŸ‡¢idÂÂ‘N§LiteralÍŸˆÍŸ©¿loginPanel_agreement_cancel_btnÙ!'loginPanel_agreement_cancel_btn'ÂP³ExpressionStatementÍŸ¹Í :Q®CallExpressionÍŸ¹Í 9R°MemberExpressionÍŸ¹ÍŸÉLªIdentifierÍŸ¹ÍŸ¿¦ButtonLªIdentifierÍŸÀÍŸÉ©fontColorÂÂ‘X°ObjectExpressionÍŸÊÍ 8•Y¨PropertyÍŸÌÍŸÛÂÂÂN§LiteralÍŸÌÍŸĞ¢id¤"id"N§LiteralÍŸÒÍŸÛÎ€ Z©125829210¤initY¨PropertyÍŸİÍŸêÂÂÂN§LiteralÍŸİÍŸã¤type¦"type"N§LiteralÍŸåÍŸêÍ'¥10001¤initY¨PropertyÍŸìÍŸöÂÂÂLªIdentifierÍŸìÍŸò¦params`¯ArrayExpressionÍŸôÍŸö¤initY¨PropertyÍŸøÍ ÂÂÂN§LiteralÍŸøÍ ªbundleName¬"bundleName"N§LiteralÍ Í ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ !Í 6ÂÂÂN§LiteralÍ !Í -ªmoduleName¬"moduleName"N§LiteralÍ /Í 6¥entry§"entry"¤initÂP³ExpressionStatementÍ HÍ ÈQ®CallExpressionÍ HÍ ÇR°MemberExpressionÍ HÍ WLªIdentifierÍ HÍ N¦ButtonLªIdentifierÍ OÍ W¨fontSizeÂÂ‘X°ObjectExpressionÍ XÍ Æ•Y¨PropertyÍ ZÍ iÂÂÂN§LiteralÍ ZÍ ^¢id¤"id"N§LiteralÍ `Í iÎ€1©125829681¤initY¨PropertyÍ kÍ xÂÂÂN§LiteralÍ kÍ q¤type¦"type"N§LiteralÍ sÍ xÍ'¥10002¤initY¨PropertyÍ zÍ „ÂÂÂLªIdentifierÍ zÍ €¦params`¯ArrayExpressionÍ ‚Í „¤initY¨PropertyÍ †Í ­ÂÂÂN§LiteralÍ †Í ’ªbundleName¬"bundleName"N§LiteralÍ ”Í ­·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ ¯Í ÄÂÂÂN§LiteralÍ ¯Í »ªmoduleName¬"moduleName"N§LiteralÍ ½Í Ä¥entry§"entry"¤initÂP³ExpressionStatementÍ ÖÍ¡XQ®CallExpressionÍ ÖÍ¡WR°MemberExpressionÍ ÖÍ çLªIdentifierÍ ÖÍ Ü¦ButtonLªIdentifierÍ İÍ çªfontFamilyÂÂ‘X°ObjectExpressionÍ èÍ¡V•Y¨PropertyÍ êÍ ùÂÂÂN§LiteralÍ êÍ î¢id¤"id"N§LiteralÍ ğÍ ùÎ€?©125829695¤initY¨PropertyÍ ûÍ¡ÂÂÂN§LiteralÍ ûÍ¡¤type¦"type"N§LiteralÍ¡Í¡Í'¥10003¤initY¨PropertyÍ¡
+Í¡ÂÂÂLªIdentifierÍ¡
+Í¡¦params`¯ArrayExpressionÍ¡Í¡¤initY¨PropertyÍ¡Í¡=ÂÂÂN§LiteralÍ¡Í¡"ªbundleName¬"bundleName"N§LiteralÍ¡$Í¡=·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ¡?Í¡TÂÂÂN§LiteralÍ¡?Í¡KªmoduleName¬"moduleName"N§LiteralÍ¡MÍ¡T¥entry§"entry"¤initÂP³ExpressionStatementÍ¡fÍ¡Q®CallExpressionÍ¡fÍ¡R°MemberExpressionÍ¡fÍ¡|LªIdentifierÍ¡fÍ¡l¦ButtonLªIdentifierÍ¡mÍ¡|¯backgroundColorÂÂ‘R°MemberExpressionÍ¡}Í¡LªIdentifierÍ¡}Í¡‚¥ColorLªIdentifierÍ¡ƒÍ¡«TransparentÂÂÂP³ExpressionStatementÍ¡Í¡ÃQ®CallExpressionÍ¡Í¡ÂR°MemberExpressionÍ¡Í¡¯LªIdentifierÍ¡Í¡¤¦ButtonLªIdentifierÍ¡¥Í¡¯ªfontWeightÂÂ‘R°MemberExpressionÍ¡°Í¡ÁLªIdentifierÍ¡°Í¡ºªFontWeightLªIdentifierÍ¡»Í¡Á¦MediumÂÂÂP³ExpressionStatementÍ¡ÑÍ¡èQ®CallExpressionÍ¡ÑÍ¡çR°MemberExpressionÍ¡ÑÍ¡áLªIdentifierÍ¡ÑÍ¡×¦ButtonLªIdentifierÍ¡ØÍ¡á©focusableÂÂ‘N§LiteralÍ¡âÍ¡æÃ¤trueÂP³ExpressionStatementÍ¡öÍ¢Q®CallExpressionÍ¡öÍ¢R°MemberExpressionÍ¡öÍ¢	LªIdentifierÍ¡öÍ¡ü¦ButtonLªIdentifierÍ¡ıÍ¢	¬focusOnTouchÂÂ‘N§LiteralÍ¢
+Í¢Ã¤trueÂP³ExpressionStatementÍ¢Í¢VQ®CallExpressionÍ¢Í¢UR°MemberExpressionÍ¢Í¢3LªIdentifierÍ¢Í¢$¦ButtonLªIdentifierÍ¢%Í¢3®constraintSizeÂÂ‘X°ObjectExpressionÍ¢4Í¢T’Y¨PropertyÍ¢6Í¢CÂÂÂLªIdentifierÍ¢6Í¢?©minHeightN§LiteralÍ¢AÍ¢C(¢40¤initY¨PropertyÍ¢EÍ¢RÂÂÂLªIdentifierÍ¢EÍ¢M¨maxWidthN§LiteralÍ¢OÍ¢RÍ£400¤initÂP³ExpressionStatementÍ¢dÍ¢xQ®CallExpressionÍ¢dÍ¢wR°MemberExpressionÍ¢dÍ¢pLªIdentifierÍ¢dÍ¢j¦ButtonLªIdentifierÍ¢kÍ¢p¥widthÂÂ‘N§LiteralÍ¢qÍ¢v£50%¥'50%'ÂP³ExpressionStatementÍ¢†Í£!Q®CallExpressionÍ¢†Í£ R°MemberExpressionÍ¢†Í¢”LªIdentifierÍ¢†Í¢Œ¦ButtonLªIdentifierÍ¢Í¢”§onClickÂÂ‘K·ArrowFunctionExpressionÍ¢•Í£ÀÂÂÂO®BlockStatementÍ¢›Í£’P³ExpressionStatementÍ¢®Í¢ğQ®CallExpressionÍ¢®Í¢ïR°MemberExpressionÍ¢®Í¢¸LªIdentifierÍ¢®Í¢³¥hilogLªIdentifierÍ¢´Í¢¸¤infoÂÂ“R°MemberExpressionÍ¢¹Í¢ÆT®ThisExpressionÍ¢¹Í¢½LªIdentifierÍ¢¾Í¢Æ¨domainIdÂÂR°MemberExpressionÍ¢ÈÍ¢ÓT®ThisExpressionÍ¢ÈÍ¢ÌLªIdentifierÍ¢ÍÍ¢Ó¦logTagÂÂN§LiteralÍ¢ÕÍ¢î·AgreementDialog cancel.¹'AgreementDialog cancel.'ÂP³ExpressionStatementÍ£Í£Q®CallExpressionÍ£Í£R°MemberExpressionÍ£Í£T®ThisExpressionÍ£Í£LªIdentifierÍ£Í£¦cancelÂÂÂÂLªIdentifierÍ£.Í£4¦ButtonÂP³ExpressionStatementÍ£@Í£MQ®CallExpressionÍ£@Í£LR°MemberExpressionÍ£@Í£JLªIdentifierÍ£@Í£F¦ButtonLªIdentifierÍ£GÍ£J£popÂÂÂP³ExpressionStatementÍ£WÍ§`Q®CallExpressionÍ£WÍ§_R°MemberExpressionÍ£WÍ£uT®ThisExpressionÍ£WÍ£[LªIdentifierÍ£\Í£u¹observeComponentCreation2ÂÂ’K·ArrowFunctionExpressionÍ£vÍ§VÀÂÂÂ’LªIdentifierÍ£wÍ£}¦elmtIdLªIdentifierÍ£Í£¯isInitialRenderO®BlockStatementÍ£“Í§VœP³ExpressionStatementÍ£¢Í£óQ®CallExpressionÍ£¢Í£òR°MemberExpressionÍ£¢Í£¸LªIdentifierÍ£¢Í£¨¦ButtonLªIdentifierÍ£©Í£¸¯createWithLabelÂÂ’N§LiteralÍ£¹Í£À¯åŒæ„å¹¶ç™»å½•±'åŒæ„å¹¶ç™»å½•'X°ObjectExpressionÍ£ÂÍ£ñ’Y¨PropertyÍ£ÄÍ£ÜÂÂÂLªIdentifierÍ£ÄÍ£È¤typeR°MemberExpressionÍ£ÊÍ£ÜLªIdentifierÍ£ÊÍ£ÔªButtonTypeLªIdentifierÍ£ÕÍ£Ü§CapsuleÂÂ¤initY¨PropertyÍ£ŞÍ£ïÂÂÂLªIdentifierÍ£ŞÍ£é«stateEffectN§LiteralÍ£ëÍ£ïÃ¤true¤initÂP³ExpressionStatementÍ¤Í¤>Q®CallExpressionÍ¤Í¤=R°MemberExpressionÍ¤Í¤
+LªIdentifierÍ¤Í¤¦ButtonLªIdentifierÍ¤Í¤
+¢idÂÂ‘N§LiteralÍ¤Í¤<Ù/loginPanel_agreement_dialog_huawei_id_login_btnÙ1'loginPanel_agreement_dialog_huawei_id_login_btn'ÂP³ExpressionStatementÍ¤LÍ¤jQ®CallExpressionÍ¤LÍ¤iR°MemberExpressionÍ¤LÍ¤\LªIdentifierÍ¤LÍ¤R¦ButtonLªIdentifierÍ¤SÍ¤\©fontColorÂÂ‘R°MemberExpressionÍ¤]Í¤hLªIdentifierÍ¤]Í¤b¥ColorLªIdentifierÍ¤cÍ¤h¥WhiteÂÂÂP³ExpressionStatementÍ¤xÍ¤šQ®CallExpressionÍ¤xÍ¤™R°MemberExpressionÍ¤xÍ¤LªIdentifierÍ¤xÍ¤~¦ButtonLªIdentifierÍ¤Í¤¯backgroundColorÂÂ‘N§LiteralÍ¤Í¤˜§#CE0E2D©'#CE0E2D'ÂP³ExpressionStatementÍ¤¨Í¥(Q®CallExpressionÍ¤¨Í¥'R°MemberExpressionÍ¤¨Í¤·LªIdentifierÍ¤¨Í¤®¦ButtonLªIdentifierÍ¤¯Í¤·¨fontSizeÂÂ‘X°ObjectExpressionÍ¤¸Í¥&•Y¨PropertyÍ¤ºÍ¤ÉÂÂÂN§LiteralÍ¤ºÍ¤¾¢id¤"id"N§LiteralÍ¤ÀÍ¤ÉÎ€1©125829681¤initY¨PropertyÍ¤ËÍ¤ØÂÂÂN§LiteralÍ¤ËÍ¤Ñ¤type¦"type"N§LiteralÍ¤ÓÍ¤ØÍ'¥10002¤initY¨PropertyÍ¤ÚÍ¤äÂÂÂLªIdentifierÍ¤ÚÍ¤à¦params`¯ArrayExpressionÍ¤âÍ¤ä¤initY¨PropertyÍ¤æÍ¥ÂÂÂN§LiteralÍ¤æÍ¤òªbundleName¬"bundleName"N§LiteralÍ¤ôÍ¥·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ¥Í¥$ÂÂÂN§LiteralÍ¥Í¥ªmoduleName¬"moduleName"N§LiteralÍ¥Í¥$¥entry§"entry"¤initÂP³ExpressionStatementÍ¥6Í¥¸Q®CallExpressionÍ¥6Í¥·R°MemberExpressionÍ¥6Í¥GLªIdentifierÍ¥6Í¥<¦ButtonLªIdentifierÍ¥=Í¥GªfontFamilyÂÂ‘X°ObjectExpressionÍ¥HÍ¥¶•Y¨PropertyÍ¥JÍ¥YÂÂÂN§LiteralÍ¥JÍ¥N¢id¤"id"N§LiteralÍ¥PÍ¥YÎ€?©125829695¤initY¨PropertyÍ¥[Í¥hÂÂÂN§LiteralÍ¥[Í¥a¤type¦"type"N§LiteralÍ¥cÍ¥hÍ'¥10003¤initY¨PropertyÍ¥jÍ¥tÂÂÂLªIdentifierÍ¥jÍ¥p¦params`¯ArrayExpressionÍ¥rÍ¥t¤initY¨PropertyÍ¥vÍ¥ÂÂÂN§LiteralÍ¥vÍ¥‚ªbundleName¬"bundleName"N§LiteralÍ¥„Í¥·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤initY¨PropertyÍ¥ŸÍ¥´ÂÂÂN§LiteralÍ¥ŸÍ¥«ªmoduleName¬"moduleName"N§LiteralÍ¥­Í¥´¥entry§"entry"¤initÂP³ExpressionStatementÍ¥ÆÍ¥ëQ®CallExpressionÍ¥ÆÍ¥êR°MemberExpressionÍ¥ÆÍ¥×LªIdentifierÍ¥ÆÍ¥Ì¦ButtonLªIdentifierÍ¥ÍÍ¥×ªfontWeightÂÂ‘R°MemberExpressionÍ¥ØÍ¥éLªIdentifierÍ¥ØÍ¥âªFontWeightLªIdentifierÍ¥ãÍ¥é¦MediumÂÂÂP³ExpressionStatementÍ¥ùÍ¦Q®CallExpressionÍ¥ùÍ¦R°MemberExpressionÍ¥ùÍ¦	LªIdentifierÍ¥ùÍ¥ÿ¦ButtonLªIdentifierÍ¦ Í¦	©focusableÂÂ‘N§LiteralÍ¦
+Í¦Ã¤trueÂP³ExpressionStatementÍ¦Í¦8Q®CallExpressionÍ¦Í¦7R°MemberExpressionÍ¦Í¦1LªIdentifierÍ¦Í¦$¦ButtonLªIdentifierÍ¦%Í¦1¬focusOnTouchÂÂ‘N§LiteralÍ¦2Í¦6Ã¤trueÂP³ExpressionStatementÍ¦FÍ¦~Q®CallExpressionÍ¦FÍ¦}R°MemberExpressionÍ¦FÍ¦[LªIdentifierÍ¦FÍ¦L¦ButtonLªIdentifierÍ¦MÍ¦[®constraintSizeÂÂ‘X°ObjectExpressionÍ¦\Í¦|’Y¨PropertyÍ¦^Í¦kÂÂÂLªIdentifierÍ¦^Í¦g©minHeightN§LiteralÍ¦iÍ¦k(¢40¤initY¨PropertyÍ¦mÍ¦zÂÂÂLªIdentifierÍ¦mÍ¦u¨maxWidthN§LiteralÍ¦wÍ¦zÍ£400¤initÂP³ExpressionStatementÍ¦ŒÍ¦ Q®CallExpressionÍ¦ŒÍ¦ŸR°MemberExpressionÍ¦ŒÍ¦˜LªIdentifierÍ¦ŒÍ¦’¦ButtonLªIdentifierÍ¦“Í¦˜¥widthÂÂ‘N§LiteralÍ¦™Í¦£50%¥'50%'ÂP³ExpressionStatementÍ¦®Í§KQ®CallExpressionÍ¦®Í§JR°MemberExpressionÍ¦®Í¦¼LªIdentifierÍ¦®Í¦´¦ButtonLªIdentifierÍ¦µÍ¦¼§onClickÂÂ‘K·ArrowFunctionExpressionÍ¦½Í§IÀÂÂÂO®BlockStatementÍ¦ÃÍ§I’P³ExpressionStatementÍ¦ÖÍ§Q®CallExpressionÍ¦ÖÍ§R°MemberExpressionÍ¦ÖÍ¦àLªIdentifierÍ¦ÖÍ¦Û¥hilogLªIdentifierÍ¦ÜÍ¦à¤infoÂÂ“R°MemberExpressionÍ¦áÍ¦îT®ThisExpressionÍ¦áÍ¦åLªIdentifierÍ¦æÍ¦î¨domainIdÂÂR°MemberExpressionÍ¦ğÍ¦ûT®ThisExpressionÍ¦ğÍ¦ôLªIdentifierÍ¦õÍ¦û¦logTagÂÂN§LiteralÍ¦ıÍ§¸AgreementDialog confirm.º'AgreementDialog confirm.'ÂP³ExpressionStatementÍ§+Í§:Q®CallExpressionÍ§+Í§9R°MemberExpressionÍ§+Í§7T®ThisExpressionÍ§+Í§/LªIdentifierÍ§0Í§7§confirmÂÂÂÂLªIdentifierÍ§XÍ§^¦ButtonÂP³ExpressionStatementÍ§jÍ§wQ®CallExpressionÍ§jÍ§vR°MemberExpressionÍ§jÍ§tLªIdentifierÍ§jÍ§p¦ButtonLªIdentifierÍ§qÍ§t£popÂÂÂP³ExpressionStatementÍ§Í§ŒQ®CallExpressionÍ§Í§‹R°MemberExpressionÍ§Í§‰LªIdentifierÍ§Í§…¤FlexLªIdentifierÍ§†Í§‰£popÂÂÂP³ExpressionStatementÍ§–Í§£Q®CallExpressionÍ§–Í§¢R°MemberExpressionÍ§–Í§ LªIdentifierÍ§–Í§œ¦ColumnLªIdentifierÍ§Í§ £popÂÂÂ]°MethodDefinitionÍ§°Í§èÂÂLªIdentifierÍ§°Í§¸¨rerender¦methodK²FunctionExpressionÍ§¸Í§èÀÂÂÂO®BlockStatementÍ§»Í§è‘P³ExpressionStatementÍ§ÆÍ§áQ®CallExpressionÍ§ÆÍ§àR°MemberExpressionÍ§ÆÍ§ŞT®ThisExpressionÍ§ÆÍ§ÊLªIdentifierÍ§ËÍ§Ş³updateDirtyElementsÂÂÂÀJ¶ExportNamedDeclarationÍ¨&Í¨;U³VariableDeclarationÍ¨-Í¨;‘V²VariableDeclaratorÍ¨1Í¨:LªIdentifierÍ¨1Í¨:©ErrorCodeÀ£varÀ”Ôrd•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€Ì¢‘Ôre•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰ÌLªIdentifierÌ‰Ì¤utilLªIdentifierÌ‰Ì¤utilN§LiteralÌ•Ì¡ª@kit.ArkTS¬'@kit.ArkTS'd±ImportDeclarationÌ¤Í“e¯ImportSpecifierÌ­Ì»LªIdentifierÌ­Ì»®authenticationLªIdentifierÌ­Ì»®authenticatione¯ImportSpecifierÌ½ÌÒLªIdentifierÌ½ÌÒµloginComponentManagerLªIdentifierÌ½ÌÒµloginComponentManagere¯ImportSpecifierÌÔÌëLªIdentifierÌÔÌë·LoginWithHuaweiIDButtonLªIdentifierÌÔÌë·LoginWithHuaweiIDButtonN§LiteralÌóÍ¯@kit.AccountKit±'@kit.AccountKit'd±ImportDeclarationÍÍ;‘e¯ImportSpecifierÍÍLªIdentifierÍÍ¥hilogLªIdentifierÍÍ¥hilogN§LiteralÍÍ:»@kit.PerformanceAnalysisKit½'@kit.PerformanceAnalysisKit'd±ImportDeclarationÍ=Ío’e¯ImportSpecifierÍFÍRLªIdentifierÍFÍR¬promptActionLªIdentifierÍFÍR¬promptActione¯ImportSpecifierÍTÍZLªIdentifierÍTÍZ¦routerLªIdentifierÍTÍZ¦routerN§LiteralÍbÍnª@kit.ArkUI¬'@kit.ArkUI'

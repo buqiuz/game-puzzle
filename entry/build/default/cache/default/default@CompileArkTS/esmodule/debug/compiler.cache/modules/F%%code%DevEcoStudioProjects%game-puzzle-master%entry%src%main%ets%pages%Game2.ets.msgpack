@@ -1,0 +1,373 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ3‘if (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent";
+import GameRules from "../model/GameRules";
+import ImageModel from "../model/ImageModel";
+import { beginButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+export function PageGameBuilder(parent = null) {
+    {
+        (parent ? parent : this).observeComponentCreation2((elmtId, isInitialRender) => {
+            if (isInitialRender) {
+                let componentCall = new Game2(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 12, col: 3 });
+                ViewPU.create(componentCall);
+                let paramsLambda = () => {
+                    return {};
+                };
+                componentCall.paramsGenerator_ = paramsLambda;
+            }
+            else {
+                (parent ? parent : this).updateStateVarsOfChildByElmtId(elmtId, {});
+            }
+        }, { name: "Game2" });
+    }
+}
+class Game2 extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__numArray = new ObservedPropertyObjectPU([], this, "numArray");
+        this.__templateIndex = new ObservedPropertySimplePU(1, this, "templateIndex");
+        this.__showDigit = new ObservedPropertySimplePU(false, this, "showDigit");
+        this.__gameTime = new ObservedPropertySimplePU(200, this, "gameTime");
+        this.__timer = new ObservedPropertySimplePU(-1, this, "timer");
+        this.__isPause = new ObservedPropertySimplePU(false, this, "isPause");
+        this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
+        this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
+        this.ImageModel = new ImageModel(getContext(this));
+        this.pageInfos = new NavPathStack();
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.numArray !== undefined) {
+            this.numArray = params.numArray;
+        }
+        if (params.templateIndex !== undefined) {
+            this.templateIndex = params.templateIndex;
+        }
+        if (params.showDigit !== undefined) {
+            this.showDigit = params.showDigit;
+        }
+        if (params.gameTime !== undefined) {
+            this.gameTime = params.gameTime;
+        }
+        if (params.timer !== undefined) {
+            this.timer = params.timer;
+        }
+        if (params.isPause !== undefined) {
+            this.isPause = params.isPause;
+        }
+        if (params.isGameStart !== undefined) {
+            this.isGameStart = params.isGameStart;
+        }
+        if (params.game !== undefined) {
+            this.game = params.game;
+        }
+        if (params.ImageModel !== undefined) {
+            this.ImageModel = params.ImageModel;
+        }
+        if (params.pageInfos !== undefined) {
+            this.pageInfos = params.pageInfos;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__templateIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__showDigit.purgeDependencyOnElmtId(rmElmtId);
+        this.__gameTime.purgeDependencyOnElmtId(rmElmtId);
+        this.__timer.purgeDependencyOnElmtId(rmElmtId);
+        this.__isPause.purgeDependencyOnElmtId(rmElmtId);
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__game.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__numArray.aboutToBeDeleted();
+        this.__templateIndex.aboutToBeDeleted();
+        this.__showDigit.aboutToBeDeleted();
+        this.__gameTime.aboutToBeDeleted();
+        this.__timer.aboutToBeDeleted();
+        this.__isPause.aboutToBeDeleted();
+        this.__isGameStart.aboutToBeDeleted();
+        this.__game.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get templateIndex() {
+        return this.__templateIndex.get();
+    }
+    set templateIndex(newValue) {
+        this.__templateIndex.set(newValue);
+    }
+    get showDigit() {
+        return this.__showDigit.get();
+    }
+    set showDigit(newValue) {
+        this.__showDigit.set(newValue);
+    }
+    get gameTime() {
+        return this.__gameTime.get();
+    }
+    set gameTime(newValue) {
+        this.__gameTime.set(newValue);
+    }
+    get timer() {
+        return this.__timer.get();
+    }
+    set timer(newValue) {
+        this.__timer.set(newValue);
+    }
+    get isPause() {
+        return this.__isPause.get();
+    }
+    set isPause(newValue) {
+        this.__isPause.set(newValue);
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get game() {
+        return this.__game.get();
+    }
+    set game(newValue) {
+        this.__game.set(newValue);
+    }
+    async aboutToAppear() {
+        // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+        // this.imgData = await this.ImageModel.getAllImg();
+        // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+        // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            NavDestination.create(() => {
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                }, Column);
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 42, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "TimerComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 43, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    templateIndex: this.templateIndex,
+                                    numArray: this.numArray,
+                                    isGameStart: this.isGameStart
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageSelectComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 44, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex,
+                                    showDigit: this.showDigit,
+                                    gameTime: this.gameTime,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageGridComponent" });
+                }
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.height('10%');
+                }, Column);
+                Column.pop();
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 50, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime,
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "beginButton" });
+                }
+                Column.pop();
+            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Game2" });
+            NavDestination.title('é—¯å…³æ¨¡å¼');
+            NavDestination.onReady((context) => {
+                this.pageInfos = context.pathStack;
+                try {
+                    this.gameTime = context?.pathInfo?.param?.gameTime;
+                    this.templateIndex = context?.pathInfo?.param?.templateIndex;
+                    this.showDigit = context?.pathInfo?.param?.isShowDigit;
+                }
+                catch (e) {
+                    console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`);
+                }
+            });
+            NavDestination.menus([
+                { 'value': "æœç´¢", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
+                        if (!this.isGameStart) {
+                            if (this.numArray.length) {
+                                this.numArray = [];
+                            }
+                            this.numArray = await this.ImageModel.getPictureFromAlbum(this.templateIndex + 2);
+                        }
+                    } },
+            ]);
+        }, NavDestination);
+        NavDestination.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+(function () {
+    if (typeof NavigationBuilderRegister === "function") {
+        NavigationBuilderRegister("Game2", wrapBuilder(PageGameBuilder));
+    }
+})();
+//# sourceMappingURL=Game2.js.mapÂ–Ù^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsÙRF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\pages\Game2.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ÃÚâimport PictureItem from "../model/PictureItem";
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent"
+import GameRules from "../model/GameRules";
+import ImageModel from "../model/ImageModel";
+import { beginButton, selectPictureButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+import { PageParam } from "../viewModel/PageParam";
+
+@Builder
+export function PageGameBuilder() {
+  Game2()
+}
+
+@Component
+struct Game2 {
+  @State numArray: PictureItem[] = [];
+  @State templateIndex: number = 1;
+  @State showDigit:boolean =false;
+  @State gameTime: number = 200;
+  @State timer: number = -1;
+  @State isPause: boolean=false;
+  @State isGameStart: boolean = false;
+  @State game: GameRules = new GameRules();
+
+  private ImageModel: ImageModel = new ImageModel(getContext(this));
+
+  // solvedPictures: PictureItem[] | null = solvePuzzle(this.numArray);
+
+  pageInfos: NavPathStack = new NavPathStack();
+
+  async aboutToAppear() {
+    // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+    // this.imgData = await this.ImageModel.getAllImg();
+    // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+    // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+  }
+
+  build() {
+    NavDestination(){
+      Column(){
+        TimerComponent({gameTime:this.gameTime})
+        ImageSelectComponent({templateIndex:this.templateIndex,numArray:this.numArray,isGameStart:this.isGameStart})
+        ImageGridComponent({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex,showDigit:this.showDigit,gameTime:this.gameTime,timer:this.timer,game:this.game,isPause:this.isPause})
+
+        Column(){
+        }
+        .height('10%')
+
+        beginButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause})
+        // selectPictureButton({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex})
+      }
+    }.title('é—¯å…³æ¨¡å¼')
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      try {
+        this.gameTime = (context?.pathInfo?.param as PageParam)?.gameTime;
+        this.templateIndex = (context?.pathInfo?.param as PageParam)?.templateIndex;
+        this.showDigit = (context?.pathInfo?.param as PageParam)?.isShowDigit;
+      } catch (e) {
+        console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`)
+      }
+    })
+    .menus([
+      {'value': "æœç´¢", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
+        if (!this.isGameStart){
+          if (this.numArray.length) {
+            this.numArray=[]
+          }
+          this.numArray=await this.ImageModel.getPictureFromAlbum(this.templateIndex+2)
+        }
+      }},
+    ])
+
+
+  }
+}ÀÔrC–º../View/ImageGridComponent¼../View/ImageSelectComponent³../model/ImageModel·../View/ButtonComponent²../model/GameRules¶../View/TimerComponentÔrD—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙ^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsAÃªoh-resolveÂDAÂÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsAÃªoh-resolveÂDAÂÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsAÃªoh-resolveÂDAÂÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsAÃªoh-resolveÂDAÂÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsAÃªoh-resolveÂDAÂÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsAÃªoh-resolveÂ’ÔrE–§version¤fileªsourceRoot§sources¥names¨mappings¨Game2.js ‘©Game2.etsÜ˜”   ” ”	 	” ” ”# #”? ?”Ì@ Ì@˜”   ” ”	 	” ” ”% %”ÌC ÌC”ÌD ÌC–”   ” ” ” ”* *”+ +–”   ” ” ” ”, ,”- -˜”   ” ”	 	” ” +” 1”5 ÌJ”6 ÌK˜”   ” ”	 	” ” ” ”7 7”8 8””  
+ ” 
+” 
+” 
+’”( ”- ‘” ’” ” ‘”  ’”7 #”9 %’”< !”= "’”8 ”= !’”7 ”: “”4 ”5 ”6 ’”6 ”; ’”:  ”? %””3 ”7 ”Ì@ (”ÌB *™” #” '”( 1”) 2”3 <”4 =”8 ÌA”9 ÌB”: ÌC”” ”  ”) ,”+ .‘” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ”” ”	 ”
+ ” ’”  ”Ìo  Ìk’” !”< !8’” "”ÌF "ÌB’” #”ÌR #ÌN’” $” $‘” &’” (” (—”4 )”ÌB )”ÌI )”ÌK )”ÌS ) ”Ìd ).”Ìf )/’”$ )”, ) ”4 *”ÌH *”ÌO *”ÌQ *”Ì^ *+”Ìt *>”Ìv *?”Ì~ *ÌG”Ì *ÌU”Ì‘ *ÌV”Ìœ *Ìa”Ì° *Ìr”Ì² *Ìs’”$ *”1 *+’”$ *?”, *ÌG’”$ *ÌV”/ *ÌaÜ ”4 +”ÌF +”ÌM +”ÌO +”ÌZ +'”Ìn +8”Ìp +9”Ìx +ÌA”Ì‰ +ÌO”Ì‹ +ÌP”Ì˜ +Ì]”Ì® +Ìp”Ì° +Ìq”Ì¹ +Ìz”ÌË +Ì‰”ÌÍ +ÌŠ”ÌÕ +Ì’”Ìæ +Ì ”Ìè +Ì¡”Ìí +Ì¦”Ìû +Ì±”Ìı +Ì²”Í +Ì¶”Í +ÌÀ”Í +ÌÁ”Í +ÌÈ”Í' +ÌÕ”Í) +ÌÖ’”$ +”/ +'’”$ +9”, +ÌA’”$ +ÌP”1 +Ì]’”$ +Ìq”- +Ìz’”$ +ÌŠ”, +Ì’’”$ +Ì¡”) +Ì¦’”$ +Ì²”( +Ì¶’”$ +ÌÁ”+ +ÌÈ’” -” -–” -” -” /	”! /”" /”' /’” -” -Ü ”4 1”? 1”ÌF 1”ÌH 1”ÌP 1”Ìa 1+”Ìc 1,”Ìn 17”Ì‚ 1ÌH”Ì„ 1ÌI”ÌŒ 1ÌQ”Ì 1Ì_”ÌŸ 1Ì`”Ì¤ 1Ìe”Ì² 1Ìp”Ì´ 1Ìq”Ì¸ 1Ìu”ÌÅ 1Ì”ÌÇ 1Ì€”ÌÎ 1Ì‡”ÌŞ 1Ì””Ìà 1Ì•’”$ 1”, 1’”$ 1,”/ 17’”$ 1ÌI”, 1ÌQ’”$ 1Ì`”) 1Ìe’”$ 1Ìq”( 1Ìu’”$ 1Ì€”+ 1Ì‡’” (” (”” 4”  4”! 4”' 4—” 5”" 5”# 5”$ 5”+ 5,”- 5.”/ 50™” 6” 6
+” 6” 6”! 6”( 6”) 6”2 6(”3 6)’” 7” 7
+” 8” 8” 8”! 8”$ 8”+ 8 ”- 8"”5 8*”7 8,”< 8?”> 8ÌA”ÌF 8ÌI”ÌG 8ÌJ” 9” 9” 9”& 9”) 9”0 9%”2 9'”: 9/”< 91”ÌA 9ÌD”ÌC 9ÌF”ÌP 9ÌS”ÌQ 9ÌT” :” :” :”" :”% :”, :!”. :#”6 :+”8 :-”= :Ì@”? :ÌB”ÌJ :ÌM”ÌK :ÌN‘” ;”” ;” ;” ;” ;Ÿ” <” <” <” <”  <”ÌD <8”ÌH <<”ÌI <=”ÌR <ÌF”ÌS <ÌG”ÌT <ÌH”ÌU <ÌI”ÌW <ÌK”ÌX <ÌL”ÌY <ÌL‘” =’” >” >“” ?”  ?
+”! ?Ÿ” Ì@” Ì@” Ì@” Ì@” Ì@”! Ì@”' Ì@”) Ì@”ÌZ Ì@ÌO”Ì\ Ì@ÌQ”Ìd Ì@ÌY”Ìf Ì@Ì[”Ìk Ì@Ì`”Ìo Ì@Ìd”Ìq Ì@Ìf—” ÌA” ÌA” ÌA”! ÌA”" ÌA”- ÌA”/ ÌA˜” ÌB
+”  ÌB”$ ÌB”% ÌB”- ÌB”. ÌB”4 ÌB"”6 ÌB$—”  ÌC”$ ÌC”% ÌC”- ÌC”0 ÌC”2 ÌC”3 ÌC‘” ÌDÜ ” ÌE
+”  ÌE”! ÌE”) ÌE”, ÌE”2 ÌE”6 ÌE"”7 ÌE#”ÌA ÌE-”ÌB ÌE.”ÌU ÌEÌA”ÌV ÌEÌB”ÌZ ÌEÌF”Ì[ ÌEÌG”Ìh ÌEÌT”Ìk ÌEÌU”Ìl ÌEÌV”Ìm ÌEÌW”Ìn ÌEÌW‘” ÌF	“” ÌG” ÌG” ÌG‘” ÌH‘” ÌKÔrF–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜ‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ì ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌĞ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  Ìİ ‘”  ÌŞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìğ ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìı ‘”  Ìş ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ÂÔ  ÔrG”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache‘ÔrH–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÍÖÍ¹ÔrI™¤type¥start£end¢idªexpression©generator¥async¦params¤body³FunctionDeclarationÍİÍ¹ÔrJ”¤type¥start£end¤nameªIdentifierÍæÍõ¯PageGameBuilderÂÂÂ‘ÔrK•¤type¥start£end¤left¥right±AssignmentPatternÍöÍJªIdentifierÍöÍü¦parentÔrL•¤type¥start£end¥value£raw§LiteralÍÿÍÀ¤nullÔrM”¤type¥start£end¤body®BlockStatementÍÍ¹‘M®BlockStatementÍÍ¶‘ÔrN”¤type¥start£endªexpression³ExpressionStatementÍÍ¯ÔrO–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍÍ®ÔrP—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍÍIÔrQ–¤type¥start£end¤testªconsequent©alternateµConditionalExpressionÍÍ.JªIdentifierÍÍ¦parentJªIdentifierÍ!Í'¦parentÔrR“¤type¥start£end®ThisExpressionÍ*Í.JªIdentifierÍ0ÍI¹observeComponentCreation2ÂÂ’I·ArrowFunctionExpressionÍJÍšÀÂÂÂ’JªIdentifierÍKÍQ¦elmtIdJªIdentifierÍSÍb¯isInitialRenderM®BlockStatementÍgÍš‘Q«IfStatementÍvÍJªIdentifierÍzÍ‰¯isInitialRenderM®BlockStatementÍ‹Í”ÔrS•¤type¥start£end¬declarations¤kind³VariableDeclarationÍÍ8‘ÔrT•¤type¥start£end¢id¤init²VariableDeclaratorÍ¢Í7JªIdentifierÍ¢Í¯­componentCallÔrU•¤type¥start£end¦callee©arguments­NewExpressionÍ²Í7JªIdentifierÍ¶Í»¥Game2–QµConditionalExpressionÍ¼ÍÒJªIdentifierÍ¼ÍÂ¦parentJªIdentifierÍÅÍË¦parentR®ThisExpressionÍÎÍÒÔrV”¤type¥start£endªproperties°ObjectExpressionÍÔÍÖJªIdentifierÍØÍá©undefinedJªIdentifierÍãÍé¦elmtIdI·ArrowFunctionExpressionÍëÍôÀÂÂÂM®BlockStatementÍñÍôV°ObjectExpressionÍöÍ6“ÔrW™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍøÍ"ÂÂÂJªIdentifierÍøÍü¤pageL§LiteralÍşÍ"Ù"entry/src/main/ets/pages/Game2.etsÙ$"entry/src/main/ets/pages/Game2.ets"¤initW¨PropertyÍ$Í,ÂÂÂJªIdentifierÍ$Í(¤lineL§LiteralÍ*Í,¢12¤initW¨PropertyÍ.Í4ÂÂÂJªIdentifierÍ.Í1£colL§LiteralÍ3Í4¡3¤init£letN³ExpressionStatementÍJÍgO®CallExpressionÍJÍfP°MemberExpressionÍJÍWJªIdentifierÍJÍP¦ViewPUJªIdentifierÍQÍW¦createÂÂ‘JªIdentifierÍXÍe­componentCallÂS³VariableDeclarationÍyÍÇ‘T²VariableDeclaratorÍ}ÍÆJªIdentifierÍ}Í‰¬paramsLambdaI·ArrowFunctionExpressionÍŒÍÆÀÂÂÂM®BlockStatementÍ’ÍÆ‘ÔrX”¤type¥start£end¨argument¯ReturnStatementÍ©Í³V°ObjectExpressionÍ°Í²£letN³ExpressionStatementÍÙÍÔrY–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍÙÍ¡=P°MemberExpressionÍÙÍ÷JªIdentifierÍÙÍæ­componentCallJªIdentifierÍçÍ÷°paramsGenerator_ÂÂJªIdentifierÍúÍ¬paramsLambdaM®BlockStatementÍ)Í‘N³ExpressionStatementÍ<Í€O®CallExpressionÍ<ÍP°MemberExpressionÍ<ÍsQµConditionalExpressionÍ=ÍSJªIdentifierÍ=ÍC¦parentJªIdentifierÍFÍL¦parentR®ThisExpressionÍOÍSJªIdentifierÍUÍs¾updateStateVarsOfChildByElmtIdÂÂ’JªIdentifierÍtÍz¦elmtIdV°ObjectExpressionÍ|Í~ÂV°ObjectExpressionÍœÍ­‘W¨PropertyÍÍ«ÂÂÂJªIdentifierÍÍ¢¤nameL§LiteralÍ¤Í«¥Game2§"Game2"¤initÂÀ–ÔrZ•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€ÌÀ‘Ôr[•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰Ì›JªIdentifierÌ‰Ì›²ImageGridComponentJªIdentifierÌ‰Ì›²ImageGridComponentL§LiteralÌ£Ì¿º../View/ImageGridComponent¼"../View/ImageGridComponent"Z±ImportDeclarationÌÂÍ‘[¯ImportSpecifierÌËÌßJªIdentifierÌËÌß´ImageSelectComponentJªIdentifierÌËÌß´ImageSelectComponentL§LiteralÌçÍ¼../View/ImageSelectComponent¾"../View/ImageSelectComponent"Z±ImportDeclarationÍÍ3‘Ôr\”¤type¥start£end¥local¶ImportDefaultSpecifierÍÍJªIdentifierÍÍ©GameRulesL§LiteralÍÍ2²../model/GameRules´"../model/GameRules"Z±ImportDeclarationÍ5Íb‘\¶ImportDefaultSpecifierÍ<ÍFJªIdentifierÍ<ÍFªImageModelL§LiteralÍLÍa³../model/ImageModelµ"../model/ImageModel"Z±ImportDeclarationÍdÍš‘[¯ImportSpecifierÍmÍxJªIdentifierÍmÍx«beginButtonJªIdentifierÍmÍx«beginButtonL§LiteralÍ€Í™·../View/ButtonComponent¹"../View/ButtonComponent"Z±ImportDeclarationÍœÍÔ‘[¯ImportSpecifierÍ¥Í³JªIdentifierÍ¥Í³®TimerComponentJªIdentifierÍ¥Í³®TimerComponentL§LiteralÍ»ÍÓ¶../View/TimerComponent¸"../View/TimerComponent"

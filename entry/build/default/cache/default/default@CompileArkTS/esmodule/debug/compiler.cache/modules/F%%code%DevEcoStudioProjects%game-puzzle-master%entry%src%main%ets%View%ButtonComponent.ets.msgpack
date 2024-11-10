@@ -1,0 +1,580 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ2Ãif (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import ImageModel from "../model/ImageModel";
+export class restartButton extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__isGameStart = new SynchedPropertySimpleTwoWayPU(params.isGameStart, this, "isGameStart");
+        this.__gameTime = new SynchedPropertySimpleTwoWayPU(params.gameTime, this, "gameTime");
+        this.__numArray = new SynchedPropertyObjectTwoWayPU(params.numArray, this, "numArray");
+        this.__timer = new SynchedPropertySimpleTwoWayPU(params.timer, this, "timer");
+        this.__game = new SynchedPropertyObjectTwoWayPU(params.game, this, "game");
+        this.__isPause = new SynchedPropertySimpleTwoWayPU(params.isPause, this, "isPause");
+        this.__templateIndex = new SynchedPropertySimpleTwoWayPU(params.templateIndex, this, "templateIndex");
+        this.__index = new SynchedPropertySimpleTwoWayPU(params.index, this, "index");
+        this.ImageModel = new ImageModel(getContext(this));
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.ImageModel !== undefined) {
+            this.ImageModel = params.ImageModel;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__gameTime.purgeDependencyOnElmtId(rmElmtId);
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__timer.purgeDependencyOnElmtId(rmElmtId);
+        this.__game.purgeDependencyOnElmtId(rmElmtId);
+        this.__isPause.purgeDependencyOnElmtId(rmElmtId);
+        this.__templateIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__index.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__isGameStart.aboutToBeDeleted();
+        this.__gameTime.aboutToBeDeleted();
+        this.__numArray.aboutToBeDeleted();
+        this.__timer.aboutToBeDeleted();
+        this.__game.aboutToBeDeleted();
+        this.__isPause.aboutToBeDeleted();
+        this.__templateIndex.aboutToBeDeleted();
+        this.__index.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get gameTime() {
+        return this.__gameTime.get();
+    }
+    set gameTime(newValue) {
+        this.__gameTime.set(newValue);
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get timer() {
+        return this.__timer.get();
+    }
+    set timer(newValue) {
+        this.__timer.set(newValue);
+    }
+    get game() {
+        return this.__game.get();
+    }
+    set game(newValue) {
+        this.__game.set(newValue);
+    }
+    get isPause() {
+        return this.__isPause.get();
+    }
+    set isPause(newValue) {
+        this.__isPause.set(newValue);
+    }
+    get templateIndex() {
+        return this.__templateIndex.get();
+    }
+    set templateIndex(newValue) {
+        this.__templateIndex.set(newValue);
+    }
+    get index() {
+        return this.__index.get();
+    }
+    set index(newValue) {
+        this.__index.set(newValue);
+    }
+    init() {
+        this.gameTime = 300;
+        clearInterval(this.timer);
+    }
+    start() {
+        this.init();
+        this.timer = setInterval(() => {
+            if (!this.isPause) {
+                this.gameTime--;
+            }
+        }, 1000);
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('é‡ç½®', { type: ButtonType.Capsule, stateEffect: true });
+            Button.id('restart');
+            Button.height({ "id": 16777233, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.width('90%');
+            Button.fontSize({ "id": 16777232, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.margin({ top: 5 });
+            Button.backgroundColor(this.isGameStart ? { "id": 16777227, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" } : { "id": 16777229, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.enabled(this.isGameStart);
+            Button.onClick(async () => {
+                this.isGameStart = false;
+                this.isPause = false;
+                this.init();
+                // this.start();
+                // this.numArray = this.game.gameBegin(this.numArray);
+                if (this.numArray) {
+                    this.numArray = [];
+                }
+                this.numArray = await this.ImageModel.splitPic(this.index, this.templateIndex + 2);
+            });
+        }, Button);
+        Button.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+export class beginButton extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__isGameStart = new SynchedPropertySimpleTwoWayPU(params.isGameStart, this, "isGameStart");
+        this.__gameTime = new SynchedPropertySimpleTwoWayPU(params.gameTime, this, "gameTime");
+        this.__numArray = new SynchedPropertyObjectTwoWayPU(params.numArray, this, "numArray");
+        this.__timer = new SynchedPropertySimpleTwoWayPU(params.timer, this, "timer");
+        this.__isPause = new SynchedPropertySimpleTwoWayPU(params.isPause, this, "isPause");
+        this.__game = new SynchedPropertyObjectTwoWayPU(params.game, this, "game");
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__gameTime.purgeDependencyOnElmtId(rmElmtId);
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__timer.purgeDependencyOnElmtId(rmElmtId);
+        this.__isPause.purgeDependencyOnElmtId(rmElmtId);
+        this.__game.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__isGameStart.aboutToBeDeleted();
+        this.__gameTime.aboutToBeDeleted();
+        this.__numArray.aboutToBeDeleted();
+        this.__timer.aboutToBeDeleted();
+        this.__isPause.aboutToBeDeleted();
+        this.__game.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get gameTime() {
+        return this.__gameTime.get();
+    }
+    set gameTime(newValue) {
+        this.__gameTime.set(newValue);
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get timer() {
+        return this.__timer.get();
+    }
+    set timer(newValue) {
+        this.__timer.set(newValue);
+    }
+    get isPause() {
+        return this.__isPause.get();
+    }
+    set isPause(newValue) {
+        this.__isPause.set(newValue);
+    }
+    get game() {
+        return this.__game.get();
+    }
+    set game(newValue) {
+        this.__game.set(newValue);
+    }
+    init() {
+        // this.gameTime = 300;
+        clearInterval(this.timer);
+    }
+    start() {
+        this.init();
+        this.timer = setInterval(() => {
+            if (!this.isPause) {
+                this.gameTime--;
+            }
+        }, 1000);
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel({ "id": 16777225, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" }, { type: ButtonType.Capsule, stateEffect: true });
+            Button.id('begin');
+            Button.height({ "id": 16777233, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.width('90%');
+            Button.fontSize({ "id": 16777232, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.margin({ top: 5 });
+            Button.backgroundColor(this.isGameStart ? { "id": 16777229, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" } : { "id": 16777227, "type": 10001, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.enabled(!this.isGameStart && this.numArray.length > 0);
+            Button.onClick(() => {
+                this.isGameStart = true;
+                this.isPause = false;
+                this.start();
+                this.numArray = this.game.gameBegin(ObservedObject.GetRawObject(this.numArray));
+            });
+        }, Button);
+        Button.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+export class selectPictureButton extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__isGameStart = new SynchedPropertySimpleTwoWayPU(params.isGameStart, this, "isGameStart");
+        this.__numArray = new SynchedPropertyObjectTwoWayPU(params.numArray, this, "numArray");
+        this.__templateIndex = new SynchedPropertySimpleTwoWayPU(params.templateIndex, this, "templateIndex");
+        this.ImageModel = new ImageModel(getContext(this));
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.ImageModel !== undefined) {
+            this.ImageModel = params.ImageModel;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__templateIndex.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__isGameStart.aboutToBeDeleted();
+        this.__numArray.aboutToBeDeleted();
+        this.__templateIndex.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get templateIndex() {
+        return this.__templateIndex.get();
+    }
+    set templateIndex(newValue) {
+        this.__templateIndex.set(newValue);
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('ä»å›¾åº“é€‰æ‹©', { type: ButtonType.Capsule, stateEffect: true });
+            Button.id('selectPicture');
+            Button.fontSize({ "id": 16777232, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.margin({ top: 20 });
+            Button.backgroundColor('#f5f5f5');
+            Button.fontColor('#182431');
+            Button.enabled(!this.isGameStart);
+            Button.onClick(async () => {
+                if (!this.isGameStart) {
+                    if (this.numArray.length) {
+                        this.numArray = [];
+                    }
+                    this.numArray = await this.ImageModel.getPictureFromAlbum(this.templateIndex + 2);
+                }
+            });
+        }, Button);
+        Button.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+//# sourceMappingURL=ButtonComponent.js.mapÂ‘ÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ’ÔrC’²hostDependencyName®hostModuleName·../View/ButtonComponent¥entryC·../View/ButtonComponent¥entryÃÚÈimport GameRules from "../model/GameRules"
+import ImageModel from "../model/ImageModel"
+import PictureItem from "../model/PictureItem"
+
+@Component
+export struct restartButton{
+  @Link isGameStart:boolean
+  @Link gameTime:number
+  @Link numArray: PictureItem[]
+  @Link timer:number
+  @Link game: GameRules
+  @Link isPause: boolean
+  @Link templateIndex: number
+  @Link index: number
+  private ImageModel: ImageModel = new ImageModel(getContext(this));
+
+  init() {
+    this.gameTime = 300;
+    clearInterval(this.timer);
+  }
+
+  start() {
+    this.init();
+    this.timer = setInterval(() => {
+      if (!this.isPause) {
+        this.gameTime--;
+      }
+    }, 1000)
+  }
+
+  build() {
+    Button('é‡ç½®', { type: ButtonType.Capsule, stateEffect: true })
+      .id('restart')
+      .height($r('app.float.button_height'))
+      .width('90%')
+      .fontSize($r('app.float.button_font_size'))
+      .margin({ top: 5 })
+      .backgroundColor(this.isGameStart ? $r('app.color.allow') : $r('app.color.forbid'))
+      .enabled(this.isGameStart)
+      .onClick(async () => {
+        this.isGameStart = false;
+        this.isPause=false;
+        this.init();
+        // this.start();
+        // this.numArray = this.game.gameBegin(this.numArray);
+        if (this.numArray) {
+          this.numArray=[];
+        }
+        this.numArray = await this.ImageModel.splitPic(this.index,this.templateIndex+2);
+      })
+  }
+}
+
+@Component
+export struct beginButton{
+  @Link isGameStart:boolean
+  @Link gameTime:number
+  @Link numArray: PictureItem[]
+  @Link timer:number
+  @Link isPause: boolean
+  @Link game: GameRules
+
+
+  init() {
+    // this.gameTime = 300;
+    clearInterval(this.timer);
+  }
+
+  start() {
+    this.init();
+    this.timer = setInterval(() => {
+      if (!this.isPause) {
+        this.gameTime--;
+      }
+    }, 1000)
+  }
+
+  build() {
+    Button($r('app.string.start'), { type: ButtonType.Capsule, stateEffect: true })
+      .id('begin')
+      .height($r('app.float.button_height'))
+      .width('90%')
+      .fontSize($r('app.float.button_font_size'))
+      .margin({ top: 5 })
+      .backgroundColor(this.isGameStart ? $r('app.color.forbid') : $r('app.color.allow'))
+      .enabled(!this.isGameStart&&this.numArray.length>0)
+      .onClick(() => {
+        this.isGameStart = true;
+        this.isPause=false;
+        this.start();
+        this.numArray = this.game.gameBegin(this.numArray);
+      })
+  }
+}
+@Component
+export struct selectPictureButton{
+
+  @Link isGameStart:boolean
+  @Link numArray: PictureItem[]
+  @Link templateIndex: number
+  private ImageModel: ImageModel = new ImageModel(getContext(this));
+  build() {
+    Button('ä»å›¾åº“é€‰æ‹©', { type: ButtonType.Capsule, stateEffect: true })
+      .id('selectPicture')
+      .fontSize($r('app.float.button_font_size'))
+      .margin({ top: 20 })
+      .backgroundColor('#f5f5f5')
+      .fontColor('#182431')
+      .enabled(!this.isGameStart)
+      .onClick(async () => {
+        if (!this.isGameStart){
+          if (this.numArray.length) {
+            this.numArray=[]
+          }
+          this.numArray=await this.ImageModel.getPictureFromAlbum(this.templateIndex+2)
+        }
+      })
+  }
+}ÀÔrD‘³../model/ImageModelÔrE—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsAÃªoh-resolveÂ’ÔrF–§version¤fileªsourceRoot§sources¥names¨mappings²ButtonComponent.js ‘³ButtonComponent.etsÜ=–”   ” ” ” ”, ,”- ,””   ” ” ” ‘”  ™” #” '”( 1”) 2”3 <”4 =”8 ÌA”9 ÌB”: ÌC‘” .’” ” ’” ” ’” ” ’” ” ’” ” ’” ” ’” 	” 	’” 	” 	’” 
+” 
+’” 
+” 
+’” ” ’” ” ’” ” ’” ” ’” ” ’” ” ’” ” —” ” ” 	” ” ” ” ˜” ” ” ” ” ”  ”! ”" ’” ” ’” ”	 –” ” ” 	” ” ” ™” ” ” 	” ” ”  ”! ”$  ”& "—” ” 
+” ” ” ” ” –” ” ” ” ” ”  ‘” –” ”	 ” ” ” ” ’” ” ‘” Ü ” ” 
+”# ”' ”) ”+ ”/ ”1 ”; #”< $”ÌC +”ÌE -”ÌP 8”ÌR :”ÌV >”ÌX Ì@–” ” 
+”  ”  	”  
+”  ”” ” 
+” !” !–” ” 
+” "” "” "” "”” ” 
+” #” #š” ” 
+” $” $” $” $” $”! $”" $”$ $” ” 
+” %”" %”# %”' %”( %”3 %'”4 %(”5 %)”Ì¤ %Ì@”Ì¥ %ÌA”Í %ÌX˜” ” 
+” &” &” &” &”  &”+ &˜” ” 
+” '” '” '”  '”$ '”& '—” (” (” (”  (”# (”( ( ”) (!—” )” )” )” )” )”$ )”% )–” *” *” *” *” *” *’” +”  +’” ,”ÌF ,>–” -” -” -” -”! -”# -—” .
+” .” .”! .”$ .”& .”' .‘” /	Ü ” 0” 0” 0” 0”  0”& 0”* 0"”+ 0#”5 0-”6 0.”> 06”? 07”ÌC 0;”ÌD 0<”ÌI 0ÌA”ÌK 0ÌB”ÌO 0ÌF”ÌP 0ÌG”Ì] 0ÌT”Ì` 0ÌU”Ìa 0ÌV”Ìb 0ÌW”Ìc 0ÌX’” 1” 1’” ” 
+‘” 2””  6 ” 6” 6” 6‘” 5 ‘” 3’” 7” 7’” 7” 7’” 8” 8’” 8” 8’” 9” 9’” 9” 9’” :” :’” :” :’” ;” ;’” ;” ;’” <” <’” <” <’” ?” ?’” Ì@” Ì@˜” ÌA” ÌA” ÌA” ÌA” ÌA”  ÌA”! ÌA”" ÌA’” ÌB” ÌB’” ÌD”	 ÌD–” ÌE” ÌE” ÌE	” ÌE” ÌE” ÌE™” ÌF” ÌF” ÌF	” ÌF” ÌF”  ÌF”! ÌF”$ ÌF ”& ÌF"—” ÌG” ÌG
+” ÌG” ÌG” ÌG” ÌG” ÌG–” ÌH” ÌH” ÌH” ÌH” ÌH”  ÌH‘” ÌI–” ÌJ”	 ÌJ” ÌJ” ÌJ” ÌJ” ÌJ’” ÌK” ÌK‘” ÌM” ÌN” ÌN
+”Ì’ ÌN#”Ì” ÌN%”Ì˜ ÌN)”Ìš ÌN+”Ì¤ ÌN5”Ì¥ ÌN6”Ì¬ ÌN=”Ì® ÌN?”Ì¹ ÌNÌJ”Ì» ÌNÌL”Ì¿ ÌNÌP”ÌÁ ÌNÌR–” ÌN” ÌN
+” ÌO” ÌO	” ÌO
+” ÌO”” ÌN” ÌN
+” ÌP” ÌP–” ÌN” ÌN
+” ÌQ” ÌQ” ÌQ” ÌQ”” ÌN” ÌN
+” ÌR” ÌRš” ÌN” ÌN
+” ÌS” ÌS” ÌS” ÌS” ÌS”! ÌS”" ÌS”$ ÌS” ÌN” ÌN
+” ÌT”" ÌT”# ÌT”' ÌT”( ÌT”3 ÌT'”4 ÌT(”5 ÌT)”Ì¤ ÌTÌA”Ì¥ ÌTÌB”Í ÌTÌXÜ ” ÌN” ÌN
+” ÌU” ÌU” ÌU” ÌU”  ÌU”! ÌU”, ÌU ”0 ÌU"”4 ÌU&”5 ÌU'”= ÌU/”> ÌU0”ÌD ÌU6”ÌG ÌU7”ÌH ÌU8—” ÌN” ÌN
+” ÌV” ÌV” ÌV” ÌV”  ÌV—” ÌW” ÌW” ÌW”  ÌW”# ÌW”' ÌW”( ÌW —” ÌX” ÌX” ÌX” ÌX” ÌX”$ ÌX”% ÌX–” ÌY” ÌY” ÌY” ÌY” ÌY” ÌYÜ ” ÌZ” ÌZ” ÌZ” ÌZ”  ÌZ”$ ÌZ”% ÌZ”) ÌZ!”* ÌZ"”3 ÌZ+”ÌP ÌZ,”ÌT ÌZ0”ÌU ÌZ1”Ì] ÌZ9”Ì_ ÌZ:”Ì` ÌZ;’” Ì[” Ì[’” ÌN” ÌN
+‘” Ì\””  Ì_ ” Ì_” Ì_”  Ì_!‘” Ì^ ™” Ìd#” Ìd'”( Ìd1”) Ìd2”3 Ìd<”4 Ìd=”8 ÌdÌA”9 ÌdÌB”: ÌdÌC‘” Ì]’” Ìa” Ìa’” Ìa” Ìa’” Ìb” Ìb’” Ìb” Ìb’” Ìc” Ìc’” Ìc” Ìc‘” ÌeÜ ” Ìf” Ìf
+”# Ìf”* Ìf”, Ìf”. Ìf”2 Ìf”4 Ìf”> Ìf&”? Ìf'”ÌF Ìf.”ÌH Ìf0”ÌS Ìf;”ÌU Ìf=”ÌY ÌfÌA”Ì[ ÌfÌC–” Ìf” Ìf
+” Ìg” Ìg	” Ìg
+”% Ìg”” Ìf” Ìf
+” Ìh” Ìhš” Ìf” Ìf
+” Ìi” Ìi” Ìi” Ìi” Ìi”! Ìi”# Ìi”% Ìi–” Ìf” Ìf
+” Ìj”" Ìj”# Ìj”, Ìj –” Ìf” Ìf
+” Ìk” Ìk” Ìk”& Ìk™” Ìf” Ìf
+” Ìl” Ìl” Ìl” Ìl”  Ìl”! Ìl”, Ìl ˜” Ìf” Ìf
+” Ìm” Ìm” Ìm”  Ìm”$ Ìm”& Ìm—” Ìn” Ìn” Ìn” Ìn” Ìn”% Ìn”' Ìn˜” Ìo
+” Ìo” Ìo” Ìo”% Ìo”& Ìo”, Ìo"”. Ìo$—” Ìp” Ìp” Ìp”% Ìp”( Ìp”* Ìp”+ Ìp‘” ÌqÜ ” Ìr
+” Ìr” Ìr”! Ìr”$ Ìr”* Ìr”. Ìr"”/ Ìr#”9 Ìr-”: Ìr.”ÌM ÌrÌA”ÌN ÌrÌB”ÌR ÌrÌF”ÌS ÌrÌG”Ì` ÌrÌT”Ìc ÌrÌU”Ìd ÌrÌV”Ìe ÌrÌW”Ìf ÌrÌW‘” Ìs	’” Ìt” Ìt’” Ìf” Ìf
+‘” ÌuÔrG–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜB‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ì ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌĞ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  Ìİ ‘”  ÌŞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìğ ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìı ‘”  Ìş ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ÂÔ  ÔrH”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache“ÔrI–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÌ¯Í©ÔrJ–¤type¥start£end¢idªsuperClass¤body°ClassDeclarationÌ¶Í©ÔrK”¤type¥start£end¤nameªIdentifierÌ¼ÌÉ­restartButtonKªIdentifierÌÒÌØ¦ViewPUÔrL”¤type¥start£end¤body©ClassBodyÌÙÍ©Ü ÔrM˜¤type¥start£end¦static¨computed£key¤kind¥value°MethodDefinitionÌàÍ…ÂÂKªIdentifierÌàÌë«constructor«constructorÔrN™¤type¥start£end¢idªexpression©generator¥async¦params¤body²FunctionExpressionÌëÍ…ÀÂÂÂ–KªIdentifierÌìÌò¦parentKªIdentifierÌôÌú¦paramsKªIdentifierÌüÍ
+®__localStorageÔrO•¤type¥start£end¤left¥right±AssignmentPatternÍÍKªIdentifierÍÍ¦elmtIdÔrP–¤type¥start£end¨operator¦prefix¨argument¯UnaryExpressionÍÍ¡-ÃÔrQ•¤type¥start£end¥value£raw§LiteralÍÍ¡1O±AssignmentPatternÍÍ1KªIdentifierÍÍ%¬paramsLambdaKªIdentifierÍ(Í1©undefinedKªIdentifierÍ3Í<©extraInfoL®BlockStatementÍ>Í…ÔrR”¤type¥start£endªexpression³ExpressionStatementÍIÍzÔrS–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍIÍyÔrT“¤type¥start£end¥SuperÍIÍN”KªIdentifierÍOÍU¦parentKªIdentifierÍWÍe®__localStorageKªIdentifierÍgÍm¦elmtIdKªIdentifierÍoÍx©extraInfoÂÔrU–¤type¥start£end¤testªconsequent©alternate«IfStatementÍ„ÍëÔrV–¤type¥start£end¤left¨operator¥right°BinaryExpressionÍˆÍªP¯UnaryExpressionÍˆÍ›¦typeofÃKªIdentifierÍÍ›¬paramsLambda£===Q§LiteralÍ Íª¨functionª"function"L®BlockStatementÍ¬Íë‘R³ExpressionStatementÍ»ÍàÔrW–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍ»Íß¡=ÔrX—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍ»ÍĞT®ThisExpressionÍ»Í¿KªIdentifierÍÀÍĞ°paramsGenerator_ÂÂKªIdentifierÍÓÍß¬paramsLambdaÀR³ExpressionStatementÍõÍUW´AssignmentExpressionÍõÍT¡=X°MemberExpressionÍõÍT®ThisExpressionÍõÍùKªIdentifierÍúÍ­__isGameStartÂÂÔrY•¤type¥start£end¦callee©arguments­NewExpressionÍ
+ÍTKªIdentifierÍÍ+½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ,Í>KªIdentifierÍ,Í2¦paramsKªIdentifierÍ3Í>«isGameStartÂÂT®ThisExpressionÍ@ÍDQ§LiteralÍFÍS«isGameStart­"isGameStart"R³ExpressionStatementÍ_Í¶W´AssignmentExpressionÍ_Íµ¡=X°MemberExpressionÍ_ÍnT®ThisExpressionÍ_ÍcKªIdentifierÍdÍnª__gameTimeÂÂY­NewExpressionÍqÍµKªIdentifierÍuÍ’½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ“Í¢KªIdentifierÍ“Í™¦paramsKªIdentifierÍšÍ¢¨gameTimeÂÂT®ThisExpressionÍ¤Í¨Q§LiteralÍªÍ´¨gameTimeª"gameTime"R³ExpressionStatementÍÀÍW´AssignmentExpressionÍÀÍ¡=X°MemberExpressionÍÀÍÏT®ThisExpressionÍÀÍÄKªIdentifierÍÅÍÏª__numArrayÂÂY­NewExpressionÍÒÍKªIdentifierÍÖÍó½SynchedPropertyObjectTwoWayPU“X°MemberExpressionÍôÍKªIdentifierÍôÍú¦paramsKªIdentifierÍûÍ¨numArrayÂÂT®ThisExpressionÍÍ	Q§LiteralÍÍ¨numArrayª"numArray"R³ExpressionStatementÍ!ÍoW´AssignmentExpressionÍ!Ín¡=X°MemberExpressionÍ!Í-T®ThisExpressionÍ!Í%KªIdentifierÍ&Í-§__timerÂÂY­NewExpressionÍ0ÍnKªIdentifierÍ4ÍQ½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍRÍ^KªIdentifierÍRÍX¦paramsKªIdentifierÍYÍ^¥timerÂÂT®ThisExpressionÍ`ÍdQ§LiteralÍfÍm¥timer§"timer"R³ExpressionStatementÍyÍÄW´AssignmentExpressionÍyÍÃ¡=X°MemberExpressionÍyÍ„T®ThisExpressionÍyÍ}KªIdentifierÍ~Í„¦__gameÂÂY­NewExpressionÍ‡ÍÃKªIdentifierÍ‹Í¨½SynchedPropertyObjectTwoWayPU“X°MemberExpressionÍ©Í´KªIdentifierÍ©Í¯¦paramsKªIdentifierÍ°Í´¤gameÂÂT®ThisExpressionÍ¶ÍºQ§LiteralÍ¼ÍÂ¤game¦"game"R³ExpressionStatementÍÎÍ"W´AssignmentExpressionÍÎÍ!¡=X°MemberExpressionÍÎÍÜT®ThisExpressionÍÎÍÒKªIdentifierÍÓÍÜ©__isPauseÂÂY­NewExpressionÍßÍ!KªIdentifierÍãÍ ½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍÍKªIdentifierÍÍ¦paramsKªIdentifierÍÍ§isPauseÂÂT®ThisExpressionÍÍQ§LiteralÍÍ §isPause©"isPause"R³ExpressionStatementÍ,Í’W´AssignmentExpressionÍ,Í‘¡=X°MemberExpressionÍ,Í@T®ThisExpressionÍ,Í0KªIdentifierÍ1Í@¯__templateIndexÂÂY­NewExpressionÍCÍ‘KªIdentifierÍGÍd½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍeÍyKªIdentifierÍeÍk¦paramsKªIdentifierÍlÍy­templateIndexÂÂT®ThisExpressionÍ{ÍQ§LiteralÍÍ­templateIndex¯"templateIndex"R³ExpressionStatementÍœÍêW´AssignmentExpressionÍœÍé¡=X°MemberExpressionÍœÍ¨T®ThisExpressionÍœÍ KªIdentifierÍ¡Í¨§__indexÂÂY­NewExpressionÍ«ÍéKªIdentifierÍ¯ÍÌ½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍÍÍÙKªIdentifierÍÍÍÓ¦paramsKªIdentifierÍÔÍÙ¥indexÂÂT®ThisExpressionÍÛÍßQ§LiteralÍáÍè¥index§"index"R³ExpressionStatementÍôÍ'W´AssignmentExpressionÍôÍ&¡=X°MemberExpressionÍôÍT®ThisExpressionÍôÍøKªIdentifierÍùÍªImageModelÂÂY­NewExpressionÍÍ&KªIdentifierÍ
+ÍªImageModel‘S®CallExpressionÍÍ%KªIdentifierÍÍªgetContext‘T®ThisExpressionÍ Í$ÂR³ExpressionStatementÍ1ÍXS®CallExpressionÍ1ÍWX°MemberExpressionÍ1ÍOT®ThisExpressionÍ1Í5KªIdentifierÍ6ÍO¹setInitiallyProvidedValueÂÂ‘KªIdentifierÍPÍV¦paramsÂR³ExpressionStatementÍbÍ~S®CallExpressionÍbÍ}X°MemberExpressionÍbÍ{T®ThisExpressionÍbÍfKªIdentifierÍgÍ{´finalizeConstructionÂÂÂM°MethodDefinitionÍ‹Í"ÂÂKªIdentifierÍ‹Í¤¹setInitiallyProvidedValue¦methodN²FunctionExpressionÍ¤Í"ÀÂÂÂ‘KªIdentifierÍ¥Í«¦paramsL®BlockStatementÍ­Í"‘U«IfStatementÍ¸ÍV°BinaryExpressionÍ¼ÍÛX°MemberExpressionÍ¼ÍÍKªIdentifierÍ¼ÍÂ¦paramsKªIdentifierÍÃÍÍªImageModelÂÂ£!==KªIdentifierÍÒÍÛ©undefinedL®BlockStatementÍİÍ‘R³ExpressionStatementÍìÍW´AssignmentExpressionÍìÍ¡=X°MemberExpressionÍìÍûT®ThisExpressionÍìÍğKªIdentifierÍñÍûªImageModelÂÂX°MemberExpressionÍşÍKªIdentifierÍşÍ¦paramsKªIdentifierÍÍªImageModelÂÂÀM°MethodDefinitionÍ(ÍHÂÂKªIdentifierÍ(Í7¯updateStateVars¦methodN²FunctionExpressionÍ7ÍHÀÂÂÂ‘KªIdentifierÍ8Í>¦paramsL®BlockStatementÍ@ÍHM°MethodDefinitionÍNÍ_ÂÂKªIdentifierÍNÍoÙ!purgeVariableDependenciesOnElmtId¦methodN²FunctionExpressionÍoÍ_ÀÂÂÂ‘KªIdentifierÍpÍx¨rmElmtIdL®BlockStatementÍzÍ_˜R³ExpressionStatementÍ…ÍºS®CallExpressionÍ…Í¹X°MemberExpressionÍ…Í¯X°MemberExpressionÍ…Í—T®ThisExpressionÍ…Í‰KªIdentifierÍŠÍ—­__isGameStartÂÂKªIdentifierÍ˜Í¯·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ°Í¸¨rmElmtIdÂR³ExpressionStatementÍÄÍöS®CallExpressionÍÄÍõX°MemberExpressionÍÄÍëX°MemberExpressionÍÄÍÓT®ThisExpressionÍÄÍÈKªIdentifierÍÉÍÓª__gameTimeÂÂKªIdentifierÍÔÍë·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍìÍô¨rmElmtIdÂR³ExpressionStatementÍ Í2S®CallExpressionÍ Í1X°MemberExpressionÍ Í'X°MemberExpressionÍ ÍT®ThisExpressionÍ ÍKªIdentifierÍÍª__numArrayÂÂKªIdentifierÍÍ'·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ(Í0¨rmElmtIdÂR³ExpressionStatementÍ<ÍkS®CallExpressionÍ<ÍjX°MemberExpressionÍ<Í`X°MemberExpressionÍ<ÍHT®ThisExpressionÍ<Í@KªIdentifierÍAÍH§__timerÂÂKªIdentifierÍIÍ`·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍaÍi¨rmElmtIdÂR³ExpressionStatementÍuÍ£S®CallExpressionÍuÍ¢X°MemberExpressionÍuÍ˜X°MemberExpressionÍuÍ€T®ThisExpressionÍuÍyKªIdentifierÍzÍ€¦__gameÂÂKªIdentifierÍÍ˜·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ™Í¡¨rmElmtIdÂR³ExpressionStatementÍ­ÍŞS®CallExpressionÍ­ÍİX°MemberExpressionÍ­ÍÓX°MemberExpressionÍ­Í»T®ThisExpressionÍ­Í±KªIdentifierÍ²Í»©__isPauseÂÂKªIdentifierÍ¼ÍÓ·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍÔÍÜ¨rmElmtIdÂR³ExpressionStatementÍèÍS®CallExpressionÍèÍX°MemberExpressionÍèÍX°MemberExpressionÍèÍüT®ThisExpressionÍèÍìKªIdentifierÍíÍü¯__templateIndexÂÂKªIdentifierÍıÍ·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍÍ¨rmElmtIdÂR³ExpressionStatementÍ)ÍXS®CallExpressionÍ)ÍWX°MemberExpressionÍ)ÍMX°MemberExpressionÍ)Í5T®ThisExpressionÍ)Í-KªIdentifierÍ.Í5§__indexÂÂKªIdentifierÍ6ÍM·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍNÍV¨rmElmtIdÂM°MethodDefinitionÍeÍ
+EÂÂKªIdentifierÍeÍu°aboutToBeDeleted¦methodN²FunctionExpressionÍuÍ
+EÀÂÂÂL®BlockStatementÍxÍ
+EšR³ExpressionStatementÍƒÍ©S®CallExpressionÍƒÍ¨X°MemberExpressionÍƒÍ¦X°MemberExpressionÍƒÍ•T®ThisExpressionÍƒÍ‡KªIdentifierÍˆÍ•­__isGameStartÂÂKªIdentifierÍ–Í¦°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ³ÍÖS®CallExpressionÍ³ÍÕX°MemberExpressionÍ³ÍÓX°MemberExpressionÍ³ÍÂT®ThisExpressionÍ³Í·KªIdentifierÍ¸ÍÂª__gameTimeÂÂKªIdentifierÍÃÍÓ°aboutToBeDeletedÂÂÂR³ExpressionStatementÍàÍ	S®CallExpressionÍàÍ	X°MemberExpressionÍàÍ	 X°MemberExpressionÍàÍïT®ThisExpressionÍàÍäKªIdentifierÍåÍïª__numArrayÂÂKªIdentifierÍğÍ	 °aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	Í	-S®CallExpressionÍ	Í	,X°MemberExpressionÍ	Í	*X°MemberExpressionÍ	Í	T®ThisExpressionÍ	Í	KªIdentifierÍ	Í	§__timerÂÂKªIdentifierÍ	Í	*°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	7Í	VS®CallExpressionÍ	7Í	UX°MemberExpressionÍ	7Í	SX°MemberExpressionÍ	7Í	BT®ThisExpressionÍ	7Í	;KªIdentifierÍ	<Í	B¦__gameÂÂKªIdentifierÍ	CÍ	S°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	`Í	‚S®CallExpressionÍ	`Í	X°MemberExpressionÍ	`Í	X°MemberExpressionÍ	`Í	nT®ThisExpressionÍ	`Í	dKªIdentifierÍ	eÍ	n©__isPauseÂÂKªIdentifierÍ	oÍ	°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	ŒÍ	´S®CallExpressionÍ	ŒÍ	³X°MemberExpressionÍ	ŒÍ	±X°MemberExpressionÍ	ŒÍ	 T®ThisExpressionÍ	ŒÍ	KªIdentifierÍ	‘Í	 ¯__templateIndexÂÂKªIdentifierÍ	¡Í	±°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	¾Í	ŞS®CallExpressionÍ	¾Í	İX°MemberExpressionÍ	¾Í	ÛX°MemberExpressionÍ	¾Í	ÊT®ThisExpressionÍ	¾Í	ÂKªIdentifierÍ	ÃÍ	Ê§__indexÂÂKªIdentifierÍ	ËÍ	Û°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ	èÍ
+S®CallExpressionÍ	èÍ
+X°MemberExpressionÍ	èÍ
+S®CallExpressionÍ	èÍ	ÿX°MemberExpressionÍ	èÍ	ıKªIdentifierÍ	èÍ	ù±SubscriberManagerKªIdentifierÍ	úÍ	ı£GetÂÂÂKªIdentifierÍ
+ Í
+¦deleteÂÂ‘S®CallExpressionÍ
+Í
+X°MemberExpressionÍ
+Í
+T®ThisExpressionÍ
+Í
+KªIdentifierÍ
+Í
+¤id__ÂÂÂÂR³ExpressionStatementÍ
+Í
+>S®CallExpressionÍ
+Í
+=X°MemberExpressionÍ
+Í
+;T®ThisExpressionÍ
+Í
+"KªIdentifierÍ
+#Í
+;¸aboutToBeDeletedInternalÂÂÂM°MethodDefinitionÍ
+KÍ
+ÂÂKªIdentifierÍ
+OÍ
+Z«isGameStart£getN²FunctionExpressionÍ
+ZÍ
+ÀÂÂÂL®BlockStatementÍ
+]Í
+‘ÔrZ”¤type¥start£end¨argument¯ReturnStatementÍ
+hÍ
+ˆS®CallExpressionÍ
+oÍ
+‡X°MemberExpressionÍ
+oÍ
+…X°MemberExpressionÍ
+oÍ
+T®ThisExpressionÍ
+oÍ
+sKªIdentifierÍ
+tÍ
+­__isGameStartÂÂKªIdentifierÍ
+‚Í
+…£getÂÂÂM°MethodDefinitionÍ
+•Í
+âÂÂKªIdentifierÍ
+™Í
+¤«isGameStart£setN²FunctionExpressionÍ
+¤Í
+âÀÂÂÂ‘KªIdentifierÍ
+¥Í
+­¨newValueL®BlockStatementÍ
+¯Í
+â‘R³ExpressionStatementÍ
+ºÍ
+ÛS®CallExpressionÍ
+ºÍ
+ÚX°MemberExpressionÍ
+ºÍ
+ĞX°MemberExpressionÍ
+ºÍ
+ÌT®ThisExpressionÍ
+ºÍ
+¾KªIdentifierÍ
+¿Í
+Ì­__isGameStartÂÂKªIdentifierÍ
+ÍÍ
+Ğ£setÂÂ‘KªIdentifierÍ
+ÑÍ
+Ù¨newValueÂM°MethodDefinitionÍ
+èÍ&ÂÂKªIdentifierÍ
+ìÍ
+ô¨gameTime£getN²FunctionExpressionÍ
+ôÍ&ÀÂÂÂL®BlockStatementÍ
+÷Í&‘Z¯ReturnStatementÍÍS®CallExpressionÍ	ÍX°MemberExpressionÍ	ÍX°MemberExpressionÍ	ÍT®ThisExpressionÍ	ÍKªIdentifierÍÍª__gameTimeÂÂKªIdentifierÍÍ£getÂÂÂM°MethodDefinitionÍ,ÍsÂÂKªIdentifierÍ0Í8¨gameTime£setN²FunctionExpressionÍ8ÍsÀÂÂÂ‘KªIdentifierÍ9ÍA¨newValueL®BlockStatementÍCÍs‘R³ExpressionStatementÍNÍlS®CallExpressionÍNÍkX°MemberExpressionÍNÍaX°MemberExpressionÍNÍ]T®ThisExpressionÍNÍRKªIdentifierÍSÍ]ª__gameTimeÂÂKªIdentifierÍ^Ía£setÂÂ‘KªIdentifierÍbÍj¨newValueÂM°MethodDefinitionÍyÍ·ÂÂKªIdentifierÍ}Í…¨numArray£getN²FunctionExpressionÍ…Í·ÀÂÂÂL®BlockStatementÍˆÍ·‘Z¯ReturnStatementÍ“Í°S®CallExpressionÍšÍ¯X°MemberExpressionÍšÍ­X°MemberExpressionÍšÍ©T®ThisExpressionÍšÍKªIdentifierÍŸÍ©ª__numArrayÂÂKªIdentifierÍªÍ­£getÂÂÂM°MethodDefinitionÍ½ÍÂÂKªIdentifierÍÁÍÉ¨numArray£setN²FunctionExpressionÍÉÍÀÂÂÂ‘KªIdentifierÍÊÍÒ¨newValueL®BlockStatementÍÔÍ‘R³ExpressionStatementÍßÍıS®CallExpressionÍßÍüX°MemberExpressionÍßÍòX°MemberExpressionÍßÍîT®ThisExpressionÍßÍãKªIdentifierÍäÍîª__numArrayÂÂKªIdentifierÍïÍò£setÂÂ‘KªIdentifierÍóÍû¨newValueÂM°MethodDefinitionÍ
+ÍBÂÂKªIdentifierÍÍ¥timer£getN²FunctionExpressionÍÍBÀÂÂÂL®BlockStatementÍÍB‘Z¯ReturnStatementÍ!Í;S®CallExpressionÍ(Í:X°MemberExpressionÍ(Í8X°MemberExpressionÍ(Í4T®ThisExpressionÍ(Í,KªIdentifierÍ-Í4§__timerÂÂKªIdentifierÍ5Í8£getÂÂÂM°MethodDefinitionÍHÍ‰ÂÂKªIdentifierÍLÍQ¥timer£setN²FunctionExpressionÍQÍ‰ÀÂÂÂ‘KªIdentifierÍRÍZ¨newValueL®BlockStatementÍ\Í‰‘R³ExpressionStatementÍgÍ‚S®CallExpressionÍgÍX°MemberExpressionÍgÍwX°MemberExpressionÍgÍsT®ThisExpressionÍgÍkKªIdentifierÍlÍs§__timerÂÂKªIdentifierÍtÍw£setÂÂ‘KªIdentifierÍxÍ€¨newValueÂM°MethodDefinitionÍÍÅÂÂKªIdentifierÍ“Í—¤game£getN²FunctionExpressionÍ—ÍÅÀÂÂÂL®BlockStatementÍšÍÅ‘Z¯ReturnStatementÍ¥Í¾S®CallExpressionÍ¬Í½X°MemberExpressionÍ¬Í»X°MemberExpressionÍ¬Í·T®ThisExpressionÍ¬Í°KªIdentifierÍ±Í·¦__gameÂÂKªIdentifierÍ¸Í»£getÂÂÂM°MethodDefinitionÍËÍ
+ÂÂKªIdentifierÍÏÍÓ¤game£setN²FunctionExpressionÍÓÍ
+ÀÂÂÂ‘KªIdentifierÍÔÍÜ¨newValueL®BlockStatementÍŞÍ
+‘R³ExpressionStatementÍéÍS®CallExpressionÍéÍX°MemberExpressionÍéÍøX°MemberExpressionÍéÍôT®ThisExpressionÍéÍíKªIdentifierÍîÍô¦__gameÂÂKªIdentifierÍõÍø£setÂÂ‘KªIdentifierÍùÍ¨newValueÂM°MethodDefinitionÍÍLÂÂKªIdentifierÍÍ§isPause£getN²FunctionExpressionÍÍLÀÂÂÂL®BlockStatementÍÍL‘Z¯ReturnStatementÍ)ÍES®CallExpressionÍ0ÍDX°MemberExpressionÍ0ÍBX°MemberExpressionÍ0Í>T®ThisExpressionÍ0Í4KªIdentifierÍ5Í>©__isPauseÂÂKªIdentifierÍ?ÍB£getÂÂÂM°MethodDefinitionÍRÍ—ÂÂKªIdentifierÍVÍ]§isPause£setN²FunctionExpressionÍ]Í—ÀÂÂÂ‘KªIdentifierÍ^Íf¨newValueL®BlockStatementÍhÍ—‘R³ExpressionStatementÍsÍS®CallExpressionÍsÍX°MemberExpressionÍsÍ…X°MemberExpressionÍsÍT®ThisExpressionÍsÍwKªIdentifierÍxÍ©__isPauseÂÂKªIdentifierÍ‚Í…£setÂÂ‘KªIdentifierÍ†Í¨newValueÂM°MethodDefinitionÍÍåÂÂKªIdentifierÍ¡Í®­templateIndex£getN²FunctionExpressionÍ®ÍåÀÂÂÂL®BlockStatementÍ±Íå‘Z¯ReturnStatementÍ¼ÍŞS®CallExpressionÍÃÍİX°MemberExpressionÍÃÍÛX°MemberExpressionÍÃÍ×T®ThisExpressionÍÃÍÇKªIdentifierÍÈÍ×¯__templateIndexÂÂKªIdentifierÍØÍÛ£getÂÂÂM°MethodDefinitionÍëÍ<ÂÂKªIdentifierÍïÍü­templateIndex£setN²FunctionExpressionÍüÍ<ÀÂÂÂ‘KªIdentifierÍıÍ¨newValueL®BlockStatementÍÍ<‘R³ExpressionStatementÍÍ5S®CallExpressionÍÍ4X°MemberExpressionÍÍ*X°MemberExpressionÍÍ&T®ThisExpressionÍÍKªIdentifierÍÍ&¯__templateIndexÂÂKªIdentifierÍ'Í*£setÂÂ‘KªIdentifierÍ+Í3¨newValueÂM°MethodDefinitionÍBÍzÂÂKªIdentifierÍFÍK¥index£getN²FunctionExpressionÍKÍzÀÂÂÂL®BlockStatementÍNÍz‘Z¯ReturnStatementÍYÍsS®CallExpressionÍ`ÍrX°MemberExpressionÍ`ÍpX°MemberExpressionÍ`ÍlT®ThisExpressionÍ`ÍdKªIdentifierÍeÍl§__indexÂÂKªIdentifierÍmÍp£getÂÂÂM°MethodDefinitionÍ€ÍÁÂÂKªIdentifierÍ„Í‰¥index£setN²FunctionExpressionÍ‰ÍÁÀÂÂÂ‘KªIdentifierÍŠÍ’¨newValueL®BlockStatementÍ”ÍÁ‘R³ExpressionStatementÍŸÍºS®CallExpressionÍŸÍ¹X°MemberExpressionÍŸÍ¯X°MemberExpressionÍŸÍ«T®ThisExpressionÍŸÍ£KªIdentifierÍ¤Í«§__indexÂÂKªIdentifierÍ¬Í¯£setÂÂ‘KªIdentifierÍ°Í¸¨newValueÂM°MethodDefinitionÍÇÍÂÂKªIdentifierÍÇÍË¤init¦methodN²FunctionExpressionÍËÍÀÂÂÂL®BlockStatementÍÎÍ’R³ExpressionStatementÍÙÍíW´AssignmentExpressionÍÙÍì¡=X°MemberExpressionÍÙÍæT®ThisExpressionÍÙÍİKªIdentifierÍŞÍæ¨gameTimeÂÂQ§LiteralÍéÍìÍ,£300R³ExpressionStatementÍ÷ÍS®CallExpressionÍ÷ÍKªIdentifierÍ÷Í­clearInterval‘X°MemberExpressionÍÍT®ThisExpressionÍÍ	KªIdentifierÍ
+Í¥timerÂÂÂM°MethodDefinitionÍÍÔÂÂKªIdentifierÍÍ#¥start¦methodN²FunctionExpressionÍ#ÍÔÀÂÂÂL®BlockStatementÍ&ÍÔ’R³ExpressionStatementÍ1Í=S®CallExpressionÍ1Í<X°MemberExpressionÍ1Í:T®ThisExpressionÍ1Í5KªIdentifierÍ6Í:¤initÂÂÂR³ExpressionStatementÍGÍÍW´AssignmentExpressionÍGÍÌ¡=X°MemberExpressionÍGÍQT®ThisExpressionÍGÍKKªIdentifierÍLÍQ¥timerÂÂS®CallExpressionÍTÍÌKªIdentifierÍTÍ_«setInterval’N·ArrowFunctionExpressionÍ`ÍÅÀÂÂÂL®BlockStatementÍfÍÅ‘U«IfStatementÍuÍºP¯UnaryExpressionÍyÍ†¡!ÃX°MemberExpressionÍzÍ†T®ThisExpressionÍzÍ~KªIdentifierÍÍ†§isPauseÂÂL®BlockStatementÍˆÍº‘R³ExpressionStatementÍ›Í«P°UpdateExpressionÍ›Íª¢--ÂX°MemberExpressionÍ›Í¨T®ThisExpressionÍ›ÍŸKªIdentifierÍ Í¨¨gameTimeÂÂÀQ§LiteralÍÇÍËÍè¤1000ÂM°MethodDefinitionÍÚÍhÂÂKªIdentifierÍÚÍç­initialRender¦methodN²FunctionExpressionÍçÍhÀÂÂÂL®BlockStatementÍêÍh’R³ExpressionStatementÍõÍJS®CallExpressionÍõÍIX°MemberExpressionÍõÍT®ThisExpressionÍõÍùKªIdentifierÍúÍ¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍÍ@ÀÂÂÂ’KªIdentifierÍÍ¦elmtIdKªIdentifierÍÍ,¯isInitialRenderL®BlockStatementÍ1Í@™R³ExpressionStatementÍ@ÍS®CallExpressionÍ@ÍX°MemberExpressionÍ@ÍVKªIdentifierÍ@ÍF¦ButtonKªIdentifierÍGÍV¯createWithLabelÂÂ’Q§LiteralÍWÍ[¦é‡ç½®¨'é‡ç½®'Ôr[”¤type¥start£endªproperties°ObjectExpressionÍ]ÍŒ’Ôr\™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍ_ÍwÂÂÂKªIdentifierÍ_Íc¤typeX°MemberExpressionÍeÍwKªIdentifierÍeÍoªButtonTypeKªIdentifierÍpÍw§CapsuleÂÂ¤init\¨PropertyÍyÍŠÂÂÂKªIdentifierÍyÍ„«stateEffectQ§LiteralÍ†ÍŠÃ¤true¤initÂR³ExpressionStatementÍœÍ±S®CallExpressionÍœÍ°X°MemberExpressionÍœÍ¥KªIdentifierÍœÍ¢¦ButtonKªIdentifierÍ£Í¥¢idÂÂ‘Q§LiteralÍ¦Í¯§restart©'restart'ÂR³ExpressionStatementÍ¿Í<S®CallExpressionÍ¿Í;X°MemberExpressionÍ¿ÍÌKªIdentifierÍ¿ÍÅ¦ButtonKªIdentifierÍÆÍÌ¦heightÂÂ‘[°ObjectExpressionÍÍÍ:•\¨PropertyÍÏÍİÂÂÂQ§LiteralÍÏÍÓ¢id¤"id"Q§LiteralÍÕÍİÎ  ¨16777233¤init\¨PropertyÍßÍìÂÂÂQ§LiteralÍßÍå¤type¦"type"Q§LiteralÍçÍìÍ'¥10002¤init\¨PropertyÍîÍøÂÂÂKªIdentifierÍîÍô¦paramsÔr]”¤type¥start£end¨elements¯ArrayExpressionÍöÍø¤init\¨PropertyÍúÍ!ÂÂÂQ§LiteralÍúÍªbundleName¬"bundleName"Q§LiteralÍÍ!·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ#Í8ÂÂÂQ§LiteralÍ#Í/ªmoduleName¬"moduleName"Q§LiteralÍ1Í8¥entry§"entry"¤initÂR³ExpressionStatementÍJÍ^S®CallExpressionÍJÍ]X°MemberExpressionÍJÍVKªIdentifierÍJÍP¦ButtonKªIdentifierÍQÍV¥widthÂÂ‘Q§LiteralÍWÍ\£90%¥'90%'ÂR³ExpressionStatementÍlÍëS®CallExpressionÍlÍêX°MemberExpressionÍlÍ{KªIdentifierÍlÍr¦ButtonKªIdentifierÍsÍ{¨fontSizeÂÂ‘[°ObjectExpressionÍ|Íé•\¨PropertyÍ~ÍŒÂÂÂQ§LiteralÍ~Í‚¢id¤"id"Q§LiteralÍ„ÍŒÎ  ¨16777232¤init\¨PropertyÍÍ›ÂÂÂQ§LiteralÍÍ”¤type¦"type"Q§LiteralÍ–Í›Í'¥10002¤init\¨PropertyÍÍ§ÂÂÂKªIdentifierÍÍ£¦params]¯ArrayExpressionÍ¥Í§¤init\¨PropertyÍ©ÍĞÂÂÂQ§LiteralÍ©ÍµªbundleName¬"bundleName"Q§LiteralÍ·ÍĞ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍÒÍçÂÂÂQ§LiteralÍÒÍŞªmoduleName¬"moduleName"Q§LiteralÍàÍç¥entry§"entry"¤initÂR³ExpressionStatementÍùÍS®CallExpressionÍùÍX°MemberExpressionÍùÍKªIdentifierÍùÍÿ¦ButtonKªIdentifierÍ Í¦marginÂÂ‘[°ObjectExpressionÍÍ‘\¨PropertyÍ	ÍÂÂÂKªIdentifierÍ	Í£topQ§LiteralÍÍ¡5¤initÂR³ExpressionStatementÍ!Í*S®CallExpressionÍ!Í)X°MemberExpressionÍ!Í7KªIdentifierÍ!Í'¦ButtonKªIdentifierÍ(Í7¯backgroundColorÂÂ‘UµConditionalExpressionÍ8Í(X°MemberExpressionÍ8ÍHT®ThisExpressionÍ8Í<KªIdentifierÍ=ÍH«isGameStartÂÂ[°ObjectExpressionÍKÍ¸•\¨PropertyÍMÍ[ÂÂÂQ§LiteralÍMÍQ¢id¤"id"Q§LiteralÍSÍ[Î  ¨16777227¤init\¨PropertyÍ]ÍjÂÂÂQ§LiteralÍ]Íc¤type¦"type"Q§LiteralÍeÍjÍ'¥10001¤init\¨PropertyÍlÍvÂÂÂKªIdentifierÍlÍr¦params]¯ArrayExpressionÍtÍv¤init\¨PropertyÍxÍŸÂÂÂQ§LiteralÍxÍ„ªbundleName¬"bundleName"Q§LiteralÍ†ÍŸ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ¡Í¶ÂÂÂQ§LiteralÍ¡Í­ªmoduleName¬"moduleName"Q§LiteralÍ¯Í¶¥entry§"entry"¤init[°ObjectExpressionÍ»Í(•\¨PropertyÍ½ÍËÂÂÂQ§LiteralÍ½ÍÁ¢id¤"id"Q§LiteralÍÃÍËÎ  ¨16777229¤init\¨PropertyÍÍÍÚÂÂÂQ§LiteralÍÍÍÓ¤type¦"type"Q§LiteralÍÕÍÚÍ'¥10001¤init\¨PropertyÍÜÍæÂÂÂKªIdentifierÍÜÍâ¦params]¯ArrayExpressionÍäÍæ¤init\¨PropertyÍèÍÂÂÂQ§LiteralÍèÍôªbundleName¬"bundleName"Q§LiteralÍöÍ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍÍ&ÂÂÂQ§LiteralÍÍªmoduleName¬"moduleName"Q§LiteralÍÍ&¥entry§"entry"¤initÂR³ExpressionStatementÍ8ÍYS®CallExpressionÍ8ÍXX°MemberExpressionÍ8ÍFKªIdentifierÍ8Í>¦ButtonKªIdentifierÍ?ÍF§enabledÂÂ‘X°MemberExpressionÍGÍWT®ThisExpressionÍGÍKKªIdentifierÍLÍW«isGameStartÂÂÂR³ExpressionStatementÍgÍ5S®CallExpressionÍgÍ4X°MemberExpressionÍgÍuKªIdentifierÍgÍm¦ButtonKªIdentifierÍnÍu§onClickÂÂ‘N·ArrowFunctionExpressionÍvÍ3ÀÂÂÃL®BlockStatementÍ‚Í3•R³ExpressionStatementÍ•Í®W´AssignmentExpressionÍ•Í­¡=X°MemberExpressionÍ•Í¥T®ThisExpressionÍ•Í™KªIdentifierÍšÍ¥«isGameStartÂÂQ§LiteralÍ¨Í­Â¥falseR³ExpressionStatementÍÀÍÕW´AssignmentExpressionÍÀÍÔ¡=X°MemberExpressionÍÀÍÌT®ThisExpressionÍÀÍÄKªIdentifierÍÅÍÌ§isPauseÂÂQ§LiteralÍÏÍÔÂ¥falseR³ExpressionStatementÍçÍóS®CallExpressionÍçÍòX°MemberExpressionÍçÍğT®ThisExpressionÍçÍëKªIdentifierÍìÍğ¤initÂÂÂU«IfStatementÍoÍ¿X°MemberExpressionÍsÍ€T®ThisExpressionÍsÍwKªIdentifierÍxÍ€¨numArrayÂÂL®BlockStatementÍ‚Í¿‘R³ExpressionStatementÍ™Í¬W´AssignmentExpressionÍ™Í«¡=X°MemberExpressionÍ™Í¦T®ThisExpressionÍ™ÍKªIdentifierÍÍ¦¨numArrayÂÂ]¯ArrayExpressionÍ©Í«ÀR³ExpressionStatementÍÑÍ$W´AssignmentExpressionÍÑÍ#¡=X°MemberExpressionÍÑÍŞT®ThisExpressionÍÑÍÕKªIdentifierÍÖÍŞ¨numArrayÂÂZ¯AwaitExpressionÍáÍ#S®CallExpressionÍçÍ#X°MemberExpressionÍçÍÿX°MemberExpressionÍçÍöT®ThisExpressionÍçÍëKªIdentifierÍìÍöªImageModelÂÂKªIdentifierÍ÷Íÿ¨splitPicÂÂ’X°MemberExpressionÍ Í
+T®ThisExpressionÍ ÍKªIdentifierÍÍ
+¥indexÂÂV°BinaryExpressionÍÍ"X°MemberExpressionÍÍT®ThisExpressionÍÍKªIdentifierÍÍ­templateIndexÂÂ¡+Q§LiteralÍ!Í"¡2ÂÂKªIdentifierÍBÍH¦ButtonÂR³ExpressionStatementÍTÍaS®CallExpressionÍTÍ`X°MemberExpressionÍTÍ^KªIdentifierÍTÍZ¦ButtonKªIdentifierÍ[Í^£popÂÂÂM°MethodDefinitionÍnÍ¦ÂÂKªIdentifierÍnÍv¨rerender¦methodN²FunctionExpressionÍvÍ¦ÀÂÂÂL®BlockStatementÍyÍ¦‘R³ExpressionStatementÍ„ÍŸS®CallExpressionÍ„ÍX°MemberExpressionÍ„ÍœT®ThisExpressionÍ„ÍˆKªIdentifierÍ‰Íœ³updateDirtyElementsÂÂÂÀI¶ExportNamedDeclarationÍ«Í&ãJ°ClassDeclarationÍ²Í&ãKªIdentifierÍ¸ÍÃ«beginButtonKªIdentifierÍÌÍÒ¦ViewPUL©ClassBodyÍÓÍ&ãÜ M°MethodDefinitionÍÚÍzÂÂKªIdentifierÍÚÍå«constructor«constructorN²FunctionExpressionÍåÍzÀÂÂÂ–KªIdentifierÍæÍì¦parentKªIdentifierÍîÍô¦paramsKªIdentifierÍöÍ®__localStorageO±AssignmentPatternÍÍKªIdentifierÍÍ¦elmtIdP¯UnaryExpressionÍÍ¡-ÃQ§LiteralÍÍ¡1O±AssignmentPatternÍÍ+KªIdentifierÍÍ¬paramsLambdaKªIdentifierÍ"Í+©undefinedKªIdentifierÍ-Í6©extraInfoL®BlockStatementÍ8ÍzšR³ExpressionStatementÍCÍtS®CallExpressionÍCÍsT¥SuperÍCÍH”KªIdentifierÍIÍO¦parentKªIdentifierÍQÍ_®__localStorageKªIdentifierÍaÍg¦elmtIdKªIdentifierÍiÍr©extraInfoÂU«IfStatementÍ~ÍåV°BinaryExpressionÍ‚Í¤P¯UnaryExpressionÍ‚Í•¦typeofÃKªIdentifierÍ‰Í•¬paramsLambda£===Q§LiteralÍšÍ¤¨functionª"function"L®BlockStatementÍ¦Íå‘R³ExpressionStatementÍµÍÚW´AssignmentExpressionÍµÍÙ¡=X°MemberExpressionÍµÍÊT®ThisExpressionÍµÍ¹KªIdentifierÍºÍÊ°paramsGenerator_ÂÂKªIdentifierÍÍÍÙ¬paramsLambdaÀR³ExpressionStatementÍïÍOW´AssignmentExpressionÍïÍN¡=X°MemberExpressionÍïÍT®ThisExpressionÍïÍóKªIdentifierÍôÍ­__isGameStartÂÂY­NewExpressionÍÍNKªIdentifierÍÍ%½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ&Í8KªIdentifierÍ&Í,¦paramsKªIdentifierÍ-Í8«isGameStartÂÂT®ThisExpressionÍ:Í>Q§LiteralÍ@ÍM«isGameStart­"isGameStart"R³ExpressionStatementÍYÍ°W´AssignmentExpressionÍYÍ¯¡=X°MemberExpressionÍYÍhT®ThisExpressionÍYÍ]KªIdentifierÍ^Íhª__gameTimeÂÂY­NewExpressionÍkÍ¯KªIdentifierÍoÍŒ½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍÍœKªIdentifierÍÍ“¦paramsKªIdentifierÍ”Íœ¨gameTimeÂÂT®ThisExpressionÍÍ¢Q§LiteralÍ¤Í®¨gameTimeª"gameTime"R³ExpressionStatementÍºÍW´AssignmentExpressionÍºÍ¡=X°MemberExpressionÍºÍÉT®ThisExpressionÍºÍ¾KªIdentifierÍ¿ÍÉª__numArrayÂÂY­NewExpressionÍÌÍKªIdentifierÍĞÍí½SynchedPropertyObjectTwoWayPU“X°MemberExpressionÍîÍıKªIdentifierÍîÍô¦paramsKªIdentifierÍõÍı¨numArrayÂÂT®ThisExpressionÍÿÍQ§LiteralÍÍ¨numArrayª"numArray"R³ExpressionStatementÍÍiW´AssignmentExpressionÍÍh¡=X°MemberExpressionÍÍ'T®ThisExpressionÍÍKªIdentifierÍ Í'§__timerÂÂY­NewExpressionÍ*ÍhKªIdentifierÍ.ÍK½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍLÍXKªIdentifierÍLÍR¦paramsKªIdentifierÍSÍX¥timerÂÂT®ThisExpressionÍZÍ^Q§LiteralÍ`Íg¥timer§"timer"R³ExpressionStatementÍsÍÇW´AssignmentExpressionÍsÍÆ¡=X°MemberExpressionÍsÍT®ThisExpressionÍsÍwKªIdentifierÍxÍ©__isPauseÂÂY­NewExpressionÍ„ÍÆKªIdentifierÍˆÍ¥½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ¦Í´KªIdentifierÍ¦Í¬¦paramsKªIdentifierÍ­Í´§isPauseÂÂT®ThisExpressionÍ¶ÍºQ§LiteralÍ¼ÍÅ§isPause©"isPause"R³ExpressionStatementÍÑÍW´AssignmentExpressionÍÑÍ¡=X°MemberExpressionÍÑÍÜT®ThisExpressionÍÑÍÕKªIdentifierÍÖÍÜ¦__gameÂÂY­NewExpressionÍßÍKªIdentifierÍãÍ ½SynchedPropertyObjectTwoWayPU“X°MemberExpressionÍÍKªIdentifierÍÍ¦paramsKªIdentifierÍÍ¤gameÂÂT®ThisExpressionÍÍQ§LiteralÍÍ¤game¦"game"R³ExpressionStatementÍ&ÍMS®CallExpressionÍ&ÍLX°MemberExpressionÍ&ÍDT®ThisExpressionÍ&Í*KªIdentifierÍ+ÍD¹setInitiallyProvidedValueÂÂ‘KªIdentifierÍEÍK¦paramsÂR³ExpressionStatementÍWÍsS®CallExpressionÍWÍrX°MemberExpressionÍWÍpT®ThisExpressionÍWÍ[KªIdentifierÍ\Íp´finalizeConstructionÂÂÂM°MethodDefinitionÍ€ÍªÂÂKªIdentifierÍ€Í™¹setInitiallyProvidedValue¦methodN²FunctionExpressionÍ™ÍªÀÂÂÂ‘KªIdentifierÍšÍ ¦paramsL®BlockStatementÍ¢ÍªM°MethodDefinitionÍ°ÍĞÂÂKªIdentifierÍ°Í¿¯updateStateVars¦methodN²FunctionExpressionÍ¿ÍĞÀÂÂÂ‘KªIdentifierÍÀÍÆ¦paramsL®BlockStatementÍÈÍĞM°MethodDefinitionÍÖÍmÂÂKªIdentifierÍÖÍ÷Ù!purgeVariableDependenciesOnElmtId¦methodN²FunctionExpressionÍ÷ÍmÀÂÂÂ‘KªIdentifierÍøÍ ¨rmElmtIdL®BlockStatementÍÍm–R³ExpressionStatementÍÍBS®CallExpressionÍÍAX°MemberExpressionÍÍ7X°MemberExpressionÍÍT®ThisExpressionÍÍKªIdentifierÍÍ­__isGameStartÂÂKªIdentifierÍ Í7·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ8Í@¨rmElmtIdÂR³ExpressionStatementÍLÍ~S®CallExpressionÍLÍ}X°MemberExpressionÍLÍsX°MemberExpressionÍLÍ[T®ThisExpressionÍLÍPKªIdentifierÍQÍ[ª__gameTimeÂÂKªIdentifierÍ\Ís·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍtÍ|¨rmElmtIdÂR³ExpressionStatementÍˆÍºS®CallExpressionÍˆÍ¹X°MemberExpressionÍˆÍ¯X°MemberExpressionÍˆÍ—T®ThisExpressionÍˆÍŒKªIdentifierÍÍ—ª__numArrayÂÂKªIdentifierÍ˜Í¯·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ°Í¸¨rmElmtIdÂR³ExpressionStatementÍÄÍóS®CallExpressionÍÄÍòX°MemberExpressionÍÄÍèX°MemberExpressionÍÄÍĞT®ThisExpressionÍÄÍÈKªIdentifierÍÉÍĞ§__timerÂÂKªIdentifierÍÑÍè·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍéÍñ¨rmElmtIdÂR³ExpressionStatementÍıÍ.S®CallExpressionÍıÍ-X°MemberExpressionÍıÍ#X°MemberExpressionÍıÍT®ThisExpressionÍıÍKªIdentifierÍÍ©__isPauseÂÂKªIdentifierÍÍ#·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ$Í,¨rmElmtIdÂR³ExpressionStatementÍ8ÍfS®CallExpressionÍ8ÍeX°MemberExpressionÍ8Í[X°MemberExpressionÍ8ÍCT®ThisExpressionÍ8Í<KªIdentifierÍ=ÍC¦__gameÂÂKªIdentifierÍDÍ[·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ\Íd¨rmElmtIdÂM°MethodDefinitionÍsÍ÷ÂÂKªIdentifierÍsÍƒ°aboutToBeDeleted¦methodN²FunctionExpressionÍƒÍ÷ÀÂÂÂL®BlockStatementÍ†Í÷˜R³ExpressionStatementÍ‘Í·S®CallExpressionÍ‘Í¶X°MemberExpressionÍ‘Í´X°MemberExpressionÍ‘Í£T®ThisExpressionÍ‘Í•KªIdentifierÍ–Í£­__isGameStartÂÂKªIdentifierÍ¤Í´°aboutToBeDeletedÂÂÂR³ExpressionStatementÍÁÍäS®CallExpressionÍÁÍãX°MemberExpressionÍÁÍáX°MemberExpressionÍÁÍĞT®ThisExpressionÍÁÍÅKªIdentifierÍÆÍĞª__gameTimeÂÂKªIdentifierÍÑÍá°aboutToBeDeletedÂÂÂR³ExpressionStatementÍîÍS®CallExpressionÍîÍX°MemberExpressionÍîÍX°MemberExpressionÍîÍıT®ThisExpressionÍîÍòKªIdentifierÍóÍıª__numArrayÂÂKªIdentifierÍşÍ°aboutToBeDeletedÂÂÂR³ExpressionStatementÍÍ;S®CallExpressionÍÍ:X°MemberExpressionÍÍ8X°MemberExpressionÍÍ'T®ThisExpressionÍÍKªIdentifierÍ Í'§__timerÂÂKªIdentifierÍ(Í8°aboutToBeDeletedÂÂÂR³ExpressionStatementÍEÍgS®CallExpressionÍEÍfX°MemberExpressionÍEÍdX°MemberExpressionÍEÍST®ThisExpressionÍEÍIKªIdentifierÍJÍS©__isPauseÂÂKªIdentifierÍTÍd°aboutToBeDeletedÂÂÂR³ExpressionStatementÍqÍS®CallExpressionÍqÍX°MemberExpressionÍqÍX°MemberExpressionÍqÍ|T®ThisExpressionÍqÍuKªIdentifierÍvÍ|¦__gameÂÂKªIdentifierÍ}Í°aboutToBeDeletedÂÂÂR³ExpressionStatementÍšÍÆS®CallExpressionÍšÍÅX°MemberExpressionÍšÍ¸S®CallExpressionÍšÍ±X°MemberExpressionÍšÍ¯KªIdentifierÍšÍ«±SubscriberManagerKªIdentifierÍ¬Í¯£GetÂÂÂKªIdentifierÍ²Í¸¦deleteÂÂ‘S®CallExpressionÍ¹ÍÄX°MemberExpressionÍ¹ÍÂT®ThisExpressionÍ¹Í½KªIdentifierÍ¾ÍÂ¤id__ÂÂÂÂR³ExpressionStatementÍĞÍğS®CallExpressionÍĞÍïX°MemberExpressionÍĞÍíT®ThisExpressionÍĞÍÔKªIdentifierÍÕÍí¸aboutToBeDeletedInternalÂÂÂM°MethodDefinitionÍıÍAÂÂKªIdentifierÍÍ«isGameStart£getN²FunctionExpressionÍÍAÀÂÂÂL®BlockStatementÍÍA‘Z¯ReturnStatementÍÍ:S®CallExpressionÍ!Í9X°MemberExpressionÍ!Í7X°MemberExpressionÍ!Í3T®ThisExpressionÍ!Í%KªIdentifierÍ&Í3­__isGameStartÂÂKªIdentifierÍ4Í7£getÂÂÂM°MethodDefinitionÍGÍ”ÂÂKªIdentifierÍKÍV«isGameStart£setN²FunctionExpressionÍVÍ”ÀÂÂÂ‘KªIdentifierÍWÍ_¨newValueL®BlockStatementÍaÍ”‘R³ExpressionStatementÍlÍS®CallExpressionÍlÍŒX°MemberExpressionÍlÍ‚X°MemberExpressionÍlÍ~T®ThisExpressionÍlÍpKªIdentifierÍqÍ~­__isGameStartÂÂKªIdentifierÍÍ‚£setÂÂ‘KªIdentifierÍƒÍ‹¨newValueÂM°MethodDefinitionÍšÍØÂÂKªIdentifierÍÍ¦¨gameTime£getN²FunctionExpressionÍ¦ÍØÀÂÂÂL®BlockStatementÍ©ÍØ‘Z¯ReturnStatementÍ´ÍÑS®CallExpressionÍ»ÍĞX°MemberExpressionÍ»ÍÎX°MemberExpressionÍ»ÍÊT®ThisExpressionÍ»Í¿KªIdentifierÍÀÍÊª__gameTimeÂÂKªIdentifierÍËÍÎ£getÂÂÂM°MethodDefinitionÍŞÍ%ÂÂKªIdentifierÍâÍê¨gameTime£setN²FunctionExpressionÍêÍ%ÀÂÂÂ‘KªIdentifierÍëÍó¨newValueL®BlockStatementÍõÍ%‘R³ExpressionStatementÍ ÍS®CallExpressionÍ ÍX°MemberExpressionÍ ÍX°MemberExpressionÍ ÍT®ThisExpressionÍ ÍKªIdentifierÍÍª__gameTimeÂÂKªIdentifierÍÍ£setÂÂ‘KªIdentifierÍÍ¨newValueÂM°MethodDefinitionÍ+ÍiÂÂKªIdentifierÍ/Í7¨numArray£getN²FunctionExpressionÍ7ÍiÀÂÂÂL®BlockStatementÍ:Íi‘Z¯ReturnStatementÍEÍbS®CallExpressionÍLÍaX°MemberExpressionÍLÍ_X°MemberExpressionÍLÍ[T®ThisExpressionÍLÍPKªIdentifierÍQÍ[ª__numArrayÂÂKªIdentifierÍ\Í_£getÂÂÂM°MethodDefinitionÍoÍ¶ÂÂKªIdentifierÍsÍ{¨numArray£setN²FunctionExpressionÍ{Í¶ÀÂÂÂ‘KªIdentifierÍ|Í„¨newValueL®BlockStatementÍ†Í¶‘R³ExpressionStatementÍ‘Í¯S®CallExpressionÍ‘Í®X°MemberExpressionÍ‘Í¤X°MemberExpressionÍ‘Í T®ThisExpressionÍ‘Í•KªIdentifierÍ–Í ª__numArrayÂÂKªIdentifierÍ¡Í¤£setÂÂ‘KªIdentifierÍ¥Í­¨newValueÂM°MethodDefinitionÍ¼ÍôÂÂKªIdentifierÍÀÍÅ¥timer£getN²FunctionExpressionÍÅÍôÀÂÂÂL®BlockStatementÍÈÍô‘Z¯ReturnStatementÍÓÍíS®CallExpressionÍÚÍìX°MemberExpressionÍÚÍêX°MemberExpressionÍÚÍæT®ThisExpressionÍÚÍŞKªIdentifierÍßÍæ§__timerÂÂKªIdentifierÍçÍê£getÂÂÂM°MethodDefinitionÍúÍ;ÂÂKªIdentifierÍşÍ¥timer£setN²FunctionExpressionÍÍ;ÀÂÂÂ‘KªIdentifierÍÍ¨newValueL®BlockStatementÍÍ;‘R³ExpressionStatementÍÍ4S®CallExpressionÍÍ3X°MemberExpressionÍÍ)X°MemberExpressionÍÍ%T®ThisExpressionÍÍKªIdentifierÍÍ%§__timerÂÂKªIdentifierÍ&Í)£setÂÂ‘KªIdentifierÍ*Í2¨newValueÂM°MethodDefinitionÍAÍ}ÂÂKªIdentifierÍEÍL§isPause£getN²FunctionExpressionÍLÍ}ÀÂÂÂL®BlockStatementÍOÍ}‘Z¯ReturnStatementÍZÍvS®CallExpressionÍaÍuX°MemberExpressionÍaÍsX°MemberExpressionÍaÍoT®ThisExpressionÍaÍeKªIdentifierÍfÍo©__isPauseÂÂKªIdentifierÍpÍs£getÂÂÂM°MethodDefinitionÍƒÍÈÂÂKªIdentifierÍ‡Í§isPause£setN²FunctionExpressionÍÍÈÀÂÂÂ‘KªIdentifierÍÍ—¨newValueL®BlockStatementÍ™ÍÈ‘R³ExpressionStatementÍ¤ÍÁS®CallExpressionÍ¤ÍÀX°MemberExpressionÍ¤Í¶X°MemberExpressionÍ¤Í²T®ThisExpressionÍ¤Í¨KªIdentifierÍ©Í²©__isPauseÂÂKªIdentifierÍ³Í¶£setÂÂ‘KªIdentifierÍ·Í¿¨newValueÂM°MethodDefinitionÍÎÍ ÂÂKªIdentifierÍÒÍÖ¤game£getN²FunctionExpressionÍÖÍ ÀÂÂÂL®BlockStatementÍÙÍ ‘Z¯ReturnStatementÍäÍıS®CallExpressionÍëÍüX°MemberExpressionÍëÍúX°MemberExpressionÍëÍöT®ThisExpressionÍëÍïKªIdentifierÍğÍö¦__gameÂÂKªIdentifierÍ÷Íú£getÂÂÂM°MethodDefinitionÍ 
+Í IÂÂKªIdentifierÍ Í ¤game£setN²FunctionExpressionÍ Í IÀÂÂÂ‘KªIdentifierÍ Í ¨newValueL®BlockStatementÍ Í I‘R³ExpressionStatementÍ (Í BS®CallExpressionÍ (Í AX°MemberExpressionÍ (Í 7X°MemberExpressionÍ (Í 3T®ThisExpressionÍ (Í ,KªIdentifierÍ -Í 3¦__gameÂÂKªIdentifierÍ 4Í 7£setÂÂ‘KªIdentifierÍ 8Í @¨newValueÂM°MethodDefinitionÍ OÍ £ÂÂKªIdentifierÍ OÍ S¤init¦methodN²FunctionExpressionÍ SÍ £ÀÂÂÂL®BlockStatementÍ VÍ £‘R³ExpressionStatementÍ ‚Í œS®CallExpressionÍ ‚Í ›KªIdentifierÍ ‚Í ­clearInterval‘X°MemberExpressionÍ Í šT®ThisExpressionÍ Í ”KªIdentifierÍ •Í š¥timerÂÂÂM°MethodDefinitionÍ ©Í!_ÂÂKªIdentifierÍ ©Í ®¥start¦methodN²FunctionExpressionÍ ®Í!_ÀÂÂÂL®BlockStatementÍ ±Í!_’R³ExpressionStatementÍ ¼Í ÈS®CallExpressionÍ ¼Í ÇX°MemberExpressionÍ ¼Í ÅT®ThisExpressionÍ ¼Í ÀKªIdentifierÍ ÁÍ Å¤initÂÂÂR³ExpressionStatementÍ ÒÍ!XW´AssignmentExpressionÍ ÒÍ!W¡=X°MemberExpressionÍ ÒÍ ÜT®ThisExpressionÍ ÒÍ ÖKªIdentifierÍ ×Í Ü¥timerÂÂS®CallExpressionÍ ßÍ!WKªIdentifierÍ ßÍ ê«setInterval’N·ArrowFunctionExpressionÍ ëÍ!PÀÂÂÂL®BlockStatementÍ ñÍ!P‘U«IfStatementÍ! Í!EP¯UnaryExpressionÍ!Í!¡!ÃX°MemberExpressionÍ!Í!T®ThisExpressionÍ!Í!	KªIdentifierÍ!
+Í!§isPauseÂÂL®BlockStatementÍ!Í!E‘R³ExpressionStatementÍ!&Í!6P°UpdateExpressionÍ!&Í!5¢--ÂX°MemberExpressionÍ!&Í!3T®ThisExpressionÍ!&Í!*KªIdentifierÍ!+Í!3¨gameTimeÂÂÀQ§LiteralÍ!RÍ!VÍè¤1000ÂM°MethodDefinitionÍ!eÍ&¢ÂÂKªIdentifierÍ!eÍ!r­initialRender¦methodN²FunctionExpressionÍ!rÍ&¢ÀÂÂÂL®BlockStatementÍ!uÍ&¢’R³ExpressionStatementÍ!€Í&„S®CallExpressionÍ!€Í&ƒX°MemberExpressionÍ!€Í!T®ThisExpressionÍ!€Í!„KªIdentifierÍ!…Í!¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ!ŸÍ&zÀÂÂÂ’KªIdentifierÍ! Í!¦¦elmtIdKªIdentifierÍ!¨Í!·¯isInitialRenderL®BlockStatementÍ!¼Í&z™R³ExpressionStatementÍ!ËÍ"‚S®CallExpressionÍ!ËÍ"X°MemberExpressionÍ!ËÍ!áKªIdentifierÍ!ËÍ!Ñ¦ButtonKªIdentifierÍ!ÒÍ!á¯createWithLabelÂÂ’[°ObjectExpressionÍ!âÍ"O•\¨PropertyÍ!äÍ!òÂÂÂQ§LiteralÍ!äÍ!è¢id¤"id"Q§LiteralÍ!êÍ!òÎ  	¨16777225¤init\¨PropertyÍ!ôÍ"ÂÂÂQ§LiteralÍ!ôÍ!ú¤type¦"type"Q§LiteralÍ!üÍ"Í'¥10003¤init\¨PropertyÍ"Í"ÂÂÂKªIdentifierÍ"Í"	¦params]¯ArrayExpressionÍ"Í"¤init\¨PropertyÍ"Í"6ÂÂÂQ§LiteralÍ"Í"ªbundleName¬"bundleName"Q§LiteralÍ"Í"6·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ"8Í"MÂÂÂQ§LiteralÍ"8Í"DªmoduleName¬"moduleName"Q§LiteralÍ"FÍ"M¥entry§"entry"¤init[°ObjectExpressionÍ"QÍ"€’\¨PropertyÍ"SÍ"kÂÂÂKªIdentifierÍ"SÍ"W¤typeX°MemberExpressionÍ"YÍ"kKªIdentifierÍ"YÍ"cªButtonTypeKªIdentifierÍ"dÍ"k§CapsuleÂÂ¤init\¨PropertyÍ"mÍ"~ÂÂÂKªIdentifierÍ"mÍ"x«stateEffectQ§LiteralÍ"zÍ"~Ã¤true¤initÂR³ExpressionStatementÍ"Í"£S®CallExpressionÍ"Í"¢X°MemberExpressionÍ"Í"™KªIdentifierÍ"Í"–¦ButtonKªIdentifierÍ"—Í"™¢idÂÂ‘Q§LiteralÍ"šÍ"¡¥begin§'begin'ÂR³ExpressionStatementÍ"±Í#.S®CallExpressionÍ"±Í#-X°MemberExpressionÍ"±Í"¾KªIdentifierÍ"±Í"·¦ButtonKªIdentifierÍ"¸Í"¾¦heightÂÂ‘[°ObjectExpressionÍ"¿Í#,•\¨PropertyÍ"ÁÍ"ÏÂÂÂQ§LiteralÍ"ÁÍ"Å¢id¤"id"Q§LiteralÍ"ÇÍ"ÏÎ  ¨16777233¤init\¨PropertyÍ"ÑÍ"ŞÂÂÂQ§LiteralÍ"ÑÍ"×¤type¦"type"Q§LiteralÍ"ÙÍ"ŞÍ'¥10002¤init\¨PropertyÍ"àÍ"êÂÂÂKªIdentifierÍ"àÍ"æ¦params]¯ArrayExpressionÍ"èÍ"ê¤init\¨PropertyÍ"ìÍ#ÂÂÂQ§LiteralÍ"ìÍ"øªbundleName¬"bundleName"Q§LiteralÍ"úÍ#·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ#Í#*ÂÂÂQ§LiteralÍ#Í#!ªmoduleName¬"moduleName"Q§LiteralÍ##Í#*¥entry§"entry"¤initÂR³ExpressionStatementÍ#<Í#PS®CallExpressionÍ#<Í#OX°MemberExpressionÍ#<Í#HKªIdentifierÍ#<Í#B¦ButtonKªIdentifierÍ#CÍ#H¥widthÂÂ‘Q§LiteralÍ#IÍ#N£90%¥'90%'ÂR³ExpressionStatementÍ#^Í#İS®CallExpressionÍ#^Í#ÜX°MemberExpressionÍ#^Í#mKªIdentifierÍ#^Í#d¦ButtonKªIdentifierÍ#eÍ#m¨fontSizeÂÂ‘[°ObjectExpressionÍ#nÍ#Û•\¨PropertyÍ#pÍ#~ÂÂÂQ§LiteralÍ#pÍ#t¢id¤"id"Q§LiteralÍ#vÍ#~Î  ¨16777232¤init\¨PropertyÍ#€Í#ÂÂÂQ§LiteralÍ#€Í#†¤type¦"type"Q§LiteralÍ#ˆÍ#Í'¥10002¤init\¨PropertyÍ#Í#™ÂÂÂKªIdentifierÍ#Í#•¦params]¯ArrayExpressionÍ#—Í#™¤init\¨PropertyÍ#›Í#ÂÂÂÂQ§LiteralÍ#›Í#§ªbundleName¬"bundleName"Q§LiteralÍ#©Í#Â·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ#ÄÍ#ÙÂÂÂQ§LiteralÍ#ÄÍ#ĞªmoduleName¬"moduleName"Q§LiteralÍ#ÒÍ#Ù¥entry§"entry"¤initÂR³ExpressionStatementÍ#ëÍ$S®CallExpressionÍ#ëÍ$X°MemberExpressionÍ#ëÍ#øKªIdentifierÍ#ëÍ#ñ¦ButtonKªIdentifierÍ#òÍ#ø¦marginÂÂ‘[°ObjectExpressionÍ#ùÍ$‘\¨PropertyÍ#ûÍ$ÂÂÂKªIdentifierÍ#ûÍ#ş£topQ§LiteralÍ$ Í$¡5¤initÂR³ExpressionStatementÍ$Í%S®CallExpressionÍ$Í%X°MemberExpressionÍ$Í$)KªIdentifierÍ$Í$¦ButtonKªIdentifierÍ$Í$)¯backgroundColorÂÂ‘UµConditionalExpressionÍ$*Í%X°MemberExpressionÍ$*Í$:T®ThisExpressionÍ$*Í$.KªIdentifierÍ$/Í$:«isGameStartÂÂ[°ObjectExpressionÍ$=Í$ª•\¨PropertyÍ$?Í$MÂÂÂQ§LiteralÍ$?Í$C¢id¤"id"Q§LiteralÍ$EÍ$MÎ  ¨16777229¤init\¨PropertyÍ$OÍ$\ÂÂÂQ§LiteralÍ$OÍ$U¤type¦"type"Q§LiteralÍ$WÍ$\Í'¥10001¤init\¨PropertyÍ$^Í$hÂÂÂKªIdentifierÍ$^Í$d¦params]¯ArrayExpressionÍ$fÍ$h¤init\¨PropertyÍ$jÍ$‘ÂÂÂQ§LiteralÍ$jÍ$vªbundleName¬"bundleName"Q§LiteralÍ$xÍ$‘·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ$“Í$¨ÂÂÂQ§LiteralÍ$“Í$ŸªmoduleName¬"moduleName"Q§LiteralÍ$¡Í$¨¥entry§"entry"¤init[°ObjectExpressionÍ$­Í%•\¨PropertyÍ$¯Í$½ÂÂÂQ§LiteralÍ$¯Í$³¢id¤"id"Q§LiteralÍ$µÍ$½Î  ¨16777227¤init\¨PropertyÍ$¿Í$ÌÂÂÂQ§LiteralÍ$¿Í$Å¤type¦"type"Q§LiteralÍ$ÇÍ$ÌÍ'¥10001¤init\¨PropertyÍ$ÎÍ$ØÂÂÂKªIdentifierÍ$ÎÍ$Ô¦params]¯ArrayExpressionÍ$ÖÍ$Ø¤init\¨PropertyÍ$ÚÍ%ÂÂÂQ§LiteralÍ$ÚÍ$æªbundleName¬"bundleName"Q§LiteralÍ$èÍ%·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ%Í%ÂÂÂQ§LiteralÍ%Í%ªmoduleName¬"moduleName"Q§LiteralÍ%Í%¥entry§"entry"¤initÂR³ExpressionStatementÍ%*Í%hS®CallExpressionÍ%*Í%gX°MemberExpressionÍ%*Í%8KªIdentifierÍ%*Í%0¦ButtonKªIdentifierÍ%1Í%8§enabledÂÂ‘V±LogicalExpressionÍ%9Í%fP¯UnaryExpressionÍ%9Í%J¡!ÃX°MemberExpressionÍ%:Í%JT®ThisExpressionÍ%:Í%>KªIdentifierÍ%?Í%J«isGameStartÂÂ¢&&V°BinaryExpressionÍ%NÍ%fX°MemberExpressionÍ%NÍ%bX°MemberExpressionÍ%NÍ%[T®ThisExpressionÍ%NÍ%RKªIdentifierÍ%SÍ%[¨numArrayÂÂKªIdentifierÍ%\Í%b¦lengthÂÂ¡>Q§LiteralÍ%eÍ%f ¡0ÂR³ExpressionStatementÍ%vÍ&oS®CallExpressionÍ%vÍ&nX°MemberExpressionÍ%vÍ%„KªIdentifierÍ%vÍ%|¦ButtonKªIdentifierÍ%}Í%„§onClickÂÂ‘N·ArrowFunctionExpressionÍ%…Í&mÀÂÂÂL®BlockStatementÍ%‹Í&m”R³ExpressionStatementÍ%Í%¶W´AssignmentExpressionÍ%Í%µ¡=X°MemberExpressionÍ%Í%®T®ThisExpressionÍ%Í%¢KªIdentifierÍ%£Í%®«isGameStartÂÂQ§LiteralÍ%±Í%µÃ¤trueR³ExpressionStatementÍ%ÈÍ%İW´AssignmentExpressionÍ%ÈÍ%Ü¡=X°MemberExpressionÍ%ÈÍ%ÔT®ThisExpressionÍ%ÈÍ%ÌKªIdentifierÍ%ÍÍ%Ô§isPauseÂÂQ§LiteralÍ%×Í%ÜÂ¥falseR³ExpressionStatementÍ%ïÍ%üS®CallExpressionÍ%ïÍ%ûX°MemberExpressionÍ%ïÍ%ùT®ThisExpressionÍ%ïÍ%óKªIdentifierÍ%ôÍ%ù¥startÂÂÂR³ExpressionStatementÍ&Í&^W´AssignmentExpressionÍ&Í&]¡=X°MemberExpressionÍ&Í&T®ThisExpressionÍ&Í&KªIdentifierÍ&Í&¨numArrayÂÂS®CallExpressionÍ&Í&]X°MemberExpressionÍ&Í&1X°MemberExpressionÍ&Í&'T®ThisExpressionÍ&Í&"KªIdentifierÍ&#Í&'¤gameÂÂKªIdentifierÍ&(Í&1©gameBeginÂÂ‘S®CallExpressionÍ&2Í&\X°MemberExpressionÍ&2Í&MKªIdentifierÍ&2Í&@®ObservedObjectKªIdentifierÍ&AÍ&M¬GetRawObjectÂÂ‘X°MemberExpressionÍ&NÍ&[T®ThisExpressionÍ&NÍ&RKªIdentifierÍ&SÍ&[¨numArrayÂÂÂÂÂKªIdentifierÍ&|Í&‚¦ButtonÂR³ExpressionStatementÍ&Í&›S®CallExpressionÍ&Í&šX°MemberExpressionÍ&Í&˜KªIdentifierÍ&Í&”¦ButtonKªIdentifierÍ&•Í&˜£popÂÂÂM°MethodDefinitionÍ&¨Í&àÂÂKªIdentifierÍ&¨Í&°¨rerender¦methodN²FunctionExpressionÍ&°Í&àÀÂÂÂL®BlockStatementÍ&³Í&à‘R³ExpressionStatementÍ&¾Í&ÙS®CallExpressionÍ&¾Í&ØX°MemberExpressionÍ&¾Í&ÖT®ThisExpressionÍ&¾Í&ÂKªIdentifierÍ&ÃÍ&Ö³updateDirtyElementsÂÂÂÀI¶ExportNamedDeclarationÍ&åÍ2ˆJ°ClassDeclarationÍ&ìÍ2ˆKªIdentifierÍ&òÍ'³selectPictureButtonKªIdentifierÍ'Í'¦ViewPUL©ClassBodyÍ'Í2ˆM°MethodDefinitionÍ'Í)ıÂÂKªIdentifierÍ'Í''«constructor«constructorN²FunctionExpressionÍ''Í)ıÀÂÂÂ–KªIdentifierÍ'(Í'.¦parentKªIdentifierÍ'0Í'6¦paramsKªIdentifierÍ'8Í'F®__localStorageO±AssignmentPatternÍ'HÍ'SKªIdentifierÍ'HÍ'N¦elmtIdP¯UnaryExpressionÍ'QÍ'S¡-ÃQ§LiteralÍ'RÍ'S¡1O±AssignmentPatternÍ'UÍ'mKªIdentifierÍ'UÍ'a¬paramsLambdaKªIdentifierÍ'dÍ'm©undefinedKªIdentifierÍ'oÍ'x©extraInfoL®BlockStatementÍ'zÍ)ı˜R³ExpressionStatementÍ'…Í'¶S®CallExpressionÍ'…Í'µT¥SuperÍ'…Í'Š”KªIdentifierÍ'‹Í'‘¦parentKªIdentifierÍ'“Í'¡®__localStorageKªIdentifierÍ'£Í'©¦elmtIdKªIdentifierÍ'«Í'´©extraInfoÂU«IfStatementÍ'ÀÍ('V°BinaryExpressionÍ'ÄÍ'æP¯UnaryExpressionÍ'ÄÍ'×¦typeofÃKªIdentifierÍ'ËÍ'×¬paramsLambda£===Q§LiteralÍ'ÜÍ'æ¨functionª"function"L®BlockStatementÍ'èÍ('‘R³ExpressionStatementÍ'÷Í(W´AssignmentExpressionÍ'÷Í(¡=X°MemberExpressionÍ'÷Í(T®ThisExpressionÍ'÷Í'ûKªIdentifierÍ'üÍ(°paramsGenerator_ÂÂKªIdentifierÍ(Í(¬paramsLambdaÀR³ExpressionStatementÍ(1Í(‘W´AssignmentExpressionÍ(1Í(¡=X°MemberExpressionÍ(1Í(CT®ThisExpressionÍ(1Í(5KªIdentifierÍ(6Í(C­__isGameStartÂÂY­NewExpressionÍ(FÍ(KªIdentifierÍ(JÍ(g½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ(hÍ(zKªIdentifierÍ(hÍ(n¦paramsKªIdentifierÍ(oÍ(z«isGameStartÂÂT®ThisExpressionÍ(|Í(€Q§LiteralÍ(‚Í(«isGameStart­"isGameStart"R³ExpressionStatementÍ(›Í(òW´AssignmentExpressionÍ(›Í(ñ¡=X°MemberExpressionÍ(›Í(ªT®ThisExpressionÍ(›Í(ŸKªIdentifierÍ( Í(ªª__numArrayÂÂY­NewExpressionÍ(­Í(ñKªIdentifierÍ(±Í(Î½SynchedPropertyObjectTwoWayPU“X°MemberExpressionÍ(ÏÍ(ŞKªIdentifierÍ(ÏÍ(Õ¦paramsKªIdentifierÍ(ÖÍ(Ş¨numArrayÂÂT®ThisExpressionÍ(àÍ(äQ§LiteralÍ(æÍ(ğ¨numArrayª"numArray"R³ExpressionStatementÍ(üÍ)bW´AssignmentExpressionÍ(üÍ)a¡=X°MemberExpressionÍ(üÍ)T®ThisExpressionÍ(üÍ) KªIdentifierÍ)Í)¯__templateIndexÂÂY­NewExpressionÍ)Í)aKªIdentifierÍ)Í)4½SynchedPropertySimpleTwoWayPU“X°MemberExpressionÍ)5Í)IKªIdentifierÍ)5Í);¦paramsKªIdentifierÍ)<Í)I­templateIndexÂÂT®ThisExpressionÍ)KÍ)OQ§LiteralÍ)QÍ)`­templateIndex¯"templateIndex"R³ExpressionStatementÍ)lÍ)ŸW´AssignmentExpressionÍ)lÍ)¡=X°MemberExpressionÍ)lÍ){T®ThisExpressionÍ)lÍ)pKªIdentifierÍ)qÍ){ªImageModelÂÂY­NewExpressionÍ)~Í)KªIdentifierÍ)‚Í)ŒªImageModel‘S®CallExpressionÍ)Í)KªIdentifierÍ)Í)—ªgetContext‘T®ThisExpressionÍ)˜Í)œÂR³ExpressionStatementÍ)©Í)ĞS®CallExpressionÍ)©Í)ÏX°MemberExpressionÍ)©Í)ÇT®ThisExpressionÍ)©Í)­KªIdentifierÍ)®Í)Ç¹setInitiallyProvidedValueÂÂ‘KªIdentifierÍ)ÈÍ)Î¦paramsÂR³ExpressionStatementÍ)ÚÍ)öS®CallExpressionÍ)ÚÍ)õX°MemberExpressionÍ)ÚÍ)óT®ThisExpressionÍ)ÚÍ)ŞKªIdentifierÍ)ßÍ)ó´finalizeConstructionÂÂÂM°MethodDefinitionÍ*Í*šÂÂKªIdentifierÍ*Í*¹setInitiallyProvidedValue¦methodN²FunctionExpressionÍ*Í*šÀÂÂÂ‘KªIdentifierÍ*Í*#¦paramsL®BlockStatementÍ*%Í*š‘U«IfStatementÍ*0Í*“V°BinaryExpressionÍ*4Í*SX°MemberExpressionÍ*4Í*EKªIdentifierÍ*4Í*:¦paramsKªIdentifierÍ*;Í*EªImageModelÂÂ£!==KªIdentifierÍ*JÍ*S©undefinedL®BlockStatementÍ*UÍ*“‘R³ExpressionStatementÍ*dÍ*ˆW´AssignmentExpressionÍ*dÍ*‡¡=X°MemberExpressionÍ*dÍ*sT®ThisExpressionÍ*dÍ*hKªIdentifierÍ*iÍ*sªImageModelÂÂX°MemberExpressionÍ*vÍ*‡KªIdentifierÍ*vÍ*|¦paramsKªIdentifierÍ*}Í*‡ªImageModelÂÂÀM°MethodDefinitionÍ* Í*ÀÂÂKªIdentifierÍ* Í*¯¯updateStateVars¦methodN²FunctionExpressionÍ*¯Í*ÀÀÂÂÂ‘KªIdentifierÍ*°Í*¶¦paramsL®BlockStatementÍ*¸Í*ÀM°MethodDefinitionÍ*ÆÍ+¶ÂÂKªIdentifierÍ*ÆÍ*çÙ!purgeVariableDependenciesOnElmtId¦methodN²FunctionExpressionÍ*çÍ+¶ÀÂÂÂ‘KªIdentifierÍ*èÍ*ğ¨rmElmtIdL®BlockStatementÍ*òÍ+¶“R³ExpressionStatementÍ*ıÍ+2S®CallExpressionÍ*ıÍ+1X°MemberExpressionÍ*ıÍ+'X°MemberExpressionÍ*ıÍ+T®ThisExpressionÍ*ıÍ+KªIdentifierÍ+Í+­__isGameStartÂÂKªIdentifierÍ+Í+'·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ+(Í+0¨rmElmtIdÂR³ExpressionStatementÍ+<Í+nS®CallExpressionÍ+<Í+mX°MemberExpressionÍ+<Í+cX°MemberExpressionÍ+<Í+KT®ThisExpressionÍ+<Í+@KªIdentifierÍ+AÍ+Kª__numArrayÂÂKªIdentifierÍ+LÍ+c·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ+dÍ+l¨rmElmtIdÂR³ExpressionStatementÍ+xÍ+¯S®CallExpressionÍ+xÍ+®X°MemberExpressionÍ+xÍ+¤X°MemberExpressionÍ+xÍ+ŒT®ThisExpressionÍ+xÍ+|KªIdentifierÍ+}Í+Œ¯__templateIndexÂÂKªIdentifierÍ+Í+¤·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ+¥Í+­¨rmElmtIdÂM°MethodDefinitionÍ+¼Í,ÆÂÂKªIdentifierÍ+¼Í+Ì°aboutToBeDeleted¦methodN²FunctionExpressionÍ+ÌÍ,ÆÀÂÂÂL®BlockStatementÍ+ÏÍ,Æ•R³ExpressionStatementÍ+ÚÍ, S®CallExpressionÍ+ÚÍ+ÿX°MemberExpressionÍ+ÚÍ+ıX°MemberExpressionÍ+ÚÍ+ìT®ThisExpressionÍ+ÚÍ+ŞKªIdentifierÍ+ßÍ+ì­__isGameStartÂÂKªIdentifierÍ+íÍ+ı°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ,
+Í,-S®CallExpressionÍ,
+Í,,X°MemberExpressionÍ,
+Í,*X°MemberExpressionÍ,
+Í,T®ThisExpressionÍ,
+Í,KªIdentifierÍ,Í,ª__numArrayÂÂKªIdentifierÍ,Í,*°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ,7Í,_S®CallExpressionÍ,7Í,^X°MemberExpressionÍ,7Í,\X°MemberExpressionÍ,7Í,KT®ThisExpressionÍ,7Í,;KªIdentifierÍ,<Í,K¯__templateIndexÂÂKªIdentifierÍ,LÍ,\°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ,iÍ,•S®CallExpressionÍ,iÍ,”X°MemberExpressionÍ,iÍ,‡S®CallExpressionÍ,iÍ,€X°MemberExpressionÍ,iÍ,~KªIdentifierÍ,iÍ,z±SubscriberManagerKªIdentifierÍ,{Í,~£GetÂÂÂKªIdentifierÍ,Í,‡¦deleteÂÂ‘S®CallExpressionÍ,ˆÍ,“X°MemberExpressionÍ,ˆÍ,‘T®ThisExpressionÍ,ˆÍ,ŒKªIdentifierÍ,Í,‘¤id__ÂÂÂÂR³ExpressionStatementÍ,ŸÍ,¿S®CallExpressionÍ,ŸÍ,¾X°MemberExpressionÍ,ŸÍ,¼T®ThisExpressionÍ,ŸÍ,£KªIdentifierÍ,¤Í,¼¸aboutToBeDeletedInternalÂÂÂM°MethodDefinitionÍ,ÌÍ-ÂÂKªIdentifierÍ,ĞÍ,Û«isGameStart£getN²FunctionExpressionÍ,ÛÍ-ÀÂÂÂL®BlockStatementÍ,ŞÍ-‘Z¯ReturnStatementÍ,éÍ-	S®CallExpressionÍ,ğÍ-X°MemberExpressionÍ,ğÍ-X°MemberExpressionÍ,ğÍ-T®ThisExpressionÍ,ğÍ,ôKªIdentifierÍ,õÍ-­__isGameStartÂÂKªIdentifierÍ-Í-£getÂÂÂM°MethodDefinitionÍ-Í-cÂÂKªIdentifierÍ-Í-%«isGameStart£setN²FunctionExpressionÍ-%Í-cÀÂÂÂ‘KªIdentifierÍ-&Í-.¨newValueL®BlockStatementÍ-0Í-c‘R³ExpressionStatementÍ-;Í-\S®CallExpressionÍ-;Í-[X°MemberExpressionÍ-;Í-QX°MemberExpressionÍ-;Í-MT®ThisExpressionÍ-;Í-?KªIdentifierÍ-@Í-M­__isGameStartÂÂKªIdentifierÍ-NÍ-Q£setÂÂ‘KªIdentifierÍ-RÍ-Z¨newValueÂM°MethodDefinitionÍ-iÍ-§ÂÂKªIdentifierÍ-mÍ-u¨numArray£getN²FunctionExpressionÍ-uÍ-§ÀÂÂÂL®BlockStatementÍ-xÍ-§‘Z¯ReturnStatementÍ-ƒÍ- S®CallExpressionÍ-ŠÍ-ŸX°MemberExpressionÍ-ŠÍ-X°MemberExpressionÍ-ŠÍ-™T®ThisExpressionÍ-ŠÍ-KªIdentifierÍ-Í-™ª__numArrayÂÂKªIdentifierÍ-šÍ-£getÂÂÂM°MethodDefinitionÍ-­Í-ôÂÂKªIdentifierÍ-±Í-¹¨numArray£setN²FunctionExpressionÍ-¹Í-ôÀÂÂÂ‘KªIdentifierÍ-ºÍ-Â¨newValueL®BlockStatementÍ-ÄÍ-ô‘R³ExpressionStatementÍ-ÏÍ-íS®CallExpressionÍ-ÏÍ-ìX°MemberExpressionÍ-ÏÍ-âX°MemberExpressionÍ-ÏÍ-ŞT®ThisExpressionÍ-ÏÍ-ÓKªIdentifierÍ-ÔÍ-Şª__numArrayÂÂKªIdentifierÍ-ßÍ-â£setÂÂ‘KªIdentifierÍ-ãÍ-ë¨newValueÂM°MethodDefinitionÍ-úÍ.BÂÂKªIdentifierÍ-şÍ.­templateIndex£getN²FunctionExpressionÍ.Í.BÀÂÂÂL®BlockStatementÍ.Í.B‘Z¯ReturnStatementÍ.Í.;S®CallExpressionÍ. Í.:X°MemberExpressionÍ. Í.8X°MemberExpressionÍ. Í.4T®ThisExpressionÍ. Í.$KªIdentifierÍ.%Í.4¯__templateIndexÂÂKªIdentifierÍ.5Í.8£getÂÂÂM°MethodDefinitionÍ.HÍ.™ÂÂKªIdentifierÍ.LÍ.Y­templateIndex£setN²FunctionExpressionÍ.YÍ.™ÀÂÂÂ‘KªIdentifierÍ.ZÍ.b¨newValueL®BlockStatementÍ.dÍ.™‘R³ExpressionStatementÍ.oÍ.’S®CallExpressionÍ.oÍ.‘X°MemberExpressionÍ.oÍ.‡X°MemberExpressionÍ.oÍ.ƒT®ThisExpressionÍ.oÍ.sKªIdentifierÍ.tÍ.ƒ¯__templateIndexÂÂKªIdentifierÍ.„Í.‡£setÂÂ‘KªIdentifierÍ.ˆÍ.¨newValueÂM°MethodDefinitionÍ.ŸÍ2GÂÂKªIdentifierÍ.ŸÍ.¬­initialRender¦methodN²FunctionExpressionÍ.¬Í2GÀÂÂÂL®BlockStatementÍ.¯Í2G’R³ExpressionStatementÍ.ºÍ2)S®CallExpressionÍ.ºÍ2(X°MemberExpressionÍ.ºÍ.ØT®ThisExpressionÍ.ºÍ.¾KªIdentifierÍ.¿Í.Ø¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ.ÙÍ2ÀÂÂÂ’KªIdentifierÍ.ÚÍ.à¦elmtIdKªIdentifierÍ.âÍ.ñ¯isInitialRenderL®BlockStatementÍ.öÍ2˜R³ExpressionStatementÍ/Í/VS®CallExpressionÍ/Í/UX°MemberExpressionÍ/Í/KªIdentifierÍ/Í/¦ButtonKªIdentifierÍ/Í/¯createWithLabelÂÂ’Q§LiteralÍ/Í/#¯ä»å›¾åº“é€‰æ‹©±'ä»å›¾åº“é€‰æ‹©'[°ObjectExpressionÍ/%Í/T’\¨PropertyÍ/'Í/?ÂÂÂKªIdentifierÍ/'Í/+¤typeX°MemberExpressionÍ/-Í/?KªIdentifierÍ/-Í/7ªButtonTypeKªIdentifierÍ/8Í/?§CapsuleÂÂ¤init\¨PropertyÍ/AÍ/RÂÂÂKªIdentifierÍ/AÍ/L«stateEffectQ§LiteralÍ/NÍ/RÃ¤true¤initÂR³ExpressionStatementÍ/dÍ/S®CallExpressionÍ/dÍ/~X°MemberExpressionÍ/dÍ/mKªIdentifierÍ/dÍ/j¦ButtonKªIdentifierÍ/kÍ/m¢idÂÂ‘Q§LiteralÍ/nÍ/}­selectPicture¯'selectPicture'ÂR³ExpressionStatementÍ/Í0S®CallExpressionÍ/Í0X°MemberExpressionÍ/Í/œKªIdentifierÍ/Í/“¦ButtonKªIdentifierÍ/”Í/œ¨fontSizeÂÂ‘[°ObjectExpressionÍ/Í0
+•\¨PropertyÍ/ŸÍ/­ÂÂÂQ§LiteralÍ/ŸÍ/£¢id¤"id"Q§LiteralÍ/¥Í/­Î  ¨16777232¤init\¨PropertyÍ/¯Í/¼ÂÂÂQ§LiteralÍ/¯Í/µ¤type¦"type"Q§LiteralÍ/·Í/¼Í'¥10002¤init\¨PropertyÍ/¾Í/ÈÂÂÂKªIdentifierÍ/¾Í/Ä¦params]¯ArrayExpressionÍ/ÆÍ/È¤init\¨PropertyÍ/ÊÍ/ñÂÂÂQ§LiteralÍ/ÊÍ/ÖªbundleName¬"bundleName"Q§LiteralÍ/ØÍ/ñ·ohos.samples.gamepuzzle¹"ohos.samples.gamepuzzle"¤init\¨PropertyÍ/óÍ0ÂÂÂQ§LiteralÍ/óÍ/ÿªmoduleName¬"moduleName"Q§LiteralÍ0Í0¥entry§"entry"¤initÂR³ExpressionStatementÍ0Í05S®CallExpressionÍ0Í04X°MemberExpressionÍ0Í0'KªIdentifierÍ0Í0 ¦ButtonKªIdentifierÍ0!Í0'¦marginÂÂ‘[°ObjectExpressionÍ0(Í03‘\¨PropertyÍ0*Í01ÂÂÂKªIdentifierÍ0*Í0-£topQ§LiteralÍ0/Í01¢20¤initÂR³ExpressionStatementÍ0CÍ0eS®CallExpressionÍ0CÍ0dX°MemberExpressionÍ0CÍ0YKªIdentifierÍ0CÍ0I¦ButtonKªIdentifierÍ0JÍ0Y¯backgroundColorÂÂ‘Q§LiteralÍ0ZÍ0c§#f5f5f5©'#f5f5f5'ÂR³ExpressionStatementÍ0sÍ0S®CallExpressionÍ0sÍ0X°MemberExpressionÍ0sÍ0ƒKªIdentifierÍ0sÍ0y¦ButtonKªIdentifierÍ0zÍ0ƒ©fontColorÂÂ‘Q§LiteralÍ0„Í0§#182431©'#182431'ÂR³ExpressionStatementÍ0Í0¿S®CallExpressionÍ0Í0¾X°MemberExpressionÍ0Í0«KªIdentifierÍ0Í0£¦ButtonKªIdentifierÍ0¤Í0«§enabledÂÂ‘P¯UnaryExpressionÍ0¬Í0½¡!ÃX°MemberExpressionÍ0­Í0½T®ThisExpressionÍ0­Í0±KªIdentifierÍ0²Í0½«isGameStartÂÂÂR³ExpressionStatementÍ0ÍÍ2S®CallExpressionÍ0ÍÍ2X°MemberExpressionÍ0ÍÍ0ÛKªIdentifierÍ0ÍÍ0Ó¦ButtonKªIdentifierÍ0ÔÍ0Û§onClickÂÂ‘N·ArrowFunctionExpressionÍ0ÜÍ2ÀÂÂÃL®BlockStatementÍ0èÍ2‘U«IfStatementÍ0ûÍ2P¯UnaryExpressionÍ0ÿÍ1¡!ÃX°MemberExpressionÍ1 Í1T®ThisExpressionÍ1 Í1KªIdentifierÍ1Í1«isGameStartÂÂL®BlockStatementÍ1Í2’U«IfStatementÍ1)Í1ˆX°MemberExpressionÍ1-Í1AX°MemberExpressionÍ1-Í1:T®ThisExpressionÍ1-Í11KªIdentifierÍ12Í1:¨numArrayÂÂKªIdentifierÍ1;Í1A¦lengthÂÂL®BlockStatementÍ1CÍ1ˆ‘R³ExpressionStatementÍ1^Í1qW´AssignmentExpressionÍ1^Í1p¡=X°MemberExpressionÍ1^Í1kT®ThisExpressionÍ1^Í1bKªIdentifierÍ1cÍ1k¨numArrayÂÂ]¯ArrayExpressionÍ1nÍ1pÀR³ExpressionStatementÍ1Í1ğW´AssignmentExpressionÍ1Í1ï¡=X°MemberExpressionÍ1Í1«T®ThisExpressionÍ1Í1¢KªIdentifierÍ1£Í1«¨numArrayÂÂZ¯AwaitExpressionÍ1®Í1ïS®CallExpressionÍ1´Í1ïX°MemberExpressionÍ1´Í1×X°MemberExpressionÍ1´Í1ÃT®ThisExpressionÍ1´Í1¸KªIdentifierÍ1¹Í1ÃªImageModelÂÂKªIdentifierÍ1ÄÍ1×³getPictureFromAlbumÂÂ‘V°BinaryExpressionÍ1ØÍ1îX°MemberExpressionÍ1ØÍ1êT®ThisExpressionÍ1ØÍ1ÜKªIdentifierÍ1İÍ1ê­templateIndexÂÂ¡+Q§LiteralÍ1íÍ1î¡2ÂÀÂKªIdentifierÍ2!Í2'¦ButtonÂR³ExpressionStatementÍ23Í2@S®CallExpressionÍ23Í2?X°MemberExpressionÍ23Í2=KªIdentifierÍ23Í29¦ButtonKªIdentifierÍ2:Í2=£popÂÂÂM°MethodDefinitionÍ2MÍ2…ÂÂKªIdentifierÍ2MÍ2U¨rerender¦methodN²FunctionExpressionÍ2UÍ2…ÀÂÂÂL®BlockStatementÍ2XÍ2…‘R³ExpressionStatementÍ2cÍ2~S®CallExpressionÍ2cÍ2}X°MemberExpressionÍ2cÍ2{T®ThisExpressionÍ2cÍ2gKªIdentifierÍ2hÍ2{³updateDirtyElementsÂÂÂÀ‘Ôr^•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€Ì­‘Ôr_”¤type¥start£end¥local¶ImportDefaultSpecifierÌ‡Ì‘KªIdentifierÌ‡Ì‘ªImageModelQ§LiteralÌ—Ì¬³../model/ImageModelµ"../model/ImageModel"

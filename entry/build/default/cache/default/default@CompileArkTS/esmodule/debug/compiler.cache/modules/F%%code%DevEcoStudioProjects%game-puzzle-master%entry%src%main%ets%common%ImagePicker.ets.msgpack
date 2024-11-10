@@ -1,0 +1,242 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ~if (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { CommonConstants as Common } from './CommonConstants';
+export default class ImagePicker extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__index = new SynchedPropertySimpleTwoWayPU(params.index, this, "index");
+        this.__selected = new ObservedPropertySimplePU(Common.ZERO, this, "selected");
+        this.imagesData = [];
+        this.controller = undefined;
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.selected !== undefined) {
+            this.selected = params.selected;
+        }
+        if (params.imagesData !== undefined) {
+            this.imagesData = params.imagesData;
+        }
+        if (params.controller !== undefined) {
+            this.controller = params.controller;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__index.purgeDependencyOnElmtId(rmElmtId);
+        this.__selected.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__index.aboutToBeDeleted();
+        this.__selected.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get index() {
+        return this.__index.get();
+    }
+    set index(newValue) {
+        this.__index.set(newValue);
+    }
+    get selected() {
+        return this.__selected.get();
+    }
+    set selected(newValue) {
+        this.__selected.set(newValue);
+    }
+    setController(ctr) {
+        this.controller = ctr;
+    }
+    aboutToAppear() {
+        this.selected = this.index;
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width(Common.FULL_WIDTH);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            List.create({ space: Common.LIST_SPACE });
+            List.width(Common.LIST_WIDTH);
+            List.height({ "id": 16777240, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            List.listDirection(Axis.Horizontal);
+        }, List);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = (_item, index) => {
+                const item = _item;
+                {
+                    const itemCreation = (elmtId, isInitialRender) => {
+                        ViewStackProcessor.StartGetAccessRecordingFor(elmtId);
+                        itemCreation2(elmtId, isInitialRender);
+                        if (!isInitialRender) {
+                            ListItem.pop();
+                        }
+                        ViewStackProcessor.StopGetAccessRecording();
+                    };
+                    const itemCreation2 = (elmtId, isInitialRender) => {
+                        ListItem.create(deepRenderFunction, true);
+                    };
+                    const deepRenderFunction = (elmtId, isInitialRender) => {
+                        itemCreation(elmtId, isInitialRender);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Stack.create({ alignContent: Alignment.TopEnd });
+                        }, Stack);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Image.create(item.uri);
+                            Image.width({ "id": 16777239, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                            Image.height({ "id": 16777238, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+                            Image.margin({
+                                left: { "id": 16777242, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                                right: { "id": 16777242, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                                top: { "id": 16777243, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                                bottom: { "id": 16777243, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" }
+                            });
+                        }, Image);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Radio.create({ value: Common.RADIO_VALUE, group: Common.RADIO_GROUP });
+                            Radio.id(`radio${this.selected + Common.ONE}_${index + Common.ONE}`);
+                            Radio.checked(index === this.selected ? true : false);
+                            Radio.onChange(() => {
+                                this.selected = index;
+                            });
+                        }, Radio);
+                        Stack.pop();
+                        ListItem.pop();
+                    };
+                    this.observeComponentCreation2(itemCreation2, ListItem);
+                    ListItem.pop();
+                }
+            };
+            this.forEachUpdateFunction(elmtId, this.imagesData, forEachItemGenFunction, (item) => JSON.stringify(item), true, false);
+        }, ForEach);
+        ForEach.pop();
+        List.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.margin({ bottom: { "id": 16777241, "type": 10002, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" } });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel({ "id": 16777221, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.id(Common.CANCEL_BUTTON);
+            Button.margin({ right: Common.BUTTON_MARGIN });
+            Button.onClick(() => {
+                this.controller.close();
+            });
+        }, Button);
+        Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel({ "id": 16777226, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" });
+            Button.id(Common.CONFIRM_BUTTON);
+            Button.onClick(() => {
+                this.index = this.selected;
+                this.controller.close();
+            });
+        }, Button);
+        Button.pop();
+        Row.pop();
+        Column.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+//# sourceMappingURL=ImagePicker.js.mapÂ‘Ù]F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\common\CommonConstants.etsÙYF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\common\ImagePicker.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ‘ÔrC’²hostDependencyName®hostModuleNameµ../common/ImagePicker¥entryÃÚ
+‡/*
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { CommonConstants as Common } from './CommonConstants';
+
+@CustomDialog
+export default struct ImagePicker {
+  @Link index: number ;
+  @State selected: number = Common.ZERO;
+  private imagesData: Array<photoAccessHelper.PhotoAsset> = [];
+  public controller: CustomDialogController;
+
+  aboutToAppear() {
+    this.selected = this.index;
+  }
+
+  build() {
+    Column() {
+      List({ space: Common.LIST_SPACE }) {
+        ForEach(this.imagesData, (item: photoAccessHelper.PhotoAsset, index) => {
+          ListItem() {
+            Stack({ alignContent: Alignment.TopEnd }) {
+              Image(item.uri)
+                .width($r('app.float.image_width'))
+                .height($r('app.float.image_height'))
+                .margin({
+                  left: $r('app.float.margin_side'),
+                  right: $r('app.float.margin_side'),
+                  top: $r('app.float.margin_up'),
+                  bottom: $r('app.float.margin_up')
+                })
+              Radio({ value: Common.RADIO_VALUE, group: Common.RADIO_GROUP })
+                .id(`radio${this.selected + Common.ONE}_${index + Common.ONE}`)
+                .checked(index === this.selected ? true : false)
+                .onChange(() => {
+                  this.selected = index;
+                })
+            }
+          }
+        }, (item: photoAccessHelper.PhotoAsset) => JSON.stringify(item))
+      }
+      .width(Common.LIST_WIDTH)
+      .height($r('app.float.list_height'))
+      .listDirection(Axis.Horizontal)
+
+      Row() {
+        Button($r('app.string.cancel'))
+          .id(Common.CANCEL_BUTTON)
+          .margin({ right: Common.BUTTON_MARGIN })
+          .onClick(() => {
+            this.controller.close();
+          })
+        Button($r('app.string.submit'))
+          .id(Common.CONFIRM_BUTTON)
+          .onClick(() => {
+            this.index = this.selected;
+            this.controller.close();
+          })
+      }
+      .margin({ bottom: $r('app.float.margin_bottom') })
+    }
+    .width(Common.FULL_WIDTH)
+  }
+}ÀÔrD‘±./CommonConstantsÔrE—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙ]F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\common\CommonConstants.etsAÃªoh-resolveÂ’ÔrF–§version¤fileªsourceRoot§sources¥names¨mappings®ImagePicker.js ‘¯ImagePicker.etsÜ ‘š”   ” ”	 	” ” ”" "”$ $”* *”= =”> >–”   ” ” ” ” ”  !‘”  ””7 ”= "”> #”ÌB '’” <” >‘” >’” ” ’” ” ’” 	” ’” 	” ’” 	” ’” ” ™” ” ” 	” ” ” ” ”" ”# ’” ” ‘” ’” ” 
+˜” ” 
+” ÌJ” ÌJ
+” ÌJ” ÌJ”  ÌJ”* ÌJš” ” 
+” ” ” ”! ”' ”( ”2 %”4 '˜” ” 
+” 6” 6” 6” 6” 6”( 6”” ” 
+” 7” 7˜” ” 
+” 8” 8” 8”# 8”$ 8”. 8$’”  ”  ’”3  ÌF”8  ÌK’” !
+”$ !š” "”! "”) "”+ "”7 " ”9 ""”ÌB "+”ÌC ",”ÌI "2”ÌK "4–” #”! #”) #”- #”. #”1 #”” #”! #”" $”' $”” #”! #”" %”( %•” #”! #”" &”( &”) &“”  '”$ '”Ì“ '3“”  (”% (”Ì” (4“”  )”# )”Ì’ )0“”  *”& *”Ì• *3‘” +Ü ” ,”! ,”) ,”+ ,”0 ,”2 ,”8 ,#”9 ,$”ÌD ,/”ÌF ,1”ÌK ,6”ÌM ,8”ÌS ,>”ÌT ,?”Ì_ ,ÌJ”Ìa ,ÌLÜ ” ,”! ,”" -”$ -”% -”- -”1 - ”2 -!”: -)”= -,”ÌC -2”ÌD -3”ÌG -6”ÌK -:”ÌP -?”ÌS -ÌB”ÌY -ÌH”ÌZ -ÌI”Ì] -ÌL”Ì_ -ÌNÜ ” ,”! ,”" .”) .”* .”/ .”4 .#”8 .'”9 .(”ÌA .0”ÌB .1”ÌC .2”ÌD .3”ÌH .7”ÌI .8”ÌJ .9”ÌK .:”ÌP .?—” ,”! ,”" /”* /”+ /”. /”0 /—”  0”$ 0”% 0”- 0”0 0"”5 0'”6 0(’” 1” 1’” "” "’” !
+”  !’” !
+” !Ü ”/  ”3  ”4  ”>  ”ÌX 4”ÌY 4”Ì] 4.”Ì_ 40”Ìa 42”Ìb 43”Ìf 47”Ìg 48”Ìp 4ÌA”Ìq 4ÌB”Ìu 4ÌF”Ìv 4ÌG’”  ”  ’” ” 
+’” :” :	™” :” :	” ÌH” ÌH” ÌH” ÌH” ÌH”Ì ÌH5”Ì ÌH7’” ;” ;˜” ;” ;” <” <” <” <” <”* <"œ” ;” ;” =” =” =” =”! =”# =”) =!”* ="”7 =/”9 =1—” ;” ;” >” >” >” >”  >˜” ?” ?” ?” ?”  ?”% ?!”' ?#”( ?$’” Ì@
+” Ì@’” ;” ;’” ÌA” ÌA˜” ÌA” ÌA” ÌB” ÌB” ÌB” ÌB” ÌB”+ ÌB#—” ÌA” ÌA” ÌC” ÌC” ÌC” ÌC”  ÌC™” ÌD” ÌD” ÌD” ÌD” ÌD”! ÌD”" ÌD”* ÌD&”+ ÌD'˜” ÌE” ÌE” ÌE” ÌE”  ÌE”% ÌE!”' ÌE#”( ÌE$’” ÌF
+” ÌF’” ÌA” ÌA’” :” :	’” ” 
+‘” ÌKÔrG–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜ –‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ÂÔ  ÔrH”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache‘ÔrI•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€Ì¾‘ÔrJ•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰Ì¢ÔrK”¤type¥start£end¤nameªIdentifierÌ‰Ì˜¯CommonConstantsKªIdentifierÌœÌ¢¦CommonÔrL•¤type¥start£end¥value£raw§LiteralÌªÌ½±./CommonConstants³'./CommonConstants'

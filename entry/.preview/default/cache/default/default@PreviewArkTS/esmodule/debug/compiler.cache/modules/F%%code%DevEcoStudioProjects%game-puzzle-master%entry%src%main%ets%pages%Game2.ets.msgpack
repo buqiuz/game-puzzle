@@ -1,0 +1,494 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ6aif (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent";
+import GameRules from "../model/GameRules";
+import { beginButton, selectPictureButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+export function PageGameBuilder(parent = null) {
+    {
+        (parent ? parent : this).observeComponentCreation2((elmtId, isInitialRender) => {
+            if (isInitialRender) {
+                let componentCall = new Game2(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 12, col: 3 });
+                ViewPU.create(componentCall);
+                let paramsLambda = () => {
+                    return {};
+                };
+                componentCall.paramsGenerator_ = paramsLambda;
+            }
+            else {
+                (parent ? parent : this).updateStateVarsOfChildByElmtId(elmtId, {});
+            }
+        }, { name: "Game2" });
+    }
+}
+class Game2 extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__numArray = new ObservedPropertyObjectPU([], this, "numArray");
+        this.__templateIndex = new ObservedPropertySimplePU(1, this, "templateIndex");
+        this.__showDigit = new ObservedPropertySimplePU(false, this, "showDigit");
+        this.__gameTime = new ObservedPropertySimplePU(200, this, "gameTime");
+        this.__timer = new ObservedPropertySimplePU(-1, this, "timer");
+        this.__isPause = new ObservedPropertySimplePU(false, this, "isPause");
+        this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
+        this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
+        this.pageInfos = new NavPathStack();
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.numArray !== undefined) {
+            this.numArray = params.numArray;
+        }
+        if (params.templateIndex !== undefined) {
+            this.templateIndex = params.templateIndex;
+        }
+        if (params.showDigit !== undefined) {
+            this.showDigit = params.showDigit;
+        }
+        if (params.gameTime !== undefined) {
+            this.gameTime = params.gameTime;
+        }
+        if (params.timer !== undefined) {
+            this.timer = params.timer;
+        }
+        if (params.isPause !== undefined) {
+            this.isPause = params.isPause;
+        }
+        if (params.isGameStart !== undefined) {
+            this.isGameStart = params.isGameStart;
+        }
+        if (params.game !== undefined) {
+            this.game = params.game;
+        }
+        if (params.pageInfos !== undefined) {
+            this.pageInfos = params.pageInfos;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__templateIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__showDigit.purgeDependencyOnElmtId(rmElmtId);
+        this.__gameTime.purgeDependencyOnElmtId(rmElmtId);
+        this.__timer.purgeDependencyOnElmtId(rmElmtId);
+        this.__isPause.purgeDependencyOnElmtId(rmElmtId);
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__game.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__numArray.aboutToBeDeleted();
+        this.__templateIndex.aboutToBeDeleted();
+        this.__showDigit.aboutToBeDeleted();
+        this.__gameTime.aboutToBeDeleted();
+        this.__timer.aboutToBeDeleted();
+        this.__isPause.aboutToBeDeleted();
+        this.__isGameStart.aboutToBeDeleted();
+        this.__game.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get templateIndex() {
+        return this.__templateIndex.get();
+    }
+    set templateIndex(newValue) {
+        this.__templateIndex.set(newValue);
+    }
+    get showDigit() {
+        return this.__showDigit.get();
+    }
+    set showDigit(newValue) {
+        this.__showDigit.set(newValue);
+    }
+    get gameTime() {
+        return this.__gameTime.get();
+    }
+    set gameTime(newValue) {
+        this.__gameTime.set(newValue);
+    }
+    get timer() {
+        return this.__timer.get();
+    }
+    set timer(newValue) {
+        this.__timer.set(newValue);
+    }
+    get isPause() {
+        return this.__isPause.get();
+    }
+    set isPause(newValue) {
+        this.__isPause.set(newValue);
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get game() {
+        return this.__game.get();
+    }
+    set game(newValue) {
+        this.__game.set(newValue);
+    }
+    async aboutToAppear() {
+        // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+        // this.imgData = await this.ImageModel.getAllImg();
+        // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+        // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            NavDestination.create(() => {
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.debugLine("entry/src/main/ets/pages/Game2.ets(37:7)", "entry");
+                }, Column);
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 38, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "TimerComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 39, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    templateIndex: this.templateIndex,
+                                    numArray: this.numArray,
+                                    isGameStart: this.isGameStart
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageSelectComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 40, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex,
+                                    showDigit: this.showDigit,
+                                    gameTime: this.gameTime,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageGridComponent" });
+                }
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.debugLine("entry/src/main/ets/pages/Game2.ets(42:9)", "entry");
+                    Column.height('10%');
+                }, Column);
+                Column.pop();
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 46, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime,
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "beginButton" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new selectPictureButton(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 47, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "selectPictureButton" });
+                }
+                Column.pop();
+            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Game2" });
+            NavDestination.title('é—¯å…³æ¨¡å¼');
+            NavDestination.onReady((context) => {
+                this.pageInfos = context.pathStack;
+                try {
+                    this.gameTime = context?.pathInfo?.param?.gameTime;
+                    this.templateIndex = context?.pathInfo?.param?.templateIndex;
+                    this.showDigit = context?.pathInfo?.param?.isShowDigit;
+                }
+                catch (e) {
+                    console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`);
+                }
+            });
+            NavDestination.debugLine("entry/src/main/ets/pages/Game2.ets(36:5)", "entry");
+        }, NavDestination);
+        NavDestination.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+(function () {
+    if (typeof NavigationBuilderRegister === "function") {
+        NavigationBuilderRegister("Game2", wrapBuilder(PageGameBuilder));
+    }
+})();
+//# sourceMappingURL=Game2.js.mapÂ•Ù^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsÙRF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\pages\Game2.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ÃÚ	æimport PictureItem from "../model/PictureItem";
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent"
+import GameRules from "../model/GameRules";
+import ImageModel from "../model/ImageModel";
+import { beginButton, selectPictureButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+import { PageParam } from "../viewModel/PageParam";
+
+@Builder
+export function PageGameBuilder() {
+  Game2()
+}
+
+@Component
+struct Game2 {
+  @State numArray: PictureItem[] = [];
+  @State templateIndex: number = 1;
+  @State showDigit:boolean =false;
+  @State gameTime: number = 200;
+  @State timer: number = -1;
+  @State isPause: boolean=false;
+  @State isGameStart: boolean = false;
+  @State game: GameRules = new GameRules();
+
+  pageInfos: NavPathStack = new NavPathStack();
+
+  async aboutToAppear() {
+    // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+    // this.imgData = await this.ImageModel.getAllImg();
+    // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+    // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+  }
+
+  build() {
+    NavDestination(){
+      Column(){
+        TimerComponent({gameTime:this.gameTime})
+        ImageSelectComponent({templateIndex:this.templateIndex,numArray:this.numArray,isGameStart:this.isGameStart})
+        ImageGridComponent({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex,showDigit:this.showDigit,gameTime:this.gameTime,timer:this.timer,game:this.game,isPause:this.isPause})
+
+        Column(){
+        }
+        .height('10%')
+
+        beginButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause})
+        selectPictureButton({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex})
+      }
+    }.title('é—¯å…³æ¨¡å¼')
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      try {
+        this.gameTime = (context?.pathInfo?.param as PageParam)?.gameTime;
+        this.templateIndex = (context?.pathInfo?.param as PageParam)?.templateIndex;
+        this.showDigit = (context?.pathInfo?.param as PageParam)?.isShowDigit;
+      } catch (e) {
+        console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`)
+      }
+    })
+
+
+  }
+}ÀÔrC•º../View/ImageGridComponent²../model/GameRules·../View/ButtonComponent¶../View/TimerComponent¼../View/ImageSelectComponentÔrD—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙ^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsAÃªoh-resolveÂDAÂÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsAÃªoh-resolveÂDAÂÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsAÃªoh-resolveÂDAÂÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsAÃªoh-resolveÂDAÂÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsAÃªoh-resolveÂ“ÔrE–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜ ?Ü 1”    ”  ”  ”  ”  ”  ”  ”  ”  ”	  	”
+  
+”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”  ”    ”!  !”"  "”#  #”$  $”%  %”&  &”'  '”(  (”)  )”*  *”+  +”,  ,”-  -”.  .”/  /”0  0Ü B”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌAÜ E”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌA”ÌB ÌB”ÌC ÌC”ÌD ÌDÜ -”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,Ü /”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .Ü M”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌA”ÌB ÌB”ÌC ÌC”ÌD ÌD”ÌE ÌE”ÌF ÌF”ÌG ÌG”ÌH ÌH”ÌI ÌI”ÌJ ÌJ”ÌK ÌK”ÌL ÌLÜ :”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9Ü 5”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4’”   ” š”  	 ” 	” 	” 	” 	” 	” 	” 	” 	”	 		Ü %”  
+ ” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+”	 
+	”
+ 
+
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+” 
+”  
+ ”! 
+!”" 
+"”# 
+#”$ 
+$›”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+“”   ” ” ’”   ” œ”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” Ü ”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” Ü (”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' 'Ü %”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $Ü $”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #Ü "”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !Ü ”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” Ü "”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !Ü (”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' 'Ü -”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,’”   ” Ü 1”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0’”   ” Ü ”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” Ü m”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌA”ÌB ÌB”ÌC ÌC”ÌD ÌD”ÌE ÌE”ÌF ÌF”ÌG ÌG”ÌH ÌH”ÌI ÌI”ÌJ ÌJ”ÌK ÌK”ÌL ÌL”ÌM ÌM”ÌN ÌN”ÌO ÌO”ÌP ÌP”ÌQ ÌQ”ÌR ÌR”ÌS ÌS”ÌT ÌT”ÌU ÌU”ÌV ÌV”ÌW ÌW”ÌX ÌX”ÌY ÌY”ÌZ ÌZ”Ì[ Ì[”Ì\ Ì\”Ì] Ì]”Ì^ Ì^”Ì_ Ì_”Ì` Ì`”Ìa Ìa”Ìb Ìb”Ìc Ìc”Ìd Ìd”Ìe Ìe”Ìf Ìf”Ìg Ìg”Ìh Ìh”Ìi Ìi”Ìj Ìj”Ìk Ìk”Ìl ÌlÜ :”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9Ü D”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌA”ÌB ÌB”ÌC ÌCÜ P”   ” ” ” ” ” ” ” ” ”	 	”
+ 
+” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ” ”   ”! !”" "”# #”$ $”% %”& &”' '”( (”) )”* *”+ +”, ,”- -”. .”/ /”0 0”1 1”2 2”3 3”4 4”5 5”6 6”7 7”8 8”9 9”: :”; ;”< <”= =”> >”? ?”Ì@ Ì@”ÌA ÌA”ÌB ÌB”ÌC ÌC”ÌD ÌD”ÌE ÌE”ÌF ÌF”ÌG ÌG”ÌH ÌH”ÌI ÌI”ÌJ ÌJ”ÌK ÌK”ÌL ÌL”ÌM ÌM”ÌN ÌN”ÌO ÌO•”    ”  ”  ”  ”  ’”  ! ” !”  " ” "” "” "” "” "” "” "” "”	 "	”
+ "
+” "” "Ü ”  # ” #” #” #” #” #” #” #” #”	 #	”
+ #
+” #” #” #” #” #” #” #” #” #” #” #” #Ü ”  $ ” $” $” $” $” $” $” $” $”	 $	”
+ $
+” $” $” $” $” $” $Ü 2”  % ” %” %” %” %” %” %” %” %”	 %	”
+ %
+” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %” %”  % ”! %!”" %"”# %#”$ %$”% %%”& %&”' %'”( %(”) %)”* %*”+ %+”, %,”- %-”. %.”/ %/”0 %0”1 %1Ü v”  & ” &” &” &” &” &” &” &” &”	 &	”
+ &
+” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &” &”  & ”! &!”" &"”# &#”$ &$”% &%”& &&”' &'”( &(”) &)”* &*”+ &+”, &,”- &-”. &.”/ &/”0 &0”1 &1”2 &2”3 &3”4 &4”5 &5”6 &6”7 &7”8 &8”9 &9”: &:”; &;”< &<”= &=”> &>”? &?”Ì@ &Ì@”ÌA &ÌA”ÌB &ÌB”ÌC &ÌC”ÌD &ÌD”ÌE &ÌE”ÌF &ÌF”ÌG &ÌG”ÌH &ÌH”ÌI &ÌI”ÌJ &ÌJ”ÌK &ÌK”ÌL &ÌL”ÌM &ÌM”ÌN &ÌN”ÌO &ÌO”ÌP &ÌP”ÌQ &ÌQ”ÌR &ÌR”ÌS &ÌS”ÌT &ÌT”ÌU &ÌU”ÌV &ÌV”ÌW &ÌW”ÌX &ÌX”ÌY &ÌY”ÌZ &ÌZ”Ì[ &Ì[”Ì\ &Ì\”Ì] &Ì]”Ì^ &Ì^”Ì_ &Ì_”Ì` &Ì`”Ìa &Ìa”Ìb &Ìb”Ìc &Ìc”Ìd &Ìd”Ìe &Ìe”Ìf &Ìf”Ìg &Ìg”Ìh &Ìh”Ìi &Ìi”Ìj &Ìj”Ìk &Ìk”Ìl &Ìl”Ìm &Ìm”Ìn &Ìn”Ìo &Ìo”Ìp &Ìp”Ìq &Ìq”Ìr &Ìr”Ìs &Ìs”Ìt &Ìt”Ìu &ÌuÜ Ù”  ' ” '” '” '” '” '” '” '” '”	 '	”
+ '
+” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '” '”  ' ”! '!”" '"”# '#”$ '$”% '%”& '&”' ''”( '(”) ')”* '*”+ '+”, ',”- '-”. '.”/ '/”0 '0”1 '1”2 '2”3 '3”4 '4”5 '5”6 '6”7 '7”8 '8”9 '9”: ':”; ';”< '<”= '=”> '>”? '?”Ì@ 'Ì@”ÌA 'ÌA”ÌB 'ÌB”ÌC 'ÌC”ÌD 'ÌD”ÌE 'ÌE”ÌF 'ÌF”ÌG 'ÌG”ÌH 'ÌH”ÌI 'ÌI”ÌJ 'ÌJ”ÌK 'ÌK”ÌL 'ÌL”ÌM 'ÌM”ÌN 'ÌN”ÌO 'ÌO”ÌP 'ÌP”ÌQ 'ÌQ”ÌR 'ÌR”ÌS 'ÌS”ÌT 'ÌT”ÌU 'ÌU”ÌV 'ÌV”ÌW 'ÌW”ÌX 'ÌX”ÌY 'ÌY”ÌZ 'ÌZ”Ì[ 'Ì[”Ì\ 'Ì\”Ì] 'Ì]”Ì^ 'Ì^”Ì_ 'Ì_”Ì` 'Ì`”Ìa 'Ìa”Ìb 'Ìb”Ìc 'Ìc”Ìd 'Ìd”Ìe 'Ìe”Ìf 'Ìf”Ìg 'Ìg”Ìh 'Ìh”Ìi 'Ìi”Ìj 'Ìj”Ìk 'Ìk”Ìl 'Ìl”Ìm 'Ìm”Ìn 'Ìn”Ìo 'Ìo”Ìp 'Ìp”Ìq 'Ìq”Ìr 'Ìr”Ìs 'Ìs”Ìt 'Ìt”Ìu 'Ìu”Ìv 'Ìv”Ìw 'Ìw”Ìx 'Ìx”Ìy 'Ìy”Ìz 'Ìz”Ì{ 'Ì{”Ì| 'Ì|”Ì} 'Ì}”Ì~ 'Ì~”Ì 'Ì”Ì€ 'Ì€”Ì 'Ì”Ì‚ 'Ì‚”Ìƒ 'Ìƒ”Ì„ 'Ì„”Ì… 'Ì…”Ì† 'Ì†”Ì‡ 'Ì‡”Ìˆ 'Ìˆ”Ì‰ 'Ì‰”ÌŠ 'ÌŠ”Ì‹ 'Ì‹”ÌŒ 'ÌŒ”Ì 'Ì”ÌŽ 'ÌŽ”Ì 'Ì”Ì 'Ì”Ì‘ 'Ì‘”Ì’ 'Ì’”Ì“ 'Ì“”Ì” 'Ì””Ì• 'Ì•”Ì– 'Ì–”Ì— 'Ì—”Ì˜ 'Ì˜”Ì™ 'Ì™”Ìš 'Ìš”Ì› 'Ì›”Ìœ 'Ìœ”Ì 'Ì”Ìž 'Ìž”ÌŸ 'ÌŸ”Ì  'Ì ”Ì¡ 'Ì¡”Ì¢ 'Ì¢”Ì£ 'Ì£”Ì¤ 'Ì¤”Ì¥ 'Ì¥”Ì¦ 'Ì¦”Ì§ 'Ì§”Ì¨ 'Ì¨”Ì© 'Ì©”Ìª 'Ìª”Ì« 'Ì«”Ì¬ 'Ì¬”Ì­ 'Ì­”Ì® 'Ì®”Ì¯ 'Ì¯”Ì° 'Ì°”Ì± 'Ì±”Ì² 'Ì²”Ì³ 'Ì³”Ì´ 'Ì´”Ìµ 'Ìµ”Ì¶ 'Ì¶”Ì· 'Ì·”Ì¸ 'Ì¸”Ì¹ 'Ì¹”Ìº 'Ìº”Ì» 'Ì»”Ì¼ 'Ì¼”Ì½ 'Ì½”Ì¾ 'Ì¾”Ì¿ 'Ì¿”ÌÀ 'ÌÀ”ÌÁ 'ÌÁ”ÌÂ 'ÌÂ”ÌÃ 'ÌÃ”ÌÄ 'ÌÄ”ÌÅ 'ÌÅ”ÌÆ 'ÌÆ”ÌÇ 'ÌÇ”ÌÈ 'ÌÈ”ÌÉ 'ÌÉ”ÌÊ 'ÌÊ”ÌË 'ÌË”ÌÌ 'ÌÌ”ÌÍ 'ÌÍ”ÌÎ 'ÌÎ”ÌÏ 'ÌÏ”ÌÐ 'ÌÐ”ÌÑ 'ÌÑ”ÌÒ 'ÌÒ”ÌÓ 'ÌÓ”ÌÔ 'ÌÔ”ÌÕ 'ÌÕ”ÌÖ 'ÌÖ”Ì× 'Ì×”ÌØ 'ÌØ’”  ( ” (Ü ”  ) ” )” )” )” )” )” )” )” )”	 )	”
+ )
+” )” )” )” )” )” )” )” )›”  * ” *” *” *” *” *” *” *” *”	 *	”
+ *
+Ü ”  + ” +” +” +” +” +” +” +” +”	 +	”
+ +
+” +” +” +” +” +” +” +” +” +” +” +” +” +’”  , ” ,Ü ˜”  - ” -” -” -” -” -” -” -” -”	 -	”
+ -
+” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -” -”  - ”! -!”" -"”# -#”$ -$”% -%”& -&”' -'”( -(”) -)”* -*”+ -+”, -,”- --”. -.”/ -/”0 -0”1 -1”2 -2”3 -3”4 -4”5 -5”6 -6”7 -7”8 -8”9 -9”: -:”; -;”< -<”= -=”> ->”? -?”Ì@ -Ì@”ÌA -ÌA”ÌB -ÌB”ÌC -ÌC”ÌD -ÌD”ÌE -ÌE”ÌF -ÌF”ÌG -ÌG”ÌH -ÌH”ÌI -ÌI”ÌJ -ÌJ”ÌK -ÌK”ÌL -ÌL”ÌM -ÌM”ÌN -ÌN”ÌO -ÌO”ÌP -ÌP”ÌQ -ÌQ”ÌR -ÌR”ÌS -ÌS”ÌT -ÌT”ÌU -ÌU”ÌV -ÌV”ÌW -ÌW”ÌX -ÌX”ÌY -ÌY”ÌZ -ÌZ”Ì[ -Ì[”Ì\ -Ì\”Ì] -Ì]”Ì^ -Ì^”Ì_ -Ì_”Ì` -Ì`”Ìa -Ìa”Ìb -Ìb”Ìc -Ìc”Ìd -Ìd”Ìe -Ìe”Ìf -Ìf”Ìg -Ìg”Ìh -Ìh”Ìi -Ìi”Ìj -Ìj”Ìk -Ìk”Ìl -Ìl”Ìm -Ìm”Ìn -Ìn”Ìo -Ìo”Ìp -Ìp”Ìq -Ìq”Ìr -Ìr”Ìs -Ìs”Ìt -Ìt”Ìu -Ìu”Ìv -Ìv”Ìw -Ìw”Ìx -Ìx”Ìy -Ìy”Ìz -Ìz”Ì{ -Ì{”Ì| -Ì|”Ì} -Ì}”Ì~ -Ì~”Ì -Ì”Ì€ -Ì€”Ì -Ì”Ì‚ -Ì‚”Ìƒ -Ìƒ”Ì„ -Ì„”Ì… -Ì…”Ì† -Ì†”Ì‡ -Ì‡”Ìˆ -Ìˆ”Ì‰ -Ì‰”ÌŠ -ÌŠ”Ì‹ -Ì‹”ÌŒ -ÌŒ”Ì -Ì”ÌŽ -ÌŽ”Ì -Ì”Ì -Ì”Ì‘ -Ì‘”Ì’ -Ì’”Ì“ -Ì“”Ì” -Ì””Ì• -Ì•”Ì– -Ì–”Ì— -Ì—Ü u”  . ” .” .” .” .” .” .” .” .”	 .	”
+ .
+” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .” .”  . ”! .!”" ."”# .#”$ .$”% .%”& .&”' .'”( .(”) .)”* .*”+ .+”, .,”- .-”. ..”/ ./”0 .0”1 .1”2 .2”3 .3”4 .4”5 .5”6 .6”7 .7”8 .8”9 .9”: .:”; .;”< .<”= .=”> .>”? .?”Ì@ .Ì@”ÌA .ÌA”ÌB .ÌB”ÌC .ÌC”ÌD .ÌD”ÌE .ÌE”ÌF .ÌF”ÌG .ÌG”ÌH .ÌH”ÌI .ÌI”ÌJ .ÌJ”ÌK .ÌK”ÌL .ÌL”ÌM .ÌM”ÌN .ÌN”ÌO .ÌO”ÌP .ÌP”ÌQ .ÌQ”ÌR .ÌR”ÌS .ÌS”ÌT .ÌT”ÌU .ÌU”ÌV .ÌV”ÌW .ÌW”ÌX .ÌX”ÌY .ÌY”ÌZ .ÌZ”Ì[ .Ì[”Ì\ .Ì\”Ì] .Ì]”Ì^ .Ì^”Ì_ .Ì_”Ì` .Ì`”Ìa .Ìa”Ìb .Ìb”Ìc .Ìc”Ìd .Ìd”Ìe .Ìe”Ìf .Ìf”Ìg .Ìg”Ìh .Ìh”Ìi .Ìi”Ìj .Ìj”Ìk .Ìk”Ìl .Ìl”Ìm .Ìm”Ìn .Ìn”Ìo .Ìo”Ìp .Ìp”Ìq .Ìq”Ìr .Ìr”Ìs .Ìs”Ìt .Ìt™”  / ” /” /” /” /” /” /” /” /Ü ”  0 ” 0” 0” 0” 0” 0” 0” 0” 0”	 0	”
+ 0
+” 0” 0” 0” 0” 0” 0” 0” 0” 0” 0Ü 4”  1 ” 1” 1” 1” 1” 1” 1” 1” 1”	 1	”
+ 1
+” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1” 1”  1 ”! 1!”" 1"”# 1#”$ 1$”% 1%”& 1&”' 1'”( 1(”) 1)”* 1*”+ 1+”, 1,”- 1-”. 1.”/ 1/”0 10”1 11”2 12”3 13Ü +”  2 ” 2” 2” 2” 2” 2” 2” 2” 2”	 2	”
+ 2
+” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2” 2”  2 ”! 2!”" 2"”# 2#”$ 2$”% 2%”& 2&”' 2'”( 2(”) 2)”* 2*”  3 ” 3” 3” 3” 3” 3” 3” 3” 3”	 3	”
+ 3
+” 3” 3Ü L”  4 ” 4” 4” 4” 4” 4” 4” 4” 4”	 4	”
+ 4
+” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4” 4”  4 ”! 4!”" 4"”# 4#”$ 4$”% 4%”& 4&”' 4'”( 4(”) 4)”* 4*”+ 4+”, 4,”- 4-”. 4.”/ 4/”0 40”1 41”2 42”3 43”4 44”5 45”6 46”7 47”8 48”9 49”: 4:”; 4;”< 4<”= 4=”> 4>”? 4?”Ì@ 4Ì@”ÌA 4ÌA”ÌB 4ÌB”ÌC 4ÌC”ÌD 4ÌD”ÌE 4ÌE”ÌF 4ÌF”ÌG 4ÌG”ÌH 4ÌH”ÌI 4ÌI”ÌJ 4ÌJ”ÌK 4ÌKÜ V”  5 ” 5” 5” 5” 5” 5” 5” 5” 5”	 5	”
+ 5
+” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5” 5”  5 ”! 5!”" 5"”# 5#”$ 5$”% 5%”& 5&”' 5'”( 5(”) 5)”* 5*”+ 5+”, 5,”- 5-”. 5.”/ 5/”0 50”1 51”2 52”3 53”4 54”5 55”6 56”7 57”8 58”9 59”: 5:”; 5;”< 5<”= 5=”> 5>”? 5?”Ì@ 5Ì@”ÌA 5ÌA”ÌB 5ÌB”ÌC 5ÌC”ÌD 5ÌD”ÌE 5ÌE”ÌF 5ÌF”ÌG 5ÌG”ÌH 5ÌH”ÌI 5ÌI”ÌJ 5ÌJ”ÌK 5ÌK”ÌL 5ÌL”ÌM 5ÌM”ÌN 5ÌN”ÌO 5ÌO”ÌP 5ÌP”ÌQ 5ÌQ”ÌR 5ÌR”ÌS 5ÌS”ÌT 5ÌT”ÌU 5ÌUÜ P”  6 ” 6” 6” 6” 6” 6” 6” 6” 6”	 6	”
+ 6
+” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6” 6”  6 ”! 6!”" 6"”# 6#”$ 6$”% 6%”& 6&”' 6'”( 6(”) 6)”* 6*”+ 6+”, 6,”- 6-”. 6.”/ 6/”0 60”1 61”2 62”3 63”4 64”5 65”6 66”7 67”8 68”9 69”: 6:”; 6;”< 6<”= 6=”> 6>”? 6?”Ì@ 6Ì@”ÌA 6ÌA”ÌB 6ÌB”ÌC 6ÌC”ÌD 6ÌD”ÌE 6ÌE”ÌF 6ÌF”ÌG 6ÌG”ÌH 6ÌH”ÌI 6ÌI”ÌJ 6ÌJ”ÌK 6ÌK”ÌL 6ÌL”ÌM 6ÌM”ÌN 6ÌN”ÌO 6ÌOÜ ”  7 ” 7” 7” 7” 7” 7” 7” 7” 7”	 7	”
+ 7
+” 7” 7” 7” 7” 7” 7” 7” 7” 7” 7Ü N”  8 ” 8” 8” 8” 8” 8” 8” 8” 8”	 8	”
+ 8
+” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8” 8”  8 ”! 8!”" 8"”# 8#”$ 8$”% 8%”& 8&”' 8'”( 8(”) 8)”* 8*”+ 8+”, 8,”- 8-”. 8.”/ 8/”0 80”1 81”2 82”3 83”4 84”5 85”6 86”7 87”8 88”9 89”: 8:”; 8;”< 8<”= 8=”> 8>”? 8?”Ì@ 8Ì@”ÌA 8ÌA”ÌB 8ÌB”ÌC 8ÌC”ÌD 8ÌD”ÌE 8ÌE”ÌF 8ÌF”ÌG 8ÌG”ÌH 8ÌH”ÌI 8ÌI”ÌJ 8ÌJ”ÌK 8ÌK”ÌL 8ÌL”ÌM 8ÌM™”  9 ” 9” 9” 9” 9” 9” 9” 9” 9˜”  : ” :” :” :” :” :” :” :’”  ; ” ;’”  < ” <•”  = ” =” =” =” =‘”  > ÔrF–§version¤fileªsourceRoot§sources¥names¨mappings¨Game2.js ‘©Game2.etsÜ˜”   ” ”	 	” ” ”# #”? ?”Ì@ Ì@˜”   ” ”	 	” ” ”% %”ÌC ÌC”ÌD ÌC–”   ” ” ” ”* *”+ +š”   ” ”	 	” ” ”) )”+ +”1 1”ÌJ ÌJ”ÌK ÌK˜”   ” ”	 	” ” ” ”7 7”8 8””  
+ ” 
+” 
+” 
+’”( ”- ‘” ’” ” ‘”  ’”7 #”9 %’”< !”= "’”8 ”= !’”7 ”: “”4 ”5 ”6 ’”6 ”; ’”:  ”? %””3 ”7 ”Ì@ (”ÌB *”” ”  ”) ,”+ .‘” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ”” ”	 ”
+ ” ’” ”Ìo Ìk’” ”< 8’” ”ÌF ÌB’” ”ÌR ÌN’”  ”  ‘” "’” $” $—”4 %”ÌB %”ÌI %”ÌK %”ÌS % ”Ìd %.”Ìf %/’”$ %”, % ”4 &”ÌH &”ÌO &”ÌQ &”Ì^ &+”Ìt &>”Ìv &?”Ì~ &ÌG”Ì &ÌU”Ì‘ &ÌV”Ìœ &Ìa”Ì° &Ìr”Ì² &Ìs’”$ &”1 &+’”$ &?”, &ÌG’”$ &ÌV”/ &ÌaÜ ”4 '”ÌF '”ÌM '”ÌO '”ÌZ ''”Ìn '8”Ìp '9”Ìx 'ÌA”Ì‰ 'ÌO”Ì‹ 'ÌP”Ì˜ 'Ì]”Ì® 'Ìp”Ì° 'Ìq”Ì¹ 'Ìz”ÌË 'Ì‰”ÌÍ 'ÌŠ”ÌÕ 'Ì’”Ìæ 'Ì ”Ìè 'Ì¡”Ìí 'Ì¦”Ìû 'Ì±”Ìý 'Ì²”Í 'Ì¶”Í 'ÌÀ”Í 'ÌÁ”Í 'ÌÈ”Í' 'ÌÕ”Í) 'ÌÖ’”$ '”/ ''’”$ '9”, 'ÌA’”$ 'ÌP”1 'Ì]’”$ 'Ìq”- 'Ìz’”$ 'ÌŠ”, 'Ì’’”$ 'Ì¡”) 'Ì¦’”$ 'Ì²”( 'Ì¶’”$ 'ÌÁ”+ 'ÌÈ’” )” )–” )” )” +	”! +”" +”' +’” )” )Ü ”4 -”? -”ÌF -”ÌH -”ÌP -”Ìa -+”Ìc -,”Ìn -7”Ì‚ -ÌH”Ì„ -ÌI”ÌŒ -ÌQ”Ì -Ì_”ÌŸ -Ì`”Ì¤ -Ìe”Ì² -Ìp”Ì´ -Ìq”Ì¸ -Ìu”ÌÅ -Ì”ÌÇ -Ì€”ÌÎ -Ì‡”ÌÞ -Ì””Ìà -Ì•’”$ -”, -’”$ -,”/ -7’”$ -ÌI”, -ÌQ’”$ -Ì`”) -Ìe’”$ -Ìq”( -Ìu’”$ -Ì€”+ -Ì‡”4 .”ÌG .”ÌN .”ÌP .”Ì[ .(”Ìo .9”Ìq .:”Ìy .ÌB”ÌŠ .ÌP”ÌŒ .ÌQ”Ì™ .Ì^”Ì¯ .Ìq”Ì± .Ìr’”$ .”/ .(’”$ .:”, .ÌB’”$ .ÌQ”1 .Ì^’” $” $”” 0”  0”! 0”' 0—” 1”" 1”# 1”$ 1”+ 1,”- 1.”/ 10™” 2” 2
+” 2” 2”! 2”( 2”) 2”2 2(”3 2)’” 3” 3
+” 4” 4” 4”! 4”$ 4”+ 4 ”- 4"”5 4*”7 4,”< 4?”> 4ÌA”ÌF 4ÌI”ÌG 4ÌJ” 5” 5” 5”& 5”) 5”0 5%”2 5'”: 5/”< 51”ÌA 5ÌD”ÌC 5ÌF”ÌP 5ÌS”ÌQ 5ÌT” 6” 6” 6”" 6”% 6”, 6!”. 6#”6 6+”8 6-”= 6Ì@”? 6ÌB”ÌJ 6ÌM”ÌK 6ÌN‘” 7”” 7” 7” 7” 7Ÿ” 8” 8” 8” 8”  8”ÌD 88”ÌH 8<”ÌI 8=”ÌR 8ÌF”ÌS 8ÌG”ÌT 8ÌH”ÌU 8ÌI”ÌW 8ÌK”ÌX 8ÌL”ÌY 8ÌL‘” 9’” :” :‘” =EÀ‘À‘ÀÜ$‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  ÌŽ ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ìž ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌÐ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  ÌÝ ‘”  ÌÞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìð ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìý ‘”  Ìþ ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ÂÔ  ÔrG”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache‘ÔrH–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÍ¼ÍŸÔrI™¤type¥start£end¢idªexpression©generator¥async¦params¤body³FunctionDeclarationÍÃÍŸÔrJ”¤type¥start£end¤nameªIdentifierÍÌÍÛ¯PageGameBuilderÂÂÂ‘ÔrK•¤type¥start£end¤left¥right±AssignmentPatternÍÜÍéJªIdentifierÍÜÍâ¦parentÔrL•¤type¥start£end¥value£raw§LiteralÍåÍéÀ¤nullÔrM”¤type¥start£end¤body®BlockStatementÍëÍŸ‘M®BlockStatementÍòÍœ‘ÔrN”¤type¥start£endªexpression³ExpressionStatementÍýÍ•ÔrO–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍýÍ”ÔrP—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍýÍ/ÔrQ–¤type¥start£end¤testªconsequent©alternateµConditionalExpressionÍþÍJªIdentifierÍþÍ¦parentJªIdentifierÍÍ¦parentÔrR“¤type¥start£end®ThisExpressionÍÍJªIdentifierÍÍ/¹observeComponentCreation2ÂÂ’I·ArrowFunctionExpressionÍ0Í€ÀÂÂÂ’JªIdentifierÍ1Í7¦elmtIdJªIdentifierÍ9ÍH¯isInitialRenderM®BlockStatementÍMÍ€‘Q«IfStatementÍ\ÍuJªIdentifierÍ`Ío¯isInitialRenderM®BlockStatementÍqÍü”ÔrS•¤type¥start£end¬declarations¤kind³VariableDeclarationÍ„Í‘ÔrT•¤type¥start£end¢id¤init²VariableDeclaratorÍˆÍJªIdentifierÍˆÍ•­componentCallÔrU•¤type¥start£end¦callee©arguments­NewExpressionÍ˜ÍJªIdentifierÍœÍ¡¥Game2–QµConditionalExpressionÍ¢Í¸JªIdentifierÍ¢Í¨¦parentJªIdentifierÍ«Í±¦parentR®ThisExpressionÍ´Í¸ÔrV”¤type¥start£endªproperties°ObjectExpressionÍºÍ¼JªIdentifierÍ¾ÍÇ©undefinedJªIdentifierÍÉÍÏ¦elmtIdI·ArrowFunctionExpressionÍÑÍÚÀÂÂÂM®BlockStatementÍ×ÍÚV°ObjectExpressionÍÜÍ“ÔrW™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍÞÍÂÂÂJªIdentifierÍÞÍâ¤pageL§LiteralÍäÍÙ"entry/src/main/ets/pages/Game2.etsÙ$"entry/src/main/ets/pages/Game2.ets"¤initW¨PropertyÍ
+ÍÂÂÂJªIdentifierÍ
+Í¤lineL§LiteralÍÍ¢12¤initW¨PropertyÍÍÂÂÂJªIdentifierÍÍ£colL§LiteralÍÍ¡3¤init£letN³ExpressionStatementÍ0ÍMO®CallExpressionÍ0ÍLP°MemberExpressionÍ0Í=JªIdentifierÍ0Í6¦ViewPUJªIdentifierÍ7Í=¦createÂÂ‘JªIdentifierÍ>ÍK­componentCallÂS³VariableDeclarationÍ_Í­‘T²VariableDeclaratorÍcÍ¬JªIdentifierÍcÍo¬paramsLambdaI·ArrowFunctionExpressionÍrÍ¬ÀÂÂÂM®BlockStatementÍxÍ¬‘ÔrX”¤type¥start£end¨argument¯ReturnStatementÍÍ™V°ObjectExpressionÍ–Í˜£letN³ExpressionStatementÍ¿ÍíÔrY–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍ¿Íì¡=P°MemberExpressionÍ¿ÍÝJªIdentifierÍ¿ÍÌ­componentCallJªIdentifierÍÍÍÝ°paramsGenerator_ÂÂJªIdentifierÍàÍì¬paramsLambdaM®BlockStatementÍÍu‘N³ExpressionStatementÍ"ÍfO®CallExpressionÍ"ÍeP°MemberExpressionÍ"ÍYQµConditionalExpressionÍ#Í9JªIdentifierÍ#Í)¦parentJªIdentifierÍ,Í2¦parentR®ThisExpressionÍ5Í9JªIdentifierÍ;ÍY¾updateStateVarsOfChildByElmtIdÂÂ’JªIdentifierÍZÍ`¦elmtIdV°ObjectExpressionÍbÍdÂV°ObjectExpressionÍ‚Í“‘W¨PropertyÍ„Í‘ÂÂÂJªIdentifierÍ„Íˆ¤nameL§LiteralÍŠÍ‘¥Game2§"Game2"¤initÂÀ•ÔrZ•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€ÌÀ‘Ôr[•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰Ì›JªIdentifierÌ‰Ì›²ImageGridComponentJªIdentifierÌ‰Ì›²ImageGridComponentL§LiteralÌ£Ì¿º../View/ImageGridComponent¼"../View/ImageGridComponent"Z±ImportDeclarationÌÂÍ‘[¯ImportSpecifierÌËÌßJªIdentifierÌËÌß´ImageSelectComponentJªIdentifierÌËÌß´ImageSelectComponentL§LiteralÌçÍ¼../View/ImageSelectComponent¾"../View/ImageSelectComponent"Z±ImportDeclarationÍÍ3‘Ôr\”¤type¥start£end¥local¶ImportDefaultSpecifierÍÍJªIdentifierÍÍ©GameRulesL§LiteralÍÍ2²../model/GameRules´"../model/GameRules"Z±ImportDeclarationÍ5Í€’[¯ImportSpecifierÍ>ÍIJªIdentifierÍ>ÍI«beginButtonJªIdentifierÍ>ÍI«beginButton[¯ImportSpecifierÍKÍ^JªIdentifierÍKÍ^³selectPictureButtonJªIdentifierÍKÍ^³selectPictureButtonL§LiteralÍfÍ·../View/ButtonComponent¹"../View/ButtonComponent"Z±ImportDeclarationÍ‚Íº‘[¯ImportSpecifierÍ‹Í™JªIdentifierÍ‹Í™®TimerComponentJªIdentifierÍ‹Í™®TimerComponentL§LiteralÍ¡Í¹¶../View/TimerComponent¸"../View/TimerComponent"

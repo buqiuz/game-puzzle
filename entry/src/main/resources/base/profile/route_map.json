@@ -1,0 +1,36 @@
+{
+  "routerMap": [
+    {
+      "name": "Game1",
+      "pageSourceFile": "src/main/ets/pages/Game1.ets",
+      "buildFunction": "PageGameBuilder",
+      "data": {
+        "description" : "this is PageGame"
+      }
+    },
+    {
+      "name": "Game2",
+      "pageSourceFile": "src/main/ets/pages/Game2.ets",
+      "buildFunction": "PageGameBuilder",
+      "data": {
+        "description" : "this is PageGame"
+      }
+    },
+    {
+      "name": "Level",
+      "pageSourceFile": "src/main/ets/pages/Level.ets",
+      "buildFunction": "PageLevelBuilder",
+      "data": {
+        "description" : "this is PageLevel"
+      }
+    },
+    {
+      "name": "Login",
+      "pageSourceFile": "src/main/ets/pages/Login.ets",
+      "buildFunction": "PageLoginBuilder",
+      "data": {
+        "description" : "this is PageLogin"
+      }
+    }
+  ]
+}

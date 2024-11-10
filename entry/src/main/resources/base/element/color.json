@@ -1,0 +1,24 @@
+{
+  "color": [
+    {
+      "name": "white",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "forbid",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "allow",
+      "value": "#0D9FFB"
+    },
+    {
+      "name": "blank_picture_background",
+      "value": "#f5f5f5"
+    },
+    {
+      "name": "picture_background",
+      "value": "#ffdead"
+    }
+  ]
+}

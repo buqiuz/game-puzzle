@@ -1,0 +1,103 @@
+{
+  "entry\\src\\main\\ets\\pages\\Game1.ets": [
+    "CustomDialogController",
+    "Image",
+    "Row",
+    "Button",
+    "NavDestination",
+    "Column",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\model\\GameRules.ets": [
+    "If"
+  ],
+  "entry\\src\\main\\ets\\model\\ImageModel.ets": [
+    "If"
+  ],
+  "entry\\src\\main\\ets\\View\\SelectComponent.ets": [
+    "Column",
+    "Select",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\common\\ImagePicker.ets": [
+    "CustomDialogController",
+    "Column",
+    "List",
+    "ForEach",
+    "ListItem",
+    "Stack",
+    "Image",
+    "Radio",
+    "Row",
+    "Button"
+  ],
+  "entry\\src\\main\\ets\\View\\ImageGridComponent.ets": [
+    "AlertDialog",
+    "Grid",
+    "ForEach",
+    "GridItem",
+    "Stack",
+    "Image",
+    "Text",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\View\\ButtonComponent.ets": [
+    "Button",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\View\\TimerComponent.ets": [
+    "Row",
+    "Text"
+  ],
+  "entry\\src\\main\\ets\\pages\\Game2.ets": [
+    "NavDestination",
+    "Column",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\View\\ImageSelectComponent.ets": [
+    "Column",
+    "Grid",
+    "ForEach",
+    "GridItem",
+    "Image",
+    "If"
+  ],
+  "entry\\src\\main\\ets\\pages\\Level.ets": [
+    "NavDestination",
+    "Column",
+    "Grid",
+    "ForEach",
+    "GridItem",
+    "Stack",
+    "Image",
+    "Text"
+  ],
+  "entry\\src\\main\\ets\\entryability\\EntryAbility.ets": [
+    "If"
+  ],
+  "entry\\src\\main\\ets\\pages\\Index.ets": [
+    "List",
+    "ForEach",
+    "ListItem",
+    "Text",
+    "Column",
+    "Navigation",
+    "TextInput"
+  ],
+  "entry\\src\\main\\ets\\pages\\Login.ets": [
+    "NavDestination",
+    "Column",
+    "CustomDialogController",
+    "AlertDialog",
+    "Scroll",
+    "Image",
+    "Text",
+    "Button",
+    "Row",
+    "Checkbox",
+    "ForEach",
+    "Span",
+    "Flex",
+    "If"
+  ]
+}

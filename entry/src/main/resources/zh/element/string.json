@@ -1,0 +1,40 @@
+{
+  "string": [
+    {
+      "name": "entry_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "拼图游戏"
+    },
+    {
+      "name": "start",
+      "value": "开始"
+    },
+    {
+      "name": "restart",
+      "value": "重新开始"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    },
+    {
+      "name": "submit",
+      "value": "提交"
+    },
+    {
+      "name": "congratulations",
+      "value": "恭喜您!"
+    },
+    {
+      "name": "READ_IMAGEVIDEO",
+      "value": "允许应用在拼图场景读取图片"
+    }
+  ]
+}

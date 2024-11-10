@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\vesper\\.ohos\\config\\default_game-puzzle-master_TPbShg3PfmLVogFA4F8fHnSD0MdRjfb6x73Fp5J17Ks=.cer",
+          "storePassword": "0000001B992B5993FFB2F03A2253AE100E2C4DF5A4FB5E0454C7646A9572A2F5A7808BA9454054A5BACEEF",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BB7001F6850D6020A7FE3563FCB1B0CA0FB9B982CDF1DB53F52A2ADDBEDCDFABE0E5F0571B4CA36",
+          "profile": "C:\\Users\\vesper\\.ohos\\config\\default_game-puzzle-master_TPbShg3PfmLVogFA4F8fHnSD0MdRjfb6x73Fp5J17Ks=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\vesper\\.ohos\\config\\default_game-puzzle-master_TPbShg3PfmLVogFA4F8fHnSD0MdRjfb6x73Fp5J17Ks=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

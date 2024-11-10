@@ -1,0 +1,75 @@
+{
+	"app": {
+		"bundleName": "ohos.samples.gamepuzzle",
+		"vendor": "samples",
+		"versionCode": 1000000,
+		"versionName": "1.0.0",
+		"icon": "$media:app_icon",
+		"label": "$string:app_name",
+		"distributedNotificationEnabled": true,
+		"apiReleaseType": "Release",
+		"compileSdkVersion": "5.0.0.71",
+		"targetAPIVersion": 50000012,
+		"minAPIVersion": 50000012,
+		"compileSdkType": "HarmonyOS",
+		"appEnvironments": [],
+		"bundleType": "app",
+		"debug": true
+	},
+	"module": {
+		"name": "entry",
+		"type": "entry",
+		"srcEntry": "./ets/application/AbilityStage.ets",
+		"description": "$string:entry_desc",
+		"mainElement": "MainAbility",
+		"deviceTypes": [
+			"phone",
+			"tablet"
+		],
+		"metadata": [
+			{
+				"name": "ArkTSPartialUpdate",
+				"value": "true"
+			}
+		],
+		"deliveryWithInstall": true,
+		"installationFree": false,
+		"pages": "$profile:main_pages",
+		"routerMap": "$profile:route_map",
+		"abilities": [
+			{
+				"name": "MainAbility",
+				"srcEntry": "./ets/entryability/EntryAbility.ets",
+				"description": "$string:MainAbility_desc",
+				"icon": "$media:icon",
+				"label": "$string:MainAbility_label",
+				"startWindowIcon": "$media:icon",
+				"startWindowBackground": "$color:white",
+				"exported": true,
+				"skills": [
+					{
+						"entities": [
+							"entity.system.home"
+						],
+						"actions": [
+							"action.system.home"
+						]
+					}
+				]
+			}
+		],
+		"requestPermissions": [
+			{
+				"name": "ohos.permission.READ_IMAGEVIDEO",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "inuse"
+				},
+				"reason": "$string:READ_IMAGEVIDEO"
+			}
+		],
+		"packageName": "entry"
+	}
+}
