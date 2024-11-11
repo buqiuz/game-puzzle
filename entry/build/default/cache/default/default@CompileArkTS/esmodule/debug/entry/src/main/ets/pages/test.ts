@@ -1,7 +1,7 @@
 if (!("finalizeConstruction" in ViewPU.prototype)) {
     Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
 }
-interface test_Params {
+interface Test_Params {
     numArray?: PictureItem[];
     templateIndex?: number;
     showDigit?: boolean;
@@ -10,9 +10,9 @@ interface test_Params {
     isPause?: boolean;
     isGameStart?: boolean;
     game?: GameRules;
+    startState?: number[];
+    path?: number[] | null;
     ImageModel?: ImageModel;
-    solvedPictures?: PictureItem[] | null;
-    isSolving?: boolean;
     pageInfos?: NavPathStack;
 }
 import type PictureItem from "../model/PictureItem";
@@ -22,12 +22,12 @@ import GameRules from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/GameRules
 import ImageModel from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/ImageModel";
 import { beginButton } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ButtonComponent";
 import { TimerComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/TimerComponent";
-import { solvePuzzle, solvePuzzleWithSteps } from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/SolvePuzzle";
-export function PagetestBuilder(parent = null) {
+import PuzzleSolver from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/PuzzleSolver";
+export function PageTestBuilder(parent = null) {
     {
         (parent ? parent : this).observeComponentCreation2((elmtId, isInitialRender) => {
             if (isInitialRender) {
-                let componentCall = new test(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/test.ets", line: 12, col: 3 });
+                let componentCall = new Test(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 13, col: 3 });
                 ViewPU.create(componentCall);
                 let paramsLambda = () => {
                     return {};
@@ -37,31 +37,31 @@ export function PagetestBuilder(parent = null) {
             else {
                 (parent ? parent : this).updateStateVarsOfChildByElmtId(elmtId, {});
             }
-        }, { name: "test" });
+        }, { name: "Test" });
     }
 }
-class test extends ViewPU {
+class Test extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
         if (typeof paramsLambda === "function") {
             this.paramsGenerator_ = paramsLambda;
         }
         this.__numArray = new ObservedPropertyObjectPU([], this, "numArray");
-        this.__templateIndex = new ObservedPropertySimplePU(1, this, "templateIndex");
+        this.__templateIndex = new ObservedPropertySimplePU(3, this, "templateIndex");
         this.__showDigit = new ObservedPropertySimplePU(false, this, "showDigit");
         this.__gameTime = new ObservedPropertySimplePU(200, this, "gameTime");
         this.__timer = new ObservedPropertySimplePU(-1, this, "timer");
         this.__isPause = new ObservedPropertySimplePU(false, this, "isPause");
         this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
         this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
+        this.startState = [];
+        this.path = [];
         this.ImageModel = new ImageModel(getContext(this));
-        this.solvedPictures = solvePuzzle(this.numArray);
-        this.isSolving = false;
         this.pageInfos = new NavPathStack();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
-    setInitiallyProvidedValue(params: test_Params) {
+    setInitiallyProvidedValue(params: Test_Params) {
         if (params.numArray !== undefined) {
             this.numArray = params.numArray;
         }
@@ -86,20 +86,20 @@ class test extends ViewPU {
         if (params.game !== undefined) {
             this.game = params.game;
         }
+        if (params.startState !== undefined) {
+            this.startState = params.startState;
+        }
+        if (params.path !== undefined) {
+            this.path = params.path;
+        }
         if (params.ImageModel !== undefined) {
             this.ImageModel = params.ImageModel;
-        }
-        if (params.solvedPictures !== undefined) {
-            this.solvedPictures = params.solvedPictures;
-        }
-        if (params.isSolving !== undefined) {
-            this.isSolving = params.isSolving;
         }
         if (params.pageInfos !== undefined) {
             this.pageInfos = params.pageInfos;
         }
     }
-    updateStateVars(params: test_Params) {
+    updateStateVars(params: Test_Params) {
     }
     purgeVariableDependenciesOnElmtId(rmElmtId) {
         this.__numArray.purgeDependencyOnElmtId(rmElmtId);
@@ -179,9 +179,9 @@ class test extends ViewPU {
     set game(newValue: GameRules) {
         this.__game.set(newValue);
     }
+    private startState: number[];
+    private path: number[] | null;
     private ImageModel: ImageModel;
-    private solvedPictures: PictureItem[] | null;
-    private isSolving: boolean;
     private pageInfos: NavPathStack;
     async aboutToAppear() {
         // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
@@ -189,23 +189,29 @@ class test extends ViewPU {
         // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
         // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
     }
-    async solvePuzzle() {
-        if (this.isSolving)
-            return;
-        this.isSolving = true;
-        // this.numArray = [];
-        // 使用 solvePuzzleWithSteps 来逐步获取拼图还原过程
-        const steps = solvePuzzleWithSteps(this.numArray);
-        // this.numArray = [];
-        for (const step of steps) {
-            // this.numArray = [];
-            if (this.numArray.length) {
-                this.numArray = [];
-            }
-            this.numArray = step; // 更新拼图状态
-            await new Promise<void>(resolve => setTimeout(resolve, 300));
+    initStartState() {
+        if (this.startState.length) {
+            this.startState = [];
         }
-        this.isSolving = false;
+        for (let index = 0; index < this.numArray.length; index++) {
+            const element = this.numArray[index];
+            this.startState.push(element.index);
+        }
+    }
+    // 定义延迟函数
+    delay(ms: number) {
+        return new Promise<void>(resolve => setTimeout(resolve, ms));
+    }
+    async reStart() {
+        if (this.path) {
+            for (let index = 0; index < this.path.length; index++) {
+                const element = this.path[index];
+                this.numArray = this.game.itemChange(element, this.numArray);
+                // 每次调用后暂停 300 毫秒
+                await this.delay(400);
+                // return; // 如果 path 为 null，直接返回
+            }
+        }
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -216,7 +222,7 @@ class test extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/test.ets", line: 66, col: 9 });
+                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 77, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -233,7 +239,7 @@ class test extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/test.ets", line: 67, col: 9 });
+                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 78, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -252,7 +258,7 @@ class test extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/test.ets", line: 68, col: 9 });
+                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 79, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -281,7 +287,7 @@ class test extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/test.ets", line: 74, col: 9 });
+                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 85, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -301,15 +307,52 @@ class test extends ViewPU {
                     }, { name: "beginButton" });
                 }
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Button.createWithLabel('还原');
-                    Button.onClick(() => {
-                        // this.numArray = [];
-                        this.solvePuzzle();
+                    // Button('自动完成')
+                    //   .onClick(()=>{
+                    //     this.initStartState();
+                    //     const solver = new PuzzleSolver(this.templateIndex+2);
+                    //     this.path=solver.aStar(this.startState);
+                    //     this.reStart();
+                    //   })
+                    Button.createWithLabel('自动完成');
+                    // Button('自动完成')
+                    //   .onClick(()=>{
+                    //     this.initStartState();
+                    //     const solver = new PuzzleSolver(this.templateIndex+2);
+                    //     this.path=solver.aStar(this.startState);
+                    //     this.reStart();
+                    //   })
+                    Button.onClick(async () => {
+                        this.initStartState();
+                        const solver = new PuzzleSolver(this.templateIndex + 2);
+                        try {
+                            // 异步运行 aStar 算法
+                            this.path = await new Promise<number[] | null>((resolve) => {
+                                setTimeout(() => resolve(solver.aStar(this.startState)), 0);
+                            });
+                            if (this.path) {
+                                // 在 aStar 结束后运行 reStart
+                                await this.reStart();
+                            }
+                            else {
+                                console.error("未找到解决方案。");
+                            }
+                        }
+                        catch (error) {
+                            console.error("运行 aStar 时出错:", error);
+                        }
                     });
                 }, Button);
+                // Button('自动完成')
+                //   .onClick(()=>{
+                //     this.initStartState();
+                //     const solver = new PuzzleSolver(this.templateIndex+2);
+                //     this.path=solver.aStar(this.startState);
+                //     this.reStart();
+                //   })
                 Button.pop();
                 Column.pop();
-            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/test" });
+            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Test" });
             NavDestination.title('闯关模式');
             NavDestination.onReady((context: NavDestinationContext) => {
                 this.pageInfos = context.pathStack;
@@ -340,6 +383,6 @@ class test extends ViewPU {
 }
 (function () {
     if (typeof NavigationBuilderRegister === "function") {
-        NavigationBuilderRegister("test", wrapBuilder(PagetestBuilder));
+        NavigationBuilderRegister("Test", wrapBuilder(PageTestBuilder));
     }
 })();

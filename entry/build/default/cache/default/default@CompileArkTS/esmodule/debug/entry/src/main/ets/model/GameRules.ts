@@ -94,7 +94,7 @@ export default class GameRules {
             return pictures;
         }
         // 执行100次随机交换
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 60; i++) {
             // 可能的移动方向
             let possibleMoves: number[] = [];
             // 向上移动

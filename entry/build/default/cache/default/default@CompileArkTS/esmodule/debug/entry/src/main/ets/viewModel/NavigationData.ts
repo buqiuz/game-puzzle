@@ -14,12 +14,12 @@ export class NavigationData {
     pages: string[] = [
         'Game1',
         // 'Game2',
-        // 'test',
+        // 'Test',
         'Level'
     ];
     pagesName: Record<string, string> = {
         'Game1': '普通模式',
-        // 'test': '123',
+        // 'Test': '123',
         'Level': '闯关模式'
     };
     title: string = '拼图游戏';

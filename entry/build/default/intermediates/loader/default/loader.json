@@ -15,7 +15,8 @@
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets",
-    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets"
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets",
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
   ],
   "otherCompileFiles": [],
   "dynamicImportLibInfo": {},
@@ -43,6 +44,12 @@
       "name": "Login",
       "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets",
       "buildFunction": "PageLoginBuilder"
+    },
+    {
+      "ohmurl": "@bundle:ohos.samples.gamepuzzle/entry/ets/pages/Test",
+      "name": "Test",
+      "pageSourceFile": "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets",
+      "buildFunction": "PageTestBuilder"
     }
   ],
   "hspResourcesMap": {},

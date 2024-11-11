@@ -11,9 +11,11 @@ interface ImageGridComponent_Params {
     game?: GameRules;
     isPause?: boolean;
     template?: string[];
+    dialogControllerImage?: CustomDialogController;
 }
 import type GameRules from "../model/GameRules";
 import type PictureItem from "../model/PictureItem";
+import { TipsDialog } from "@ohos:arkui.advanced.Dialog";
 export class ImageGridComponent extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -29,6 +31,43 @@ export class ImageGridComponent extends ViewPU {
         this.__game = new SynchedPropertyObjectTwoWayPU(params.game, this, "game");
         this.__isPause = new SynchedPropertySimpleTwoWayPU(params.isPause, this, "isPause");
         this.template = ['1fr 1fr', '1fr 1fr 1fr', '1fr 1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr 1fr'];
+        this.dialogControllerImage = new CustomDialogController({
+            builder: () => {
+                let jsDialog = new TipsDialog(this, {
+                    imageRes: { "id": 16777256, "type": 20000, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                    imageSize: { width: '100vp', height: '100vp' },
+                    content: '恭喜你完成拼图',
+                    primaryButton: {
+                        value: '确定',
+                        action: () => {
+                            this.isGameStart = false;
+                        },
+                    },
+                    onCheckedChange: () => {
+                        console.info('Callback when the checkbox is clicked');
+                    }
+                }, undefined, -1, () => { }, { page: "entry/src/main/ets/View/ImageGridComponent.ets", line: 20, col: 14 });
+                jsDialog.setController(this.dialogControllerImage);
+                ViewPU.create(jsDialog);
+                let paramsLambda = () => {
+                    return {
+                        imageRes: { "id": 16777256, "type": 20000, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" },
+                        imageSize: { width: '100vp', height: '100vp' },
+                        content: '恭喜你完成拼图',
+                        primaryButton: {
+                            value: '确定',
+                            action: () => {
+                                this.isGameStart = false;
+                            },
+                        },
+                        onCheckedChange: () => {
+                            console.info('Callback when the checkbox is clicked');
+                        }
+                    };
+                };
+                jsDialog.paramsGenerator_ = paramsLambda;
+            }
+        }, this);
         this.setInitiallyProvidedValue(params);
         this.declareWatch("gameTime", this.onTimeOver);
         this.finalizeConstruction();
@@ -36,6 +75,9 @@ export class ImageGridComponent extends ViewPU {
     setInitiallyProvidedValue(params: ImageGridComponent_Params) {
         if (params.template !== undefined) {
             this.template = params.template;
+        }
+        if (params.dialogControllerImage !== undefined) {
+            this.dialogControllerImage = params.dialogControllerImage;
         }
     }
     updateStateVars(params: ImageGridComponent_Params) {
@@ -119,6 +161,7 @@ export class ImageGridComponent extends ViewPU {
         this.__isPause.set(newValue);
     }
     private template: string[];
+    private dialogControllerImage: CustomDialogController;
     gameOver() {
         let count = 0;
         let loop = (this.templateIndex + 2) * (this.templateIndex + 2) - 1;
@@ -133,7 +176,7 @@ export class ImageGridComponent extends ViewPU {
         }
         if (count === loop) {
             this.isGameStart = false;
-            AlertDialog.show({ message: { "id": 16777222, "type": 10003, params: [], "bundleName": "ohos.samples.gamepuzzle", "moduleName": "entry" } });
+            this.dialogControllerImage.open();
             clearInterval(this.timer);
             this.gameTime = 300;
         }

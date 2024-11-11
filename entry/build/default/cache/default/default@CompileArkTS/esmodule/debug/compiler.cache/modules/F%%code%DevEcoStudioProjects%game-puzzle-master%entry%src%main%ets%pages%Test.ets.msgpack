@@ -1,0 +1,522 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚAif (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent";
+import GameRules from "../model/GameRules";
+import ImageModel from "../model/ImageModel";
+import { beginButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+import PuzzleSolver from "../model/PuzzleSolver";
+export function PageTestBuilder(parent = null) {
+    {
+        (parent ? parent : this).observeComponentCreation2((elmtId, isInitialRender) => {
+            if (isInitialRender) {
+                let componentCall = new Test(parent ? parent : this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 13, col: 3 });
+                ViewPU.create(componentCall);
+                let paramsLambda = () => {
+                    return {};
+                };
+                componentCall.paramsGenerator_ = paramsLambda;
+            }
+            else {
+                (parent ? parent : this).updateStateVarsOfChildByElmtId(elmtId, {});
+            }
+        }, { name: "Test" });
+    }
+}
+class Test extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__numArray = new ObservedPropertyObjectPU([], this, "numArray");
+        this.__templateIndex = new ObservedPropertySimplePU(3, this, "templateIndex");
+        this.__showDigit = new ObservedPropertySimplePU(false, this, "showDigit");
+        this.__gameTime = new ObservedPropertySimplePU(200, this, "gameTime");
+        this.__timer = new ObservedPropertySimplePU(-1, this, "timer");
+        this.__isPause = new ObservedPropertySimplePU(false, this, "isPause");
+        this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
+        this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
+        this.startState = [];
+        this.path = [];
+        this.ImageModel = new ImageModel(getContext(this));
+        this.pageInfos = new NavPathStack();
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.numArray !== undefined) {
+            this.numArray = params.numArray;
+        }
+        if (params.templateIndex !== undefined) {
+            this.templateIndex = params.templateIndex;
+        }
+        if (params.showDigit !== undefined) {
+            this.showDigit = params.showDigit;
+        }
+        if (params.gameTime !== undefined) {
+            this.gameTime = params.gameTime;
+        }
+        if (params.timer !== undefined) {
+            this.timer = params.timer;
+        }
+        if (params.isPause !== undefined) {
+            this.isPause = params.isPause;
+        }
+        if (params.isGameStart !== undefined) {
+            this.isGameStart = params.isGameStart;
+        }
+        if (params.game !== undefined) {
+            this.game = params.game;
+        }
+        if (params.startState !== undefined) {
+            this.startState = params.startState;
+        }
+        if (params.path !== undefined) {
+            this.path = params.path;
+        }
+        if (params.ImageModel !== undefined) {
+            this.ImageModel = params.ImageModel;
+        }
+        if (params.pageInfos !== undefined) {
+            this.pageInfos = params.pageInfos;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__numArray.purgeDependencyOnElmtId(rmElmtId);
+        this.__templateIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__showDigit.purgeDependencyOnElmtId(rmElmtId);
+        this.__gameTime.purgeDependencyOnElmtId(rmElmtId);
+        this.__timer.purgeDependencyOnElmtId(rmElmtId);
+        this.__isPause.purgeDependencyOnElmtId(rmElmtId);
+        this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
+        this.__game.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__numArray.aboutToBeDeleted();
+        this.__templateIndex.aboutToBeDeleted();
+        this.__showDigit.aboutToBeDeleted();
+        this.__gameTime.aboutToBeDeleted();
+        this.__timer.aboutToBeDeleted();
+        this.__isPause.aboutToBeDeleted();
+        this.__isGameStart.aboutToBeDeleted();
+        this.__game.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get numArray() {
+        return this.__numArray.get();
+    }
+    set numArray(newValue) {
+        this.__numArray.set(newValue);
+    }
+    get templateIndex() {
+        return this.__templateIndex.get();
+    }
+    set templateIndex(newValue) {
+        this.__templateIndex.set(newValue);
+    }
+    get showDigit() {
+        return this.__showDigit.get();
+    }
+    set showDigit(newValue) {
+        this.__showDigit.set(newValue);
+    }
+    get gameTime() {
+        return this.__gameTime.get();
+    }
+    set gameTime(newValue) {
+        this.__gameTime.set(newValue);
+    }
+    get timer() {
+        return this.__timer.get();
+    }
+    set timer(newValue) {
+        this.__timer.set(newValue);
+    }
+    get isPause() {
+        return this.__isPause.get();
+    }
+    set isPause(newValue) {
+        this.__isPause.set(newValue);
+    }
+    get isGameStart() {
+        return this.__isGameStart.get();
+    }
+    set isGameStart(newValue) {
+        this.__isGameStart.set(newValue);
+    }
+    get game() {
+        return this.__game.get();
+    }
+    set game(newValue) {
+        this.__game.set(newValue);
+    }
+    async aboutToAppear() {
+        // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+        // this.imgData = await this.ImageModel.getAllImg();
+        // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+        // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+    }
+    initStartState() {
+        if (this.startState.length) {
+            this.startState = [];
+        }
+        for (let index = 0; index < this.numArray.length; index++) {
+            const element = this.numArray[index];
+            this.startState.push(element.index);
+        }
+    }
+    // å®šä¹‰å»¶è¿Ÿå‡½æ•°
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async reStart() {
+        if (this.path) {
+            for (let index = 0; index < this.path.length; index++) {
+                const element = this.path[index];
+                this.numArray = this.game.itemChange(element, this.numArray);
+                // æ¯æ¬¡è°ƒç”¨åæš‚åœ 300 æ¯«ç§’
+                await this.delay(400);
+                // return; // å¦‚æœ path ä¸º nullï¼Œç›´æ¥è¿”å›
+            }
+        }
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            NavDestination.create(() => {
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                }, Column);
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 77, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "TimerComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 78, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    templateIndex: this.templateIndex,
+                                    numArray: this.numArray,
+                                    isGameStart: this.isGameStart
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageSelectComponent" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 79, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex,
+                                    showDigit: this.showDigit,
+                                    gameTime: this.gameTime,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "ImageGridComponent" });
+                }
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.height('10%');
+                }, Column);
+                Column.pop();
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Test.ets", line: 85, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    gameTime: this.gameTime,
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    timer: this.timer,
+                                    game: this.game,
+                                    isPause: this.isPause
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "beginButton" });
+                }
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    // Button('è‡ªåŠ¨å®Œæˆ')
+                    //   .onClick(()=>{
+                    //     this.initStartState();
+                    //     const solver = new PuzzleSolver(this.templateIndex+2);
+                    //     this.path=solver.aStar(this.startState);
+                    //     this.reStart();
+                    //   })
+                    Button.createWithLabel('è‡ªåŠ¨å®Œæˆ');
+                    // Button('è‡ªåŠ¨å®Œæˆ')
+                    //   .onClick(()=>{
+                    //     this.initStartState();
+                    //     const solver = new PuzzleSolver(this.templateIndex+2);
+                    //     this.path=solver.aStar(this.startState);
+                    //     this.reStart();
+                    //   })
+                    Button.onClick(async () => {
+                        this.initStartState();
+                        const solver = new PuzzleSolver(this.templateIndex + 2);
+                        try {
+                            // å¼‚æ­¥è¿è¡Œ aStar ç®—æ³•
+                            this.path = await new Promise((resolve) => {
+                                setTimeout(() => resolve(solver.aStar(this.startState)), 0);
+                            });
+                            if (this.path) {
+                                // åœ¨ aStar ç»“æŸåè¿è¡Œ reStart
+                                await this.reStart();
+                            }
+                            else {
+                                console.error("æœªæ‰¾åˆ°è§£å†³æ–¹æ¡ˆã€‚");
+                            }
+                        }
+                        catch (error) {
+                            console.error("è¿è¡Œ aStar æ—¶å‡ºé”™:", error);
+                        }
+                    });
+                }, Button);
+                // Button('è‡ªåŠ¨å®Œæˆ')
+                //   .onClick(()=>{
+                //     this.initStartState();
+                //     const solver = new PuzzleSolver(this.templateIndex+2);
+                //     this.path=solver.aStar(this.startState);
+                //     this.reStart();
+                //   })
+                Button.pop();
+                Column.pop();
+            }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Test" });
+            NavDestination.title('é—¯å…³æ¨¡å¼');
+            NavDestination.onReady((context) => {
+                this.pageInfos = context.pathStack;
+                // try {
+                //   this.gameTime = (context?.pathInfo?.param as PageParam)?.gameTime;
+                //   this.templateIndex = (context?.pathInfo?.param as PageParam)?.templateIndex;
+                //   this.showDigit = (context?.pathInfo?.param as PageParam)?.isShowDigit;
+                // } catch (e) {
+                //   console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`)
+                // }
+            });
+            NavDestination.menus([
+                { 'value': "æœç´¢", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
+                        if (!this.isGameStart) {
+                            if (this.numArray.length) {
+                                this.numArray = [];
+                            }
+                            this.numArray = await this.ImageModel.getPictureFromAlbum(this.templateIndex + 2);
+                        }
+                    } },
+            ]);
+        }, NavDestination);
+        NavDestination.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+(function () {
+    if (typeof NavigationBuilderRegister === "function") {
+        NavigationBuilderRegister("Test", wrapBuilder(PageTestBuilder));
+    }
+})();
+//# sourceMappingURL=Test.js.mapÂ—Ù^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsÙYF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\PuzzleSolver.etsÙQF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\pages\Test.etsÔrBš°belongModulePathªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfoÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entry¥entryÃÂÙ5F:\code\DevEcoStudioProjects\game-puzzle-master\entryÙ/F:\code\DevEcoStudioProjects\game-puzzle-master¥entry¥1.0.0Ô  ÃÚ=import PictureItem from "../model/PictureItem";
+import { ImageGridComponent } from "../View/ImageGridComponent";
+import { ImageSelectComponent } from "../View/ImageSelectComponent"
+import GameRules from "../model/GameRules";
+import ImageModel from "../model/ImageModel";
+import { beginButton, selectPictureButton } from "../View/ButtonComponent";
+import { TimerComponent } from "../View/TimerComponent";
+import { PageParam } from "../viewModel/PageParam";
+import PuzzleSolver from "../model/PuzzleSolver";
+
+@Builder
+export function PageTestBuilder() {
+  Test()
+}
+
+@Component
+struct Test {
+  @State numArray: PictureItem[] = [];
+  @State templateIndex: number = 3;
+  @State showDigit:boolean =false;
+  @State gameTime: number = 200;
+  @State timer: number = -1;
+  @State isPause: boolean=false;
+  @State isGameStart: boolean = false;
+  @State game: GameRules = new GameRules();
+
+  private startState:number[]=[];
+  private path:number[]|null=[];
+
+  private ImageModel: ImageModel = new ImageModel(getContext(this));
+
+
+  pageInfos: NavPathStack = new NavPathStack();
+
+  async aboutToAppear() {
+    // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
+    // this.imgData = await this.ImageModel.getAllImg();
+    // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
+    // this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+  }
+
+
+  initStartState (){
+    if (this.startState.length) {
+      this.startState =[];
+    }
+
+    for (let index = 0; index < this.numArray.length; index++) {
+      const element = this.numArray[index];
+      this.startState.push(element.index);
+    }
+  }
+
+
+  // å®šä¹‰å»¶è¿Ÿå‡½æ•°
+  delay(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+  }
+
+  async reStart() {
+    if (this.path) {
+      for (let index = 0; index < this.path.length; index++) {
+        const element = this.path[index];
+        this.numArray = this.game.itemChange(element, this.numArray);
+
+        // æ¯æ¬¡è°ƒç”¨åæš‚åœ 300 æ¯«ç§’
+        await this.delay(400);
+      // return; // å¦‚æœ path ä¸º nullï¼Œç›´æ¥è¿”å›
+    }
+    }
+  }
+
+
+  build() {
+    NavDestination(){
+      Column(){
+        TimerComponent({gameTime:this.gameTime})
+        ImageSelectComponent({templateIndex:this.templateIndex,numArray:this.numArray,isGameStart:this.isGameStart})
+        ImageGridComponent({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex,showDigit:this.showDigit,gameTime:this.gameTime,timer:this.timer,game:this.game,isPause:this.isPause})
+
+        Column(){
+        }
+        .height('10%')
+
+        beginButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause})
+
+        // Button('è‡ªåŠ¨å®Œæˆ')
+        //   .onClick(()=>{
+        //     this.initStartState();
+        //     const solver = new PuzzleSolver(this.templateIndex+2);
+        //     this.path=solver.aStar(this.startState);
+        //     this.reStart();
+        //   })
+        Button('è‡ªåŠ¨å®Œæˆ')
+          .onClick(async () => {
+            this.initStartState();
+            const solver = new PuzzleSolver(this.templateIndex + 2);
+
+            try {
+              // å¼‚æ­¥è¿è¡Œ aStar ç®—æ³•
+              this.path = await new Promise<number[] | null>((resolve) => {
+                setTimeout(() => resolve(solver.aStar(this.startState)), 0);
+              });
+
+              if (this.path) {
+                // åœ¨ aStar ç»“æŸåè¿è¡Œ reStart
+                await this.reStart();
+              } else {
+                console.error("æœªæ‰¾åˆ°è§£å†³æ–¹æ¡ˆã€‚");
+              }
+            } catch (error) {
+              console.error("è¿è¡Œ aStar æ—¶å‡ºé”™:", error);
+            }
+          });
+
+        // selectPictureButton({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex})
+      }
+    }.title('é—¯å…³æ¨¡å¼')
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      // try {
+      //   this.gameTime = (context?.pathInfo?.param as PageParam)?.gameTime;
+      //   this.templateIndex = (context?.pathInfo?.param as PageParam)?.templateIndex;
+      //   this.showDigit = (context?.pathInfo?.param as PageParam)?.isShowDigit;
+      // } catch (e) {
+      //   console.log(`testTag onReady catch exception: ${JSON.stringify(e)}`)
+      // }
+    })
+    .menus([
+      {'value': "æœç´¢", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
+        if (!this.isGameStart){
+          if (this.numArray.length) {
+            this.numArray=[]
+          }
+          this.numArray=await this.ImageModel.getPictureFromAlbum(this.templateIndex+2)
+        }
+      }},
+    ])
+
+
+  }
+}ÀÔrC—º../View/ImageGridComponent¼../View/ImageSelectComponent³../model/ImageModel·../View/ButtonComponent¶../View/TimerComponent²../model/GameRulesµ../model/PuzzleSolverÔrD—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙ^F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageGridComponent.etsAÃªoh-resolveÂDAÂÙ`F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ImageSelectComponent.etsAÃªoh-resolveÂDAÂÙWF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\ImageModel.etsAÃªoh-resolveÂDAÂÙ[F:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\ButtonComponent.etsAÃªoh-resolveÂDAÂÙZF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\View\TimerComponent.etsAÃªoh-resolveÂDAÂÙVF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\GameRules.etsAÃªoh-resolveÂDAÂÙYF:\code\DevEcoStudioProjects\game-puzzle-master\entry\src\main\ets\model\PuzzleSolver.etsAÃªoh-resolveÂ’ÔrE–§version¤fileªsourceRoot§sources¥names¨mappings§Test.js ‘¨Test.etsÜ`˜”   ” ”	 	” ” ”# #”? ?”Ì@ Ì@˜”   ” ”	 	” ” ”% %”ÌC ÌC”ÌD ÌC–”   ” ” ” ”* *”+ +–”   ” ” ” ”, ,”- -˜”   ” ”	 	” ” +” 1”5 ÌJ”6 ÌK˜”   ” ”	 	” ” ” ”7 7”8 8–”   ” ” ” ”0 0”1 1””   ” ” ” ’”( ”, ‘” ’” ”
+ ‘”  ’”7 #”9 %’”< !”= "’”8 ”= !’”7 ”: “”4 ”5 ”6 ’”6 ”; ’”:  ”? %””3 ”7 ”Ì@ (”ÌB *’” ”  ’” ” ™” #” '”( 1”) 2”3 <”4 =”8 ÌA”9 ÌB”: ÌC””  ”   ”)  ,”+  .‘” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ’” 	” ”” "”	 "”
+ "” "’” #”Ìo #Ìk’” $”< $8’” %”ÌF %ÌB’” &”ÌR &ÌN’” '” '’” *” *˜” +” +” +” +” +” +”" +”$ + —” ,” ,
+” ,” ,” ,”  ,”! ,‘”	 -Ü ” /” /	” /” /” /” /” /”! /”$ / ”( /$”) /%”1 /-”2 /.”8 /4”: /6”? /;”ÌA /=”ÌC /?›” 0” 0” 0” 0”  0”! 0”) 0#”* 0$”/ 0)”0 0*”1 0+œ” 1” 1
+” 1” 1” 1”  1”! 1”( 1"”) 1#”. 1(”/ 1)”0 1*‘”	 2’” 3” 3’” 6” 6”” 7”	 7”
+ 7” 7Ü ” 8” 8	” 8” 8” 8”" 8"”# 8#”% 8%”& 8&”0 80”1 81”8 88”: 8:”< 8<”= 8=”> 8>”? 8?’” 9” 9”” ;”	 ;”
+ ;” ;–” <” <” <” <” <” <Ü ” =” =” =” =” =” =”  =”% =”( ="”, =&”- ='”1 =+”2 =,”8 =2”: =4”? =9”ÌA =;”ÌC ==›” >” >” >”  >”$ >”% >”) >!”* >"”/ >'”0 >(”1 >)Ü ” ?” ?” ?” ?”  ?”$ ?”% ?”) ?!”* ?"”4 ?,”5 ?-”< ?4”> ?6”ÌB ?:”ÌC ?;”ÌK ?ÌC”ÌL ?ÌD”ÌM ?ÌE’” ÌA”! ÌA™” ÌB” ÌB” ÌB” ÌB”  ÌB”! ÌB”$ ÌB”% ÌB”& ÌB’” ÌC”1 ÌC'‘” ÌD‘”	 ÌE’” ÌF” ÌF‘” ÌI’” ÌK” ÌK—”4 ÌL”ÌB ÌL”ÌI ÌL”ÌK ÌL”ÌS ÌL ”Ìd ÌL.”Ìf ÌL/’”$ ÌL”, ÌL ”4 ÌM”ÌH ÌM”ÌO ÌM”ÌQ ÌM”Ì^ ÌM+”Ìt ÌM>”Ìv ÌM?”Ì~ ÌMÌG”Ì ÌMÌU”Ì‘ ÌMÌV”Ìœ ÌMÌa”Ì° ÌMÌr”Ì² ÌMÌs’”$ ÌM”1 ÌM+’”$ ÌM?”, ÌMÌG’”$ ÌMÌV”/ ÌMÌaÜ ”4 ÌN”ÌF ÌN”ÌM ÌN”ÌO ÌN”ÌZ ÌN'”Ìn ÌN8”Ìp ÌN9”Ìx ÌNÌA”Ì‰ ÌNÌO”Ì‹ ÌNÌP”Ì˜ ÌNÌ]”Ì® ÌNÌp”Ì° ÌNÌq”Ì¹ ÌNÌz”ÌË ÌNÌ‰”ÌÍ ÌNÌŠ”ÌÕ ÌNÌ’”Ìæ ÌNÌ ”Ìè ÌNÌ¡”Ìí ÌNÌ¦”Ìû ÌNÌ±”Ìı ÌNÌ²”Í ÌNÌ¶”Í ÌNÌÀ”Í ÌNÌÁ”Í ÌNÌÈ”Í' ÌNÌÕ”Í) ÌNÌÖ’”$ ÌN”/ ÌN'’”$ ÌN9”, ÌNÌA’”$ ÌNÌP”1 ÌNÌ]’”$ ÌNÌq”- ÌNÌz’”$ ÌNÌŠ”, ÌNÌ’’”$ ÌNÌ¡”) ÌNÌ¦’”$ ÌNÌ²”( ÌNÌ¶’”$ ÌNÌÁ”+ ÌNÌÈ’” ÌP” ÌP–” ÌP” ÌP” ÌR	”! ÌR”" ÌR”' ÌR’” ÌP” ÌPÜ ”4 ÌT”? ÌT”ÌF ÌT”ÌH ÌT”ÌP ÌT”Ìa ÌT+”Ìc ÌT,”Ìn ÌT7”Ì‚ ÌTÌH”Ì„ ÌTÌI”ÌŒ ÌTÌQ”Ì ÌTÌ_”ÌŸ ÌTÌ`”Ì¤ ÌTÌe”Ì² ÌTÌp”Ì´ ÌTÌq”Ì¸ ÌTÌu”ÌÅ ÌTÌ”ÌÇ ÌTÌ€”ÌÎ ÌTÌ‡”ÌŞ ÌTÌ””Ìà ÌTÌ•’”$ ÌT”, ÌT’”$ ÌT,”/ ÌT7’”$ ÌTÌI”, ÌTÌQ’”$ ÌTÌ`”) ÌTÌe’”$ ÌTÌq”( ÌTÌu’”$ ÌTÌ€”+ ÌTÌ‡’” ÌV”% ÌV’” ÌW”' ÌW’” ÌX”1 ÌX%’” ÌY”ÌQ ÌYÌE’” ÌZ”ÌC ÌZ7’” Ì[”* Ì[’” Ì\” Ì\”” Ì]” Ì]”+ Ì]”1 Ì]’” ÌV”% ÌV’” ÌW”' ÌW’” ÌX”1 ÌX%’” ÌY”ÌQ ÌYÌE’” ÌZ”ÌC ÌZ7’” Ì[”* Ì[’” Ì\” Ì\˜” Ì]” Ì]” Ì^”" Ì^”# Ì^”( Ì^”, Ì^”. Ì^–” Ì_” Ì_” Ì_”+ Ì_”- Ì_!”. Ì_"” Ì`” Ì`”$ Ì`”' Ì`”+ Ì`”7 Ì`+”8 Ì`,”< Ì`0”= Ì`1”ÌJ Ì`>”ÌM Ì`ÌA”ÌN Ì`ÌB”ÌO Ì`ÌC”ÌP Ì`ÌD’” Ìb” Ìb’” Ìc”, Ìc” Ìd”  Ìd”! Ìd”% Ìd”( Ìd”. Ìd ”2 Ìd$”9 Ìd+”: Ìd=”; Ìd>”ÌB ÌdÌE”ÌD ÌdÌG”ÌF ÌdÌIÜ ”  Ìe”* Ìe”+ Ìe”. Ìe”0 Ìe ”1 Ìe!”8 Ìe(”9 Ìe)”? Ìe/”Ì@ Ìe0”ÌE Ìe5”ÌF Ìe6”ÌJ Ìe:”ÌK Ìe;”ÌU ÌeÌE”ÌV ÌeÌF”ÌW ÌeÌG”ÌY ÌeÌI”ÌZ ÌeÌJ”Ì[ ÌeÌK”Ì\ ÌeÌL”” Ìf” Ìf” Ìf” Ìf–” Ìh”  Ìh”$ Ìh”% Ìh”) Ìh”+ Ìh’”  Ìi”8 Ìi(—”  Ìj”& Ìj”* Ìj”+ Ìj”2 Ìj"”4 Ìj$”5 Ìj%‘” Ìk‘”! Ìk˜”  Ìl”' Ìl”( Ìl”- Ìl”. Ìl”8 Ìl(”9 Ìl)”: Ìl*‘” Ìm‘” Ìn”” Ìn” Ìn”$ Ìn”& Ìnš” Ìo”# Ìo”$ Ìo”) Ìo”* Ìo”9 Ìo+”; Ìo-”Ì@ Ìo2”ÌA Ìo3”ÌB Ìo4‘” Ìp’” Ìq
+” Ìq’” ÌV”! ÌV’” ÌW”# ÌW’” ÌX”- ÌX%’” ÌY”ÌM ÌYÌE’” ÌZ”? ÌZ7’” Ì[”& Ì[’” Ì\” Ì\’” Ì]” Ì]’” ÌK” ÌK”” Ìu”  Ìu”! Ìu”' Ìu—” Ìv”" Ìv”# Ìv”$ Ìv”+ Ìv,”- Ìv.”/ Ìv0™” Ìw” Ìw
+” Ìw” Ìw”! Ìw”( Ìw”) Ìw”2 Ìw(”3 Ìw)’” Ìx” Ìx’” Ìy”ÌW ÌyÌM’” Ìz”Ìa ÌzÌW’” Ì{”Ì[ Ì{ÌQ’” Ì|”  Ì|’” Ì}”ÌY Ì}ÌO’” Ì~” Ì~
+’” Ì” Ì“” Ì€”  Ì€
+”! Ì€Ÿ” Ì” Ì” Ì” Ì” Ì”! Ì”' Ì”) Ì”ÌZ ÌÌO”Ì\ ÌÌQ”Ìd ÌÌY”Ìf ÌÌ[”Ìk ÌÌ`”Ìo ÌÌd”Ìq ÌÌf—” Ì‚” Ì‚” Ì‚”! Ì‚”" Ì‚”- Ì‚”/ Ì‚˜” Ìƒ
+”  Ìƒ”$ Ìƒ”% Ìƒ”- Ìƒ”. Ìƒ”4 Ìƒ"”6 Ìƒ$—”  Ì„”$ Ì„”% Ì„”- Ì„”0 Ì„”2 Ì„”3 Ì„‘” Ì…Ü ” Ì†
+”  Ì†”! Ì†”) Ì†”, Ì†”2 Ì†”6 Ì†"”7 Ì†#”ÌA Ì†-”ÌB Ì†.”ÌU Ì†ÌA”ÌV Ì†ÌB”ÌZ Ì†ÌF”Ì[ Ì†ÌG”Ìh Ì†ÌT”Ìk Ì†ÌU”Ìl Ì†ÌV”Ìm Ì†ÌW”Ìn Ì†ÌW‘” Ì‡	“” Ìˆ” Ìˆ” Ìˆ‘” Ì‰‘” ÌŒÔrF–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜj‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ì ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌĞ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  Ìİ ‘”  ÌŞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìğ ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìı ‘”  Ìş ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ‘”  Íi ÂÔ  ÔrG”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache‘ÔrH–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÍ	ÍéÔrI™¤type¥start£end¢idªexpression©generator¥async¦params¤body³FunctionDeclarationÍÍéÔrJ”¤type¥start£end¤nameªIdentifierÍÍ(¯PageTestBuilderÂÂÂ‘ÔrK•¤type¥start£end¤left¥right±AssignmentPatternÍ)Í6JªIdentifierÍ)Í/¦parentÔrL•¤type¥start£end¥value£raw§LiteralÍ2Í6À¤nullÔrM”¤type¥start£end¤body®BlockStatementÍ8Íé‘M®BlockStatementÍ?Íæ‘ÔrN”¤type¥start£endªexpression³ExpressionStatementÍJÍßÔrO–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍJÍŞÔrP—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍJÍ|ÔrQ–¤type¥start£end¤testªconsequent©alternateµConditionalExpressionÍKÍaJªIdentifierÍKÍQ¦parentJªIdentifierÍTÍZ¦parentÔrR“¤type¥start£end®ThisExpressionÍ]ÍaJªIdentifierÍcÍ|¹observeComponentCreation2ÂÂ’I·ArrowFunctionExpressionÍ}ÍËÀÂÂÂ’JªIdentifierÍ~Í„¦elmtIdJªIdentifierÍ†Í•¯isInitialRenderM®BlockStatementÍšÍË‘Q«IfStatementÍ©ÍÀJªIdentifierÍ­Í¼¯isInitialRenderM®BlockStatementÍ¾ÍG”ÔrS•¤type¥start£end¬declarations¤kind³VariableDeclarationÍÑÍi‘ÔrT•¤type¥start£end¢id¤init²VariableDeclaratorÍÕÍhJªIdentifierÍÕÍâ­componentCallÔrU•¤type¥start£end¦callee©arguments­NewExpressionÍåÍhJªIdentifierÍéÍí¤Test–QµConditionalExpressionÍîÍJªIdentifierÍîÍô¦parentJªIdentifierÍ÷Íı¦parentR®ThisExpressionÍ ÍÔrV”¤type¥start£endªproperties°ObjectExpressionÍÍJªIdentifierÍ
+Í©undefinedJªIdentifierÍÍ¦elmtIdI·ArrowFunctionExpressionÍÍ&ÀÂÂÂM®BlockStatementÍ#Í&V°ObjectExpressionÍ(Íg“ÔrW™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍ*ÍSÂÂÂJªIdentifierÍ*Í.¤pageL§LiteralÍ0ÍSÙ!entry/src/main/ets/pages/Test.etsÙ#"entry/src/main/ets/pages/Test.ets"¤initW¨PropertyÍUÍ]ÂÂÂJªIdentifierÍUÍY¤lineL§LiteralÍ[Í]¢13¤initW¨PropertyÍ_ÍeÂÂÂJªIdentifierÍ_Íb£colL§LiteralÍdÍe¡3¤init£letN³ExpressionStatementÍ{Í˜O®CallExpressionÍ{Í—P°MemberExpressionÍ{ÍˆJªIdentifierÍ{Í¦ViewPUJªIdentifierÍ‚Íˆ¦createÂÂ‘JªIdentifierÍ‰Í–­componentCallÂS³VariableDeclarationÍªÍø‘T²VariableDeclaratorÍ®Í÷JªIdentifierÍ®Íº¬paramsLambdaI·ArrowFunctionExpressionÍ½Í÷ÀÂÂÂM®BlockStatementÍÃÍ÷‘ÔrX”¤type¥start£end¨argument¯ReturnStatementÍÚÍäV°ObjectExpressionÍáÍã£letN³ExpressionStatementÍ
+Í8ÔrY–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍ
+Í7¡=P°MemberExpressionÍ
+Í(JªIdentifierÍ
+Í­componentCallJªIdentifierÍÍ(°paramsGenerator_ÂÂJªIdentifierÍ+Í7¬paramsLambdaM®BlockStatementÍZÍÀ‘N³ExpressionStatementÍmÍ±O®CallExpressionÍmÍ°P°MemberExpressionÍmÍ¤QµConditionalExpressionÍnÍ„JªIdentifierÍnÍt¦parentJªIdentifierÍwÍ}¦parentR®ThisExpressionÍ€Í„JªIdentifierÍ†Í¤¾updateStateVarsOfChildByElmtIdÂÂ’JªIdentifierÍ¥Í«¦elmtIdV°ObjectExpressionÍ­Í¯ÂV°ObjectExpressionÍÍÍİ‘W¨PropertyÍÏÍÛÂÂÂJªIdentifierÍÏÍÓ¤nameL§LiteralÍÕÍÛ¤Test¦"Test"¤initÂÀ—ÔrZ•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€ÌÀ‘Ôr[•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰Ì›JªIdentifierÌ‰Ì›²ImageGridComponentJªIdentifierÌ‰Ì›²ImageGridComponentL§LiteralÌ£Ì¿º../View/ImageGridComponent¼"../View/ImageGridComponent"Z±ImportDeclarationÌÂÍ‘[¯ImportSpecifierÌËÌßJªIdentifierÌËÌß´ImageSelectComponentJªIdentifierÌËÌß´ImageSelectComponentL§LiteralÌçÍ¼../View/ImageSelectComponent¾"../View/ImageSelectComponent"Z±ImportDeclarationÍÍ3‘Ôr\”¤type¥start£end¥local¶ImportDefaultSpecifierÍÍJªIdentifierÍÍ©GameRulesL§LiteralÍÍ2²../model/GameRules´"../model/GameRules"Z±ImportDeclarationÍ5Íb‘\¶ImportDefaultSpecifierÍ<ÍFJªIdentifierÍ<ÍFªImageModelL§LiteralÍLÍa³../model/ImageModelµ"../model/ImageModel"Z±ImportDeclarationÍdÍš‘[¯ImportSpecifierÍmÍxJªIdentifierÍmÍx«beginButtonJªIdentifierÍmÍx«beginButtonL§LiteralÍ€Í™·../View/ButtonComponent¹"../View/ButtonComponent"Z±ImportDeclarationÍœÍÔ‘[¯ImportSpecifierÍ¥Í³JªIdentifierÍ¥Í³®TimerComponentJªIdentifierÍ¥Í³®TimerComponentL§LiteralÍ»ÍÓ¶../View/TimerComponent¸"../View/TimerComponent"Z±ImportDeclarationÍÖÍ‘\¶ImportDefaultSpecifierÍİÍéJªIdentifierÍİÍé¬PuzzleSolverL§LiteralÍïÍµ../model/PuzzleSolver·"../model/PuzzleSolver"

@@ -31,6 +31,14 @@
       "data": {
         "description" : "this is PageLogin"
       }
+    },
+    {
+      "name": "Test",
+      "pageSourceFile": "src/main/ets/pages/Test.ets",
+      "buildFunction": "PageTestBuilder",
+      "data": {
+        "description" : "this is PageTest"
+      }
     }
   ]
 }

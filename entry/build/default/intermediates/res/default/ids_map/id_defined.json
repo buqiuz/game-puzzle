@@ -159,5 +159,9 @@
 			"type":	"media",
 			"name":	"rectangle_on_rectangle",
 			"id":	"0x01000027"
+		}, {
+			"type":	"media",
+			"name":	"success_6032148_1280",
+			"id":	"0x01000028"
 		}]
 }

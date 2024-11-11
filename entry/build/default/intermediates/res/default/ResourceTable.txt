@@ -36,5 +36,6 @@ media pin 0x01000021
 media rectangle_on_rectangle 0x01000027
 media share 0x01000022
 media star 0x01000023
+media success_6032148_1280 0x01000028
 profile main_pages 0x01000024
 profile route_map 0x01000025

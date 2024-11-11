@@ -2422,7 +2422,9 @@
       ],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\entryability\\EntryAbility.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Login.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets"
       ],
       "error": false
     },
@@ -3549,7 +3551,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\NavigationData.ets": {
-      "mtimeMs": 1731253410640.757,
+      "mtimeMs": 1731315268864.328,
       "children": [],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Index.ets"
@@ -3906,7 +3908,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets": {
-      "mtimeMs": 1731251884812.8826,
+      "mtimeMs": 1731313508084.3435,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\ImageModel.ets",
@@ -3923,7 +3925,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets": {
-      "mtimeMs": 1731235008208.2988,
+      "mtimeMs": 1731320483587.34,
       "children": [
         "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.ImageKit.d.ts",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets"
@@ -3934,7 +3936,8 @@
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
@@ -3955,7 +3958,8 @@
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageSelectComponent.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
@@ -3975,7 +3979,9 @@
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageSelectComponent.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\SolvePuzzle.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\State.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\State.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets"
       ],
       "error": false
     },
@@ -4459,29 +4465,34 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets": {
-      "mtimeMs": 1731238557042.62,
+      "mtimeMs": 1731314956700.953,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets",
+        "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.ArkUI.d.ts"
       ],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets": {
-      "mtimeMs": 1731251706522.1504,
+      "mtimeMs": 1731315091082.6985,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\ImageModel.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets",
+        "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.ArkUI.d.ts"
       ],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
@@ -4491,7 +4502,8 @@
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
@@ -4504,12 +4516,13 @@
       ],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets": {
-      "mtimeMs": 1731253364086.943,
+      "mtimeMs": 1731313323766.205,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets",
@@ -4546,7 +4559,8 @@
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets",
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets"
       ],
       "error": false
     },
@@ -5260,10 +5274,38 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PriorityQueue.ets": {
-      "mtimeMs": 1731252961135.9958,
+      "mtimeMs": 1731319819275.7693,
       "children": [],
       "parent": [
-        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\SolvePuzzle.ets"
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\SolvePuzzle.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets"
+      ],
+      "error": false
+    },
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets": {
+      "mtimeMs": 1731269420037.7805,
+      "children": [
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageSelectComponent.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\ImageModel.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\TimerComponent.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\PageParam.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets"
+      ],
+      "parent": [],
+      "error": false
+    },
+    "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets": {
+      "mtimeMs": 1731320126716.1245,
+      "children": [
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PriorityQueue.ets"
+      ],
+      "parent": [
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Test.ets",
+        "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ButtonComponent.ets"
       ],
       "error": false
     }

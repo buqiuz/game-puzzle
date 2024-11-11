@@ -10,8 +10,7 @@ interface Game2_Params {
     isPause?: boolean;
     isGameStart?: boolean;
     game?: GameRules;
-    ImageModel?: ImageModel;
-    // solvedPictures: PictureItem[] | null = solvePuzzle(this.numArray);
+    imageModel?: ImageModel;
     pageInfos?: NavPathStack;
 }
 import type PictureItem from "../model/PictureItem";
@@ -19,7 +18,7 @@ import { ImageGridComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/Vi
 import { ImageSelectComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ImageSelectComponent";
 import GameRules from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/GameRules";
 import ImageModel from "@bundle:ohos.samples.gamepuzzle/entry/ets/model/ImageModel";
-import { beginButton } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ButtonComponent";
+import { beginButton, recoveryButton } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ButtonComponent";
 import { TimerComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/TimerComponent";
 import type { PageParam } from "../viewModel/PageParam";
 export function PageGameBuilder(parent = null) {
@@ -53,7 +52,7 @@ class Game2 extends ViewPU {
         this.__isPause = new ObservedPropertySimplePU(false, this, "isPause");
         this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
         this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
-        this.ImageModel = new ImageModel(getContext(this));
+        this.__imageModel = new ObservedPropertyObjectPU(new ImageModel(getContext(this)), this, "imageModel");
         this.pageInfos = new NavPathStack();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -83,8 +82,8 @@ class Game2 extends ViewPU {
         if (params.game !== undefined) {
             this.game = params.game;
         }
-        if (params.ImageModel !== undefined) {
-            this.ImageModel = params.ImageModel;
+        if (params.imageModel !== undefined) {
+            this.imageModel = params.imageModel;
         }
         if (params.pageInfos !== undefined) {
             this.pageInfos = params.pageInfos;
@@ -101,6 +100,7 @@ class Game2 extends ViewPU {
         this.__isPause.purgeDependencyOnElmtId(rmElmtId);
         this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
         this.__game.purgeDependencyOnElmtId(rmElmtId);
+        this.__imageModel.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__numArray.aboutToBeDeleted();
@@ -111,6 +111,7 @@ class Game2 extends ViewPU {
         this.__isPause.aboutToBeDeleted();
         this.__isGameStart.aboutToBeDeleted();
         this.__game.aboutToBeDeleted();
+        this.__imageModel.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -170,8 +171,13 @@ class Game2 extends ViewPU {
     set game(newValue: GameRules) {
         this.__game.set(newValue);
     }
-    private ImageModel: ImageModel;
-    // solvedPictures: PictureItem[] | null = solvePuzzle(this.numArray);
+    private __imageModel: ObservedPropertyObjectPU<ImageModel>;
+    get imageModel() {
+        return this.__imageModel.get();
+    }
+    set imageModel(newValue: ImageModel) {
+        this.__imageModel.set(newValue);
+    }
     private pageInfos: NavPathStack;
     async aboutToAppear() {
         // await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
@@ -188,7 +194,7 @@ class Game2 extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 42, col: 9 });
+                            let componentCall = new TimerComponent(this, { gameTime: this.__gameTime }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 41, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -205,7 +211,7 @@ class Game2 extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 43, col: 9 });
+                            let componentCall = new ImageSelectComponent(this, { templateIndex: this.__templateIndex, numArray: this.__numArray, isGameStart: this.__isGameStart }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 42, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -224,7 +230,7 @@ class Game2 extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 44, col: 9 });
+                            let componentCall = new ImageGridComponent(this, { isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, showDigit: this.__showDigit, gameTime: this.__gameTime, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 43, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -253,7 +259,7 @@ class Game2 extends ViewPU {
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 50, col: 9 });
+                            let componentCall = new beginButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 49, col: 9 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -271,6 +277,30 @@ class Game2 extends ViewPU {
                             this.updateStateVarsOfChildByElmtId(elmtId, {});
                         }
                     }, { name: "beginButton" });
+                }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new recoveryButton(this, { ImageModel: this.__imageModel, game: this.__game, gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, timer: this.__timer, buttonWidth: '90%' }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game2.ets", line: 50, col: 9 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    ImageModel: this.imageModel,
+                                    game: this.game,
+                                    gameTime: this.gameTime,
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex,
+                                    timer: this.timer,
+                                    buttonWidth: '90%'
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "recoveryButton" });
                 }
                 Column.pop();
             }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Game2" });
@@ -292,7 +322,7 @@ class Game2 extends ViewPU {
                             if (this.numArray.length) {
                                 this.numArray = [];
                             }
-                            this.numArray = await this.ImageModel.getPictureFromAlbum(this.templateIndex + 2);
+                            this.numArray = await this.imageModel.getPictureFromAlbum(this.templateIndex + 2);
                         }
                     } },
             ]);

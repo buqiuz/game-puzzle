@@ -3,7 +3,7 @@ import { ImageGridComponent } from "../View/ImageGridComponent";
 import { ImageSelectComponent } from "../View/ImageSelectComponent"
 import GameRules from "../model/GameRules";
 import ImageModel from "../model/ImageModel";
-import { beginButton, selectPictureButton } from "../View/ButtonComponent";
+import { beginButton, recoveryButton, restartButton, selectPictureButton } from "../View/ButtonComponent";
 import { TimerComponent } from "../View/TimerComponent";
 import { PageParam } from "../viewModel/PageParam";
 
@@ -23,9 +23,8 @@ struct Game2 {
   @State isGameStart: boolean = false;
   @State game: GameRules = new GameRules();
 
-  private ImageModel: ImageModel = new ImageModel(getContext(this));
+  @State imageModel: ImageModel = new ImageModel(getContext(this));
 
-  // solvedPictures: PictureItem[] | null = solvePuzzle(this.numArray);
 
   pageInfos: NavPathStack = new NavPathStack();
 
@@ -48,7 +47,7 @@ struct Game2 {
         .height('10%')
 
         beginButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause})
-        // selectPictureButton({isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex})
+        recoveryButton({ImageModel:this.imageModel,game:this.game,gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex,timer:this.timer,buttonWidth:'90%'})
       }
     }.title('闯关模式')
     .onReady((context: NavDestinationContext) => {
@@ -67,7 +66,7 @@ struct Game2 {
           if (this.numArray.length) {
             this.numArray=[]
           }
-          this.numArray=await this.ImageModel.getPictureFromAlbum(this.templateIndex+2)
+          this.numArray=await this.imageModel.getPictureFromAlbum(this.templateIndex+2)
         }
       }},
     ])

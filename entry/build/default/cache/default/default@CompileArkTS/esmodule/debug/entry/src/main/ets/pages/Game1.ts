@@ -12,7 +12,7 @@ interface Game1_Params {
     timer?: number;
     isGameStart?: boolean;
     game?: GameRules;
-    ImageModel?: ImageModel;
+    imageModel?: ImageModel;
     pageInfos?: NavPathStack;
     dialogController?: CustomDialogController;
 }
@@ -25,7 +25,7 @@ import ImagePicker from "@bundle:ohos.samples.gamepuzzle/entry/ets/common/ImageP
 import abilityAccessCtrl from "@ohos:abilityAccessCtrl";
 import type { Permissions } from "@ohos:abilityAccessCtrl";
 import { ImageGridComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ImageGridComponent";
-import { beginButton, restartButton } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ButtonComponent";
+import { beginButton, recoveryButton, restartButton } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/ButtonComponent";
 import { TimerComponent } from "@bundle:ohos.samples.gamepuzzle/entry/ets/View/TimerComponent";
 export function PageGameBuilder(parent = null) {
     {
@@ -63,7 +63,7 @@ class Game1 extends ViewPU {
         this.__timer = new ObservedPropertySimplePU(-1, this, "timer");
         this.__isGameStart = new ObservedPropertySimplePU(false, this, "isGameStart");
         this.__game = new ObservedPropertyObjectPU(new GameRules(), this, "game");
-        this.ImageModel = new ImageModel(getContext(this));
+        this.__imageModel = new ObservedPropertyObjectPU(new ImageModel(getContext(this)), this, "imageModel");
         this.pageInfos = new NavPathStack();
         this.dialogController = new CustomDialogController({
             builder: () => {
@@ -119,8 +119,8 @@ class Game1 extends ViewPU {
         if (params.game !== undefined) {
             this.game = params.game;
         }
-        if (params.ImageModel !== undefined) {
-            this.ImageModel = params.ImageModel;
+        if (params.imageModel !== undefined) {
+            this.imageModel = params.imageModel;
         }
         if (params.pageInfos !== undefined) {
             this.pageInfos = params.pageInfos;
@@ -142,6 +142,7 @@ class Game1 extends ViewPU {
         this.__timer.purgeDependencyOnElmtId(rmElmtId);
         this.__isGameStart.purgeDependencyOnElmtId(rmElmtId);
         this.__game.purgeDependencyOnElmtId(rmElmtId);
+        this.__imageModel.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__numArray.aboutToBeDeleted();
@@ -154,6 +155,7 @@ class Game1 extends ViewPU {
         this.__timer.aboutToBeDeleted();
         this.__isGameStart.aboutToBeDeleted();
         this.__game.aboutToBeDeleted();
+        this.__imageModel.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -227,19 +229,25 @@ class Game1 extends ViewPU {
     set game(newValue: GameRules) {
         this.__game.set(newValue);
     }
-    private ImageModel: ImageModel;
+    private __imageModel: ObservedPropertyObjectPU<ImageModel>;
+    get imageModel() {
+        return this.__imageModel.get();
+    }
+    set imageModel(newValue: ImageModel) {
+        this.__imageModel.set(newValue);
+    }
     private pageInfos: NavPathStack;
     private dialogController: CustomDialogController;
     async aboutToAppear() {
         await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
-        this.imgData = await this.ImageModel.getAllImg();
+        this.imgData = await this.imageModel.getAllImg();
         // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
-        this.numArray = await this.ImageModel.splitPic(0, this.templateIndex + 2);
+        this.numArray = await this.imageModel.splitPic(0, this.templateIndex + 2);
     }
     async onImageChange() {
         this.dialogController.close();
         this.numArray = [];
-        this.numArray = await this.ImageModel.splitPic(this.index, this.templateIndex + 2);
+        this.numArray = await this.imageModel.splitPic(this.index, this.templateIndex + 2);
         this.init();
         this.isGameStart = false;
     }
@@ -255,7 +263,7 @@ class Game1 extends ViewPU {
             Image.height(260);
             Image.objectFit(ImageFit.Fill);
             Image.onClick(async () => {
-                this.imgData = await this.ImageModel.getAllImg();
+                this.imgData = await this.imageModel.getAllImg();
                 setTimeout(() => {
                     this.dialogController.open();
                 }, 200);
@@ -395,10 +403,15 @@ class Game1 extends ViewPU {
                         }
                     }, { name: "beginButton" });
                 }
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Row.create();
+                    Row.width('90%');
+                    Row.justifyContent(FlexAlign.SpaceAround);
+                }, Row);
                 {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         if (isInitialRender) {
-                            let componentCall = new restartButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause, templateIndex: this.__templateIndex, index: this.__index }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game1.ets", line: 116, col: 9 });
+                            let componentCall = new restartButton(this, { gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, timer: this.__timer, game: this.__game, isPause: this.__isPause, templateIndex: this.__templateIndex, index: this.__index, ImageModel: this.__imageModel }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game1.ets", line: 117, col: 11 });
                             ViewPU.create(componentCall);
                             let paramsLambda = () => {
                                 return {
@@ -409,7 +422,8 @@ class Game1 extends ViewPU {
                                     game: this.game,
                                     isPause: this.isPause,
                                     templateIndex: this.templateIndex,
-                                    index: this.index
+                                    index: this.index,
+                                    ImageModel: this.imageModel
                                 };
                             };
                             componentCall.paramsGenerator_ = paramsLambda;
@@ -419,6 +433,31 @@ class Game1 extends ViewPU {
                         }
                     }, { name: "restartButton" });
                 }
+                {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        if (isInitialRender) {
+                            let componentCall = new recoveryButton(this, { ImageModel: this.__imageModel, game: this.__game, gameTime: this.__gameTime, isGameStart: this.__isGameStart, numArray: this.__numArray, templateIndex: this.__templateIndex, timer: this.__timer, buttonWidth: '30%' }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Game1.ets", line: 118, col: 11 });
+                            ViewPU.create(componentCall);
+                            let paramsLambda = () => {
+                                return {
+                                    ImageModel: this.imageModel,
+                                    game: this.game,
+                                    gameTime: this.gameTime,
+                                    isGameStart: this.isGameStart,
+                                    numArray: this.numArray,
+                                    templateIndex: this.templateIndex,
+                                    timer: this.timer,
+                                    buttonWidth: '30%'
+                                };
+                            };
+                            componentCall.paramsGenerator_ = paramsLambda;
+                        }
+                        else {
+                            this.updateStateVarsOfChildByElmtId(elmtId, {});
+                        }
+                    }, { name: "recoveryButton" });
+                }
+                Row.pop();
                 Column.pop();
             }, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Game1" });
             NavDestination.title('普通模式');
@@ -431,7 +470,7 @@ class Game1 extends ViewPU {
                             if (this.numArray.length) {
                                 this.numArray = [];
                             }
-                            this.numArray = await this.ImageModel.getPictureFromAlbum(this.templateIndex + 2);
+                            this.numArray = await this.imageModel.getPictureFromAlbum(this.templateIndex + 2);
                         }
                     } },
             ]);

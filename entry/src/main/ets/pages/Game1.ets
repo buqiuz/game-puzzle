@@ -6,7 +6,7 @@ import { photoAccessHelper } from "@kit.MediaLibraryKit";
 import ImagePicker from "../common/ImagePicker";
 import { abilityAccessCtrl, Permissions } from "@kit.AbilityKit";
 import { ImageGridComponent } from "../View/ImageGridComponent";
-import { beginButton, restartButton } from "../View/ButtonComponent";
+import { beginButton, recoveryButton, restartButton } from "../View/ButtonComponent";
 import { TimerComponent } from "../View/TimerComponent";
 
 @Builder
@@ -30,7 +30,7 @@ struct Game1 {
   @State timer: number = -1;
   @State isGameStart: boolean = false;
   @State game: GameRules = new GameRules();
-  private ImageModel: ImageModel = new ImageModel(getContext(this));
+  @State imageModel: ImageModel = new ImageModel(getContext(this));
 
   pageInfos: NavPathStack = new NavPathStack();
 
@@ -46,15 +46,15 @@ struct Game1 {
 
   async aboutToAppear() {
     await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(getContext(this), PERMISSIONS);
-    this.imgData = await this.ImageModel.getAllImg();
+    this.imgData = await this.imageModel.getAllImg();
     // Logger.info(Common.TAG, `images = ${this.imgData.length}`);
-    this.numArray = await this.ImageModel.splitPic(0,this.templateIndex+2);
+    this.numArray = await this.imageModel.splitPic(0,this.templateIndex+2);
   }
 
   async onImageChange() {
     this.dialogController.close();
     this.numArray = [];
-    this.numArray = await this.ImageModel.splitPic(this.index,this.templateIndex+2);
+    this.numArray = await this.imageModel.splitPic(this.index,this.templateIndex+2);
     this.init();
     this.isGameStart = false;
   }
@@ -72,7 +72,7 @@ struct Game1 {
       .height(260)
       .objectFit(ImageFit.Fill)
       .onClick(async () => {
-        this.imgData = await this.ImageModel.getAllImg();
+        this.imgData = await this.imageModel.getAllImg();
         setTimeout(() => {
           this.dialogController.open();
         }, 200);
@@ -113,7 +113,13 @@ struct Game1 {
         }
         this.showOption()
         beginButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause})
-        restartButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause,templateIndex:this.templateIndex,index:this.index})
+        Row(){
+          restartButton({gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,timer:this.timer,game:this.game,isPause:this.isPause,templateIndex:this.templateIndex,index:this.index,ImageModel:this.imageModel})
+          recoveryButton({ImageModel:this.imageModel,game:this.game,gameTime:this.gameTime,isGameStart:this.isGameStart,numArray:this.numArray,templateIndex:this.templateIndex,timer:this.timer,buttonWidth:'30%'})
+        }
+        .width('90%')
+        .justifyContent(FlexAlign.SpaceAround)
+
       }
     }
     .title('普通模式')
@@ -126,7 +132,7 @@ struct Game1 {
           if (this.numArray.length) {
             this.numArray=[]
           }
-          this.numArray=await this.ImageModel.getPictureFromAlbum(this.templateIndex+2)
+          this.numArray=await this.imageModel.getPictureFromAlbum(this.templateIndex+2)
         }
       }},
     ])

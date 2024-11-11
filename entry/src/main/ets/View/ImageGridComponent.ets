@@ -1,5 +1,6 @@
 import GameRules from "../model/GameRules"
 import PictureItem from "../model/PictureItem"
+import { TipsDialog } from "@kit.ArkUI"
 
 @Component
 export struct ImageGridComponent{
@@ -15,6 +16,23 @@ export struct ImageGridComponent{
 
 
 
+  dialogControllerImage: CustomDialogController = new CustomDialogController({
+    builder: TipsDialog({
+      imageRes: $r("app.media.success_6032148_1280"),
+      imageSize:{width:'100vp',height:'100vp'},
+      content: '恭喜你完成拼图',
+      primaryButton: {
+        value: '确定',
+        action: () => {
+          this.isGameStart=false
+        },
+      },
+      onCheckedChange: () => {
+        console.info('Callback when the checkbox is clicked')
+      }
+    }),
+  })
+
   gameOver() {
     let count = 0;
     let loop = (this.templateIndex+2)*(this.templateIndex+2)-1;
@@ -28,7 +46,7 @@ export struct ImageGridComponent{
     }
     if (count === loop) {
       this.isGameStart = false;
-      AlertDialog.show({ message: $r('app.string.congratulations') });
+      this.dialogControllerImage.open();
       clearInterval(this.timer);
       this.gameTime = 300;
     }
