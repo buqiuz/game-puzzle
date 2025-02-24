@@ -1,14 +1,31 @@
 # 拼图
 
 ### 介绍
-本项目以官方示例进行修改而来，以下为源仓库
+本项目为学习arkts时所写
 
 该示例通过@ohos.multimedia.image和@ohos.file.photoAccessHelper接口实现获取图片，以及图片裁剪分割的功能。
 
 ### 效果预览
-| 首页                                        | 运行                                       |
+| 首页                                        | 登录                                       |
 |-------------------------------------------|------------------------------------------|
-| ![running](screenshot/device/running.png) | ![running](screenshot/device/change.png) |
+| ![img.png](screenshot/img.png) | ![img.png](screenshot/img1.png) |
+
+| 普通模式                           | 游戏成功弹窗                          |
+|--------------------------------|---------------------------------|
+| ![img_2.png](screenshot/device/img_2.png) | ![img.png](screenshot/device/img.png)|
+
+| 图片选择                    | 图库选择                |
+|-------------------------|---------------------|
+| ![img_3.png](screenshot/device/img_3.png) | ![img_4.png](screenshot/device/img_4.png) |
+
+| 难度选择                   | 关卡选择                    |
+|------------------------|-------------------------|
+| ![img_5.png](screenshot/device/img_5.png)| ![img_6.png](screenshot/device/img_6.png) |
+
+| 闯关模式                    |
+|-------------------------|
+| ![img_7.png](screenshot/device/img_7.png) |
+
 
 ### 使用说明：
 1. 使用预置相机拍照后启动应用，应用首页会读取设备内的图片文件并展示获取到的第一个图片，没有图片时图片位置显示空白；
@@ -18,22 +35,59 @@
 
 ### 工程目录
 ```
-├──entry/src/main/ets                         // 代码区
-│  ├──application
-│  │  └──AbilityStage.ets
-│  ├──common
-│  │  ├──CommonConstants.ets                  // 常量类 
-│  │  └──ImagePicker.ets                      // 图片选择
-│  ├──entryability
-│  │  └──EntryAbility.ets 
-│  ├──model
-│  │  ├──GameRules.ets                        // 游戏规则
-│  │  ├──ImageModel.ets                       // 图片操作
-│  │  ├──Logger.ets                           // 日志
-│  │  └──PictureItem.ets                      // 分解的图片
-│  └──pages
-│     └──Index.ets                            // 首页
-└──entry/src/main/resources                   // 应用资源目录
+📂 ets
+│── 📂 application
+│   │── CommonConstants.ets    # 公共常量定义
+│   │── ImagePicker.ets        # 图片选择器功能
+│
+│── 📂 entryability            # 入口能力模块
+│
+│── 📂 model                   # 数据模型
+│   │── GameRules.ets          # 游戏规则
+│   │── ImageModel.ets         # 图片数据模型
+│   │── Logger.ets             # 日志记录功能
+│   │── PictureItem.ets        # 图片项数据
+│   │── PriorityQueue.ets      # 优先队列实现
+│   │── PuzzleSolver.ets       # A*算法拼图求解
+│
+│── 📂 pages                   # 页面模块
+│   │── Game1.ets              # 游戏页面 1
+│   │── Game2.ets              # 游戏页面 2
+│   │── Indexes.ets            # 索引页面
+│   │── Level.ets              # 关卡页面
+│   │── Login.ets              # 登录页面
+│   │── Test.ets               # 测试页面
+│
+│── 📂 View                    # 视图组件
+│   │── ButtonComponent.ets    # 按钮组件
+│   │── ImageGridComponent.ets # 图片网格组件
+│   │── ImageSelectComponent.ets # 图片选择组件
+│   │── SelectComponent.ets    # 选择组件
+│   │── TimerComponent.ets     # 计时器组件
+│
+│── 📂 viewModel               # 视图数据模型
+│   │── GameData.ets           # 游戏数据管理
+│   │── NavigationData.ets     # 导航数据
+│   │── PageParam.ets          # 页面参数
+│
+│── 📂 resources               # 资源文件
+│   ├── 📂 base
+│   │   ├── 📂 element
+│   │   ├── 📂 media           # 媒体资源（图片、SVG等）
+│   │   │   ├── background_1.jpg
+│   │   │   ├── bookmark.svg
+│   │   │   ├── flag.svg
+│   │   │   ├── icon.jpg
+│   │   │   ├── magnifyingglass.svg
+│   │   │   ├── person.svg
+│   │   │   ├── pin.svg
+│   │   │   ├── rectangle_on_rectangle.svg
+│   │   │   ├── share.svg
+│   │   │   ├── star.svg
+│   │   │   ├── success_6032148_1280.jpg
+│   ├── main_pages.json        # 主要页面数据
+│   ├── route_map.json         # 路由映射
+
 ```
 ### 具体实现
 + 游戏中图片裁剪分割的效果实现在ImageModel中，源码参考[ImageModel](entry/src/main/ets/model/ImageModel.ets):
@@ -57,4 +111,4 @@
 
 3.DevEco Studio版本：DevEco Studio NEXT Developer Beta1及以上。
 
-4.HarmonyOS SDK版本：HarmonyOS NEXT Developer Beta1 SDK及以上。
+4.HarmonyOS SDK版本：HarmonyOS NEXT Developer Beta1 SDK12及以上。
