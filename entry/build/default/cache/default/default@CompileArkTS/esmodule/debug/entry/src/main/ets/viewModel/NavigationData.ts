@@ -13,7 +13,6 @@ export class NavigationData {
     ];
     pages: string[] = [
         'Game1',
-        // 'Game2',
         // 'Test',
         'Level'
     ];

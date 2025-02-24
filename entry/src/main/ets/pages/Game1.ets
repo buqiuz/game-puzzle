@@ -127,7 +127,7 @@ struct Game1 {
       this.pageInfos = context.pathStack;
     })
     .menus([
-      {'value': "搜索", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
+      {'value': "图库中选择图片", 'icon': "resources/base/media/rectangle_on_rectangle.svg", 'action': async () => {
         if (!this.isGameStart){
           if (this.numArray.length) {
             this.numArray=[]

@@ -14,7 +14,6 @@ export class NavigationData {
 
   pages: string[] = [
     'Game1',
-    // 'Game2',
     // 'Test',
     'Level'
   ]
@@ -26,3 +25,4 @@ export class NavigationData {
   }
   title: string = '拼图游戏'
 }
+

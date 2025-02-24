@@ -117,34 +117,26 @@ export default class GameRules {
     if (emptyIndex == -1) {
       return pictures;
     }
-    // 执行100次随机交换
-    for (let i = 0; i < 60; i++) {
-      // 可能的移动方向
+    // 执行60次随机交换
+    for (let i = 0; i < 50; i++) {
       let possibleMoves:number[] = [];
-      // 向上移动
       if (emptyIndex - cutCount >= 0) {
         possibleMoves.push(emptyIndex - cutCount);
       }
-      // 向下移动
       if (emptyIndex + cutCount < pictures.length) {
         possibleMoves.push(emptyIndex + cutCount);
       }
-      // 向左移动
       if (emptyIndex % cutCount != 0) {
         possibleMoves.push(emptyIndex - 1);
       }
-      // 向右移动
       if ((emptyIndex + 1) % cutCount != 0) {
         possibleMoves.push(emptyIndex + 1);
       }
-      // 随机选择一个方向进行交换
       let randIndex = Math.floor(Math.random() * possibleMoves.length);
       let swapIndex = possibleMoves[randIndex];
-      // 交换空白块和选中的拼图块
       let temp = pictures[emptyIndex];
       pictures[emptyIndex] = pictures[swapIndex];
       pictures[swapIndex] = temp;
-      // 更新空白块的索引
       emptyIndex = swapIndex;
     }
     return pictures;

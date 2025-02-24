@@ -68,6 +68,7 @@ export default class ImageModel {
     return photoList;
   }
 
+
   //从图库中选择图片然后划分
   async getPictureFromAlbum(splitCount: number): Promise<PictureItem[]> {
     // 拉起相册，选择图片
@@ -80,18 +81,6 @@ export default class ImageModel {
 
     // 读取图片为buffer
     const file = fileIo.openSync(this.albumPath, fileIo.OpenMode.READ_ONLY);
-
-    // this.photoSize = fileIo.statSync(file.fd).size;
-    // console.info('Photo Size: ' + this.photoSize);
-    // let buffer = new ArrayBuffer(this.photoSize);
-    // fileIo.readSync(file.fd, buffer);
-    // fileIo.closeSync(file);
-    //
-    // // 解码成PixelMap
-    // const imageSource = image.createImageSource(buffer);
-    // console.log('imageSource: ' + JSON.stringify(imageSource));
-    // this.pixel = await imageSource.createPixelMap({});
-    // return this.pixel;
 
     let imagePixelMap: PictureItem[] = [];
     let fd: number = file.fd;

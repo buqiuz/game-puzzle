@@ -20,38 +20,10 @@ export class GameData{
   ]
 
   isShowDigit: boolean[] = [
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
+    true, false, true, false, true, false, true, false, true, false, true, false, true, false, true,
   ]
   templateIndex: number[] = [
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    2,
-    2,
-    2,
-    3,
-    3,
-    3,
-    4,
-    4,
-    4,
+    0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4,
   ]
   gameTime:number[] = [
     100, // 关卡1: 1分40秒

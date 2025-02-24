@@ -3551,7 +3551,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\NavigationData.ets": {
-      "mtimeMs": 1731315268864.328,
+      "mtimeMs": 1731330523878.3667,
       "children": [],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Index.ets"
@@ -3559,7 +3559,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Index.ets": {
-      "mtimeMs": 1731246345379.4211,
+      "mtimeMs": 1731329336868.1064,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\NavigationData.ets"
       ],
@@ -3908,7 +3908,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game1.ets": {
-      "mtimeMs": 1731313508084.3435,
+      "mtimeMs": 1731329727757.1975,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\ImageModel.ets",
@@ -3925,7 +3925,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\GameRules.ets": {
-      "mtimeMs": 1731320483587.34,
+      "mtimeMs": 1731335601085.5361,
       "children": [
         "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.ImageKit.d.ts",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets"
@@ -3942,7 +3942,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\ImageModel.ets": {
-      "mtimeMs": 1731159315633.8635,
+      "mtimeMs": 1731328345051.9053,
       "children": [
         "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.ImageKit.d.ts",
         "F:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\kits\\@kit.MediaLibraryKit.d.ts",
@@ -4522,7 +4522,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Game2.ets": {
-      "mtimeMs": 1731313323766.205,
+      "mtimeMs": 1731330003934.9246,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PictureItem.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\View\\ImageGridComponent.ets",
@@ -4537,7 +4537,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\GameData.ets": {
-      "mtimeMs": 1731238368329.7515,
+      "mtimeMs": 1731330839727.961,
       "children": [],
       "parent": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets"
@@ -4545,7 +4545,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\pages\\Level.ets": {
-      "mtimeMs": 1731247713715.184,
+      "mtimeMs": 1731329616651.8494,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\GameData.ets",
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\viewModel\\PageParam.ets"
@@ -5299,7 +5299,7 @@
       "error": false
     },
     "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PuzzleSolver.ets": {
-      "mtimeMs": 1731320126716.1245,
+      "mtimeMs": 1731328390651.5608,
       "children": [
         "F:\\code\\DevEcoStudioProjects\\game-puzzle-master\\entry\\src\\main\\ets\\model\\PriorityQueue.ets"
       ],

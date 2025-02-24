@@ -122,43 +122,35 @@ async  aStar(startState: number[]): Promise<number[] | null> {
     for (let i = 0; i < this._splitSize**2; i++) {
       goalState.push(i);
     }
-
     // 定义目标状态的位置
     const goalPos = new Map<number, [number, number]>();
     for (let i = 0; i < goalState.length; i++) {
       const value = goalState[i];
       goalPos.set(value, [Math.floor(i / this._splitSize), i % this._splitSize]);
     }
-
     const openSet = new PriorityQueue<OpenSetItem>();
     openSet.enqueue({
       cost: this.manhattanDistance(startState, goalPos),
       state: startState,
       path: []
     }, this.manhattanDistance(startState, goalPos));
-
     const visited = new Set<string>();
-
     while (!openSet.isEmpty()) {
       const current = openSet.dequeue()!; // 获取最小代价的节点
       const state = current.state;
       const path = current.path;
       visited.add(JSON.stringify(state));
-
       // 如果达到目标状态
       if (JSON.stringify(state) === JSON.stringify(goalState)) {
         return path;
       }
-
       const emptyIndex = this.getEmptyIndex(state);
       const x = Math.floor(emptyIndex / this._splitSize);
       const y = emptyIndex % this._splitSize;
-
       // 上、下、左、右移动方向
       const directions = [
         [-1, 0], [1, 0], [0, -1], [0, 1]
       ];
-
       for (let i = 0; i < directions.length; i++) {
         const dx = directions[i][0];
         const dy = directions[i][1];
