@@ -33,7 +33,7 @@ A算法是一种启发式搜索算法，广泛用于路径规划和最短路径�
 
 效果图如下：
 
-[example.gif](screenshot%2Fdevice%2Fexample.gif)
+[example.gif](screenshot/device/example.gif)
 
 **保证可还原的打乱算法**
 
